@@ -68,18 +68,16 @@ export const VerifyAccountPage = () => {
             ? "Your account has been verified successfully."
             : (verificationError ?? "Verification failed.")
       }
-      backLink="/home"
-      backLabel="Back"
     >
       {isVerifying ? (
         <div className="space-y-4">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-[var(--bg-surface-alt)] text-[var(--text-secondary)]">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center bg-[var(--color-surface-alt)] text-[var(--color-text-secondary)]">
             <FaSpinner className="animate-spin" size={28} />
           </div>
           <div className="space-y-3">
-            <div className="h-3 rounded-full bg-[var(--border-color)]"></div>
-            <div className="h-3 rounded-full bg-[var(--border-color)] w-5/6"></div>
-            <div className="h-3 rounded-full bg-[var(--border-color)] w-2/3"></div>
+            <div className="h-3 bg-[var(--color-border)]"></div>
+            <div className="h-3 bg-[var(--color-border)] w-5/6"></div>
+            <div className="h-3 bg-[var(--color-border)] w-2/3"></div>
           </div>
         </div>
       ) : isSuccess ? (

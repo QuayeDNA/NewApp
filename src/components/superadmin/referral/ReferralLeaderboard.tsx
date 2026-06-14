@@ -32,8 +32,8 @@ export const ReferralLeaderboard = ({
     <Card variant="outlined">
       <CardBody>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
-          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaTrophy className="w-4 h-4" style={{ color: "var(--color-secondary)" }} />
+          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaTrophy className="w-4 h-4" style={{ color: "var(--color-amber)" }} />
             Top Referrers
             <Badge variant="subtle" colorScheme="info" size="sm">{data.length}</Badge>
           </h3>
@@ -46,23 +46,23 @@ export const ReferralLeaderboard = ({
                   onClick={() => onTimeframeChange(tf.value)}
                   className="px-2.5 py-1 text-xs font-medium rounded-lg border transition-colors"
                   style={{
-                    background: timeframe === tf.value ? "var(--color-secondary)" : "var(--bg-surface)",
-                    color: timeframe === tf.value ? "white" : "var(--text-secondary)",
-                    borderColor: timeframe === tf.value ? "var(--color-secondary)" : "var(--border-color)",
+                    background: timeframe === tf.value ? "var(--color-amber)" : "var(--color-surface)",
+                    color: timeframe === tf.value ? "white" : "var(--color-text-secondary)",
+                    borderColor: timeframe === tf.value ? "var(--color-amber)" : "var(--color-border)",
                   }}
                 >
                   {tf.label}
                 </button>
               ))}
             </div>
-            <div className="flex rounded-lg p-0.5 shrink-0" style={{ background: "var(--bg-surface-alt)" }}>
+            <div className="flex rounded-lg p-0.5 shrink-0" style={{ background: "var(--color-surface-alt)" }}>
               <button
                 onClick={() => setViewMode("card")}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${viewMode === "card" ? "shadow-sm border" : ""}`}
                 style={{
-                  background: viewMode === "card" ? "var(--bg-surface)" : "transparent",
-                  color: viewMode === "card" ? "var(--text-primary)" : "var(--text-muted)",
-                  borderColor: viewMode === "card" ? "var(--border-color)" : "transparent",
+                  background: viewMode === "card" ? "var(--color-surface)" : "transparent",
+                  color: viewMode === "card" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                  borderColor: viewMode === "card" ? "var(--color-border)" : "transparent",
                 }}
               >
                 <FaTh className="w-3.5 h-3.5" />
@@ -72,9 +72,9 @@ export const ReferralLeaderboard = ({
                 onClick={() => setViewMode("table")}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${viewMode === "table" ? "shadow-sm border" : ""}`}
                 style={{
-                  background: viewMode === "table" ? "var(--bg-surface)" : "transparent",
-                  color: viewMode === "table" ? "var(--text-primary)" : "var(--text-muted)",
-                  borderColor: viewMode === "table" ? "var(--border-color)" : "transparent",
+                  background: viewMode === "table" ? "var(--color-surface)" : "transparent",
+                  color: viewMode === "table" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                  borderColor: viewMode === "table" ? "var(--color-border)" : "transparent",
                 }}
               >
                 <FaList className="w-3.5 h-3.5" />
@@ -89,7 +89,7 @@ export const ReferralLeaderboard = ({
             <Spinner size="lg" />
           </div>
         ) : data.length === 0 ? (
-          <div className="text-center py-8" style={{ color: "var(--text-muted)" }}>
+          <div className="text-center py-8" style={{ color: "var(--color-text-muted)" }}>
             <FaTrophy className="w-8 h-8 mx-auto mb-2 opacity-50" />
             <p className="text-sm">No referrers found</p>
           </div>
@@ -99,25 +99,25 @@ export const ReferralLeaderboard = ({
               <div
                 key={entry.referrerId}
                 className="border rounded-lg p-4"
-                style={{ background: "var(--bg-surface)", borderColor: "var(--border-color)" }}
+                style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <span
                       className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
                       style={{
-                        background: rankColor(idx) ? `${rankColor(idx)}33` : "var(--bg-surface-alt)",
-                        color: rankColor(idx) || "var(--text-secondary)",
+                        background: rankColor(idx) ? `${rankColor(idx)}33` : "var(--color-surface-alt)",
+                        color: rankColor(idx) || "var(--color-text-secondary)",
                       }}
                     >
                       {idx + 1}
                     </span>
-                    <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{entry.fullName}</span>
+                    <span className="text-sm font-semibold" style={{ color: "var(--color-text-primary)" }}>{entry.fullName}</span>
                   </div>
                   <Badge variant="subtle" colorScheme="info" size="sm">{entry.referralCode}</Badge>
                 </div>
-                <p className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>GHS {entry.commissionsEarned.toFixed(2)}</p>
-                <div className="flex gap-4 mt-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
+                <p className="text-lg font-bold" style={{ color: "var(--color-text-primary)" }}>GHS {entry.commissionsEarned.toFixed(2)}</p>
+                <div className="flex gap-4 mt-1.5 text-xs" style={{ color: "var(--color-text-muted)" }}>
                   <span>{entry.totalOrders} orders</span>
                   <span>{entry.totalReferred} referred</span>
                   <span>{entry.batchCount} batches</span>
@@ -147,7 +147,7 @@ export const ReferralLeaderboard = ({
                         className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
                         style={{
                           background: rankColor(idx) ? `${rankColor(idx)}33` : "transparent",
-                          color: rankColor(idx) || "var(--text-secondary)",
+                          color: rankColor(idx) || "var(--color-text-secondary)",
                         }}
                       >
                         {idx + 1}
@@ -155,8 +155,8 @@ export const ReferralLeaderboard = ({
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <FaUser className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--text-muted)" }} />
-                        <span style={{ color: "var(--text-primary)" }}>{entry.fullName}</span>
+                        <FaUser className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--color-text-muted)" }} />
+                        <span style={{ color: "var(--color-text-primary)" }}>{entry.fullName}</span>
                       </div>
                     </TableCell>
                     <TableCell>

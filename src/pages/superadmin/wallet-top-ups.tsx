@@ -43,10 +43,6 @@ import {
 const fmt = (n: number) =>
   new Intl.NumberFormat("en-GH", { style: "currency", currency: "GHS" }).format(n);
 
-// ---------------------------------------------------------------------------
-// Transaction Modal
-// ---------------------------------------------------------------------------
-
 interface WalletTransactionModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -107,36 +103,36 @@ function WalletTransactionModal({
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={isCredit ? "Credit Wallet" : "Debit Wallet"}>
       <div
-        className="rounded-lg p-3 mb-4 flex items-center gap-3"
+        className="p-3 mb-4 flex items-center gap-3"
         style={{
-          backgroundColor: `color-mix(in srgb, ${isCredit ? "var(--success)" : "var(--error)"} 12%, transparent)`,
-          border: `1px solid color-mix(in srgb, ${isCredit ? "var(--success)" : "var(--error)"} 30%, transparent)`,
+          backgroundColor: `var(--color-${isCredit ? "success" : "error"})`,
+          border: `1px solid var(--color-${isCredit ? "success" : "error"})`,
         }}
       >
         <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-          style={{ background: isCredit ? "var(--success)" : "var(--error)" }}
+          className="w-9 h-9 flex items-center justify-center text-[var(--color-text-inverse)] font-bold text-sm flex-shrink-0"
+          style={{ backgroundColor: `var(--color-${isCredit ? "success" : "error"})` }}
         >
           {user.fullName.charAt(0)}
         </div>
         <div className="min-w-0">
-          <p className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>{user.fullName}</p>
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>{user.email}</p>
-          {user.agentCode && <p className="text-xs font-mono" style={{ color: "var(--color-primary)" }}>{user.agentCode}</p>}
+          <p className="font-medium text-sm text-[var(--color-text-inverse)]">{user.fullName}</p>
+          <p className="text-xs text-[var(--color-text-inverse)]/70">{user.email}</p>
+          {user.agentCode && <p className="text-xs font-mono text-[var(--color-text-inverse)]">{user.agentCode}</p>}
         </div>
         <div className="ml-auto text-right flex-shrink-0">
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>Balance</p>
-          <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{fmt(user.walletBalance || 0)}</p>
+          <p className="text-xs text-[var(--color-text-inverse)]/70">Balance</p>
+          <p className="font-semibold text-sm text-[var(--color-text-inverse)]">{fmt(user.walletBalance || 0)}</p>
         </div>
       </div>
 
       {error && (
         <div
-          className="mb-4 p-3 rounded-lg flex items-center gap-2 text-sm"
+          className="mb-4 p-3 flex items-center gap-2 text-sm"
           style={{
-            backgroundColor: `color-mix(in srgb, var(--error) 12%, transparent)`,
-            border: `1px solid color-mix(in srgb, var(--error) 30%, transparent)`,
-            color: "var(--error)",
+            backgroundColor: `var(--color-error)`,
+            border: `1px solid var(--color-error)`,
+            color: "var(--color-text-inverse)",
           }}
         >
           <FaExclamationTriangle className="flex-shrink-0" />
@@ -182,10 +178,6 @@ function WalletTransactionModal({
   );
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
 const USER_TYPE_OPTIONS = BUSINESS_USER_TYPES.map((type) => ({
   value: type,
   label: USER_TYPE_LABELS[type],
@@ -217,10 +209,6 @@ function statusBadgeColor(status: string): "success" | "error" | "warning" | "gr
   }
 }
 
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
-
 export default function WalletTopUpsPage() {
   const { addToast } = useToast();
 
@@ -240,10 +228,6 @@ export default function WalletTopUpsPage() {
   const [userTypeFilter, setUserTypeFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(20);
-
-  // ---------------------------------------------------------------------------
-  // Data fetching
-  // ---------------------------------------------------------------------------
 
   const fetchUsers = useCallback(async (page = 1) => {
     setLoading(true);
@@ -285,7 +269,6 @@ export default function WalletTopUpsPage() {
 
   useEffect(() => {
     fetchUsers(1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, userTypeFilter, statusFilter, itemsPerPage]);
 
   const handleWalletUpdate = useCallback((data: unknown) => {
@@ -302,10 +285,6 @@ export default function WalletTopUpsPage() {
     websocketService.on("wallet_update", handleWalletUpdate as (data: unknown) => void);
     return () => websocketService.off("wallet_update", handleWalletUpdate as (data: unknown) => void);
   }, [handleWalletUpdate, fetchAnalytics, fetchPendingRequests]);
-
-  // ---------------------------------------------------------------------------
-  // Actions
-  // ---------------------------------------------------------------------------
 
   const handleTransaction = async (
     userId: string,
@@ -339,10 +318,6 @@ export default function WalletTopUpsPage() {
     }
   };
 
-  // ---------------------------------------------------------------------------
-  // SearchAndFilter wiring
-  // ---------------------------------------------------------------------------
-
   const hasFilters = useMemo(
     () => Boolean(searchTerm || userTypeFilter || statusFilter),
     [searchTerm, userTypeFilter, statusFilter]
@@ -360,10 +335,6 @@ export default function WalletTopUpsPage() {
     setStatusFilter("");
     setPagination((p) => ({ ...p, page: 1 }));
   };
-
-  // ---------------------------------------------------------------------------
-  // Stat card data
-  // ---------------------------------------------------------------------------
 
   const statCards: StatCardProps[] = useMemo(() => {
     if (!analytics) return [];
@@ -399,26 +370,21 @@ export default function WalletTopUpsPage() {
     ];
   }, [analytics, pendingRequests]);
 
-  // ---------------------------------------------------------------------------
-  // Render
-  // ---------------------------------------------------------------------------
-
   return (
     <div className="space-y-4 sm:space-y-6 pb-8">
-      {/* ── Page header ─────────────────────────────────────────────────────── */}
       <Card noPadding>
         <div
-          className="px-4 py-5 sm:px-6 sm:py-6 text-white"
-          style={{ background: "var(--gradient-brand-dark)" }}
+          className="px-4 py-5 sm:px-6 sm:py-6"
+          style={{ color: "var(--color-text-inverse)" }}
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl" style={{ backgroundColor: "color-mix(in srgb, white 20%, transparent)" }}>
-                <FaWallet className="text-xl sm:text-2xl" />
+              <div className="p-2.5" style={{ backgroundColor: "var(--color-text-inverse)" }}>
+                <FaWallet className="text-xl sm:text-2xl" style={{ color: "var(--color-ink)" }} />
               </div>
               <div>
                 <h1 className="text-lg sm:text-xl font-bold">Wallet Management</h1>
-                <p className="text-xs sm:text-sm mt-0.5" style={{ color: "color-mix(in srgb, white 70%, transparent)" }}>
+                <p className="text-xs sm:text-sm mt-0.5 text-[var(--color-text-inverse)]/70">
                   Credit or debit agent wallets &middot; review pending top-up requests
                 </p>
               </div>
@@ -426,7 +392,7 @@ export default function WalletTopUpsPage() {
             <Button
               variant="outline"
               size="sm"
-              className="self-start sm:self-center border-white/40 text-white hover:bg-white/10"
+              className="self-start sm:self-center"
               onClick={() => {
                 void fetchUsers(pagination.page);
                 void fetchAnalytics();
@@ -440,7 +406,6 @@ export default function WalletTopUpsPage() {
         </div>
       </Card>
 
-      {/* ── Stat cards ──────────────────────────────────────────────────────── */}
       {analytics ? (
         <StatsGrid stats={statCards} columns={4} gap="sm" />
       ) : (
@@ -459,13 +424,12 @@ export default function WalletTopUpsPage() {
         </div>
       )}
 
-      {/* ── Pending top-up requests ─────────────────────────────────────────── */}
       {pendingRequests.length > 0 && (
         <Card
           variant="outlined"
-          className="rounded-xl"
           style={{
-            borderColor: `color-mix(in srgb, var(--warning) 50%, transparent)`,
+            borderColor: "var(--color-warning)",
+            borderWidth: "1px",
           }}
         >
           <CardHeader
@@ -475,65 +439,62 @@ export default function WalletTopUpsPage() {
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-3 flex-1">
                 <div
-                  className="p-2 rounded-xl"
+                  className="p-2"
                   style={{
-                    backgroundColor: `color-mix(in srgb, var(--warning) 15%, transparent)`,
-                    border: `1px solid color-mix(in srgb, var(--warning) 30%, transparent)`,
+                    backgroundColor: "var(--color-warning)",
                   }}
                 >
-                  <FaClock style={{ color: "var(--warning)" }} />
+                  <FaClock style={{ color: "var(--color-text-inverse)" }} />
                 </div>
                 <div>
-                  <span className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
+                  <span className="font-semibold text-sm text-[var(--color-text-primary)]">
                     Pending Top-up Requests
                   </span>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-xs mt-0.5 text-[var(--color-text-muted)]">
                     These requests need your approval before funds are credited.
                   </p>
                 </div>
               </div>
               <Badge
                 colorScheme="warning"
-                className="rounded-lg px-2 py-1"
               >
                 {pendingRequests.length} pending
               </Badge>
             </div>
           </CardHeader>
           <CardBody className="px-3 sm:px-4 pb-3 sm:pb-4">
-            {/* Mobile card view */}
             <div className="sm:hidden space-y-2">
               {pendingRequests.map((req) => {
                 const u = typeof req.user === "object" ? req.user : null;
                 return (
                   <div
                     key={req._id}
-                    className="rounded-xl p-4 border shadow-sm"
+                    className="p-4 border"
                     style={{
-                      backgroundColor: "var(--bg-surface)",
-                      borderColor: `color-mix(in srgb, var(--warning) 25%, transparent)`,
+                      backgroundColor: "var(--color-surface)",
+                      borderColor: "var(--color-warning)",
                     }}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
-                        <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
+                        <p className="font-semibold text-sm text-[var(--color-text-primary)]">
                           {u?.fullName ?? "Unknown"}
                         </p>
                         {u?.agentCode && (
-                          <p className="text-xs font-mono mt-0.5" style={{ color: "var(--color-primary)" }}>
+                          <p className="text-xs font-mono mt-0.5 text-[var(--color-ink)]">
                             {u.agentCode}
                           </p>
                         )}
-                        <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                        <p className="text-xs mt-1 text-[var(--color-text-muted)]">
                           {new Date(req.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
                         </p>
                         {req.description && (
                           <p
-                            className="text-xs mt-1 line-clamp-2 rounded-lg p-2 border"
+                            className="text-xs mt-1 line-clamp-2 p-2 border"
                             style={{
-                              color: "var(--text-secondary)",
-                              backgroundColor: "var(--bg-surface-alt)",
-                              borderColor: "var(--border-color)",
+                              color: "var(--color-text-secondary)",
+                              backgroundColor: "var(--color-surface-alt)",
+                              borderColor: "var(--color-border)",
                             }}
                           >
                             {req.description}
@@ -541,17 +502,17 @@ export default function WalletTopUpsPage() {
                         )}
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <p className="text-base font-bold whitespace-nowrap" style={{ color: "var(--success)" }}>
+                        <p className="text-base font-bold whitespace-nowrap text-[var(--color-success)]">
                           {fmt(req.amount)}
                         </p>
-                        <p className="text-xs font-medium" style={{ color: "var(--success)" }}>Top-up</p>
+                        <p className="text-xs font-medium text-[var(--color-success)]">Top-up</p>
                       </div>
                     </div>
                     <div className="flex gap-2 mt-3">
                       <Button
                         size="xs"
-                        className="flex-1 rounded-lg shadow-sm text-white border-0"
-                        style={{ background: "var(--success)" }}
+                        className="flex-1 text-[var(--color-text-inverse)] border-0"
+                        style={{ background: "var(--color-success)" }}
                         onClick={() => handleProcessRequest(req._id, true)}
                         isLoading={processingId === req._id}
                         disabled={!!processingId}
@@ -560,8 +521,8 @@ export default function WalletTopUpsPage() {
                       </Button>
                       <Button
                         size="xs"
-                        className="flex-1 rounded-lg shadow-sm text-white border-0"
-                        style={{ background: "var(--error)" }}
+                        className="flex-1 text-[var(--color-text-inverse)] border-0"
+                        style={{ background: "var(--color-error)" }}
                         onClick={() => handleProcessRequest(req._id, false)}
                         isLoading={processingId === req._id}
                         disabled={!!processingId}
@@ -574,16 +535,15 @@ export default function WalletTopUpsPage() {
               })}
             </div>
 
-            {/* Desktop table view */}
             <div className="hidden sm:block overflow-x-auto -mx-4 sm:mx-0 mt-2">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: `color-mix(in srgb, var(--warning) 20%, transparent)` }}>
-                    <th className="text-left font-semibold py-2.5 px-3" style={{ color: "var(--text-primary)" }}>Agent</th>
-                    <th className="text-left font-semibold py-2.5 px-3" style={{ color: "var(--text-primary)" }}>Amount</th>
-                    <th className="hidden md:table-cell text-left font-semibold py-2.5 px-3" style={{ color: "var(--text-primary)" }}>Note</th>
-                    <th className="hidden lg:table-cell text-left font-semibold py-2.5 px-3" style={{ color: "var(--text-primary)" }}>Requested</th>
-                    <th className="text-left font-semibold py-2.5 px-3" style={{ color: "var(--text-primary)" }}>Actions</th>
+                  <tr className="border-b" style={{ borderColor: "var(--color-warning)" }}>
+                    <th className="text-left font-semibold py-2.5 px-3 text-[var(--color-text-primary)]">Agent</th>
+                    <th className="text-left font-semibold py-2.5 px-3 text-[var(--color-text-primary)]">Amount</th>
+                    <th className="hidden md:table-cell text-left font-semibold py-2.5 px-3 text-[var(--color-text-primary)]">Note</th>
+                    <th className="hidden lg:table-cell text-left font-semibold py-2.5 px-3 text-[var(--color-text-primary)]">Requested</th>
+                    <th className="text-left font-semibold py-2.5 px-3 text-[var(--color-text-primary)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -594,44 +554,42 @@ export default function WalletTopUpsPage() {
                         key={req._id}
                         className="border-b transition-colors"
                         style={{
-                          borderColor: `color-mix(in srgb, var(--warning) 10%, transparent)`,
-                          backgroundColor: "transparent",
+                          borderColor: "var(--color-border)",
                         }}
                       >
                         <td className="py-2.5 px-3">
                           <div className="flex items-center gap-2">
                             <div
-                              className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+                              className="w-7 h-7 flex items-center justify-center text-xs font-bold flex-shrink-0"
                               style={{
-                                backgroundColor: `color-mix(in srgb, var(--warning) 20%, transparent)`,
-                                border: `1px solid color-mix(in srgb, var(--warning) 30%, transparent)`,
-                                color: "var(--warning)",
+                                backgroundColor: "var(--color-warning)",
+                                color: "var(--color-text-inverse)",
                               }}
                             >
                               {(u?.fullName ?? "?").charAt(0)}
                             </div>
                             <div className="min-w-0">
-                              <div className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>
+                              <div className="font-medium text-sm text-[var(--color-text-primary)]">
                                 {u?.fullName ?? "Unknown"}
                               </div>
-                              <div className="text-xs font-mono" style={{ color: "var(--text-muted)" }}>
+                              <div className="text-xs font-mono text-[var(--color-text-muted)]">
                                 {u?.agentCode ?? u?._id ?? ""}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td className="py-2.5 px-3">
-                          <span className="font-bold whitespace-nowrap text-sm" style={{ color: "var(--success)" }}>
+                          <span className="font-bold whitespace-nowrap text-sm text-[var(--color-success)]">
                             {fmt(req.amount)}
                           </span>
                         </td>
                         <td className="hidden md:table-cell py-2.5 px-3">
-                          <span className="text-sm max-w-[200px] truncate block" style={{ color: "var(--text-secondary)" }}>
+                          <span className="text-sm max-w-[200px] truncate block text-[var(--color-text-secondary)]">
                             {req.description || "\u2014"}
                           </span>
                         </td>
                         <td className="hidden lg:table-cell py-2.5 px-3">
-                          <span className="text-xs whitespace-nowrap" style={{ color: "var(--text-muted)" }}>
+                          <span className="text-xs whitespace-nowrap text-[var(--color-text-muted)]">
                             {new Date(req.createdAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
                           </span>
                         </td>
@@ -639,8 +597,8 @@ export default function WalletTopUpsPage() {
                           <div className="flex gap-2">
                             <Button
                               size="xs"
-                              className="text-white border-0"
-                              style={{ background: "var(--success)" }}
+                              className="text-[var(--color-text-inverse)] border-0"
+                              style={{ background: "var(--color-success)" }}
                               onClick={() => handleProcessRequest(req._id, true)}
                               isLoading={processingId === req._id}
                               disabled={!!processingId}
@@ -649,8 +607,8 @@ export default function WalletTopUpsPage() {
                             </Button>
                             <Button
                               size="xs"
-                              className="text-white border-0"
-                              style={{ background: "var(--error)" }}
+                              className="text-[var(--color-text-inverse)] border-0"
+                              style={{ background: "var(--color-error)" }}
                               onClick={() => handleProcessRequest(req._id, false)}
                               isLoading={processingId === req._id}
                               disabled={!!processingId}
@@ -669,7 +627,6 @@ export default function WalletTopUpsPage() {
         </Card>
       )}
 
-      {/* ── Search & filters ────────────────────────────────────────────────── */}
       <SearchAndFilter
         searchTerm={searchTerm}
         onSearchChange={(v) => {
@@ -688,9 +645,8 @@ export default function WalletTopUpsPage() {
         isLoading={loading}
       />
 
-      {/* ── Results count ───────────────────────────────────────────────────── */}
       {!loading && (
-        <p className="text-xs px-1" style={{ color: "var(--text-muted)" }}>
+        <p className="text-xs px-1 text-[var(--color-text-muted)]">
           {pagination.total > 0
             ? `Showing ${(pagination.page - 1) * pagination.limit + 1}\u2013${Math.min(
               pagination.page * pagination.limit,
@@ -700,15 +656,14 @@ export default function WalletTopUpsPage() {
         </p>
       )}
 
-      {/* ── Users list ──────────────────────────────────────────────────────── */}
-      <Card noPadding className="overflow-hidden rounded-xl" style={{ background: "var(--gradient-brand-dark)" }}>
+      <Card noPadding style={{ background: "var(--color-ink)" }}>
         {loading ? (
           <div className="p-4 space-y-3">
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 p-3 rounded-lg"
-                style={{ border: "1px solid color-mix(in srgb, white 20%, transparent)" }}
+                className="flex items-center gap-3 p-3"
+                style={{ border: "1px solid var(--color-text-inverse)" }}
               >
                 <Skeleton variant="circular" width={40} height={40} />
                 <div className="flex-1 space-y-1.5">
@@ -726,46 +681,42 @@ export default function WalletTopUpsPage() {
         ) : users.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 gap-3 px-4">
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: "color-mix(in srgb, white 20%, transparent)" }}
+              className="w-14 h-14 flex items-center justify-center"
+              style={{ backgroundColor: "var(--color-text-inverse)" }}
             >
-              <FaUsers className="text-2xl" style={{ color: "color-mix(in srgb, white 60%, transparent)" }} />
+              <FaUsers className="text-2xl" style={{ color: "var(--color-ink)" }} />
             </div>
             <div className="text-center">
-              <p className="font-medium" style={{ color: "color-mix(in srgb, white 80%, transparent)" }}>
+              <p className="font-medium text-[var(--color-text-inverse)]">
                 No users found
               </p>
-              <p className="text-sm mt-0.5" style={{ color: "color-mix(in srgb, white 60%, transparent)" }}>
+              <p className="text-sm mt-0.5 text-[var(--color-text-inverse)]/70">
                 {hasFilters ? "Try adjusting your filters." : "No users in the system yet."}
               </p>
             </div>
             {hasFilters && (
-              <Button variant="outline" size="sm" className="border-white/40 text-white hover:bg-white/10" onClick={handleClearFilters}>
+              <Button variant="outline" size="sm" onClick={handleClearFilters}>
                 Clear filters
               </Button>
             )}
           </div>
         ) : (
           <>
-            {/* Mobile card view */}
-            <div className="sm:hidden divide-y" style={{ borderColor: "color-mix(in srgb, white 20%, transparent)" }}>
+            <div className="sm:hidden divide-y" style={{ borderColor: "var(--color-text-inverse)" }}>
               {users.map((user) => (
                 <div
                   key={user._id}
                   className="p-4 transition-colors"
-                  style={{ borderColor: "color-mix(in srgb, white 12%, transparent)" }}
+                  style={{ borderColor: "var(--color-text-inverse)" }}
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-3 flex-wrap mb-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <div
-                            className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow-lg"
-                            style={{ background: "var(--gradient-brand-dark)" }}
-                          >
+                          <div className="w-10 h-10 flex items-center justify-center text-[var(--color-text-inverse)] text-sm font-bold flex-shrink-0">
                             {user.fullName.charAt(0)}{user.fullName.split(" ")[1]?.charAt(0) ?? ""}
                           </div>
-                          <p className="font-semibold text-sm text-white">{user.fullName}</p>
+                          <p className="font-semibold text-sm text-[var(--color-text-inverse)]">{user.fullName}</p>
                           <Badge colorScheme={userTypeBadgeColor(user.userType)} size="xs">
                             {user.userType.replace(/_/g, " ")}
                           </Badge>
@@ -774,33 +725,31 @@ export default function WalletTopUpsPage() {
                           {user.status}
                         </Badge>
                       </div>
-                      <p className="text-xs truncate" style={{ color: "color-mix(in srgb, white 70%, transparent)" }}>
+                      <p className="text-xs truncate text-[var(--color-text-inverse)]/70">
                         {user.email}
                       </p>
                       {user.agentCode && (
-                        <p className="text-xs font-mono mt-0.5" style={{ color: "var(--color-primary-hover)" }}>
+                        <p className="text-xs font-mono mt-0.5 text-[var(--color-ink-hover)]">
                           {user.agentCode}
                         </p>
                       )}
                       <div className="mt-3 flex items-center justify-between gap-2">
                         <div
-                          className="rounded-xl px-3 py-2"
+                          className="px-3 py-2"
                           style={{
-                            backgroundColor: "color-mix(in srgb, white 15%, transparent)",
-                            border: "1px solid color-mix(in srgb, white 20%, transparent)",
-                            backdropFilter: "blur(4px)",
+                            backgroundColor: "var(--color-text-inverse)",
                           }}
                         >
-                          <p className="text-[10px] uppercase tracking-wide" style={{ color: "color-mix(in srgb, white 80%, transparent)" }}>
+                          <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--color-ink)" }}>
                             Balance
                           </p>
-                          <p className="font-bold text-sm text-white">{fmt(user.walletBalance || 0)}</p>
+                          <p className="font-bold text-sm" style={{ color: "var(--color-ink)" }}>{fmt(user.walletBalance || 0)}</p>
                         </div>
                         <div className="flex gap-2">
                           <Button
                             size="xs"
-                            className="text-white border-0 shadow-lg"
-                            style={{ background: "var(--success)" }}
+                            className="text-[var(--color-text-inverse)] border-0"
+                            style={{ background: "var(--color-success)" }}
                             onClick={() => {
                               setSelectedUser(user);
                               setTransactionModal({ isOpen: true, mode: "credit" });
@@ -810,8 +759,8 @@ export default function WalletTopUpsPage() {
                           </Button>
                           <Button
                             size="xs"
-                            className="text-white border-0 shadow-lg"
-                            style={{ background: "var(--error)" }}
+                            className="text-[var(--color-text-inverse)] border-0"
+                            style={{ background: "var(--color-error)" }}
                             onClick={() => {
                               setSelectedUser(user);
                               setTransactionModal({ isOpen: true, mode: "debit" });
@@ -827,40 +776,36 @@ export default function WalletTopUpsPage() {
               ))}
             </div>
 
-            {/* Desktop table view */}
             <div className="hidden sm:block overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b" style={{ borderColor: "color-mix(in srgb, white 20%, transparent)" }}>
-                    <th className="text-left font-semibold py-3 px-4 text-white">User</th>
-                    <th className="text-left font-semibold py-3 px-4 text-white">Type</th>
-                    <th className="hidden md:table-cell text-left font-semibold py-3 px-4 text-white">Status</th>
-                    <th className="text-left font-semibold py-3 px-4 text-white">Balance</th>
-                    <th className="text-left font-semibold py-3 px-4 text-white">Actions</th>
+                  <tr className="border-b" style={{ borderColor: "var(--color-text-inverse)" }}>
+                    <th className="text-left font-semibold py-3 px-4 text-[var(--color-text-inverse)]">User</th>
+                    <th className="text-left font-semibold py-3 px-4 text-[var(--color-text-inverse)]">Type</th>
+                    <th className="hidden md:table-cell text-left font-semibold py-3 px-4 text-[var(--color-text-inverse)]">Status</th>
+                    <th className="text-left font-semibold py-3 px-4 text-[var(--color-text-inverse)]">Balance</th>
+                    <th className="text-left font-semibold py-3 px-4 text-[var(--color-text-inverse)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.map((user) => (
                     <tr
                       key={user._id}
-                      className="transition-colors hover:bg-white/5"
-                      style={{ borderBottom: "1px solid color-mix(in srgb, white 12%, transparent)" }}
+                      className="transition-colors"
+                      style={{ borderBottom: "1px solid var(--color-text-inverse)" }}
                     >
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
-                          <div
-                            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                            style={{ background: "var(--gradient-brand-dark)" }}
-                          >
+                          <div className="w-9 h-9 flex items-center justify-center text-[var(--color-text-inverse)] text-xs font-bold flex-shrink-0">
                             {user.fullName.charAt(0)}{user.fullName.split(" ")[1]?.charAt(0) ?? ""}
                           </div>
                           <div className="min-w-0">
-                            <div className="font-semibold text-sm text-white truncate">{user.fullName}</div>
-                            <div className="text-xs truncate" style={{ color: "color-mix(in srgb, white 70%, transparent)" }}>
+                            <div className="font-semibold text-sm text-[var(--color-text-inverse)] truncate">{user.fullName}</div>
+                            <div className="text-xs truncate text-[var(--color-text-inverse)]/70">
                               {user.email}
                             </div>
                             {user.agentCode && (
-                              <div className="text-xs font-mono" style={{ color: "var(--color-primary-hover)" }}>
+                              <div className="text-xs font-mono text-[var(--color-ink-hover)]">
                                 {user.agentCode}
                               </div>
                             )}
@@ -879,9 +824,9 @@ export default function WalletTopUpsPage() {
                       </td>
                       <td className="py-3 px-4">
                         <div>
-                          <p className="font-bold text-sm text-white whitespace-nowrap">{fmt(user.walletBalance || 0)}</p>
+                          <p className="font-bold text-sm text-[var(--color-text-inverse)] whitespace-nowrap">{fmt(user.walletBalance || 0)}</p>
                           {(user.walletBalance ?? 0) === 0 && (
-                            <p className="text-[10px]" style={{ color: "var(--error)" }}>Zero balance</p>
+                            <p className="text-[10px] text-[var(--color-error)]">Zero balance</p>
                           )}
                         </div>
                       </td>
@@ -889,8 +834,8 @@ export default function WalletTopUpsPage() {
                         <div className="flex gap-2">
                           <Button
                             size="xs"
-                            className="text-white border-0 shadow-lg rounded-lg"
-                            style={{ background: "var(--success)" }}
+                            className="text-[var(--color-text-inverse)] border-0"
+                            style={{ background: "var(--color-success)" }}
                             onClick={() => {
                               setSelectedUser(user);
                               setTransactionModal({ isOpen: true, mode: "credit" });
@@ -901,8 +846,8 @@ export default function WalletTopUpsPage() {
                           </Button>
                           <Button
                             size="xs"
-                            className="text-white border-0 shadow-lg rounded-lg"
-                            style={{ background: "var(--error)" }}
+                            className="text-[var(--color-text-inverse)] border-0"
+                            style={{ background: "var(--color-error)" }}
                             onClick={() => {
                               setSelectedUser(user);
                               setTransactionModal({ isOpen: true, mode: "debit" });
@@ -922,7 +867,7 @@ export default function WalletTopUpsPage() {
         )}
 
         {pagination.pages > 1 && !loading && (
-          <div className="border-t px-4 py-3" style={{ borderColor: "color-mix(in srgb, white 20%, transparent)" }}>
+          <div className="border-t px-4 py-3" style={{ borderColor: "var(--color-text-inverse)" }}>
             <Pagination
               currentPage={pagination.page}
               totalPages={pagination.pages}
@@ -941,7 +886,6 @@ export default function WalletTopUpsPage() {
         )}
       </Card>
 
-      {/* ── Transaction modal ───────────────────────────────────────────────── */}
       <WalletTransactionModal
         isOpen={transactionModal.isOpen}
         onClose={() => setTransactionModal({ isOpen: false, mode: "credit" })}

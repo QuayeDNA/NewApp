@@ -84,11 +84,11 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'processing': return 'bg-blue-100 text-blue-800';
-      case 'completed': return 'bg-green-100 text-green-800';
-      case 'draft': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'pending': return 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]';
+      case 'processing': return 'bg-[var(--color-info)]/10 text-[var(--color-info)]';
+      case 'completed': return 'bg-[var(--color-success)]/10 text-[var(--color-success)]';
+      case 'draft': return 'bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]';
+      default: return 'bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]';
     }
   };
 
@@ -96,7 +96,7 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
     <Dialog isOpen={isOpen} onClose={onClose} size="lg">
       <DialogHeader>
         <div className="flex items-center gap-3">
-          <FaExclamationTriangle className="text-amber-500 text-xl" />
+          <FaExclamationTriangle className="text-[var(--color-amber)] text-xl" />
           <h2 className="text-lg font-semibold text-gray-900">
             {orderType === 'bulk' 
               ? `Duplicate Items Found in Bulk Order`
@@ -109,12 +109,12 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
       <DialogBody>
         <div className="space-y-6">
           {/* Main Warning Message */}
-          <Alert variant="solid" status='warning' className="border-l-4 border-amber-400">
+          <Alert variant="solid" status='warning' className="border-l-4 border-[var(--color-amber)]">
             <div className="flex items-start gap-3">
-              <FaExclamationTriangle className="text-amber-500 mt-0.5 flex-shrink-0" />
+              <FaExclamationTriangle className="text-[var(--color-amber)] mt-0.5 flex-shrink-0" />
               <div className="w-full">
-                <h3 className="font-medium text-amber-800">Duplicate Order Warning</h3>
-                <div className="text-amber-700 mt-1">
+                <h3 className="font-medium text-[var(--color-amber)]">Duplicate Order Warning</h3>
+                <div className="text-[var(--color-amber)] mt-1">
                   {orderType === 'bulk' ? (
                     <div>
                       <p className="font-medium">
@@ -136,9 +136,9 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
 
           {/* Single Order Duplicate Details */}
           {orderType === 'single' && details && (
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="bg-[var(--color-surface-alt)] p-4">
               <h4 className="font-medium text-gray-900 mb-3 flex items-center gap-2">
-                <FaPhone className="text-blue-500" />
+                <FaPhone className="text-[var(--color-info)]" />
                 Order Details
               </h4>
               <div className="grid grid-cols-2 gap-4 text-sm">
@@ -157,7 +157,7 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
                 <div>
                   <span className="text-gray-600">Time Since Last Order:</span>
                   <div className="font-medium flex items-center gap-1">
-                    <FaClock className="text-amber-500" />
+                    <FaClock className="text-[var(--color-amber)]" />
                     {formatTimeAgo(details.minutesAgo || 0)}
                   </div>
                 </div>
@@ -168,35 +168,35 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
           {/* Bulk Order Duplicate Details */}
           {orderType === 'bulk' && details && duplicateInfo.duplicateItems && (
             <div className="space-y-4">
-              <div className="bg-red-50 rounded-lg p-4">
-                <h4 className="font-medium text-red-900 mb-3 flex items-center gap-2">
-                  <FaTimes className="text-red-500" />
+              <div className="bg-[var(--color-error)]/10 p-4">
+                <h4 className="font-medium text-[var(--color-error)] mb-3 flex items-center gap-2">
+                  <FaTimes className="text-[var(--color-error)]" />
                   Duplicate Items ({details.duplicateCount} of {details.totalItems})
                 </h4>
                 <div className="space-y-3 max-h-48 overflow-y-auto">
                   {duplicateInfo.duplicateItems.slice(0, 10).map((item, index) => (
-                    <div key={index} className="flex flex-col bg-white p-3 rounded border-l-4 border-red-300">
+                    <div key={index} className="flex flex-col bg-[var(--color-surface)] p-3 border-l-4 border-[var(--color-error)]/50">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <FaPhone className="text-red-400" />
+                          <FaPhone className="text-[var(--color-error)]" />
                           <span className="font-medium text-gray-900">{item.customerPhone}</span>
                           <Badge variant="outline" colorScheme='warning'>{item.dataVolume}</Badge>
                         </div>
                         <div className="text-gray-600 flex items-center gap-1 text-sm">
-                          <FaClock className="text-amber-500" />
+                          <FaClock className="text-[var(--color-amber)]" />
                           {formatTimeAgo(item.minutesAgo)}
                         </div>
                       </div>
                       <div className="mt-2 text-xs text-gray-600 flex items-center gap-2">
                         <span>Last Order:</span>
-                        <span className="font-medium text-blue-600">#{item.lastOrderNumber}</span>
+                        <span className="font-medium text-[var(--color-info)]">#{item.lastOrderNumber}</span>
                         <span className="text-gray-400">•</span>
                         <span>{new Date(item.lastOrderTime).toLocaleString()}</span>
                       </div>
                     </div>
                   ))}
                   {duplicateInfo.duplicateItems.length > 10 && (
-                    <div className="text-sm text-gray-500 text-center py-2 bg-gray-50 rounded">
+                    <div className="text-sm text-[var(--color-text-muted)] text-center py-2 bg-[var(--color-surface-alt)]">
                       ...and {duplicateInfo.duplicateItems.length - 10} more duplicate items
                     </div>
                   )}
@@ -204,21 +204,21 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
               </div>
 
               {details.safeCount && details.safeCount > 0 && (
-                <div className="bg-green-50 rounded-lg p-4">
-                  <h4 className="font-medium text-green-900 mb-2 flex items-center gap-2">
-                    <FaBox className="text-green-500" />
+                <div className="bg-[var(--color-success)]/10 p-4">
+                  <h4 className="font-medium text-[var(--color-success)] mb-2 flex items-center gap-2">
+                    <FaBox className="text-[var(--color-success)]" />
                     Safe Items ({details.safeCount} of {details.totalItems})
                   </h4>
-                  <p className="text-green-700 text-sm mb-2">
+                  <p className="text-[var(--color-success)] text-sm mb-2">
                     These items don't appear to be duplicates and will be processed normally:
                   </p>
                   {duplicateInfo.safeItems && duplicateInfo.safeItems.length > 0 && (
-                    <div className="bg-white rounded p-2 text-xs font-mono text-gray-700 max-h-20 overflow-y-auto">
+                    <div className="bg-[var(--color-surface)] p-2 text-xs font-mono text-[var(--color-text-secondary)] max-h-20 overflow-y-auto">
                       {duplicateInfo.safeItems.slice(0, 5).map((item, index) => (
                         <div key={index} className="py-1">{item}</div>
                       ))}
                       {duplicateInfo.safeItems.length > 5 && (
-                        <div className="text-gray-500 text-center py-1">
+                        <div className="text-[var(--color-text-muted)] text-center py-1">
                           ...and {duplicateInfo.safeItems.length - 5} more safe items
                         </div>
                       )}
@@ -231,21 +231,21 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
 
           {/* Recent Order History */}
           {duplicateInfo.duplicateOrders && duplicateInfo.duplicateOrders.length > 0 && (
-            <div className="bg-blue-50 rounded-lg p-4">
-              <h4 className="font-medium text-blue-900 mb-3 flex items-center gap-2">
-                <FaClock className="text-blue-500" />
+            <div className="bg-[var(--color-info)]/10 p-4">
+              <h4 className="font-medium text-[var(--color-info)] mb-3 flex items-center gap-2">
+                <FaClock className="text-[var(--color-info)]" />
                 Recent Similar Orders
               </h4>
               <div className="space-y-2">
                 {duplicateInfo.duplicateOrders.map((order, index) => (
-                  <div key={index} className="flex items-center justify-between bg-white p-3 rounded text-sm">
+                  <div key={index} className="flex items-center justify-between bg-[var(--color-surface)] p-3 text-sm">
                     <div className="flex items-center gap-3">
                       <div className="font-medium">#{order.orderNumber}</div>
                       <Badge className={getStatusColor(order.status)}>
                         {order.status}
                       </Badge>
                       <Badge 
-                        className={order.paymentStatus === 'paid' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}
+                        className={order.paymentStatus === 'paid' ? 'bg-[var(--color-success)]/10 text-[var(--color-success)]' : 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]'}
                       >
                         {order.paymentStatus}
                       </Badge>
@@ -260,9 +260,9 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
           )}
 
           {/* Warning and Recommendations */}
-          <div className="bg-amber-50 rounded-lg p-4">
-            <h4 className="font-medium text-amber-900 mb-2">⚠️ Important</h4>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="bg-[var(--color-amber)]/10 p-4">
+            <h4 className="font-medium text-[var(--color-amber)] mb-2">⚠️ Important</h4>
+            <ul className="text-[var(--color-amber)] text-sm space-y-1">
               <li>• Creating duplicate orders may result in multiple charges</li>
               <li>• The customer may receive the same service multiple times</li>
               <li>• Consider checking with the customer before proceeding</li>

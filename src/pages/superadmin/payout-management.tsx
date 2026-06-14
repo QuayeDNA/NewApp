@@ -114,7 +114,7 @@ function destLabel(dest?: PayoutRequestItem['destination']) {
     return (
       <div className="space-y-0.5">
         <div>{`${provider}${number}`.trim()}</div>
-        {name ? <div className="text-xs text-[var(--text-secondary)]">{name}</div> : null}
+        {name ? <div className="text-xs text-[var(--color-text-secondary)]">{name}</div> : null}
       </div>
     );
   }
@@ -124,7 +124,7 @@ function destLabel(dest?: PayoutRequestItem['destination']) {
   return (
     <div className="space-y-0.5">
       <div>{`${account}${bank}`.trim()}</div>
-      {name ? <div className="text-xs text-[var(--text-secondary)]">{name}</div> : null}
+      {name ? <div className="text-xs text-[var(--color-text-secondary)]">{name}</div> : null}
     </div>
   );
 }
@@ -169,13 +169,13 @@ function statusIcon(s: string) {
 
 function statusBgClass(s: string) {
   switch (s) {
-    case 'pending': return 'border-[color:var(--warning)] bg-[color:var(--warning)]/10';
-    case 'approved': return 'border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/10';
-    case 'processing': return 'border-[color:var(--color-primary)] bg-[color:var(--color-primary)]/10';
-    case 'completed': return 'border-[color:var(--success)] bg-[color:var(--success)]/10';
+    case 'pending': return 'border-[var(--color-warning)] bg-[var(--color-warning)]';
+    case 'approved': return 'border-[var(--color-ink)] bg-[var(--color-ink)]';
+    case 'processing': return 'border-[var(--color-ink)] bg-[var(--color-ink)]';
+    case 'completed': return 'border-[var(--color-success)] bg-[var(--color-success)]';
     case 'rejected':
-    case 'failed': return 'border-[color:var(--error)] bg-[color:var(--error)]/10';
-    default: return 'border-[var(--border-color)] bg-[var(--bg-surface-alt)]';
+    case 'failed': return 'border-[var(--color-error)] bg-[var(--color-error)]';
+    default: return 'border-[var(--color-border)] bg-[var(--color-surface-alt)]';
   }
 }
 
@@ -201,9 +201,9 @@ const ModeBanner: React.FC<ModeBannerProps> = ({ status, loading }) => {
 
   if (status.autoPayoutEnabled && status.canAutoPayout) {
     return (
-      <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm bg-success/5 border border-success/20 text-success">
-        <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-success">
-          <Zap className="w-3.5 h-3.5 text-white" />
+      <div className="flex items-start gap-3 px-4 py-3 text-sm" style={{ backgroundColor: "var(--color-success)", color: "var(--color-text-inverse)" }}>
+        <div className="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: "var(--color-text-inverse)" }}>
+          <Zap className="w-3.5 h-3.5" style={{ color: "var(--color-success)" }} />
         </div>
         <div>
           <p className="font-semibold">Auto Payout Mode</p>
@@ -218,9 +218,9 @@ const ModeBanner: React.FC<ModeBannerProps> = ({ status, loading }) => {
 
   if (!status.paystackConfigured) {
     return (
-      <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm bg-warning/5 border border-warning/20 text-warning">
-        <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-warning">
-          <Info className="w-3.5 h-3.5 text-white" />
+      <div className="flex items-start gap-3 px-4 py-3 text-sm" style={{ backgroundColor: "var(--color-warning)", color: "var(--color-text-inverse)" }}>
+        <div className="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: "var(--color-text-inverse)" }}>
+          <Info className="w-3.5 h-3.5" style={{ color: "var(--color-warning)" }} />
         </div>
         <div>
           <p className="font-semibold">Manual Payout Mode — Paystack not configured</p>
@@ -234,9 +234,9 @@ const ModeBanner: React.FC<ModeBannerProps> = ({ status, loading }) => {
   }
 
   return (
-    <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm bg-primary/5 border border-primary/20 text-primary">
-      <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-primary">
-        <Send className="w-3.5 h-3.5 text-white" />
+    <div className="flex items-start gap-3 px-4 py-3 text-sm" style={{ backgroundColor: "var(--color-ink)", color: "var(--color-text-inverse)" }}>
+      <div className="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: "var(--color-text-inverse)" }}>
+        <Send className="w-3.5 h-3.5" style={{ color: "var(--color-ink)" }} />
       </div>
       <div>
         <p className="font-semibold">Semi-Auto Payout Mode</p>
@@ -267,11 +267,10 @@ const ActionCell: React.FC<ActionCellProps> = ({
 }) => {
   const { status } = payout;
 
-  // Auto mode: no manual actions (transfers happen automatically)
   if (autoMode) {
-    if (status === 'processing') return <span className="text-xs flex items-center gap-1 text-[var(--color-primary)]"><Loader2 className="w-3 h-3 animate-spin" /> Processing…</span>;
-    if (status === 'completed') return <span className="text-xs text-[var(--success)]">Completed</span>;
-    if (status === 'failed') return <span className="text-xs text-[var(--error)]">Failed — earnings refunded</span>;
+    if (status === 'processing') return <span className="text-xs flex items-center gap-1 text-[var(--color-ink)]"><Loader2 className="w-3 h-3 animate-spin" /> Processing…</span>;
+    if (status === 'completed') return <span className="text-xs text-[var(--color-success)]">Completed</span>;
+    if (status === 'failed') return <span className="text-xs text-[var(--color-error)]">Failed — earnings refunded</span>;
     return null;
   }
 
@@ -309,7 +308,7 @@ const ActionCell: React.FC<ActionCellProps> = ({
   if (status === 'processing') {
     return (
       <div className="flex flex-wrap gap-2">
-        <span className="text-xs flex items-center gap-1 mr-1 text-[var(--color-primary)]">
+        <span className="text-xs flex items-center gap-1 mr-1 text-[var(--color-ink)]">
           <Loader2 className="w-3 h-3 animate-spin" /> Awaiting Paystack…
         </span>
         <Button size="xs" variant="success" onClick={() => onMarkPaid(payout)} disabled={loading}>
@@ -355,29 +354,29 @@ const PayoutRow: React.FC<PayoutRowProps> = ({
   <TableRow>
     <TableCell>
       <div className="font-medium">{fmtDate(payout.requestedAt)}</div>
-      <div className="text-xs text-[var(--text-muted)]">{fmtDate(payout.createdAt)}</div>
+      <div className="text-xs text-[var(--color-text-muted)]">{fmtDate(payout.createdAt)}</div>
     </TableCell>
 
     <TableCell>
       <div className="font-medium">{userName(payout.user)}</div>
-      <div className="text-xs text-[var(--text-muted)]">{userEmail(payout.user)}</div>
+      <div className="text-xs text-[var(--color-text-muted)]">{userEmail(payout.user)}</div>
     </TableCell>
 
     <TableCell>
       <div className="font-semibold">{fmt(payout.amount)}</div>
       {payout.transferFee != null && (
-        <div className="text-xs text-[var(--warning)]">Fee: {fmt(payout.transferFee)}</div>
+        <div className="text-xs text-[var(--color-warning)]">Fee: {fmt(payout.transferFee)}</div>
       )}
       {payout.netAmount != null && (
-        <div className="text-xs font-medium text-[var(--success)]">Net: {fmt(payout.netAmount)}</div>
+        <div className="text-xs font-medium text-[var(--color-success)]">Net: {fmt(payout.netAmount)}</div>
       )}
     </TableCell>
 
     <TableCell>
       <div className="flex items-center gap-1.5">
         {payout.destination?.type === 'mobile_money'
-          ? <Smartphone className="w-3.5 h-3.5 shrink-0 text-[var(--text-muted)]" />
-          : <Building2 className="w-3.5 h-3.5 shrink-0 text-[var(--text-muted)]" />
+          ? <Smartphone className="w-3.5 h-3.5 shrink-0 text-[var(--color-text-muted)]" />
+          : <Building2 className="w-3.5 h-3.5 shrink-0 text-[var(--color-text-muted)]" />
         }
         {destLabel(payout.destination)}
       </div>
@@ -391,12 +390,12 @@ const PayoutRow: React.FC<PayoutRowProps> = ({
         </span>
       </Badge>
       {payout.paystackTransfer?.failureReason && (
-        <div className="text-xs mt-1 max-w-[180px] text-[var(--error)]" title={payout.paystackTransfer.failureReason}>
+        <div className="text-xs mt-1 max-w-[180px] text-[var(--color-error)]" title={payout.paystackTransfer.failureReason}>
           {payout.paystackTransfer.failureReason}
         </div>
       )}
       {payout.rejectionReason && payout.status === 'rejected' && (
-        <div className="text-xs mt-1 max-w-[180px] text-[var(--text-muted)]" title={payout.rejectionReason}>
+        <div className="text-xs mt-1 max-w-[180px] text-[var(--color-text-muted)]" title={payout.rejectionReason}>
           {payout.rejectionReason}
         </div>
       )}
@@ -424,13 +423,13 @@ PayoutRow.displayName = 'PayoutRow';
 const PayoutTableSkeleton: React.FC = () => (
   <div className="hidden sm:block">
     <div className="min-w-[760px]">
-      <div className="grid grid-cols-6 gap-4 px-4 py-3 bg-[var(--bg-surface-alt)]">
+      <div className="grid grid-cols-6 gap-4 px-4 py-3 bg-[var(--color-surface-alt)]">
         {Array.from({ length: 6 }).map((_, i) => (
           <Skeleton key={i} height="1rem" width="60%" />
         ))}
       </div>
       {Array.from({ length: 5 }).map((_, row) => (
-        <div key={row} className="grid grid-cols-6 gap-4 px-4 py-3 border-t border-[var(--border-color)]">
+        <div key={row} className="grid grid-cols-6 gap-4 px-4 py-3 border-t border-[var(--color-border)]">
           {Array.from({ length: 6 }).map((_, col) => (
             <Skeleton key={col} height={col === 4 ? '1.5rem' : '1rem'} width={col === 5 ? '40%' : '80%'} />
           ))}
@@ -457,7 +456,7 @@ const PayoutMobileSkeleton: React.FC = () => (
           </div>
           <div className="grid grid-cols-2 gap-2">
             {Array.from({ length: 4 }).map((_, j) => (
-              <div key={j} className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-2.5 space-y-1.5">
+              <div key={j} className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-2.5 space-y-1.5">
                 <Skeleton height="0.625rem" width="3rem" />
                 <Skeleton height="0.75rem" width="70%" />
               </div>
@@ -499,7 +498,6 @@ export default function PayoutManagementPage() {
   const [confirm, setConfirm] = useState<ConfirmState>({ open: false, type: null });
   const [confirmInput, setConfirmInput] = useState('');
 
-  // ── Load mode status ────────────────────────────────────────────────────────
   useEffect(() => {
     walletService.getAutoPayoutAvailability()
       .then(setModeStatus)
@@ -507,7 +505,6 @@ export default function PayoutManagementPage() {
       .finally(() => setModeLoading(false));
   }, []);
 
-  // ── Fetch payouts ───────────────────────────────────────────────────────────
   const fetchPayouts = useCallback(async (page = 1) => {
     setLoading(true);
     try {
@@ -552,14 +549,12 @@ export default function PayoutManagementPage() {
     ]);
   };
 
-  // ── Confirm modal helpers ───────────────────────────────────────────────────
   const openConfirm = (type: ConfirmType, payout: PayoutRequestItem) => {
     setConfirmInput('');
     setConfirm({ open: true, type, payout });
   };
   const closeConfirm = () => setConfirm({ open: false, type: null });
 
-  // ── Actions ─────────────────────────────────────────────────────────────────
   const handleApprove = async (payout: PayoutRequestItem) => {
     setActionLoading(payout._id);
     try {
@@ -632,7 +627,6 @@ export default function PayoutManagementPage() {
     }
   };
 
-  // ── Derived ─────────────────────────────────────────────────────────────────
   const isAutoMode = modeStatus?.autoPayoutEnabled && modeStatus?.canAutoPayout;
   const psConfigured = modeStatus?.paystackConfigured ?? false;
   const hasFilters = statusFilter !== 'all' || !!searchTerm.trim() || !!dateRange.startDate || !!dateRange.endDate;
@@ -642,7 +636,6 @@ export default function PayoutManagementPage() {
   const completedCount = payouts.filter(p => p.status === 'completed').length;
   const failedCount = payouts.filter(p => p.status === 'failed').length;
 
-  // ── Confirm dialog body text ────────────────────────────────────────────────
   const confirmContent = useMemo(() => {
     const p = confirm.payout;
     if (!p) return { title: '', body: null, confirmLabel: '', variant: 'primary' as const };
@@ -652,13 +645,13 @@ export default function PayoutManagementPage() {
         return {
           title: 'Approve Payout',
           body: (
-            <div className="space-y-3 text-sm text-[var(--text-primary)]">
+            <div className="space-y-3 text-sm text-[var(--color-text-primary)]">
               <p>Approving will deduct <strong>{fmt(p.amount)}</strong> from <strong>{userName(p.user)}</strong>&apos;s earnings balance.</p>
               {!isAutoMode && psConfigured && (
-                <p className="text-primary">After approval, use <strong>Send via Paystack</strong> or <strong>Mark Paid</strong> to complete the transfer.</p>
+                <p className="text-[var(--color-ink)]">After approval, use <strong>Send via Paystack</strong> or <strong>Mark Paid</strong> to complete the transfer.</p>
               )}
               {!isAutoMode && !psConfigured && (
-                <p className="text-warning">Paystack is not configured. After approval, send the funds manually and use <strong>Mark Paid</strong>.</p>
+                <p className="text-[var(--color-warning)]">Paystack is not configured. After approval, send the funds manually and use <strong>Mark Paid</strong>.</p>
               )}
             </div>
           ),
@@ -670,14 +663,14 @@ export default function PayoutManagementPage() {
         return {
           title: 'Send via Paystack',
           body: (
-            <div className="space-y-3 text-sm text-[var(--text-primary)]">
+            <div className="space-y-3 text-sm text-[var(--color-text-primary)]">
               <p>This transfers <strong>{fmt(p.netAmount ?? p.amount)}</strong> from your Paystack account balance directly to the agent.</p>
-              <ul className="list-disc list-inside space-y-1 text-[var(--text-secondary)]">
+              <ul className="list-disc list-inside space-y-1 text-[var(--color-text-secondary)]">
                 <li>Requires sufficient Paystack balance and Transfers enabled</li>
                 <li>If it fails, the payout stays approved so you can retry or use Mark Paid</li>
               </ul>
               {p.paystackTransfer?.failureReason && (
-                <div className="p-3 rounded-lg bg-error/10 border border-error/30 text-error">
+                <div className="p-3" style={{ backgroundColor: "var(--color-error)", color: "var(--color-text-inverse)" }}>
                   <p className="font-medium text-xs">Previous failure:</p>
                   <p className="text-xs mt-1">{p.paystackTransfer.failureReason}</p>
                 </div>
@@ -692,9 +685,9 @@ export default function PayoutManagementPage() {
         return {
           title: 'Mark as Paid',
           body: (
-            <div className="space-y-3 text-sm text-[var(--text-primary)]">
+            <div className="space-y-3 text-sm text-[var(--color-text-primary)]">
               <p>Use this after sending the money manually (MoMo/bank/Paystack dashboard).</p>
-              <ol className="list-decimal list-inside space-y-1 text-[var(--text-secondary)]">
+              <ol className="list-decimal list-inside space-y-1 text-[var(--color-text-secondary)]">
                 <li>Send <strong>{fmt(p.netAmount ?? p.amount)}</strong> to {destLabel(p.destination)}</li>
                 <li>Enter the transaction reference below (recommended)</li>
                 <li>Click Mark as Paid to update the agent&apos;s dashboard</li>
@@ -716,7 +709,7 @@ export default function PayoutManagementPage() {
         return {
           title: 'Reject Payout',
           body: (
-            <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+            <div className="space-y-3 text-sm text-[var(--color-text-secondary)]">
               <p>Rejecting will notify the agent. If their earnings were already deducted, they will be refunded automatically.</p>
               <FormField label="Reason (optional)">
                 <Input
@@ -736,20 +729,18 @@ export default function PayoutManagementPage() {
     }
   }, [confirm, confirmInput, isAutoMode, psConfigured]);
 
-  // ── Render ──────────────────────────────────────────────────────────────────
   return (
     <div className="space-y-4 pb-6">
 
-      {/* ── Page header ──────────────────────────────────────────────────────── */}
-      <div className="rounded-xl p-4 sm:p-6 border border-border-color">
+      <div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-white/20">
-              <ArrowDownToLine className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className="p-2.5" style={{ backgroundColor: "var(--color-text-inverse)" }}>
+              <ArrowDownToLine className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: "var(--color-ink)" }} />
             </div>
             <div>
               <h1 className="text-lg sm:text-xl font-bold">Payout Management</h1>
-              <p className="text-xs sm:text-sm mt-0.5 text-white/70">
+              <p className="text-xs sm:text-sm mt-0.5 text-[var(--color-text-inverse)]/70">
                 {modeLoading
                   ? 'Loading mode…'
                   : isAutoMode
@@ -761,9 +752,9 @@ export default function PayoutManagementPage() {
             </div>
           </div>
           <Button
-            variant="secondary"
+            variant="outline"
             size="sm"
-            className="self-start sm:self-auto border-white/40 text-white"
+            className="self-start sm:self-auto"
             onClick={refresh}
             leftIcon={<RefreshCw className="w-3.5 h-3.5" />}
           >
@@ -772,93 +763,90 @@ export default function PayoutManagementPage() {
         </div>
 
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <div className="rounded-lg px-3 py-2.5 flex flex-col gap-2 bg-white/15">
+          <div className="px-3 py-2.5 flex flex-col gap-2 border border-[var(--color-text-inverse)]" style={{ background: "var(--color-text-inverse)", color: "var(--color-ink)" }}>
             <div className="flex items-center gap-2">
-              <span className="shrink-0 text-white/70"><DollarSign className="w-4 h-4" /></span>
+              <span className="shrink-0"><DollarSign className="w-4 h-4" /></span>
               <div className="min-w-0">
-                <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Total Profit</p>
-                <p className="font-bold text-sm sm:text-base text-white">
-                  {summaryLoading ? <Skeleton width="4rem" height="1rem" className="bg-white/20" /> : fmt(summary.totalProfit)}
+                <p className="text-[10px] font-medium uppercase tracking-wide">Total Profit</p>
+                <p className="font-bold text-sm sm:text-base">
+                  {summaryLoading ? <Skeleton width="4rem" height="1rem" /> : fmt(summary.totalProfit)}
                 </p>
               </div>
             </div>
-            <p className="text-xs text-white/70">Available + withdrawn</p>
+            <p className="text-xs">Available + withdrawn</p>
           </div>
 
-          <div className="rounded-lg px-3 py-2.5 flex flex-col gap-2 bg-success/30 border border-success/40">
-            <div className="flex items-center gap-2">
-              <span className="shrink-0 text-white/70"><CheckCircle2 className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex flex-col gap-2 border border-[var(--color-success)]" style={{ background: "var(--color-success)", color: "var(--color-text-primary)" }}>
+            <div className="flex items-center gap-2 ">
+              <span className="shrink-0"><CheckCircle2 className="w-4 h-4" /></span>
               <div className="min-w-0">
-                <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Available Earnings</p>
-                <p className="font-bold text-sm sm:text-base text-white">
-                  {summaryLoading ? <Skeleton width="4rem" height="1rem" className="bg-white/20" /> : fmt(summary.availableEarnings)}
+                <p className="text-[10px] font-medium uppercase tracking-wide color-[var(--color-text-primary)]">Available Earnings</p>
+                <p className="font-bold text-sm sm:text-base color-[var(--color-text-primary)]">
+                  {summaryLoading ? <Skeleton width="4rem" height="1rem" /> : fmt(summary.availableEarnings)}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg px-3 py-2.5 flex flex-col gap-2 bg-white/15">
+          <div className="px-3 py-2.5 flex flex-col gap-2" style={{ background: "var(--color-text-inverse)", color: "var(--color-ink)" }}>
             <div className="flex items-center gap-2">
-              <span className="shrink-0 text-white/70"><ArrowDownToLine className="w-4 h-4" /></span>
+              <span className="shrink-0"><ArrowDownToLine className="w-4 h-4" /></span>
               <div className="min-w-0">
-                <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Total Withdrawn</p>
-                <p className="font-bold text-sm sm:text-base text-white">
-                  {summaryLoading ? <Skeleton width="4rem" height="1rem" className="bg-white/20" /> : fmt(summary.totalWithdrawn)}
+                <p className="text-[10px] font-medium uppercase tracking-wide">Total Withdrawn</p>
+                <p className="font-bold text-sm sm:text-base">
+                  {summaryLoading ? <Skeleton width="4rem" height="1rem" /> : fmt(summary.totalWithdrawn)}
                 </p>
               </div>
             </div>
             {summary.processingAmount ? (
-              <p className="text-xs text-white/70">Processing: {fmt(summary.processingAmount)}</p>
+              <p className="text-xs">Processing: {fmt(summary.processingAmount)}</p>
             ) : null}
           </div>
         </div>
 
-        {/* Stats strip */}
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-          <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 bg-white/15">
-            <span className="shrink-0 text-white/70"><DollarSign className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex items-center gap-2" style={{ background: "var(--color-text-inverse)", color: "var(--color-ink)" }}>
+            <span className="shrink-0"><DollarSign className="w-4 h-4" /></span>
             <div className="min-w-0">
-              <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Total</p>
-              <p className="font-bold text-sm sm:text-base text-white">{pagination.total}</p>
+              <p className="text-[10px] font-medium uppercase tracking-wide">Total</p>
+              <p className="font-bold text-sm sm:text-base">{pagination.total}</p>
             </div>
           </div>
-          <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 bg-warning/30 border border-warning/40">
-            <span className="shrink-0 text-white/70"><Clock className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex items-center gap-2" style={{ background: "var(--color-warning)", color: "var(--color-text-inverse)" }}>
+            <span className="shrink-0"><Clock className="w-4 h-4" /></span>
             <div className="min-w-0">
-              <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Pending</p>
-              <p className="font-bold text-sm sm:text-base text-white">{pendingCount}</p>
+              <p className="text-[10px] font-medium uppercase tracking-wide">Pending</p>
+              <p className="font-bold text-sm sm:text-base">{pendingCount}</p>
             </div>
           </div>
-          <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 bg-primary/30 border border-primary/40">
-            <span className="shrink-0 text-white/70"><Loader2 className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex items-center gap-2" style={{ background: "var(--color-ink)", color: "var(--color-text-inverse)" }}>
+            <span className="shrink-0"><Loader2 className="w-4 h-4" /></span>
             <div className="min-w-0">
-              <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Processing</p>
-              <p className="font-bold text-sm sm:text-base text-white">{processingCount}</p>
+              <p className="text-[10px] font-medium uppercase tracking-wide">Processing</p>
+              <p className="font-bold text-sm sm:text-base">{processingCount}</p>
             </div>
           </div>
-          <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 bg-success/30 border border-success/40">
-            <span className="shrink-0 text-white/70"><CheckCircle2 className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex items-center gap-2" style={{ background: "var(--color-success)", color: "var(--color-text-inverse)" }}>
+            <span className="shrink-0"><CheckCircle2 className="w-4 h-4" /></span>
             <div className="min-w-0">
-              <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Completed</p>
-              <p className="font-bold text-sm sm:text-base text-white">{completedCount}</p>
+              <p className="text-[10px] font-medium uppercase tracking-wide">Completed</p>
+              <p className="font-bold text-sm sm:text-base">{completedCount}</p>
             </div>
           </div>
-          <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 bg-error/30 border border-error/40">
-            <span className="shrink-0 text-white/70"><XCircle className="w-4 h-4" /></span>
+          <div className="px-3 py-2.5 flex items-center gap-2" style={{ background: "var(--color-error)", color: "var(--color-text-inverse)" }}>
+            <span className="shrink-0"><XCircle className="w-4 h-4" /></span>
             <div className="min-w-0">
-              <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Failed</p>
-              <p className="font-bold text-sm sm:text-base text-white">{failedCount}</p>
+              <p className="text-[10px] font-medium uppercase tracking-wide">Failed</p>
+              <p className="font-bold text-sm sm:text-base">{failedCount}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Mode banner ──────────────────────────────────────────────────────── */}
       <ModeBanner status={modeStatus} loading={modeLoading} />
 
-      {/* ── Approved queue notice (semi-auto/manual only) ─────────────────── */}
       {!isAutoMode && approvedCount > 0 && (
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm bg-primary/5 border border-primary/20 text-primary">
+        <div className="flex items-start gap-3 px-4 py-3 text-sm" style={{ background: "var(--color-surface-alt)", color: "var(--color-text-primary)" }}>
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
           <div>
             <span className="font-semibold">{approvedCount} approved payout{approvedCount > 1 ? 's' : ''} waiting for transfer.</span>{' '}
@@ -869,7 +857,6 @@ export default function PayoutManagementPage() {
         </div>
       )}
 
-      {/* ── Filters ──────────────────────────────────────────────────────────── */}
       <SearchAndFilter
         searchTerm={searchTerm}
         onSearchChange={(v) => { setSearchTerm(v); setPagination(p => ({ ...p, page: 1 })); }}
@@ -885,8 +872,7 @@ export default function PayoutManagementPage() {
         isLoading={loading}
       />
 
-      {/* ── Table ────────────────────────────────────────────────────────────── */}
-      <div className="overflow-hidden rounded-xl shadow-lg">
+      <div className="border border-[var(--color-border)]">
         {loading ? (
           <>
             <PayoutTableSkeleton />
@@ -894,7 +880,7 @@ export default function PayoutManagementPage() {
           </>
         ) : payouts.length === 0 ? (
           <EmptyState
-            icon={<ArrowDownToLine className="text-2xl text-[var(--text-muted)]" />}
+            icon={<ArrowDownToLine className="text-2xl text-[var(--color-text-muted)]" />}
             title="No payouts found"
             description={hasFilters ? 'Try adjusting your filters.' : 'No payout requests in the system yet.'}
             action={
@@ -907,19 +893,18 @@ export default function PayoutManagementPage() {
           />
         ) : (
           <>
-            {/* Mobile card view */}
             <div className="sm:hidden space-y-3">
               {payouts.map((payout) => (
                 <Card key={payout._id} variant="interactive" size="sm">
                   <CardBody className="space-y-3 pt-0 pb-3">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 bg-gradient-to-br from-primary to-primary-hover text-white">
+                        <div className="w-11 h-11 flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: "var(--color-ink)", color: "var(--color-text-inverse)" }}>
                           {userName(payout.user).charAt(0)}
                         </div>
                         <div className="min-w-0">
                           <p className="font-semibold text-sm truncate">{userName(payout.user)}</p>
-                          <p className="text-xs text-[var(--text-secondary)] truncate">{userEmail(payout.user)}</p>
+                          <p className="text-xs text-[var(--color-text-secondary)] truncate">{userEmail(payout.user)}</p>
                         </div>
                       </div>
                       <Badge colorScheme={statusColor(payout.status)} size="xs">
@@ -928,26 +913,26 @@ export default function PayoutManagementPage() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-2.5">
-                        <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1">Requested</p>
+                      <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-2.5">
+                        <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Requested</p>
                         <p className="text-xs font-semibold">{fmtDate(payout.requestedAt)}</p>
-                        <p className="text-[10px] text-[var(--text-muted)] mt-0.5">{fmtDate(payout.createdAt)}</p>
+                        <p className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{fmtDate(payout.createdAt)}</p>
                       </div>
-                      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-2.5">
-                        <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1">Amount</p>
+                      <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-2.5">
+                        <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Amount</p>
                         <p className="text-xs font-semibold">{fmt(payout.amount)}</p>
                         <div className="flex items-center gap-2 mt-1">
                           {payout.transferFee != null && (
-                            <p className="text-[10px] text-[var(--warning)]">Fee: {fmt(payout.transferFee)}</p>
+                            <p className="text-[10px] text-[var(--color-warning)]">Fee: {fmt(payout.transferFee)}</p>
                           )}
                           {payout.netAmount != null && (
-                            <p className="text-[10px] text-[var(--success)]">Net: {fmt(payout.netAmount)}</p>
+                            <p className="text-[10px] text-[var(--color-success)]">Net: {fmt(payout.netAmount)}</p>
                           )}
                         </div>
                       </div>
-                      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-2.5">
-                        <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1">Destination</p>
-                        <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+                      <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-2.5">
+                        <p className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Destination</p>
+                        <div className="flex items-center gap-1.5 text-xs text-[var(--color-text-secondary)]">
                           {payout.destination?.type === 'mobile_money'
                             ? <Smartphone className="w-3 h-3 shrink-0" />
                             : <Building2 className="w-3 h-3 shrink-0" />
@@ -955,11 +940,11 @@ export default function PayoutManagementPage() {
                           <span className="truncate">{destLabel(payout.destination)}</span>
                         </div>
                       </div>
-                      <div className={`rounded-lg border p-2.5 ${statusBgClass(payout.status)}`}>
-                        <p className="text-[10px] uppercase tracking-wider opacity-80 mb-1">Status</p>
+                      <div className={`border p-2.5 ${statusBgClass(payout.status)}`}>
+                        <p className="text-[10px] uppercase tracking-wider mb-1" style={{ opacity: 0.8 }}>Status</p>
                         <p className="text-xs font-semibold">{statusLabel(payout.status)}</p>
                         {payout.rejectionReason && payout.status === 'rejected' && (
-                          <p className="text-[10px] opacity-80 mt-1">{payout.rejectionReason}</p>
+                          <p className="text-[10px] mt-1" style={{ opacity: 0.8 }}>{payout.rejectionReason}</p>
                         )}
                       </div>
                     </div>
@@ -981,7 +966,6 @@ export default function PayoutManagementPage() {
               ))}
             </div>
 
-            {/* Desktop table view */}
             <div className="hidden sm:block">
               <Table className="min-w-[760px]" variant="simple" size="md">
                 <TableHeader>
@@ -1014,9 +998,8 @@ export default function PayoutManagementPage() {
           </>
         )}
 
-        {/* ── Pagination ────────────────────────────────────────────────────────── */}
         {pagination.pages > 1 && !loading && (
-          <div className="px-4 py-3 border-t border-[var(--border-color)]">
+          <div className="px-4 py-3 border-t border-[var(--color-border)]">
             <Pagination
               currentPage={pagination.page}
               totalPages={pagination.pages}
@@ -1031,7 +1014,6 @@ export default function PayoutManagementPage() {
         )}
       </div>
 
-      {/* ── Confirm dialog ────────────────────────────────────────────────────── */}
       <Dialog isOpen={confirm.open} onClose={closeConfirm} size="sm">
         <DialogHeader>{confirmContent.title}</DialogHeader>
         <DialogBody>{confirmContent.body}</DialogBody>

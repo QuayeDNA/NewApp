@@ -19,10 +19,10 @@ export const ReferralBatchProcessor = ({ processing, batchResult, onProcess }: R
     <CardBody>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h3 className="text-base font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaCalendarCheck className="w-4 h-4" style={{ color: "var(--color-secondary)" }} /> Daily Batch Processing
+          <h3 className="text-base font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaCalendarCheck className="w-4 h-4" style={{ color: "var(--color-amber)" }} /> Daily Batch Processing
           </h3>
-          <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
+          <p className="text-sm mt-0.5" style={{ color: "var(--color-text-muted)" }}>
             Manually trigger the daily commission calculation for all referred users
           </p>
         </div>

@@ -52,17 +52,17 @@ export const ReferralOverviewTab = ({
       {adminStats && (
         <div
           className="border rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-          style={{ background: "var(--bg-surface-alt)", borderColor: "var(--border-color)" }}
+          style={{ background: "var(--color-surface-alt)", borderColor: "var(--color-border)" }}
         >
           <div>
-            <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Current Commission Rate</p>
-            <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+            <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>Current Commission Rate</p>
+            <p className="text-xs mt-0.5" style={{ color: "var(--color-text-muted)" }}>
               Percentage of order value credited to referring agents
             </p>
           </div>
           <div className="sm:text-right">
-            <p className="text-xl sm:text-2xl font-bold" style={{ color: "var(--color-secondary)" }}>{commissionRate}%</p>
-            <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+            <p className="text-xl sm:text-2xl font-bold" style={{ color: "var(--color-amber)" }}>{commissionRate}%</p>
+            <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
               GH₵ {(100 * commissionRate / 100).toFixed(2)} per GH₵ 100 order
             </p>
           </div>

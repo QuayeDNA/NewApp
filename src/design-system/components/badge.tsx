@@ -29,34 +29,34 @@ const sizeClasses = {
 
 const colorMap: Record<BadgeColorScheme, Record<BadgeVariant, string>> = {
   default: {
-    solid: "bg-[var(--color-primary)] text-white",
-    subtle: "bg-[var(--color-accent-soft)] text-[var(--color-secondary)]",
-    outline: "bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)]",
+    solid: "bg-[var(--color-ink)] text-white",
+    subtle: "bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]",
+    outline: "bg-transparent border border-[var(--color-ink)] text-[var(--color-ink)]",
   },
   success: {
-    solid: "bg-[var(--success)] text-white",
-    subtle: "bg-[var(--success)]/10 text-[var(--success)]",
-    outline: "bg-transparent border border-[var(--success)] text-[var(--success)]",
+    solid: "bg-[var(--color-success)] text-white",
+    subtle: "bg-[var(--color-success)]/10 text-[var(--color-success)]",
+    outline: "bg-transparent border border-[var(--color-success)] text-[var(--color-success)]",
   },
   warning: {
-    solid: "bg-[var(--warning)] text-white",
-    subtle: "bg-[var(--warning)]/10 text-[var(--warning)]",
-    outline: "bg-transparent border border-[var(--warning)] text-[var(--warning)]",
+    solid: "bg-[var(--color-warning)] text-white",
+    subtle: "bg-[var(--color-warning)]/10 text-[var(--color-warning)]",
+    outline: "bg-transparent border border-[var(--color-warning)] text-[var(--color-warning)]",
   },
   error: {
-    solid: "bg-[var(--error)] text-white",
-    subtle: "bg-[var(--error)]/10 text-[var(--error)]",
-    outline: "bg-transparent border border-[var(--error)] text-[var(--error)]",
+    solid: "bg-[var(--color-error)] text-white",
+    subtle: "bg-[var(--color-error)]/10 text-[var(--color-error)]",
+    outline: "bg-transparent border border-[var(--color-error)] text-[var(--color-error)]",
   },
   info: {
-    solid: "bg-[var(--info)] text-white",
-    subtle: "bg-[var(--info)]/10 text-[var(--info)]",
-    outline: "bg-transparent border border-[var(--info)] text-[var(--info)]",
+    solid: "bg-[var(--color-info)] text-white",
+    subtle: "bg-[var(--color-info)]/10 text-[var(--color-info)]",
+    outline: "bg-transparent border border-[var(--color-info)] text-[var(--color-info)]",
   },
   gray: {
-    solid: "bg-gray-500 text-white",
-    subtle: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200",
-    outline: "bg-transparent border border-gray-500 text-gray-700 dark:text-gray-300",
+    solid: "bg-[var(--color-text-muted)] text-[var(--color-text-inverse)]",
+    subtle: "bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]",
+    outline: "bg-transparent border border-[var(--color-text-muted)] text-[var(--color-text-secondary)]",
   },
 };
 
@@ -68,7 +68,6 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       size = "sm",
       colorScheme = "default",
       className = "",
-      rounded = false,
       ...props
     },
     ref,
@@ -76,7 +75,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     const badgeClasses = [
       "inline-flex items-center justify-center",
       "font-medium",
-      rounded ? "rounded-full" : "rounded-md",
+      "rounded-none",
       sizeClasses[size],
       colorMap[colorScheme][variant],
       className,

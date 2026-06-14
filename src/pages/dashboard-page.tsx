@@ -155,7 +155,7 @@ export const DashboardPage = () => {
       : "Sorry, store is currently closed for business 😔";
   };
 
-  const siteStatusColor = siteStatus?.isSiteOpen ? "var(--success)" : "var(--error)";
+  const siteStatusColor = siteStatus?.isSiteOpen ? "var(--color-success)" : "var(--color-error)";
 
   // Handle quick link click
   const handleQuickLinkClick = (slug: string) => {
@@ -176,7 +176,7 @@ export const DashboardPage = () => {
       AT: "bg-blue-500",
       AFA: "bg-green-500",
     };
-    return colorMap[providerCode] || "bg-[var(--text-muted)]";
+    return colorMap[providerCode] || "bg-[var(--color-text-muted)]";
   };
 
   // Fetch packages for quick actions
@@ -473,7 +473,7 @@ export const DashboardPage = () => {
           <Card
             className="backdrop-blur-md p-4"
             style={{
-              border: "1px solid var(--border-color)",
+              border: "1px solid var(--color-border)",
               boxShadow: "var(--shadow-xl)",
             }}
           >
@@ -481,7 +481,7 @@ export const DashboardPage = () => {
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div
                   className="p-3 rounded-full"
-                  style={{ backgroundColor: "var(--bg-surface-alt)" }}
+                  style={{ backgroundColor: "var(--color-surface-alt)" }}
                 >
                   <FaStar
                     className="w-6 h-6"
@@ -491,7 +491,7 @@ export const DashboardPage = () => {
                 <div className="flex-1">
                   <p
                     className="text-sm sm:text-base font-medium"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     {getSiteMessage()}
                   </p>
@@ -500,14 +500,14 @@ export const DashboardPage = () => {
                   onClick={() => setShowSiteMessage(false)}
                   className="p-2 rounded-full transition-all duration-200"
                   style={{
-                    color: "var(--text-muted)",
+                    color: "var(--color-text-muted)",
                     transition: "color var(--transition-fast)",
                   }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--text-secondary)")
+                    (e.currentTarget.style.color = "var(--color-text-secondary)")
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--text-muted)")
+                    (e.currentTarget.style.color = "var(--color-text-muted)")
                   }
                   aria-label="Close message"
                 >
@@ -522,15 +522,15 @@ export const DashboardPage = () => {
       {/* Active Orders - Show pending/processing/confirmed */}
       <div className="active-orders">
         <div className="flex items-center justify-between mb-3 px-2 sm:px-0">
-          <h2 className="text-lg font-medium flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaClock style={{ color: "var(--warning)" }} />
+          <h2 className="text-lg font-medium flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaClock style={{ color: "var(--color-warning)" }} />
             Active Orders
           </h2>
           <Link
             to="./orders"
             className="text-sm font-medium flex items-center gap-1"
             style={{
-              color: "var(--color-secondary)",
+              color: "var(--color-amber)",
               transition: "gap var(--transition-fast)",
             }}
           >
@@ -549,9 +549,9 @@ export const DashboardPage = () => {
         ) : activeOrders.length === 0 ? (
           <Card>
             <CardBody className="text-center py-6">
-              <FaShoppingCart className="mx-auto h-8 w-8 mb-2" style={{ color: "var(--text-muted)" }} />
-              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>No active orders</p>
-              <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+              <FaShoppingCart className="mx-auto h-8 w-8 mb-2" style={{ color: "var(--color-text-muted)" }} />
+              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>No active orders</p>
+              <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                 All your orders are completed or you haven't placed any yet
               </p>
             </CardBody>
@@ -569,10 +569,10 @@ export const DashboardPage = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 min-w-0 flex-1">
                           <div className="flex flex-col min-w-0">
-                            <span className="font-semibold text-sm truncate" style={{ color: "var(--text-primary)" }}>
+                            <span className="font-semibold text-sm truncate" style={{ color: "var(--color-text-primary)" }}>
                               {order.orderNumber}
                             </span>
-                            <span className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                            <span className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
                               {order.items?.length || 0} item
                               {(order.items?.length || 0) !== 1
                                 ? "s"
@@ -594,7 +594,7 @@ export const DashboardPage = () => {
                           >
                             {order.status}
                           </Badge>
-                          <span className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
+                          <span className="font-semibold text-sm" style={{ color: "var(--color-text-primary)" }}>
                             ₵{order.total.toFixed(2)}
                           </span>
                         </div>
@@ -605,7 +605,7 @@ export const DashboardPage = () => {
               ))}
             </div>
             {activeOrders.length > 2 && (
-              <p className="text-[10px] text-center mt-1" style={{ color: "var(--text-muted)" }}>
+              <p className="text-[10px] text-center mt-1" style={{ color: "var(--color-text-muted)" }}>
                 Scroll for more ({activeOrders.length} orders)
               </p>
             )}
@@ -615,23 +615,23 @@ export const DashboardPage = () => {
 
       {/* Quick Actions */}
       <div className="quick-actions">
-        <h2 className="text-lg font-medium mb-3 px-2 sm:px-0" style={{ color: "var(--text-primary)" }}>
+        <h2 className="text-lg font-medium mb-3 px-2 sm:px-0" style={{ color: "var(--color-text-primary)" }}>
           All Packages
         </h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {dashboardPackagesLoading ? (
             <div className="col-span-full flex flex-col items-center justify-center py-8">
               <Spinner />
-              <p className="text-sm mt-2" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm mt-2" style={{ color: "var(--color-text-secondary)" }}>
                 Loading packages...
               </p>
             </div>
           ) : dashboardPackages.length === 0 ? (
-            <div className="col-span-full text-center py-8" style={{ color: "var(--text-secondary)" }}>
-              <h3 className="text-sm font-medium mb-2" style={{ color: "var(--text-primary)" }}>
+            <div className="col-span-full text-center py-8" style={{ color: "var(--color-text-secondary)" }}>
+              <h3 className="text-sm font-medium mb-2" style={{ color: "var(--color-text-primary)" }}>
                 No packages found
               </h3>
-              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                 No packages are available at the moment.
               </p>
             </div>
@@ -668,8 +668,8 @@ export const DashboardPage = () => {
                         <FaPhone className="w-6 h-6" />
                       )}
                     </div>
-                    <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{pkg.name}</div>
-                    <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                    <div className="font-semibold text-sm" style={{ color: "var(--color-text-primary)" }}>{pkg.name}</div>
+                    <div className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                       Browse bundles
                     </div>
                   </CardBody>
@@ -682,7 +682,7 @@ export const DashboardPage = () => {
 
       {/* Stats */}
       <div className="account-overview">
-        <h2 className="text-lg font-medium mb-3 px-2 sm:px-0" style={{ color: "var(--text-primary)" }}>
+        <h2 className="text-lg font-medium mb-3 px-2 sm:px-0" style={{ color: "var(--color-text-primary)" }}>
           Account Overview
         </h2>
         <StatsGrid
@@ -716,7 +716,7 @@ export const DashboardPage = () => {
       <Card>
         <CardHeader>
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-medium" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-lg font-medium" style={{ color: "var(--color-text-primary)" }}>
               Sales Analytics
             </h3>
             <div className="flex gap-2">
@@ -725,9 +725,9 @@ export const DashboardPage = () => {
                 onChange={(e) => setAnalyticsTimeframe(e.target.value)}
                 className="text-sm block p-2"
                 style={{
-                  backgroundColor: "var(--bg-surface-alt)",
-                  border: "1px solid var(--border-color)",
-                  color: "var(--text-primary)",
+                  backgroundColor: "var(--color-surface-alt)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-text-primary)",
                   borderRadius: "var(--radius-md)",
                   outline: "none",
                 }}
@@ -749,13 +749,13 @@ export const DashboardPage = () => {
             <div
               className="h-40 sm:h-48 flex items-center justify-center"
               style={{
-                backgroundColor: "var(--bg-surface-alt)",
+                backgroundColor: "var(--color-surface-alt)",
                 borderRadius: "var(--radius-lg)",
               }}
             >
               <div className="text-center">
-                <FaChartLine className="w-8 h-8 mx-auto mb-2" style={{ color: "var(--text-muted)" }} />
-                <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                <FaChartLine className="w-8 h-8 mx-auto mb-2" style={{ color: "var(--color-text-muted)" }} />
+                <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
                   No sales data available for selected period
                 </p>
               </div>
@@ -772,14 +772,14 @@ export const DashboardPage = () => {
       <Card>
         <CardHeader>
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-medium" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-lg font-medium" style={{ color: "var(--color-text-primary)" }}>
               Order Analytics ({getTimeframeLabel()})
             </h3>
             <Link
               to="./orders"
               className="text-sm font-medium"
               style={{
-                color: "var(--color-secondary)",
+                color: "var(--color-amber)",
                 transition: "color var(--transition-fast)",
               }}
             >
@@ -796,13 +796,13 @@ export const DashboardPage = () => {
             <div
               className="h-40 sm:h-48 flex items-center justify-center"
               style={{
-                backgroundColor: "var(--bg-surface-alt)",
+                backgroundColor: "var(--color-surface-alt)",
                 borderRadius: "var(--radius-lg)",
               }}
             >
               <div className="text-center">
-                <FaShoppingCart className="w-8 h-8 mx-auto mb-2" style={{ color: "var(--text-muted)" }} />
-                <p className="text-sm" style={{ color: "var(--text-muted)" }}>No order data available</p>
+                <FaShoppingCart className="w-8 h-8 mx-auto mb-2" style={{ color: "var(--color-text-muted)" }} />
+                <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>No order data available</p>
               </div>
             </div>
           ) : (
@@ -820,14 +820,14 @@ export const DashboardPage = () => {
       <Card className="recent-transactions">
         <CardHeader>
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-medium" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-lg font-medium" style={{ color: "var(--color-text-primary)" }}>
               Recent Transactions
             </h3>
             <Link
               to="./wallet"
               className="text-sm font-medium"
               style={{
-                color: "var(--color-secondary)",
+                color: "var(--color-amber)",
                 transition: "color var(--transition-fast)",
               }}
             >
@@ -841,12 +841,12 @@ export const DashboardPage = () => {
               <Spinner />
             </div>
           ) : recentTransactions.length === 0 ? (
-            <div className="text-center py-8" style={{ color: "var(--text-secondary)" }}>
-              <FaWallet className="mx-auto h-12 w-12 mb-4" style={{ color: "var(--text-muted)" }} />
-              <h3 className="text-sm font-medium mb-2" style={{ color: "var(--text-primary)" }}>
+            <div className="text-center py-8" style={{ color: "var(--color-text-secondary)" }}>
+              <FaWallet className="mx-auto h-12 w-12 mb-4" style={{ color: "var(--color-text-muted)" }} />
+              <h3 className="text-sm font-medium mb-2" style={{ color: "var(--color-text-primary)" }}>
                 No transactions
               </h3>
-              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                 You don't have any wallet transactions yet.
               </p>
             </div>
@@ -858,13 +858,13 @@ export const DashboardPage = () => {
                     key={transaction._id}
                     className="flex items-center justify-between p-3"
                     style={{
-                      backgroundColor: "var(--bg-surface-alt)",
+                      backgroundColor: "var(--color-surface-alt)",
                       borderRadius: "var(--radius-lg)",
                     }}
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-medium capitalize text-sm" style={{ color: "var(--text-primary)" }}>
+                        <span className="font-medium capitalize text-sm" style={{ color: "var(--color-text-primary)" }}>
                           {transaction.type}
                         </span>
                         <Badge
@@ -877,15 +877,15 @@ export const DashboardPage = () => {
                           {transaction.status}
                         </Badge>
                       </div>
-                      <div className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                      <div className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
                         {transaction.description}
                       </div>
-                      <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                      <div className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                         {formatDate(transaction.createdAt)}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
+                      <div className="font-semibold text-sm" style={{ color: "var(--color-text-primary)" }}>
                         {formatAmount(transaction.amount)}
                       </div>
                     </div>

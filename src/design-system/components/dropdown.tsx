@@ -123,11 +123,11 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 
     const triggerClasses = [
       "relative flex items-center justify-between w-full",
-      "border border-[var(--border-color)] bg-[var(--bg-surface)] rounded-lg cursor-pointer",
+      "border border-[var(--color-border)] bg-[var(--color-surface)] cursor-pointer",
       "transition-colors duration-200",
       sizeClasses.trigger[size],
-      isOpen ? `ring-1 ring-[var(--color-secondary)] border-[var(--color-secondary)]` : "hover:border-[var(--color-secondary)]",
-      isInvalid ? "border-[var(--error)]" : "",
+      isOpen ? `ring-1 ring-[var(--color-amber)] border-[var(--color-amber)]` : "hover:border-[var(--color-amber)]",
+      isInvalid ? "border-[var(--color-error)]" : "",
       isDisabled ? "opacity-60 cursor-not-allowed" : "",
       className,
     ].join(" ");
@@ -137,9 +137,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
     return (
       <div className={`relative ${fullWidth ? "w-full" : ""}`} ref={dropdownRef}>
         {label && (
-          <label htmlFor={uniqueId} className={`block ${sizeClasses.label[size]} font-medium text-[var(--text-primary)] mb-1`}>
+          <label htmlFor={uniqueId} className={`block ${sizeClasses.label[size]} font-medium text-[var(--color-text-primary)] mb-1`}>
             {label}
-            {required && <span className="text-[var(--error)] ml-1">*</span>}
+            {required && <span className="text-[var(--color-error)] ml-1">*</span>}
           </label>
         )}
         <div
@@ -154,7 +154,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           aria-haspopup="listbox"
           {...props}
         >
-          <span className={selectedOption ? "text-[var(--text-primary)]" : "text-[var(--text-muted)]"}>
+          <span className={selectedOption ? "text-[var(--color-text-primary)]" : "text-[var(--color-text-muted)]"}>
             {selectedOption ? (
               <span className="flex items-center gap-2">
                 {selectedOption.icon && selectedOption.icon}
@@ -164,14 +164,14 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               placeholder
             )}
           </span>
-          <svg className={`w-5 h-5 text-[var(--text-muted)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          <svg className={`w-5 h-5 text-[var(--color-text-muted)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
             fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
 
         {isOpen && (
-          <div className="absolute z-50 w-full mt-1 bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-lg shadow-lg max-h-60 overflow-auto">
+          <div className="absolute z-50 w-full mt-1 bg-[var(--color-surface)] border border-[var(--color-border)] shadow-lg max-h-60 overflow-auto">
             {options.map((option, index) => (
               <div
                 key={option.value}
@@ -179,9 +179,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                   "cursor-pointer transition-colors duration-150",
                   sizeClasses.option[size],
                   option.disabled ? "opacity-50 cursor-not-allowed" : "",
-                  !option.disabled ? "hover:bg-[var(--bg-surface-alt)]" : "",
-                  option.value === value ? "bg-[var(--color-accent-soft)] text-[var(--color-secondary)]" : "text-[var(--text-primary)]",
-                  index === focusedIndex ? "bg-[var(--bg-surface-alt)]" : "",
+                  !option.disabled ? "hover:bg-[var(--color-surface-alt)]" : "",
+                  option.value === value ? "bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]" : "text-[var(--color-text-primary)]",
+                  index === focusedIndex ? "bg-[var(--color-surface-alt)]" : "",
                 ].join(" ")}
                 onClick={() => !option.disabled && handleOptionSelect(option.value)}
                 role="option"
@@ -199,9 +199,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         {(helperText || (isInvalid && errorText)) && (
           <div className={`mt-1 ${sizeClasses.helper[size]}`}>
             {isInvalid && errorText ? (
-              <p className="text-[var(--error)]">{errorText}</p>
+              <p className="text-[var(--color-error)]">{errorText}</p>
             ) : (
-              helperText && <p className="text-[var(--text-muted)]">{helperText}</p>
+              helperText && <p className="text-[var(--color-text-muted)]">{helperText}</p>
             )}
           </div>
         )}

@@ -65,18 +65,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [isFocused, setIsFocused] = useState(false);
 
     const variantClasses = {
-      outline: "border border-[var(--border-color)] bg-[var(--bg-surface)] rounded-lg",
-      filled: "border border-transparent bg-[var(--bg-surface-alt)] rounded-lg",
-      flushed: "border-b-2 border-[var(--border-color)] rounded-none px-0",
+      outline: "border border-[var(--color-border)] bg-[var(--color-surface)]",
+      filled: "border border-transparent bg-[var(--color-surface-alt)]",
+      flushed: "border-b-2 border-[var(--color-border)] rounded-none px-0",
     };
 
     const getFocusBorder = () => {
-      if (isInvalid) return "border-[var(--error)]";
-      if (colorScheme === "success") return "border-[var(--success)]";
-      if (colorScheme === "warning") return "border-[var(--warning)]";
-      if (colorScheme === "error") return "border-[var(--error)]";
-      if (colorScheme === "info") return "border-[var(--info)]";
-      return "border-[var(--color-secondary)]";
+      if (isInvalid) return "border-[var(--color-error)]";
+      if (colorScheme === "success") return "border-[var(--color-success)]";
+      if (colorScheme === "warning") return "border-[var(--color-warning)]";
+      if (colorScheme === "error") return "border-[var(--color-error)]";
+      if (colorScheme === "info") return "border-[var(--color-info)]";
+      return "border-[var(--color-amber)]";
     };
 
     const iconLeftPad = {
@@ -92,15 +92,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       lg: rightIcon ? "pr-12" : "",
     };
 
-    const colorBorder = isInvalid
-      ? "border-[var(--error)]"
+    const colorBorder =       isInvalid
+      ? "border-[var(--color-error)]"
       : isFocused
         ? getFocusBorder()
         : "";
 
     const inputClasses = [
       "form-input w-full",
-      "text-[var(--text-primary)] placeholder-[var(--text-muted)]",
+      "text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)]",
       sizeClasses.input[size],
       iconLeftPad[size],
       iconRightPad[size],
@@ -108,8 +108,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       isFocused ? `ring-1 ${getFocusBorder().replace("border-", "ring-")} ring-opacity-30` : "",
       colorBorder,
       "outline-none transition-colors duration-200",
-      "focus:ring-1 focus:ring-[var(--color-secondary)] focus:ring-opacity-30",
-      isInvalid ? "text-[var(--error)]" : "",
+      "focus:ring-1 focus:ring-[var(--color-amber)] focus:ring-opacity-30",
+      isInvalid ? "text-[var(--color-error)]" : "",
       isDisabled ? "opacity-60 cursor-not-allowed" : "",
       className,
     ].join(" ");
@@ -121,16 +121,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={uniqueId}
-            className={`block ${sizeClasses.label[size]} font-medium text-[var(--text-primary)] mb-1`}
+            className={`block ${sizeClasses.label[size]} font-medium text-[var(--color-text-primary)] mb-1`}
           >
             {label}
-            {required && <span className="text-[var(--error)] ml-1">*</span>}
+            {required && <span className="text-[var(--color-error)] ml-1">*</span>}
           </label>
         )}
         <div className="relative">
           {leftIcon && (
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <div className={`text-[var(--text-muted)] ${sizeClasses.iconSize[size]}`}>
+              <div className={`text-[var(--color-text-muted)] ${sizeClasses.iconSize[size]}`}>
                 {leftIcon}
               </div>
             </div>
@@ -153,7 +153,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
           {rightIcon && (
             <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-              <div className={`text-[var(--text-muted)] ${sizeClasses.iconSize[size]}`}>
+              <div className={`text-[var(--color-text-muted)] ${sizeClasses.iconSize[size]}`}>
                 {rightIcon}
               </div>
             </div>
@@ -162,9 +162,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {(helperText || (isInvalid && errorText)) && (
           <div className={`mt-1 ${sizeClasses.helperText[size]}`}>
             {isInvalid && errorText ? (
-              <p className="text-[var(--error)]">{errorText}</p>
+              <p className="text-[var(--color-error)]">{errorText}</p>
             ) : (
-              helperText && <p className="text-[var(--text-muted)]">{helperText}</p>
+              helperText && <p className="text-[var(--color-text-muted)]">{helperText}</p>
             )}
           </div>
         )}

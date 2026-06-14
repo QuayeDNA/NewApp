@@ -170,10 +170,10 @@ export const AnnouncementsPage: React.FC = () => {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)]">
             Announcements
           </h1>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">
+          <p className="mt-1 text-sm text-[var(--color-text-muted)]">
             Manage system-wide announcements and broadcasts
           </p>
         </div>
@@ -193,7 +193,7 @@ export const AnnouncementsPage: React.FC = () => {
 
       <AnnouncementFiltersBar filters={filters} onChange={setFilters} />
 
-      <div className="bg-[var(--bg-surface)] rounded-lg shadow-[var(--shadow-sm)] overflow-hidden">
+      <div className="bg-[var(--color-surface)] rounded-lg shadow-[var(--shadow-sm)] overflow-hidden">
         <div className="block lg:hidden">
           <AnnouncementCards
             announcements={announcements}

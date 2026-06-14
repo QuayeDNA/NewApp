@@ -16,9 +16,9 @@ export const ReferralCommissionFilter = ({ value, onChange }: ReferralCommission
         onClick={() => onChange(filter)}
         className="px-2.5 py-1 text-xs font-medium rounded-lg border transition-colors"
         style={{
-          background: value === filter ? "var(--color-secondary)" : "var(--bg-surface)",
-          color: value === filter ? "white" : "var(--text-secondary)",
-          borderColor: value === filter ? "var(--color-secondary)" : "var(--border-color)",
+          background: value === filter ? "var(--color-amber)" : "var(--color-surface)",
+          color: value === filter ? "white" : "var(--color-text-secondary)",
+          borderColor: value === filter ? "var(--color-amber)" : "var(--color-border)",
         }}
       >
         {filter === "all" ? "All" : filter.charAt(0).toUpperCase() + filter.slice(1)}

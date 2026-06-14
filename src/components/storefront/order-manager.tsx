@@ -294,16 +294,16 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h2 className="text-lg sm:text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+              <h2 className="text-lg sm:text-xl font-bold" style={{ color: "var(--color-text-primary)" }}>
                 Storefront Orders
               </h2>
-              <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                 Manage customer orders and payment verification
               </p>
             </div>
             <div className="flex items-center gap-2">
               {/* View mode toggle */}
-              <div className="flex items-center rounded-lg p-0.5" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+              <div className="flex items-center rounded-lg p-0.5" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                 {([
                   { mode: "card" as ViewMode, icon: LayoutGrid, label: "Cards" },
                   { mode: "list" as ViewMode, icon: List, label: "List" },
@@ -320,10 +320,10 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                       }`}
                     style={{
                       color: viewMode === mode
-                        ? "var(--text-primary)"
+                        ? "var(--color-text-primary)"
                         : hoveredViewMode === mode
-                          ? "var(--text-primary)"
-                          : "var(--text-muted)",
+                          ? "var(--color-text-primary)"
+                          : "var(--color-text-muted)",
                     }}
                     title={`${label} view`}
                   >
@@ -367,7 +367,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
               showSearchButton={true}
               showClearButton={true}
             />
-            <p className="text-xs mt-2" style={{ color: "var(--text-muted)" }}>
+            <p className="text-xs mt-2" style={{ color: "var(--color-text-muted)" }}>
               Showing {displayedOrders.length} of {totalOrders} orders
             </p>
           </div>
@@ -398,7 +398,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                       </TableCell>
                       <TableCell>
                         <div>
-                          <p className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>
+                          <p className="font-medium text-sm" style={{ color: "var(--color-text-primary)" }}>
                             {order.storefrontData?.customerInfo?.name || "N/A"}
                           </p>
                         </div>
@@ -406,19 +406,19 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                       <TableCell>
                         {(order.storefrontData?.items || []).map((item, idx) => (
                           <div key={idx} className="text-sm">
-                            <p style={{ color: "var(--text-primary)" }}>{item.bundleName} x{item.quantity}</p>
+                            <p style={{ color: "var(--color-text-primary)" }}>{item.bundleName} x{item.quantity}</p>
                             {item.customerPhone && (
-                              <p className="text-xs" style={{ color: "var(--text-muted)" }}>→ {item.customerPhone}</p>
+                              <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>→ {item.customerPhone}</p>
                             )}
                           </div>
                         ))}
                         {(!order.storefrontData?.items ||
                           order.storefrontData.items.length === 0) && (
-                            <span className="text-sm" style={{ color: "var(--text-muted)" }}>—</span>
+                            <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>—</span>
                           )}
                       </TableCell>
                       <TableCell>
-                        <span className="font-bold" style={{ color: "var(--text-primary)" }}>
+                        <span className="font-bold" style={{ color: "var(--color-text-primary)" }}>
                           GHS {(order.total || 0).toFixed(2)}
                         </span>
                       </TableCell>
@@ -432,7 +432,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                               .toUpperCase()}
                           </Badge>
                           {order.storefrontData?.paymentMethod?.reference && (
-                            <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                            <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
                               Ref:{" "}
                               {order.storefrontData.paymentMethod.reference}
                             </p>
@@ -447,7 +447,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1 text-xs hover:underline"
-                                style={{ color: "var(--color-secondary)" }}
+                                style={{ color: "var(--color-amber)" }}
                               >
                                 <ExternalLink className="w-3 h-3" /> Proof
                               </a>
@@ -465,7 +465,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                        <span className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                           {formatDate(order.createdAt)}
                         </span>
                       </TableCell>
@@ -536,7 +536,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                     {/* Header */}
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                        <span className="font-mono text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                           #{order.orderNumber || order._id?.slice(-8)}
                         </span>
                         <Badge
@@ -550,7 +550,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                         </Badge>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold" style={{ color: "var(--text-primary)" }}>
+                        <p className="font-bold" style={{ color: "var(--color-text-primary)" }}>
                           GHS {(order.total || 0).toFixed(2)}
                         </p>
                       </div>
@@ -558,7 +558,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
 
                     {/* Customer */}
                     <div className="space-y-1 mb-3">
-                      <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                         {order.storefrontData?.customerInfo?.name || "N/A"}
                       </p>
                     </div>
@@ -571,21 +571,21 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                           return (
                               <div key={idx} className="text-sm">
                               <div className="flex justify-between">
-                                <span style={{ color: "var(--text-primary)" }}>
+                                <span style={{ color: "var(--color-text-primary)" }}>
                                   {item.bundleName}
                                 </span>
                                 {itemMarkup > 0 ? (
-                                  <span className="font-medium" style={{ color: "var(--success)" }}>
+                                  <span className="font-medium" style={{ color: "var(--color-success)" }}>
                                     +GHS {itemMarkup.toFixed(2)}
                                   </span>
                                 ) : (
-                                  <span style={{ color: "var(--text-muted)" }}>
+                                  <span style={{ color: "var(--color-text-muted)" }}>
                                     GHS {(item.totalPrice || 0).toFixed(2)}
                                   </span>
                                 )}
                               </div>
                               {item.customerPhone && (
-                                <p className="text-xs" style={{ color: "var(--text-muted)" }}>→ {item.customerPhone}</p>
+                                <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>→ {item.customerPhone}</p>
                               )}
                             </div>
                           );
@@ -594,7 +594,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                     )}
 
                     {/* Payment + Date */}
-                    <div className="flex items-center justify-between text-xs pt-2 border-t" style={{ color: "var(--text-muted)" }}>
+                    <div className="flex items-center justify-between text-xs pt-2 border-t" style={{ color: "var(--color-text-muted)" }}>
                       <div className="flex items-center gap-2">
                         <Badge colorScheme="gray" variant="subtle" size="xs">
                           {(
@@ -613,7 +613,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 hover:underline"
-                              style={{ color: "var(--color-secondary)" }}
+                              style={{ color: "var(--color-amber)" }}
                               onClick={(e) => e.stopPropagation()}
                             >
                               <Eye className="w-3 h-3" /> Proof
@@ -679,8 +679,8 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                   key={order._id}
                   className="flex items-center gap-3 p-3 rounded-lg border transition-colors cursor-pointer"
                   style={{
-                    borderColor: "var(--border-color)",
-                    backgroundColor: hoveredListId === order._id ? "var(--bg-surface-alt)" : undefined,
+                    borderColor: "var(--color-border)",
+                    backgroundColor: hoveredListId === order._id ? "var(--color-surface-alt)" : undefined,
                   }}
                   onMouseEnter={() => setHoveredListId(order._id)}
                   onMouseLeave={() => setHoveredListId(null)}
@@ -692,36 +692,36 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                     style={{
                       backgroundColor:
                         order.status === "completed"
-                          ? "var(--success)"
+                          ? "var(--color-success)"
                           : order.status === "failed" ||
                             order.status === "cancelled"
-                            ? "var(--error)"
+                            ? "var(--color-error)"
                             : order.status === "pending_payment"
-                              ? "var(--warning)"
+                              ? "var(--color-warning)"
                               : order.status === "processing" ||
                                 order.status === "confirmed"
-                                ? "var(--color-secondary)"
-                                : "var(--text-muted)",
+                                ? "var(--color-amber)"
+                                : "var(--color-text-muted)",
                     }}
                   />
 
                   {/* Order number */}
-                  <span className="font-mono text-sm font-medium shrink-0 w-20" style={{ color: "var(--text-primary)" }}>
+                  <span className="font-mono text-sm font-medium shrink-0 w-20" style={{ color: "var(--color-text-primary)" }}>
                     #{order.orderNumber || order._id?.slice(-8)}
                   </span>
 
                   {/* Customer */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm" style={{ color: "var(--color-text-primary)" }}>
                       {order.storefrontData?.customerInfo?.name || "N/A"}
                     </p>
-                    <p className="text-xs sm:hidden" style={{ color: "var(--text-muted)" }}>
+                    <p className="text-xs sm:hidden" style={{ color: "var(--color-text-muted)" }}>
                       {formatDate(order.createdAt)}
                     </p>
                   </div>
 
                   {/* Items count */}
-                  <span className="text-xs shrink-0 hidden sm:block" style={{ color: "var(--text-muted)" }}>
+                  <span className="text-xs shrink-0 hidden sm:block" style={{ color: "var(--color-text-muted)" }}>
                     {(order.storefrontData?.items || []).length} item
                     {(order.storefrontData?.items || []).length !== 1
                       ? "s"
@@ -729,12 +729,12 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                   </span>
 
                   {/* Amount */}
-                  <span className="font-bold text-sm shrink-0" style={{ color: "var(--text-primary)" }}>
+                  <span className="font-bold text-sm shrink-0" style={{ color: "var(--color-text-primary)" }}>
                     GHS {(order.total || 0).toFixed(2)}
                   </span>
 
                   {/* Date (hidden on mobile) */}
-                  <span className="text-xs shrink-0 hidden sm:block w-28 text-right" style={{ color: "var(--text-muted)" }}>
+                  <span className="text-xs shrink-0 hidden sm:block w-28 text-right" style={{ color: "var(--color-text-muted)" }}>
                     {formatDate(order.createdAt)}
                   </span>
 
@@ -777,8 +777,8 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
           {/* Empty state */}
           {displayedOrders.length === 0 && (
             <div className="text-center py-10">
-              <ShoppingBag className="w-10 h-10 mx-auto mb-3" style={{ color: "var(--text-muted)" }} />
-              <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+              <ShoppingBag className="w-10 h-10 mx-auto mb-3" style={{ color: "var(--color-text-muted)" }} />
+              <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
                 {searchTerm || statusFilter
                   ? "No orders match your current filters"
                   : "No orders yet. Orders will appear here when customers make purchases."}
@@ -827,8 +827,8 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
             <DialogBody>
               <div className="space-y-4">
                 {/* Customer */}
-                <div className="p-3 rounded-lg text-sm" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                  <h4 className="font-medium mb-1.5" style={{ color: "var(--text-primary)" }}>Customer</h4>
+                <div className="p-3 rounded-lg text-sm" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                  <h4 className="font-medium mb-1.5" style={{ color: "var(--color-text-primary)" }}>Customer</h4>
                   <p className="font-medium">
                     {selectedOrder.storefrontData?.customerInfo?.name || "N/A"}
                   </p>
@@ -837,19 +837,19 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                 {/* Items with recipient phones */}
                 {(selectedOrder.storefrontData?.items || []).length > 0 && (
                   <div className="space-y-2">
-                    <h4 className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>
+                    <h4 className="font-medium text-sm" style={{ color: "var(--color-text-primary)" }}>
                       Items
                     </h4>
                     {selectedOrder.storefrontData!.items.map((item, idx) => (
-                      <div key={idx} className="p-2.5 rounded-lg text-sm space-y-1" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+                      <div key={idx} className="p-2.5 rounded-lg text-sm space-y-1" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                         <div className="flex justify-between">
-                          <span className="font-medium" style={{ color: "var(--text-primary)" }}>{item.bundleName} x{item.quantity}</span>
+                          <span className="font-medium" style={{ color: "var(--color-text-primary)" }}>{item.bundleName} x{item.quantity}</span>
                           <span className="font-medium">
                             GHS {(item.totalPrice || 0).toFixed(2)}
                           </span>
                         </div>
                         {item.customerPhone && (
-                          <p className="text-xs" style={{ color: "var(--text-muted)" }}>📱 Recipient: <span className="font-medium" style={{ color: "var(--text-primary)" }}>{item.customerPhone}</span></p>
+                          <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>📱 Recipient: <span className="font-medium" style={{ color: "var(--color-text-primary)" }}>{item.customerPhone}</span></p>
                         )}
                       </div>
                     ))}
@@ -864,7 +864,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
 
                 {/* Payment */}
                 <div className="space-y-1.5 text-sm">
-                  <h4 className="font-medium" style={{ color: "var(--text-primary)" }}>Payment</h4>
+                  <h4 className="font-medium" style={{ color: "var(--color-text-primary)" }}>Payment</h4>
                   <Badge colorScheme="gray" variant="subtle">
                     {(
                       selectedOrder.storefrontData?.paymentMethod?.type || ""
@@ -873,7 +873,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                       .toUpperCase()}
                   </Badge>
                   {selectedOrder.storefrontData?.paymentMethod?.reference && (
-                    <p style={{ color: "var(--text-muted)" }}>
+                    <p style={{ color: "var(--color-text-muted)" }}>
                       Ref:{" "}
                       {selectedOrder.storefrontData.paymentMethod.reference}
                     </p>
@@ -888,14 +888,14 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 hover:underline"
-                        style={{ color: "var(--color-secondary)" }}
+                        style={{ color: "var(--color-amber)" }}
                       >
                         <Eye className="w-3.5 h-3.5" /> View Payment Proof
                       </a>
                     )}
                 </div>
 
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
                   {formatDate(selectedOrder.createdAt)}
                 </p>
               </div>
@@ -969,8 +969,8 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
           {verificationModal.order && (
             <div className="space-y-4">
               {/* Order summary */}
-              <div className="p-3 sm:p-4 rounded-lg space-y-2 text-sm" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                <h4 className="font-medium" style={{ color: "var(--text-primary)" }}>Order Details</h4>
+              <div className="p-3 sm:p-4 rounded-lg space-y-2 text-sm" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                <h4 className="font-medium" style={{ color: "var(--color-text-primary)" }}>Order Details</h4>
                 <p>
                   <strong>Order:</strong>{" "}
                   {verificationModal.order.orderNumber ||
@@ -1021,7 +1021,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 hover:underline"
-                      style={{ color: "var(--color-secondary)" }}
+                      style={{ color: "var(--color-amber)" }}
                     >
                       <ExternalLink className="w-3.5 h-3.5" /> View Payment
                       Proof
@@ -1032,7 +1032,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                 {(verificationModal.order.storefrontData?.items || [])
                   .length > 0 && (
                     <div className="mt-2 pt-2 border-t space-y-1.5">
-                      <h5 className="font-medium" style={{ color: "var(--text-primary)" }}>Items:</h5>
+                      <h5 className="font-medium" style={{ color: "var(--color-text-primary)" }}>Items:</h5>
                       {verificationModal.order.storefrontData.items.map(
                         (item, idx) => (
                           <div key={idx}>
@@ -1045,7 +1045,7 @@ export const OrderManager: React.FC<OrderManagerProps> = () => {
                               </span>
                             </div>
                             {item.customerPhone && (
-                              <p className="text-xs" style={{ color: "var(--text-muted)" }}>📱 Recipient: <span className="font-medium" style={{ color: "var(--text-primary)" }}>{item.customerPhone}</span></p>
+                              <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>📱 Recipient: <span className="font-medium" style={{ color: "var(--color-text-primary)" }}>{item.customerPhone}</span></p>
                             )}
                           </div>
                         ),

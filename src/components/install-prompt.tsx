@@ -3,6 +3,7 @@ import { useInstallPrompt } from "../hooks/use-install-prompt";
 import { Button } from "../design-system/components/button";
 import { Modal } from "../design-system/components/modal";
 import { Download, Smartphone } from "lucide-react";
+import { brand } from "../config/brand";
 
 interface InstallPromptProps {
   trigger?: "auto" | "manual";
@@ -69,7 +70,7 @@ export const InstallPrompt: React.FC<InstallPromptProps> = ({
         <div className="flex items-start mb-4">
           <div className="flex items-center space-x-3">
             <div
-              className="p-2 rounded-lg"
+              className="p-2"
               style={{ backgroundColor: "var(--color-primary-50)" }}
             >
               <Smartphone
@@ -79,7 +80,7 @@ export const InstallPrompt: React.FC<InstallPromptProps> = ({
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900">
-                Install BryteLinks
+                Install {brand.name}
               </h3>
               <p className="text-sm text-gray-600">
                 Get the full app experience
@@ -91,19 +92,19 @@ export const InstallPrompt: React.FC<InstallPromptProps> = ({
         <div className="mb-6">
           <ul className="space-y-2 text-sm text-gray-700">
             <li className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-[var(--color-success)]"></div>
               <span>Receive instant order notifications</span>
             </li>
             <li className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-[var(--color-success)]"></div>
               <span>Access offline when network is unavailable</span>
             </li>
             <li className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-[var(--color-success)]"></div>
               <span>Quick access from your home screen</span>
             </li>
             <li className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-[var(--color-success)]"></div>
               <span>Native app-like performance</span>
             </li>
           </ul>

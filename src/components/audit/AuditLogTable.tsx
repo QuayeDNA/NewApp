@@ -295,7 +295,7 @@ export const AuditLogTable = (_props?: { filters?: any }) => {
                   </TableRow>
                   {isExpanded && (
                     <TableRow key={`${log._id}-details`}>
-                      <TableCell colSpan={6} className="bg-gray-50">
+                      <TableCell colSpan={6} className="bg-[var(--color-surface-alt)]">
                         <div className="grid gap-6 md:grid-cols-2">
                           {changes.length > 0 && (
                             <div>
@@ -306,19 +306,19 @@ export const AuditLogTable = (_props?: { filters?: any }) => {
                                 {changes.map((c) => (
                                   <div
                                     key={c.field}
-                                    className="rounded border border-gray-200 bg-white p-2 text-sm"
+                                    className="border border-[var(--color-border)] bg-[var(--color-surface)] p-2 text-sm"
                                   >
                                     <div className="mb-1 font-medium text-gray-700">
                                       {c.field}
                                     </div>
                                     <div className="flex items-center gap-2 text-xs">
-                                      <span className="rounded bg-red-50 px-1.5 py-0.5 text-red-700 line-through">
+                                      <span className="bg-red-50 px-1.5 py-0.5 text-red-700 line-through">
                                         {c.from}
                                       </span>
                                       <span className="text-gray-400">
                                         &rarr;
                                       </span>
-                                      <span className="rounded bg-green-50 px-1.5 py-0.5 text-green-700">
+                                      <span className="bg-green-50 px-1.5 py-0.5 text-green-700">
                                         {c.to}
                                       </span>
                                     </div>

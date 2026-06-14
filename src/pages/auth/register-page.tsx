@@ -415,10 +415,19 @@ export const RegisterPage = () => {
     <AuthLayout
       title="Create account"
       subtitle="Register to start vending airtime and data."
-      backLink="/home"
-      backLabel="Back"
       steps={STEPS_REGISTRATION.map((step) => step.title)}
       activeStep={currentStep}
+      footer={
+        <p className="text-[var(--color-text-secondary)]">
+          Already have an account?{" "}
+          <Link
+            className="font-semibold text-[var(--color-ink)] hover:text-[var(--color-ink-hover)]"
+            to="/login"
+          >
+            Sign in here
+          </Link>
+        </p>
+      }
     >
       {localError && (
         <Alert status="error" variant="left-accent" className="mb-6">
@@ -440,7 +449,7 @@ export const RegisterPage = () => {
               type="text"
               required
               placeholder="Enter your full name"
-              leftIcon={<FaUser className="text-[var(--text-muted)]" />}
+              leftIcon={<FaUser className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("fullName") ? fieldErrors.fullName : undefined
               }
@@ -453,12 +462,12 @@ export const RegisterPage = () => {
               type="email"
               required
               placeholder="your.email@example.com"
-              leftIcon={<FaEnvelope className="text-[var(--text-muted)]" />}
+              leftIcon={<FaEnvelope className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("email") ? fieldErrors.email : undefined
               }
             />
-            <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4 text-sm text-[var(--text-secondary)]">
+            <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4 text-sm text-[var(--color-text-secondary)]">
               Provide the name and email used for notifications and account
               security.
             </div>
@@ -477,7 +486,7 @@ export const RegisterPage = () => {
               type="text"
               required
               placeholder="Enter your business name"
-              leftIcon={<FaBuilding className="text-[var(--text-muted)]" />}
+              leftIcon={<FaBuilding className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("businessName")
                   ? fieldErrors.businessName
@@ -492,12 +501,12 @@ export const RegisterPage = () => {
               type="tel"
               required
               placeholder="+233 XX XXX XXXX"
-              leftIcon={<FaPhoneAlt className="text-[var(--text-muted)]" />}
+              leftIcon={<FaPhoneAlt className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("phone") ? fieldErrors.phone : undefined
               }
             />
-            <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4 text-sm text-[var(--text-secondary)]">
+            <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4 text-sm text-[var(--color-text-secondary)]">
               Your business details help us approve your account faster.
             </div>
           </div>
@@ -519,14 +528,14 @@ export const RegisterPage = () => {
               onBlur={() => handleFieldBlur("referralCode")}
               type="text"
               placeholder="Enter referral code if you have one"
-              leftIcon={<FaShareAlt className="text-[var(--text-muted)]" />}
+              leftIcon={<FaShareAlt className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("referralCode")
                   ? fieldErrors.referralCode
                   : undefined
               }
             />
-            <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--warning)]/10 p-4 text-sm text-[var(--warning)]">
+            <div className="border border-[var(--color-border)] bg-[var(--color-warning)]/10 p-4 text-sm text-[var(--color-warning)]">
               Have a referral code? Enter it above to get started with bonus
               benefits from your referrer.
             </div>
@@ -539,12 +548,12 @@ export const RegisterPage = () => {
                 type={showPasswords ? "text" : "password"}
                 required
                 placeholder="Create a strong password"
-                leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+                leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
                 rightIcon={
                   <button
                     type="button"
                     onClick={() => setShowPasswords(!showPasswords)}
-                    className="text-slate-400 hover:text-slate-600 transition-colors p-2 rounded-full"
+                    className="text-slate-400 hover:text-slate-600 transition-colors p-2"
                     aria-label={
                       showPasswords ? "Hide password" : "Show password"
                     }
@@ -560,21 +569,21 @@ export const RegisterPage = () => {
               />
               {formData.password && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center justify-between text-sm text-[var(--color-text-secondary)]">
                     <span>Password Strength</span>
                     <span
                       className={
                         passwordStrength.strength === 100
                           ? "text-success"
                           : passwordStrength.strength >= 60
-                            ? "text-[var(--warning)]"
+                            ? "text-[var(--color-warning)]"
                             : "text-error"
                       }
                     >
                       {passwordStrength.label}
                     </span>
                   </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-[var(--border-color)]">
+                  <div className="h-2 overflow-hidden bg-[var(--color-border)]">
                     <div
                       className={`${passwordStrength.color} h-full transition-all duration-300`}
                       style={{ width: `${passwordStrength.strength}%` }}
@@ -593,14 +602,14 @@ export const RegisterPage = () => {
               type={showPasswords ? "text" : "password"}
               required
               placeholder="Confirm your password"
-              leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+              leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
               errorText={
                 touchedFields.has("confirmPassword")
                   ? fieldErrors.confirmPassword
                   : undefined
               }
             />
-            <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4 grid gap-2 text-sm text-[var(--text-secondary)]">
+            <div className="border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4 grid gap-2 text-sm text-[var(--color-text-secondary)]">
               {[
                 {
                   valid: passwordValidation.length,
@@ -619,7 +628,7 @@ export const RegisterPage = () => {
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3">
                   <div
-                    className={`flex h-5 w-5 items-center justify-center rounded-full ${item.valid ? "bg-success/20 text-success" : "bg-[var(--border-color)] text-[var(--text-muted)]"}`}
+                    className={`flex h-5 w-5 items-center justify-center ${item.valid ? "bg-success/20 text-success" : "bg-[var(--color-border)] text-[var(--color-text-muted)]"}`}
                   >
                     {item.valid ? (
                       <FaCheck size={12} />
@@ -634,7 +643,7 @@ export const RegisterPage = () => {
           </div>
         )}
 
-        <div className="flex gap-3 pt-6 border-t border-[var(--border-color)]">
+        <div className="flex gap-3 pt-6 border-t border-[var(--color-border)]">
           <Button
             type="button"
             variant="outline"
@@ -681,15 +690,6 @@ export const RegisterPage = () => {
           )}
         </div>
 
-        <div className="text-center mt-6 text-sm text-[var(--text-secondary)]">
-          Already have an account?{" "}
-          <Link
-            className="font-semibold text-primary hover:text-[var(--color-primary-hover)]"
-            to="/login"
-          >
-            Sign in here
-          </Link>
-        </div>
       </form>
 
       <Dialog
@@ -699,21 +699,21 @@ export const RegisterPage = () => {
       >
         <DialogHeader>
           <div className="flex items-center gap-3">
-            <div className="rounded-2xl bg-success/20 p-3 text-success">
+            <div className="bg-success/20 p-3 text-success">
               <FaCheckCircle size={24} />
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+              <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">
                 Registration submitted
               </h2>
-              <p className="text-sm text-[var(--text-secondary)]">
+              <p className="text-sm text-[var(--color-text-secondary)]">
                 Your account is pending approval.
               </p>
             </div>
           </div>
         </DialogHeader>
         <DialogBody>
-          <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+          <div className="space-y-3 text-sm text-[var(--color-text-secondary)]">
             <p>We will review your registration within 24-48 hours.</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>Watch your inbox for approval updates.</li>

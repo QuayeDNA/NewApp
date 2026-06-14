@@ -72,12 +72,12 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
 
     if (!isActive) {
       return {
-        borderColor: "var(--border-color)",
-        backgroundColor: "var(--bg-surface-alt)",
-        iconColor: "var(--text-muted)",
-        avatarBg: "var(--bg-surface-alt)",
-        badgeColor: "var(--text-muted)",
-        checkColor: "var(--text-muted)",
+        borderColor: "var(--color-border)",
+        backgroundColor: "var(--color-surface-alt)",
+        iconColor: "var(--color-text-muted)",
+        avatarBg: "var(--color-surface-alt)",
+        badgeColor: "var(--color-text-muted)",
+        checkColor: "var(--color-text-muted)",
       };
     }
 
@@ -122,8 +122,8 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
             </span>
           </div>
           <div className="text-left">
-            <p className="font-medium" style={{ color: "var(--text-primary)" }}>{label}</p>
-            <p className="text-xs" style={{ color: "var(--text-secondary)" }}>{description}</p>
+            <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{label}</p>
+            <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>{description}</p>
           </div>
         </div>
         {count > 0 && (
@@ -137,8 +137,8 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
     <Dialog isOpen={isOpen} onClose={onClose} size="md">
       <DialogHeader>
         <div className="flex items-center gap-2">
-          <FaCheckSquare style={{ color: "var(--color-primary)" }} />
-          <h2 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+          <FaCheckSquare style={{ color: "var(--color-ink)" }} />
+          <h2 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
             Smart Bulk Selection
           </h2>
         </div>
@@ -149,12 +149,12 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
           <div
             className="rounded-lg p-3 flex gap-2"
             style={{
-              backgroundColor: `color-mix(in srgb, var(--color-primary) 8%, transparent)`,
-              border: `1px solid color-mix(in srgb, var(--color-primary) 20%, transparent)`,
+              backgroundColor: `color-mix(in srgb, var(--color-ink) 8%, transparent)`,
+              border: `1px solid color-mix(in srgb, var(--color-ink) 20%, transparent)`,
             }}
           >
-            <FaInfoCircle className="flex-shrink-0 mt-0.5" style={{ color: "var(--color-primary)" }} />
-            <div className="text-sm" style={{ color: "var(--color-primary)" }}>
+            <FaInfoCircle className="flex-shrink-0 mt-0.5" style={{ color: "var(--color-ink)" }} />
+            <div className="text-sm" style={{ color: "var(--color-ink)" }}>
               <p className="font-medium mb-1">Select orders by status</p>
               <p>
                 Only Pending and Processing orders can be bulk selected.
@@ -165,7 +165,7 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
 
           {/* Status Selection Options */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
               Select Orders by Status:
             </h3>
 
@@ -177,9 +177,9 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
           {/* Reported Orders Section */}
           {onSelectByReceptionStatus && totalReportedOrders > 0 && (
             <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-2 pb-2" style={{ borderBottom: "1px solid var(--border-color)" }}>
-                <FaExclamationTriangle style={{ color: "var(--warning)" }} />
-                <h3 className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+              <div className="flex items-center gap-2 pb-2" style={{ borderBottom: "1px solid var(--color-border)" }}>
+                <FaExclamationTriangle style={{ color: "var(--color-warning)" }} />
+                <h3 className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                   Reported Orders (Reception Issues)
                 </h3>
               </div>
@@ -195,13 +195,13 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
             <div
               className="rounded-lg p-3"
               style={{
-                backgroundColor: `color-mix(in srgb, var(--success) 8%, transparent)`,
-                border: `1px solid color-mix(in srgb, var(--success) 20%, transparent)`,
+                backgroundColor: `color-mix(in srgb, var(--color-success) 8%, transparent)`,
+                border: `1px solid color-mix(in srgb, var(--color-success) 20%, transparent)`,
               }}
             >
               <div className="flex items-start gap-2">
-                <FaTable className="flex-shrink-0 mt-0.5" style={{ color: "var(--success)" }} />
-                <div className="text-sm" style={{ color: "var(--success)" }}>
+                <FaTable className="flex-shrink-0 mt-0.5" style={{ color: "var(--color-success)" }} />
+                <div className="text-sm" style={{ color: "var(--color-success)" }}>
                   <p className="font-medium mb-1">
                     Need to copy order details?
                   </p>
@@ -215,7 +215,7 @@ export const SmartSelectDialog: React.FC<SmartSelectDialogProps> = ({
                       onClose();
                     }}
                     className="font-medium underline"
-                    style={{ color: "var(--success)" }}
+                    style={{ color: "var(--color-success)" }}
                   >
                     Switch to Excel View →
                   </button>

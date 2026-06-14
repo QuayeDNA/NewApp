@@ -1,43 +1,42 @@
-/* theme.css — Tailwind v4 @theme using Brytelinks design system CSS variables */
+/* theme.css — Tailwind v4 @theme mapping for Ink & Steel tokens */
 
 @theme {
-  /* Map Brytelinks CSS variables to Tailwind utility classes */
-  --color-primary: var(--color-primary);
-  --color-primary-hover: var(--color-primary-hover);
-  --color-primary-active: var(--color-primary-active);
+  --color-ink: var(--color-ink);
+  --color-ink-hover: var(--color-ink-hover);
+  --color-ink-active: var(--color-ink-active);
 
-  --color-secondary: var(--color-secondary);
-  --color-secondary-hover: var(--color-secondary-hover);
-  --color-secondary-active: var(--color-secondary-active);
+  --color-steel: var(--color-steel);
+  --color-steel-hover: var(--color-steel-hover);
+  --color-steel-active: var(--color-steel-active);
 
-  --color-accent: var(--color-accent);
-  --color-accent-soft: var(--color-accent-soft);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-ground: var(--color-ground);
 
-  --color-navy-dark: var(--color-navy-dark);
-  --color-navy: var(--color-navy);
-  --color-blue-mid: var(--color-blue-mid);
+  --color-sidebar: var(--color-sidebar);
+  --color-header: var(--color-header);
+  --color-text-header: var(--color-text-header);
+  --color-text-sidebar: var(--color-text-sidebar);
 
-  --color-bg-page: var(--bg-page);
-  --color-bg-surface: var(--bg-surface);
-  --color-bg-surface-alt: var(--bg-surface-alt);
-  --color-bg-header: var(--bg-header);
-  --color-bg-sidebar: var(--bg-sidebar);
-  --color-bg-sidebar-header: var(--bg-sidebar-header);
+  --color-amber: var(--color-amber);
+  --color-amber-hover: var(--color-amber-hover);
+  --color-amber-active: var(--color-amber-active);
 
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  --color-text-inverse: var(--text-inverse);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
 
-  --color-border-color: var(--border-color);
-  --color-border-color-strong: var(--border-color-strong);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
 
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-  --color-info: var(--info);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
 
-  --font-family-sans: var(--font-family);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 
   --radius-xs: var(--radius-xs);
   --radius-sm: var(--radius-sm);
@@ -55,26 +54,57 @@
   --shadow-glow: var(--shadow-glow);
 }
 
-/* Legacy alias variables for backward compatibility */
+/* Legacy alias variables for backward compatibility during migration */
 :root {
-  --color-primary-500: var(--color-primary);
-  --color-primary-600: var(--color-primary-hover);
-  --color-primary-700: var(--color-primary-active);
-  --color-secondary-500: var(--color-secondary);
-  --color-secondary-600: var(--color-secondary-hover);
-  --color-secondary-700: var(--color-secondary-active);
-  --color-mutedText: var(--text-muted);
-  --color-secondaryText: var(--text-secondary);
-  --color-border: var(--border-color);
-  --color-background: var(--bg-page);
-  --color-surface: var(--bg-surface);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-  --color-info: var(--info);
-  --color-darkBase: var(--color-navy-dark);
-
   --header-height: 4rem;
   --sidebar-width: 16rem;
   --sidebar-collapsed-width: 5rem;
+
+  /* Backward-compat aliases — old BryteLinks var → new Ink & Steel var */
+  --color-primary: var(--color-ink);
+  --color-primary-hover: var(--color-ink-hover);
+  --color-primary-active: var(--color-ink-active);
+  --color-primary-500: var(--color-ink);
+
+  --color-secondary: var(--color-amber);
+  --color-secondary-hover: var(--color-amber-hover);
+  --color-secondary-active: var(--color-amber-active);
+
+  --color-accent: var(--color-amber);
+  --color-accent-soft: rgba(245, 158, 11, 0.12);
+
+  --bg-page: var(--color-ground);
+  --bg-surface: var(--color-surface);
+  --bg-surface-alt: var(--color-surface-alt);
+  --bg-muted: var(--color-ground);
+  --bg-header: var(--color-header);
+  --bg-sidebar: var(--color-sidebar);
+  --bg-sidebar-header: var(--color-sidebar);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --text-inverse: var(--color-text-inverse);
+
+  --border-color: var(--color-border);
+  --border-color-strong: var(--color-border-strong);
+
+  --color-navy-dark: var(--color-ink);
+  --color-navy: var(--color-ink-hover);
+  --color-blue-mid: var(--color-amber);
+
+  --success: var(--color-success);
+  --warning: var(--color-warning);
+  --error: var(--color-error);
+  --info: var(--color-info);
+
+  --gradient-primary: var(--color-ink);
+  --gradient-brand-dark: var(--color-ink);
+  --gradient-dark: var(--color-ink);
+  --gradient-glow: var(--color-amber);
+  --gradient-surface: var(--color-surface);
+
+  --font-family: var(--font-body);
+  --accent: var(--color-amber);
 }

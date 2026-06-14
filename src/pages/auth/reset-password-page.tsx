@@ -79,15 +79,26 @@ export const ResetPasswordPage = () => {
           ? "You can now sign in to your vendor account."
           : "Create a strong password to secure your account."
       }
-      backLink="/login"
-      backLabel="Back"
+      footer={
+        !isSuccess ? (
+          <p className="text-[var(--color-text-secondary)]">
+            Remembered your password?{" "}
+            <Link
+              className="font-semibold text-[var(--color-ink)] hover:text-[var(--color-ink-hover)]"
+              to="/login"
+            >
+              Sign in
+            </Link>
+          </p>
+        ) : undefined
+      }
     >
       {isSuccess ? (
         <div className="space-y-6 text-center">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-success/20 text-success">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center bg-success/20 text-success">
             <FaCheck size={28} />
           </div>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--color-text-secondary)]">
             Your password has been updated successfully.
           </p>
           <Link to="/login">
@@ -118,12 +129,12 @@ export const ResetPasswordPage = () => {
               required
               placeholder="••••••••"
               fullWidth
-              leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+              leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
               rightIcon={
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -140,12 +151,12 @@ export const ResetPasswordPage = () => {
               required
               placeholder="••••••••"
               fullWidth
-              leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+              leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
               rightIcon={
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
                 >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>

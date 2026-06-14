@@ -28,22 +28,22 @@ const SCHEME_CHECKED_BG: Record<
   Exclude<SwitchColorScheme, "default">,
   string
 > = {
-  success: "bg-green-500",
-  error: "bg-red-500",
-  warning: "bg-yellow-500",
-  info: "bg-blue-500",
-  gray: "bg-gray-500",
+  success: "bg-[var(--color-success)]",
+  error: "bg-[var(--color-error)]",
+  warning: "bg-[var(--color-warning)]",
+  info: "bg-[var(--color-info)]",
+  gray: "bg-[var(--color-text-muted)]",
 };
 
 const SCHEME_RING_COLOR: Record<
   Exclude<SwitchColorScheme, "default">,
   string
 > = {
-  success: "focus:ring-green-500",
-  error: "focus:ring-red-500",
-  warning: "focus:ring-yellow-500",
-  info: "focus:ring-blue-500",
-  gray: "focus:ring-gray-500",
+  success: "focus:ring-[var(--color-success)]",
+  error: "focus:ring-[var(--color-error)]",
+  warning: "focus:ring-[var(--color-warning)]",
+  info: "focus:ring-[var(--color-info)]",
+  gray: "focus:ring-[var(--color-text-muted)]",
 };
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
@@ -86,15 +86,15 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     let bgStyle: React.CSSProperties = {};
 
     if (isDisabled) {
-      bgClass = "bg-[var(--border-color)] cursor-not-allowed";
+      bgClass = "bg-[var(--color-border)] cursor-not-allowed";
     } else if (!checked) {
-      bgClass = "bg-[var(--border-color)]";
+      bgClass = "bg-[var(--color-border)]";
     } else if (isDefault) {
       // Use CSS variable for theme-aware primary color (avoids Tailwind JIT purge)
       bgClass = "";
-      bgStyle = { backgroundColor: "var(--color-primary-500)" };
+      bgStyle = { backgroundColor: "var(--color-ink)" };
     } else {
-      bgClass = SCHEME_CHECKED_BG[colorScheme] ?? "bg-blue-500";
+      bgClass = SCHEME_CHECKED_BG[colorScheme] ?? "bg-[var(--color-info)]";
     }
 
     // Determine focus ring class and inline style
@@ -104,10 +104,10 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     if (isDefault) {
       ringClass = "focus:ring-2 focus:ring-offset-2";
       ringStyle = {
-        "--tw-ring-color": "var(--color-primary-500)",
+        "--tw-ring-color": "var(--color-ink)",
       } as React.CSSProperties;
     } else {
-      ringClass = `focus:ring-2 focus:ring-offset-2 ${SCHEME_RING_COLOR[colorScheme] ?? "focus:ring-blue-500"}`;
+      ringClass = `focus:ring-2 focus:ring-offset-2 ${SCHEME_RING_COLOR[colorScheme] ?? "focus:ring-[var(--color-info)]"}`;
     }
 
     const handleClick = () => {
@@ -135,7 +135,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           className={`
-            relative inline-flex shrink-0 cursor-pointer rounded-full border-2 border-transparent
+            relative inline-flex shrink-0 cursor-pointer border-2 border-transparent
             transition-colors duration-200 ease-in-out focus:outline-none
             ${ringClass} ${config.switch} ${bgClass}
           `}
@@ -143,15 +143,15 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         >
           <span
             className={`
-              pointer-events-none inline-block transform rounded-full shadow ring-0
-              transition duration-200 ease-in-out bg-white
+              pointer-events-none inline-block transform shadow ring-0
+              transition duration-200 ease-in-out bg-[var(--color-text-inverse)]
               ${config.knob}
               ${checked ? config.translate : "translate-x-0"}
             `}
           />
         </button>
         {label && (
-          <span className="ml-3 text-sm font-medium text-[var(--text-primary)]">
+          <span className="ml-3 text-sm font-medium text-[var(--color-text-primary)]">
             {label}
           </span>
         )}

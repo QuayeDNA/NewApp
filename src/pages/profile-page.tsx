@@ -118,13 +118,13 @@ export const ProfilePage: React.FC = () => {
   const getConnectionStatusIndicator = () => {
     switch (connectionStatus) {
       case "websocket":
-        return <FaWifi className="w-4 h-4" style={{ color: "var(--success)" }} />;
+        return <FaWifi className="w-4 h-4" style={{ color: "var(--color-success)" }} />;
       case "polling":
-        return <FaSync className="w-4 h-4 animate-spin" style={{ color: "var(--warning)" }} />;
+        return <FaSync className="w-4 h-4 animate-spin" style={{ color: "var(--color-warning)" }} />;
       case "disconnected":
-        return <FaWifi className="w-4 h-4" style={{ color: "var(--error)" }} />;
+        return <FaWifi className="w-4 h-4" style={{ color: "var(--color-error)" }} />;
       default:
-        return <FaWifi className="w-4 h-4" style={{ color: "var(--text-muted)" }} />;
+        return <FaWifi className="w-4 h-4" style={{ color: "var(--color-text-muted)" }} />;
     }
   };
 
@@ -408,10 +408,10 @@ export const ProfilePage: React.FC = () => {
         <div className="mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
+              <h1 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: "var(--color-text-primary)" }}>
                 My Profile
               </h1>
-              <p className="text-sm sm:text-base" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm sm:text-base" style={{ color: "var(--color-text-secondary)" }}>
                 Manage your account information and settings
               </p>
             </div>
@@ -430,15 +430,15 @@ export const ProfilePage: React.FC = () => {
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardBody>
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg flex-shrink-0" style={{ background: "var(--gradient-primary)" }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg flex-shrink-0" style={{ background: "var(--color-ink)" }}>
                   {profileData.fullName.charAt(0)}
                   {profileData.fullName.split(" ")[1]?.charAt(0) ?? ""}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-bold truncate" style={{ color: "var(--text-primary)" }}>
+                  <h2 className="text-xl font-bold truncate" style={{ color: "var(--color-text-primary)" }}>
                     {profileData.fullName}
                   </h2>
-                  <p className="text-sm truncate mb-2" style={{ color: "var(--text-secondary)" }}>
+                  <p className="text-sm truncate mb-2" style={{ color: "var(--color-text-secondary)" }}>
                     {profileData.email}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -466,36 +466,36 @@ export const ProfilePage: React.FC = () => {
           {/* Contact Information Card */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                <FaUser style={{ color: "var(--color-primary)" }} />
+              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                <FaUser style={{ color: "var(--color-ink)" }} />
                 Contact Information
               </h3>
             </CardHeader>
             <CardBody>
               <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)` }}>
-                    <FaEnvelope style={{ color: "var(--color-primary)" }} />
+                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-ink) 15%, transparent)` }}>
+                    <FaEnvelope style={{ color: "var(--color-ink)" }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                       Email
                     </p>
-                    <p className="text-sm font-medium truncate" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm font-medium truncate" style={{ color: "var(--color-text-primary)" }}>
                       {profileData.email}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--success) 15%, transparent)` }}>
-                    <FaPhone style={{ color: "var(--success)" }} />
+                <div className="flex items-center gap-3 p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-success) 15%, transparent)` }}>
+                    <FaPhone style={{ color: "var(--color-success)" }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                       Phone
                     </p>
-                    <p className="text-sm font-medium truncate" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm font-medium truncate" style={{ color: "var(--color-text-primary)" }}>
                       {profileData.phone}
                     </p>
                   </div>
@@ -508,39 +508,39 @@ export const ProfilePage: React.FC = () => {
           {isBusinessUser(profileData.userType) && (
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                  <FaStore style={{ color: "var(--success)" }} />
+                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                  <FaStore style={{ color: "var(--color-success)" }} />
                   Business Information
                 </h3>
               </CardHeader>
               <CardBody>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                       Business Name
                     </p>
-                    <p className="text-sm font-medium truncate" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm font-medium truncate" style={{ color: "var(--color-text-primary)" }}>
                       {profileData.businessName ?? "N/A"}
                     </p>
                   </div>
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                       Category
                     </p>
-                    <p className="text-sm font-medium capitalize truncate" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm font-medium capitalize truncate" style={{ color: "var(--color-text-primary)" }}>
                       {profileData.businessCategory ?? "N/A"}
                     </p>
                   </div>
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                       Plan
                     </p>
                     <Badge color="blue" className="text-xs">
                       {profileData.subscriptionPlan ?? "Basic"}
                     </Badge>
                   </div>
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                       Status
                     </p>
                     <Badge
@@ -563,8 +563,8 @@ export const ProfilePage: React.FC = () => {
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                  <FaWallet style={{ color: "var(--success)" }} />
+                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                  <FaWallet style={{ color: "var(--color-success)" }} />
                   Wallet Balance
                 </h3>
                 <Button
@@ -580,14 +580,14 @@ export const ProfilePage: React.FC = () => {
             </CardHeader>
             <CardBody>
               <div className="text-center">
-                <p className="text-3xl font-bold mb-2" style={{ color: "var(--success)" }}>
+                <p className="text-3xl font-bold mb-2" style={{ color: "var(--color-success)" }}>
                   GH¢{walletBalance?.toFixed(2) ?? "0.00"}
                 </p>
-                <div className="flex items-center justify-center gap-2 text-sm mb-2" style={{ color: "var(--text-secondary)" }}>
+                <div className="flex items-center justify-center gap-2 text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>
                   {getConnectionStatusIndicator()}
                   <span>{getConnectionStatusText()}</span>
                 </div>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>Real-time balance</p>
+                <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>Real-time balance</p>
               </div>
             </CardBody>
           </Card>
@@ -595,22 +595,22 @@ export const ProfilePage: React.FC = () => {
           {/* Account Details Card */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                <FaCalendar style={{ color: "var(--warning)" }} />
+              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                <FaCalendar style={{ color: "var(--color-warning)" }} />
                 Account Details
               </h3>
             </CardHeader>
             <CardBody>
-              <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+              <div className="p-3 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--warning) 15%, transparent)` }}>
-                    <FaCalendar className="w-4 h-4" style={{ color: "var(--warning)" }} />
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-warning) 15%, transparent)` }}>
+                    <FaCalendar className="w-4 h-4" style={{ color: "var(--color-warning)" }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                    <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                       Member Since
                     </p>
-                    <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                    <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                       {new Intl.DateTimeFormat("en-GB", {
                         day: "2-digit",
                         month: "short",
@@ -626,7 +626,7 @@ export const ProfilePage: React.FC = () => {
           {/* Quick Actions Card */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
                 Quick Actions
               </h3>
             </CardHeader>
@@ -658,7 +658,7 @@ export const ProfilePage: React.FC = () => {
               >
                 Update Security PIN
               </Button>
-              <div className="pt-3 mt-3" style={{ borderTop: "1px solid var(--border-color)" }}>
+              <div className="pt-3 mt-3" style={{ borderTop: "1px solid var(--color-border)" }}>
                 <Button
                   color="red"
                   variant="outline"
@@ -675,16 +675,16 @@ export const ProfilePage: React.FC = () => {
           {/* Appearance Settings */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                <FaPalette style={{ color: "var(--color-primary)" }} />
+              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                <FaPalette style={{ color: "var(--color-ink)" }} />
                 Appearance
               </h3>
             </CardHeader>
             <CardBody>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium" style={{ color: "var(--text-primary)" }}>Dark Mode</p>
-                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>Toggle between light and dark theme</p>
+                  <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>Dark Mode</p>
+                  <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>Toggle between light and dark theme</p>
                 </div>
                 <DarkModeToggle />
               </div>
@@ -694,8 +694,8 @@ export const ProfilePage: React.FC = () => {
           {/* Push Notification Settings */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                <FaBell style={{ color: "var(--warning)" }} />
+              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                <FaBell style={{ color: "var(--color-warning)" }} />
                 Push Notifications
               </h3>
             </CardHeader>
@@ -710,10 +710,10 @@ export const ProfilePage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium" style={{ color: "var(--text-primary)" }}>
+                      <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>
                         Enable Push Notifications
                       </p>
-                      <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                      <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                         Receive notifications outside the app
                       </p>
                     </div>
@@ -731,15 +731,15 @@ export const ProfilePage: React.FC = () => {
                       />
                       <div className="w-11 h-6 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"
                         style={{
-                          backgroundColor: pushPreferences.enabled ? "var(--color-primary)" : "var(--border-color)",
-                          boxShadow: `0 0 0 0 var(--color-primary)`,
+                          backgroundColor: pushPreferences.enabled ? "var(--color-ink)" : "var(--color-border)",
+                          boxShadow: `0 0 0 0 var(--color-ink)`,
                         }}
                       ></div>
                     </label>
                   </div>
 
-                  <div className="mt-3 p-3 rounded-md" style={{ border: "1px solid var(--border-color)", backgroundColor: "var(--bg-surface-alt)" }}>
-                    <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                  <div className="mt-3 p-3 rounded-md" style={{ border: "1px solid var(--color-border)", backgroundColor: "var(--color-surface-alt)" }}>
+                    <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                       Browser permission: {browserPermission}
                     </p>
                     {browserPermission === "default" && (
@@ -752,14 +752,14 @@ export const ProfilePage: React.FC = () => {
                       </Button>
                     )}
                     {browserPermission === "denied" && (
-                      <p className="text-sm" style={{ color: "var(--error)" }}>
+                      <p className="text-sm" style={{ color: "var(--color-error)" }}>
                         Browser notifications are blocked. Please allow
                         notifications in your browser settings and refresh the
                         page.
                       </p>
                     )}
                     {browserPermission === "granted" && (
-                      <p className="text-sm" style={{ color: "var(--success)" }}>
+                      <p className="text-sm" style={{ color: "var(--color-success)" }}>
                         Browser notifications are enabled.
                       </p>
                     )}
@@ -767,18 +767,18 @@ export const ProfilePage: React.FC = () => {
 
                   {pushPreferences.enabled && (
                     <>
-                      <div className="pt-4 space-y-3" style={{ borderTop: "1px solid var(--border-color)" }}>
+                      <div className="pt-4 space-y-3" style={{ borderTop: "1px solid var(--color-border)" }}>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm" style={{ color: "var(--text-primary)" }}>
+                          <span className="text-sm" style={{ color: "var(--color-text-primary)" }}>
                             Order Updates
                           </span>
                           <input
                             type="checkbox"
                             className="w-4 h-4 rounded"
                             style={{
-                              accentColor: "var(--color-primary)",
-                              borderColor: "var(--border-color)",
-                              backgroundColor: "var(--bg-surface-alt)",
+                              accentColor: "var(--color-ink)",
+                              borderColor: "var(--color-border)",
+                              backgroundColor: "var(--color-surface-alt)",
                             }}
                             checked={pushPreferences.orderUpdates}
                             onChange={(e) =>
@@ -790,16 +790,16 @@ export const ProfilePage: React.FC = () => {
                           />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm" style={{ color: "var(--text-primary)" }}>
+                          <span className="text-sm" style={{ color: "var(--color-text-primary)" }}>
                             Wallet Updates
                           </span>
                           <input
                             type="checkbox"
                             className="w-4 h-4 rounded"
                             style={{
-                              accentColor: "var(--color-primary)",
-                              borderColor: "var(--border-color)",
-                              backgroundColor: "var(--bg-surface-alt)",
+                              accentColor: "var(--color-ink)",
+                              borderColor: "var(--color-border)",
+                              backgroundColor: "var(--color-surface-alt)",
                             }}
                             checked={pushPreferences.walletUpdates}
                             onChange={(e) =>
@@ -811,16 +811,16 @@ export const ProfilePage: React.FC = () => {
                           />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm" style={{ color: "var(--text-primary)" }}>
+                          <span className="text-sm" style={{ color: "var(--color-text-primary)" }}>
                             Announcements
                           </span>
                           <input
                             type="checkbox"
                             className="w-4 h-4 rounded"
                             style={{
-                              accentColor: "var(--color-primary)",
-                              borderColor: "var(--border-color)",
-                              backgroundColor: "var(--bg-surface-alt)",
+                              accentColor: "var(--color-ink)",
+                              borderColor: "var(--color-border)",
+                              backgroundColor: "var(--color-surface-alt)",
                             }}
                             checked={pushPreferences.announcements}
                             onChange={(e) =>
@@ -842,13 +842,13 @@ export const ProfilePage: React.FC = () => {
           {/* Support Card */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
                 Support & Community
               </h3>
             </CardHeader>
             <CardBody>
-              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-secondary) 8%, transparent)` }}>
-                <p className="text-sm mb-2" style={{ color: "var(--text-secondary)" }}>
+              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-amber) 8%, transparent)` }}>
+                <p className="text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>
                   Need help? Contact support
                 </p>
                 <a
@@ -856,20 +856,20 @@ export const ProfilePage: React.FC = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium transition-colors"
-                  style={{ color: "var(--color-secondary)" }}
+                  style={{ color: "var(--color-amber)" }}
                 >
                   {CONTACTS.support.phone}
                 </a>
               </div>
 
-              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--success) 8%, transparent)` }}>
-                <p className="text-sm mb-2" style={{ color: "var(--text-secondary)" }}>Join our community</p>
+              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-success) 8%, transparent)` }}>
+                <p className="text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>Join our community</p>
                 <a
                   href={CONTACTS.community.waGroupLink}
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium transition-colors"
-                  style={{ color: "var(--success)" }}
+                  style={{ color: "var(--color-success)" }}
                 >
                   WhatsApp Community
                 </a>
@@ -886,15 +886,15 @@ export const ProfilePage: React.FC = () => {
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardBody>
                 <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg flex-shrink-0" style={{ background: "var(--gradient-primary)" }}>
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg flex-shrink-0" style={{ background: "var(--color-ink)" }}>
                     {profileData.fullName.charAt(0)}
                     {profileData.fullName.split(" ")[1]?.charAt(0) ?? ""}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-2xl font-bold mb-1" style={{ color: "var(--text-primary)" }}>
+                    <h2 className="text-2xl font-bold mb-1" style={{ color: "var(--color-text-primary)" }}>
                       {profileData.fullName}
                     </h2>
-                    <p className="mb-3" style={{ color: "var(--text-secondary)" }}>{profileData.email}</p>
+                    <p className="mb-3" style={{ color: "var(--color-text-secondary)" }}>{profileData.email}</p>
                     <div className="flex gap-2">
                       <Badge color={getUserTypeColor(profileData.userType)}>
                         {profileData.userType.replace("_", " ")}
@@ -913,36 +913,36 @@ export const ProfilePage: React.FC = () => {
             {/* Contact Information Card */}
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                  <FaUser style={{ color: "var(--color-primary)" }} />
+                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                  <FaUser style={{ color: "var(--color-ink)" }} />
                   Contact Information
                 </h3>
               </CardHeader>
               <CardBody>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)` }}>
-                      <FaEnvelope className="text-lg" style={{ color: "var(--color-primary)" }} />
+                  <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-ink) 15%, transparent)` }}>
+                      <FaEnvelope className="text-lg" style={{ color: "var(--color-ink)" }} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                         Email
                       </p>
-                      <p className="text-sm font-medium truncate" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium truncate" style={{ color: "var(--color-text-primary)" }}>
                         {profileData.email}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--success) 15%, transparent)` }}>
-                      <FaPhone className="text-lg" style={{ color: "var(--success)" }} />
+                  <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-success) 15%, transparent)` }}>
+                      <FaPhone className="text-lg" style={{ color: "var(--color-success)" }} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                         Phone
                       </p>
-                      <p className="text-sm font-medium truncate" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium truncate" style={{ color: "var(--color-text-primary)" }}>
                         {profileData.phone}
                       </p>
                     </div>
@@ -955,39 +955,39 @@ export const ProfilePage: React.FC = () => {
             {isBusinessUser(profileData.userType) && (
               <Card className="shadow-sm hover:shadow-md transition-shadow">
                 <CardHeader>
-                  <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                    <FaStore style={{ color: "var(--success)" }} />
+                  <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                    <FaStore style={{ color: "var(--color-success)" }} />
                     Business Information
                   </h3>
                 </CardHeader>
                 <CardBody>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                         Business Name
                       </p>
-                      <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                         {profileData.businessName ?? "N/A"}
                       </p>
                     </div>
-                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                         Category
                       </p>
-                      <p className="text-sm font-medium capitalize" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium capitalize" style={{ color: "var(--color-text-primary)" }}>
                         {profileData.businessCategory ?? "N/A"}
                       </p>
                     </div>
-                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                         Plan
                       </p>
                       <Badge color="blue" className="text-xs">
                         {profileData.subscriptionPlan ?? "Basic"}
                       </Badge>
                     </div>
-                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
-                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--text-secondary)" }}>
+                    <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--color-text-secondary)" }}>
                         Status
                       </p>
                       <Badge
@@ -1013,8 +1013,8 @@ export const ProfilePage: React.FC = () => {
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                    <FaWallet style={{ color: "var(--success)" }} />
+                  <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                    <FaWallet style={{ color: "var(--color-success)" }} />
                     Wallet Balance
                   </h3>
                   <Button
@@ -1030,14 +1030,14 @@ export const ProfilePage: React.FC = () => {
               </CardHeader>
               <CardBody>
                 <div className="text-center">
-                  <p className="text-3xl font-bold mb-2" style={{ color: "var(--success)" }}>
+                  <p className="text-3xl font-bold mb-2" style={{ color: "var(--color-success)" }}>
                     GH¢{walletBalance?.toFixed(2) ?? "0.00"}
                   </p>
-                  <div className="flex items-center justify-center gap-2 text-sm mb-2" style={{ color: "var(--text-secondary)" }}>
+                  <div className="flex items-center justify-center gap-2 text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>
                     {getConnectionStatusIndicator()}
                     <span>{getConnectionStatusText()}</span>
                   </div>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>Real-time balance</p>
+                  <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>Real-time balance</p>
                 </div>
               </CardBody>
             </Card>
@@ -1045,22 +1045,22 @@ export const ProfilePage: React.FC = () => {
             {/* Account Details Card */}
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                  <FaCalendar style={{ color: "var(--warning)" }} />
+                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                  <FaCalendar style={{ color: "var(--color-warning)" }} />
                   Account Details
                 </h3>
               </CardHeader>
               <CardBody>
-                <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+                <div className="p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--warning) 15%, transparent)` }}>
-                      <FaCalendar style={{ color: "var(--warning)" }} />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `color-mix(in srgb, var(--color-warning) 15%, transparent)` }}>
+                      <FaCalendar style={{ color: "var(--color-warning)" }} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
+                      <p className="text-xs font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>
                         Member Since
                       </p>
-                      <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                      <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                         {new Intl.DateTimeFormat("en-GB", {
                           day: "2-digit",
                           month: "short",
@@ -1076,8 +1076,8 @@ export const ProfilePage: React.FC = () => {
             {/* Push Notification Settings */}
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                  <FaBell style={{ color: "var(--warning)" }} />
+                <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                  <FaBell style={{ color: "var(--color-warning)" }} />
                   Notifications
                 </h3>
               </CardHeader>
@@ -1090,7 +1090,7 @@ export const ProfilePage: React.FC = () => {
                 ) : (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm" style={{ color: "var(--text-primary)" }}>
+                      <span className="text-sm" style={{ color: "var(--color-text-primary)" }}>
                         Push Notifications
                       </span>
                       <label className="relative inline-flex items-center cursor-pointer">
@@ -1107,13 +1107,13 @@ export const ProfilePage: React.FC = () => {
                         />
                         <div className="w-9 h-5 peer-focus:outline-none peer-focus:ring-4 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all"
                           style={{
-                            backgroundColor: pushPreferences.enabled ? "var(--color-primary)" : "var(--border-color)",
+                            backgroundColor: pushPreferences.enabled ? "var(--color-ink)" : "var(--color-border)",
                           }}
                         ></div>
                       </label>
                     </div>
                     {pushPreferences.enabled && (
-                      <div className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                      <div className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
                         <p>Receive notifications for:</p>
                         <ul className="mt-1 space-y-1">
                           {pushPreferences.orderUpdates && (
@@ -1136,7 +1136,7 @@ export const ProfilePage: React.FC = () => {
             {/* Quick Actions Card */}
             <Card className="shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-              <h3 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
                 Quick Actions
               </h3>
             </CardHeader>
@@ -1168,7 +1168,7 @@ export const ProfilePage: React.FC = () => {
               >
                 Update Security PIN
               </Button>
-              <div style={{ borderTop: "1px solid var(--border-color)" }}>
+              <div style={{ borderTop: "1px solid var(--color-border)" }}>
                 <Button
                     color="red"
                     variant="outline"
@@ -1189,16 +1189,16 @@ export const ProfilePage: React.FC = () => {
           {/* Appearance Settings */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-                <FaPalette style={{ color: "var(--color-primary)" }} />
+              <h3 className="text-lg font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+                <FaPalette style={{ color: "var(--color-ink)" }} />
                 Appearance
               </h3>
             </CardHeader>
             <CardBody>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium" style={{ color: "var(--text-primary)" }}>Dark Mode</p>
-                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>Toggle between light and dark theme</p>
+                  <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>Dark Mode</p>
+                  <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>Toggle between light and dark theme</p>
                 </div>
                 <DarkModeToggle />
               </div>
@@ -1208,13 +1208,13 @@ export const ProfilePage: React.FC = () => {
           {/* Support Card */}
           <Card className="shadow-sm hover:shadow-md transition-shadow">
             <CardHeader>
-              <h3 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
                 Support & Community
               </h3>
             </CardHeader>
             <CardBody className="space-y-4">
-              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-secondary) 8%, transparent)` }}>
-                <p className="text-sm mb-2" style={{ color: "var(--text-secondary)" }}>
+              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-amber) 8%, transparent)` }}>
+                <p className="text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>
                   Need help? Contact support
                 </p>
                 <a
@@ -1222,20 +1222,20 @@ export const ProfilePage: React.FC = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium transition-colors"
-                  style={{ color: "var(--color-secondary)" }}
+                  style={{ color: "var(--color-amber)" }}
                 >
                   {CONTACTS.support.phone}
                 </a>
               </div>
 
-              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--success) 8%, transparent)` }}>
-                <p className="text-sm mb-2" style={{ color: "var(--text-secondary)" }}>Join our community</p>
+              <div className="rounded-lg p-4" style={{ backgroundColor: `color-mix(in srgb, var(--color-success) 8%, transparent)` }}>
+                <p className="text-sm mb-2" style={{ color: "var(--color-text-secondary)" }}>Join our community</p>
                 <a
                   href={CONTACTS.community.waGroupLink}
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium transition-colors"
-                  style={{ color: "var(--success)" }}
+                  style={{ color: "var(--color-success)" }}
                 >
                   WhatsApp Community
                 </a>

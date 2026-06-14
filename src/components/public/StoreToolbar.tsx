@@ -57,8 +57,8 @@ export const StoreToolbar = memo(
       <div
         className="sticky top-0 z-20 backdrop-blur-md"
         style={{
-          backgroundColor: "color-mix(in srgb, var(--bg-surface) 85%, transparent)",
-          borderBottom: "1px solid var(--border-color)",
+          backgroundColor: "color-mix(in srgb, var(--color-surface) 85%, transparent)",
+          borderBottom: "1px solid var(--color-border)",
           boxShadow: "0 1px 12px rgba(0,0,0,0.06)",
         }}
       >
@@ -80,7 +80,7 @@ export const StoreToolbar = memo(
                 </div>
                 <div
                   className="truncate text-xs mt-1"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   {activeAnnouncement.message}
                 </div>
@@ -100,14 +100,14 @@ export const StoreToolbar = memo(
             <div
               className="rounded-xl p-3 text-sm"
               style={{
-                backgroundColor: "color-mix(in srgb, var(--warning) 10%, transparent)",
-                border: "1px solid color-mix(in srgb, var(--warning) 30%, transparent)",
-                color: "var(--text-primary)",
+                backgroundColor: "color-mix(in srgb, var(--color-warning) 10%, transparent)",
+                border: "1px solid color-mix(in srgb, var(--color-warning) 30%, transparent)",
+                color: "var(--color-text-primary)",
               }}
             >
               <strong
                 className="font-semibold"
-                style={{ color: "var(--warning)" }}
+                style={{ color: "var(--color-warning)" }}
               >
                 Store temporarily closed:
               </strong>{" "}
@@ -119,14 +119,14 @@ export const StoreToolbar = memo(
             <div
               className="rounded-xl p-3 text-sm"
               style={{
-                backgroundColor: "color-mix(in srgb, var(--warning) 10%, transparent)",
-                border: "1px solid color-mix(in srgb, var(--warning) 30%, transparent)",
-                color: "var(--text-primary)",
+                backgroundColor: "color-mix(in srgb, var(--color-warning) 10%, transparent)",
+                border: "1px solid color-mix(in srgb, var(--color-warning) 30%, transparent)",
+                color: "var(--color-text-primary)",
               }}
             >
               <strong
                 className="font-semibold"
-                style={{ color: "var(--warning)" }}
+                style={{ color: "var(--color-warning)" }}
               >
                 Storefronts closed by admin:
               </strong>{" "}
@@ -148,9 +148,9 @@ export const StoreToolbar = memo(
                 onChange={(e) => onSearchChange(e.target.value)}
                 className="w-full pl-9 pr-4 py-2.5 rounded-xl text-sm transition"
                 style={{
-                  backgroundColor: "var(--bg-muted)",
-                  border: "1px solid var(--border-color)",
-                  color: "var(--text-primary)",
+                  backgroundColor: "var(--color-ground)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-text-primary)",
                   outline: "none",
                 }}
                 onFocus={(e) => {
@@ -158,7 +158,7 @@ export const StoreToolbar = memo(
                   e.currentTarget.style.boxShadow = `0 0 0 3px ${theme.primary}20`;
                 }}
                 onBlur={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border-color)";
+                  e.currentTarget.style.borderColor = "var(--color-border)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
               />
@@ -169,17 +169,17 @@ export const StoreToolbar = memo(
               title="Track my orders"
               className="shrink-0 flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-semibold transition"
               style={{
-                backgroundColor: "var(--bg-muted)",
-                border: "1px solid var(--border-color)",
-                color: "var(--text-secondary)",
+                backgroundColor: "var(--color-ground)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text-secondary)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = theme.primary;
                 e.currentTarget.style.color = theme.primary;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border-color)";
-                e.currentTarget.style.color = "var(--text-secondary)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+                e.currentTarget.style.color = "var(--color-text-secondary)";
               }}
             >
               <FaBoxOpen className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export const StoreToolbar = memo(
                 {/* All */}
                 <button
                   onClick={() => onSelectProvider("all")}
-                  className="shrink-0 snap-start flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                  className="shrink-0 snap-start flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-all"
                   style={
                     selectedProvider === "all"
                       ? {
@@ -204,9 +204,9 @@ export const StoreToolbar = memo(
                           color: "#fff",
                         }
                       : {
-                          backgroundColor: "var(--bg-muted)",
-                          border: "2px solid var(--border-color)",
-                          color: "var(--text-secondary)",
+                          backgroundColor: "var(--color-ground)",
+                          border: "2px solid var(--color-border)",
+                          color: "var(--color-text-secondary)",
                         }
                   }
                 >
@@ -228,7 +228,7 @@ export const StoreToolbar = memo(
                     <button
                       key={prov.code}
                       onClick={() => onSelectProvider(prov.code)}
-                      className="shrink-0 snap-start flex items-center gap-2 px-3 py-2 rounded-full text-sm font-semibold transition-all"
+                      className="shrink-0 snap-start flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-all"
                       style={
                         isActive
                           ? {
@@ -237,9 +237,9 @@ export const StoreToolbar = memo(
                               color: "#fff",
                             }
                           : {
-                              backgroundColor: "var(--bg-muted)",
-                              border: "2px solid var(--border-color)",
-                              color: "var(--text-secondary)",
+                              backgroundColor: "var(--color-ground)",
+                              border: "2px solid var(--color-border)",
+                              color: "var(--color-text-secondary)",
                             }
                       }
                     >
@@ -247,11 +247,11 @@ export const StoreToolbar = memo(
                         <img
                           src={logoUrl}
                           alt={prov.name}
-                          className="w-4 h-4 rounded-full object-cover"
+                          className="w-4 h-4 object-cover"
                         />
                       ) : (
                         <span
-                          className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold text-white"
+                          className="w-4 h-4 flex items-center justify-center text-[9px] font-bold text-[var(--color-text-inverse)]"
                           style={{ backgroundColor: pc.primary }}
                         >
                           {prov.name.charAt(0)}

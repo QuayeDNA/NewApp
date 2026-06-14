@@ -75,11 +75,11 @@ const BundleCardSkeletonInline = memo(() => (
   <div
     className="rounded-2xl overflow-hidden border shadow-sm"
     style={{
-      borderColor: "var(--border-color)",
-      backgroundColor: "var(--bg-surface)",
+      borderColor: "var(--color-border)",
+      backgroundColor: "var(--color-surface)",
     }}
   >
-    <div className="h-1" style={{ backgroundColor: "var(--bg-muted)" }} />
+    <div className="h-1" style={{ backgroundColor: "var(--color-ground)" }} />
     <div className="p-4 space-y-3">
       <Skeleton height="1.75rem" width="60%" />
       <Skeleton height="0.9rem" width="80%" />
@@ -96,7 +96,7 @@ const BundleCardSkeletonInline = memo(() => (
 ));
 
 const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
-  <div className="min-h-screen" style={{ backgroundColor: "var(--bg-muted)" }}>
+  <div className="min-h-screen" style={{ backgroundColor: "var(--color-ground)" }}>
     {/* Hero skeleton */}
     <div
       className="min-h-[280px] sm:min-h-[340px]"
@@ -106,7 +106,7 @@ const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
       {/* Popular row skeleton */}
       <div
         className="rounded-2xl p-4 shadow-sm"
-        style={{ backgroundColor: "var(--bg-surface)" }}
+        style={{ backgroundColor: "var(--color-surface)" }}
       >
         <Skeleton height="1rem" width="160px" className="mb-3" />
         <div className="flex gap-3 overflow-hidden">
@@ -114,7 +114,7 @@ const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
             <div
               key={i}
               className="shrink-0 w-36 h-28 rounded-2xl animate-pulse"
-              style={{ backgroundColor: "var(--bg-muted)" }}
+              style={{ backgroundColor: "var(--color-ground)" }}
             />
           ))}
         </div>
@@ -133,30 +133,30 @@ const StoreError = memo(
   ({ error, onRetry }: { error: string; onRetry: () => void }) => (
     <div
       className="min-h-screen flex items-center justify-center p-6"
-      style={{ backgroundColor: "var(--bg-muted)" }}
+      style={{ backgroundColor: "var(--color-ground)" }}
     >
       <div className="max-w-sm w-full text-center space-y-5">
         <div
           className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto"
           style={{
-            backgroundColor: "color-mix(in srgb, var(--error) 8%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-error) 8%, transparent)",
           }}
         >
           <FaTriangleExclamation
             className="w-8 h-8"
-            style={{ color: "var(--error)" }}
+            style={{ color: "var(--color-error)" }}
           />
         </div>
         <div>
           <h2
             className="text-xl font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             Store unavailable
           </h2>
           <p
             className="text-sm mt-2"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "var(--color-text-secondary)" }}
           >
             {error}
           </p>
@@ -167,16 +167,16 @@ const StoreError = memo(
             className="px-5 py-2.5 rounded-xl font-semibold text-sm transition active:scale-95"
             style={{
               backgroundColor:
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)",
-              color: "var(--text-inverse)",
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)",
+              color: "var(--color-text-inverse)",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 75%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 75%, transparent)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)";
             }}
           >
             Try again
@@ -185,8 +185,8 @@ const StoreError = memo(
             onClick={() => (window.location.href = "/")}
             className="px-5 py-2.5 rounded-xl font-semibold text-sm border transition"
             style={{
-              backgroundColor: "var(--bg-muted)",
-              borderColor: "var(--border-color)",
+              backgroundColor: "var(--color-ground)",
+              borderColor: "var(--color-border)",
             }}
           >
             Go home
@@ -202,7 +202,7 @@ const EmptyBundles = memo(
     <div className="py-20 text-center px-4">
       <div
         className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-        style={{ backgroundColor: "var(--bg-muted)" }}
+        style={{ backgroundColor: "var(--color-ground)" }}
       >
         <FaWifi className="w-8 h-8" style={{ color: "var(--text-tertiary)" }} />
       </div>
@@ -210,7 +210,7 @@ const EmptyBundles = memo(
         <>
           <h3
             className="text-lg font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             No results for "{searchTerm}"
           </h3>
@@ -225,16 +225,16 @@ const EmptyBundles = memo(
             className="px-4 py-2 rounded-xl text-sm font-semibold transition"
             style={{
               backgroundColor:
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)",
-              color: "var(--text-inverse)",
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)",
+              color: "var(--color-text-inverse)",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 75%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 75%, transparent)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)";
             }}
           >
             Clear search
@@ -247,7 +247,7 @@ const EmptyBundles = memo(
           </p>
           <p
             className="text-sm mt-2"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "var(--color-text-secondary)" }}
           >
             The store owner may not have activated any bundles yet. Check back
             later or contact them for assistance.
@@ -287,7 +287,7 @@ const PackageHeader = memo(
         <div>
           <div
             className="text-sm font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             {pkgName}
           </div>
@@ -732,7 +732,7 @@ const PublicStore: React.FC = () => {
   return (
     <div
       className="min-h-screen storefront-root"
-      style={{ backgroundColor: "var(--bg-muted)" }}
+      style={{ backgroundColor: "var(--color-ground)" }}
     >
       {(() => {
         if (loading) return <StoreSkeleton theme={theme} />;
@@ -832,16 +832,16 @@ const PublicStore: React.FC = () => {
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center"
                 style={{
-                  color: "var(--warning)",
+                  color: "var(--color-warning)",
                   backgroundColor:
-                    "color-mix(in srgb, var(--warning) 15%, transparent)",
+                    "color-mix(in srgb, var(--color-warning) 15%, transparent)",
                 }}
               >
                 <FaStore className="w-7 h-7" />
               </div>
               <h3
                 className="text-lg sm:text-xl font-semibold"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 Storefronts Are Closed
               </h3>
@@ -849,12 +849,12 @@ const PublicStore: React.FC = () => {
           </DialogHeader>
           <DialogBody
             className="space-y-3 text-center text-sm sm:text-base"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             <p>{storefrontsClosedMessage}</p>
             <p
               className="text-xs sm:text-sm"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               Orders are paused for all storefronts until the admin reopens
               them.

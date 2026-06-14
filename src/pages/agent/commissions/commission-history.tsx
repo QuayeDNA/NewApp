@@ -19,10 +19,10 @@ export const CommissionHistory = ({ commissions }: CommissionHistoryProps) => {
     <Card variant="outlined">
       <CardBody>
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaMoneyBillWave className="w-4 h-4" style={{ color: "var(--color-secondary)" }} /> Commission History
+          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaMoneyBillWave className="w-4 h-4" style={{ color: "var(--color-amber)" }} /> Commission History
           </h3>
-          <div className="flex rounded-lg p-0.5" style={{ background: "var(--bg-surface-alt)" }}>
+          <div className="flex rounded-lg p-0.5" style={{ background: "var(--color-surface-alt)" }}>
             <button
               onClick={() => setViewMode("card")}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
@@ -31,9 +31,9 @@ export const CommissionHistory = ({ commissions }: CommissionHistoryProps) => {
                   : ""
               }`}
               style={{
-                background: viewMode === "card" ? "var(--bg-surface)" : "transparent",
-                color: viewMode === "card" ? "var(--text-primary)" : "var(--text-muted)",
-                borderColor: viewMode === "card" ? "var(--border-color)" : "transparent",
+                background: viewMode === "card" ? "var(--color-surface)" : "transparent",
+                color: viewMode === "card" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                borderColor: viewMode === "card" ? "var(--color-border)" : "transparent",
               }}
             >
               <FaTh className="w-3.5 h-3.5" />
@@ -47,9 +47,9 @@ export const CommissionHistory = ({ commissions }: CommissionHistoryProps) => {
                   : ""
               }`}
               style={{
-                background: viewMode === "table" ? "var(--bg-surface)" : "transparent",
-                color: viewMode === "table" ? "var(--text-primary)" : "var(--text-muted)",
-                borderColor: viewMode === "table" ? "var(--border-color)" : "transparent",
+                background: viewMode === "table" ? "var(--color-surface)" : "transparent",
+                color: viewMode === "table" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                borderColor: viewMode === "table" ? "var(--color-border)" : "transparent",
               }}
             >
               <FaList className="w-3.5 h-3.5" />
@@ -58,7 +58,7 @@ export const CommissionHistory = ({ commissions }: CommissionHistoryProps) => {
           </div>
         </div>
         {commissions.length === 0 ? (
-          <div className="text-center py-8" style={{ color: "var(--text-muted)" }}>
+          <div className="text-center py-8" style={{ color: "var(--color-text-muted)" }}>
             <FaMoneyBillWave className="w-8 h-8 mx-auto mb-2 opacity-50" />
             <p className="text-sm">No commissions yet</p>
           </div>
@@ -69,16 +69,16 @@ export const CommissionHistory = ({ commissions }: CommissionHistoryProps) => {
                 key={c._id}
                 className="border rounded-lg p-4"
                 style={{
-                  background: "var(--bg-surface)",
-                  borderColor: "var(--border-color)",
+                  background: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
                 }}
               >
                 <div className="flex items-center justify-between mb-2">
                   <Badge colorScheme="info" variant="subtle" size="sm">{formatDate(c.date)}</Badge>
                   <CommissionStatusBadge status={c.status} />
                 </div>
-                <p className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>GHS {c.amount.toFixed(2)}</p>
-                <div className="flex gap-4 mt-2 text-xs" style={{ color: "var(--text-muted)" }}>
+                <p className="text-lg font-bold" style={{ color: "var(--color-text-primary)" }}>GHS {c.amount.toFixed(2)}</p>
+                <div className="flex gap-4 mt-2 text-xs" style={{ color: "var(--color-text-muted)" }}>
                   <span>{c.rate}% rate</span>
                   <span>{c.ordersCount || 0} orders</span>
                   <span>{c.qualifiedUsersCount || 0} users</span>

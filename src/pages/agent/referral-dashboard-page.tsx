@@ -4,6 +4,7 @@ import type { ReferralDashboard, LeaderboardEntry } from "../../types/referral";
 import { useAuth } from "../../hooks";
 import { FaCopy, FaWhatsapp, FaSms, FaCheck, FaUsers, FaMoneyBillWave, FaLink, FaTrophy } from "react-icons/fa";
 import { useToast } from "../../design-system/components/toast";
+import { brand } from "../../config/brand";
 
 export const ReferralDashboardPage = () => {
   const { authState } = useAuth();
@@ -50,7 +51,7 @@ export const ReferralDashboardPage = () => {
   }, [addToast]);
 
   const shareVia = (platform: "whatsapp" | "sms") => {
-    const text = `Join me on BryteLinks and start vending airtime & data! Use my referral code: ${referralCode}`;
+    const text = `Join me on ${brand.name} and start vending airtime & data! Use my referral code: ${referralCode}`;
     const url = platform === "whatsapp"
       ? `https://wa.me/?text=${encodeURIComponent(text + " " + shareLink)}`
       : `sms:?body=${encodeURIComponent(text + " " + shareLink)}`;

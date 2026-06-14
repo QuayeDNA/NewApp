@@ -16,7 +16,7 @@ export const ProductSetupStep = () => {
           <input
             id="productName"
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-[var(--color-border-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
             placeholder="Enter product name"
           />
         </div>
@@ -28,7 +28,7 @@ export const ProductSetupStep = () => {
           <textarea
             id="productDescription"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-[var(--color-border-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
             placeholder="Describe your product"
           />
         </div>
@@ -38,14 +38,14 @@ export const ProductSetupStep = () => {
             <label htmlFor="productPrice" className="block text-sm font-medium text-gray-700">
               Price
             </label>
-            <div className="flex rounded-md shadow-sm">
-              <span className="inline-flex items-center px-3 py-2 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500">
+            <div className="flex shadow-sm">
+              <span className="inline-flex items-center px-3 py-2 border border-r-0 border-[var(--color-border-strong)] bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]">
                 GHS
               </span>
               <input
                 id="productPrice"
                 type="text"
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-none rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3 py-2 border border-[var(--color-border-strong)] rounded-none focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
                 placeholder="0.00"
               />
             </div>
@@ -59,7 +59,7 @@ export const ProductSetupStep = () => {
               id="productQuantity"
               type="number"
               min="1"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-[var(--color-border-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
               placeholder="1"
             />
           </div>
@@ -70,7 +70,7 @@ export const ProductSetupStep = () => {
             </label>
             <select 
               id="productCategory"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-[var(--color-border-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
             >
               <option value="">Select category</option>
               <option value="clothing">Clothing</option>

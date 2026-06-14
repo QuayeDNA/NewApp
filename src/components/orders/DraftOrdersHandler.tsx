@@ -136,18 +136,18 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-auto max-h-[90vh] flex flex-col">
+      <div className="bg-[var(--color-surface)] shadow-[var(--shadow-xl)] w-full max-w-2xl mx-auto max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
           <div className="flex items-center gap-2">
-            <FaExclamationTriangle className="text-yellow-500" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <FaExclamationTriangle className="text-[var(--color-warning)]" />
+            <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">
               Draft Orders ({draftOrders.length})
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
           >
             <FaTimes size={20} />
           </button>
@@ -158,11 +158,11 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
           {draftOrders.length === 0 ? (
             <Card className="text-center">
               <CardBody className="p-8">
-                <FaCheckCircle className="text-green-500 text-4xl mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                <FaCheckCircle className="text-[var(--color-success)] text-4xl mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-[var(--color-text-primary)] mb-2">
                   No Draft Orders
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[var(--color-text-secondary)]">
                   All your orders are ready to be processed.
                 </p>
               </CardBody>
@@ -170,14 +170,14 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
           ) : (
             <div className="space-y-4">
               {/* Info Box - Payment Flow Explanation */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+              <div className="bg-[var(--color-info)]/10 border border-[var(--color-info)]/30 p-3">
                 <div className="flex items-start gap-2">
-                  <FaWallet className="text-blue-600 mt-0.5" />
+                  <FaWallet className="text-[var(--color-info)] mt-0.5" />
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-blue-900 mb-1">
+                    <p className="text-sm font-medium text-[var(--color-info)] mb-1">
                       Payment & Refund Policy
                     </p>
-                    <p className="text-xs text-blue-700">
+                    <p className="text-xs text-[var(--color-info)]">
                       Wallet is deducted immediately when orders move to pending
                       status. If an order fails or is cancelled, the amount will
                       be automatically refunded to your wallet.
@@ -190,16 +190,16 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
               <Card>
                 <CardBody className="p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-[var(--color-text-secondary)]">
                       Progress
                     </span>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-[var(--color-text-muted)]">
                       {processedCount}/{draftOrders.length} processed
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-[var(--color-surface-alt)] h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-[var(--color-info)] h-2 transition-all duration-300"
                       style={{
                         width: `${
                           (processedCount / draftOrders.length) * 100
@@ -215,10 +215,10 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
                 <Card>
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium text-gray-900">
+                      <h3 className="font-medium text-[var(--color-text-primary)]">
                         Draft Order #{currentDraftIndex + 1}
                       </h3>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-[var(--color-text-muted)]">
                         {currentDraftIndex + 1} of {draftOrders.length}
                       </span>
                     </div>
@@ -226,7 +226,7 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
                   <CardBody className="pt-0">
                     <div className="space-y-3">
                       {/* Order Details */}
-                      <div className="bg-gray-50 rounded-lg p-3">
+                        <div className="bg-[var(--color-surface-alt)] p-3">
                         <div className="space-y-2">
                           {currentDraft.items.map((item, index) => (
                             <div
@@ -234,21 +234,21 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
                               className="flex justify-between items-start"
                             >
                               <div className="flex-1">
-                                <p className="font-medium text-gray-900">
+                                <p className="font-medium text-[var(--color-text-primary)]">
                                   {item.packageDetails?.name ||
                                     "Unknown Bundle"}
                                 </p>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-[var(--color-text-secondary)]">
                                   {item.customerPhone}
                                 </p>
                                 {item.packageDetails?.dataVolume && (
-                                  <p className="text-xs text-gray-500">
+                                  <p className="text-xs text-[var(--color-text-muted)]">
                                     {item.packageDetails.dataVolume} GB
                                   </p>
                                 )}
                               </div>
                               <div className="text-right ml-4">
-                                <p className="font-medium text-gray-900">
+                                <p className="font-medium text-[var(--color-text-primary)]">
                                   GH₵{item.totalPrice.toFixed(2)}
                                 </p>
                               </div>
@@ -259,41 +259,41 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
 
                       {/* Wallet Check */}
                       <div
-                        className={`rounded-lg p-3 ${
+                        className={`p-3 ${
                           canProcessCurrentDraft
-                            ? "bg-green-50 border border-green-200"
-                            : "bg-red-50 border border-red-200"
+                            ? "bg-[var(--color-success)]/10 border border-[var(--color-success)]/30"
+                            : "bg-[var(--color-error)]/10 border border-[var(--color-error)]/30"
                         }`}
                       >
                         <div className="flex items-center justify-between">
                           <div>
                             <p
-                              className={`font-medium ${
-                                canProcessCurrentDraft
-                                  ? "text-green-800"
-                                  : "text-red-800"
-                              }`}
-                            >
-                              {canProcessCurrentDraft
-                                ? "Sufficient Balance"
-                                : "Insufficient Balance"}
+                            className={`font-medium ${
+                              canProcessCurrentDraft
+                                ? "text-[var(--color-success)]"
+                                : "text-[var(--color-error)]"
+                            }`}
+                          >
+                            {canProcessCurrentDraft
+                              ? "Sufficient Balance"
+                              : "Insufficient Balance"}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--color-text-secondary)]">
                               Required: GH₵{currentDraftAmount.toFixed(2)}
                             </p>
                           </div>
                           <div className="text-right">
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[var(--color-text-secondary)]">
                               Wallet Balance
                             </p>
                             <p
-                              className={`font-medium ${
-                                canProcessCurrentDraft
-                                  ? "text-green-800"
-                                  : "text-red-800"
-                              }`}
-                            >
-                              GH₵
+                            className={`font-medium ${
+                              canProcessCurrentDraft
+                                ? "text-[var(--color-success)]"
+                                : "text-[var(--color-error)]"
+                            }`}
+                          >
+                            GH₵
                               {walletContext?.walletBalance.toFixed(2) ||
                                 "0.00"}
                             </p>
@@ -343,14 +343,14 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                      <div className="flex items-center gap-2 text-red-800">
+                    <div className="bg-[var(--color-error)]/10 border border-[var(--color-error)]/30 p-3">
+                      <div className="flex items-center gap-2 text-[var(--color-error)]">
                         <FaWallet />
                         <span className="font-medium">
                           Insufficient Balance
                         </span>
                       </div>
-                      <p className="text-sm text-red-700 mt-1">
+                      <p className="text-sm text-[var(--color-error)] mt-1">
                         You need GH₵
                         {(
                           currentDraftAmount -
@@ -404,8 +404,8 @@ export const DraftOrdersHandler: React.FC<DraftOrdersHandlerProps> = ({
               {error && (
                 <Card>
                   <CardBody className="p-3">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                      <p className="text-sm text-red-700">{error}</p>
+                    <div className="bg-[var(--color-error)]/10 border border-[var(--color-error)]/30 p-3">
+                      <p className="text-sm text-[var(--color-error)]">{error}</p>
                     </div>
                   </CardBody>
                 </Card>

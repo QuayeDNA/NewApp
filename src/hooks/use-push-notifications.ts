@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { brand } from "../config/brand";
 
 interface PushNotificationState {
   isSupported: boolean;
@@ -160,7 +161,7 @@ export const usePushNotifications = () => {
         },
         body: JSON.stringify({
           title: "Test Notification",
-          body: "This is a test push notification from BryteLinks!",
+          body: `This is a test push notification from ${brand.name}!`,
         }),
       });
 

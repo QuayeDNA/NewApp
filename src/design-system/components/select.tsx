@@ -48,20 +48,20 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     };
 
     const variantClasses = {
-      default: 'border-[var(--border-color)] focus:border-secondary focus:ring-secondary',
-      outline: 'border-[var(--border-color)] focus:border-secondary focus:ring-secondary',
+      default: 'border-[var(--color-border)] focus:border-[var(--color-amber)] focus:ring-[var(--color-amber)]',
+      outline: 'border-[var(--color-border)] focus:border-[var(--color-amber)] focus:ring-[var(--color-amber)]',
     };
 
     const baseClasses = [
-      'w-full rounded-lg border bg-[var(--bg-surface)] transition-all duration-200',
+      'w-full border bg-[var(--color-surface)] transition-all duration-200',
       'focus:outline-none focus:ring-2 focus:ring-opacity-50',
-      'disabled:bg-[var(--bg-surface-alt)] disabled:cursor-not-allowed',
+      'disabled:bg-[var(--color-surface-alt)] disabled:cursor-not-allowed',
       sizeClasses[size],
       variantClasses[variant],
     ];
 
     if (error) {
-      baseClasses.push('border-error focus:border-error focus:ring-error');
+      baseClasses.push('border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]');
     }
 
     if (disabled) {
@@ -208,7 +208,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     return (
       <div className="w-full" ref={ref}>
         {label && (
-          <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+          <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-1">
             {label}
           </label>
         )}
@@ -220,7 +220,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             onClick={handleToggle}
             disabled={disabled}
           >
-            <span className={`${selectedOption ? 'text-[var(--text-primary)]' : 'text-[var(--text-muted)]'}`}>
+            <span className={`${selectedOption ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)]'}`}>
               {selectedOption ? selectedOption.label : placeholder}
             </span>
             <FaChevronDown 
@@ -234,7 +234,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           {isOpen && (
             <div 
               ref={dropdownRef}
-              className="fixed z-50 bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-lg shadow-lg max-h-60 overflow-auto"
+              className="fixed z-50 bg-[var(--color-surface)] border border-[var(--color-border)] shadow-lg max-h-60 overflow-auto"
               style={{
                 top: `${dropdownPosition.top}px`,
                 left: `${dropdownPosition.left}px`,
@@ -249,17 +249,17 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                     type="button"
                     className={`w-full px-3 py-2 text-left flex items-center justify-between transition-colors duration-150 ${
                       option.disabled 
-                        ? 'text-[var(--text-muted)] cursor-not-allowed' 
+                        ? 'text-[var(--color-text-muted)] cursor-not-allowed' 
                         : index === highlightedIndex
-                        ? 'bg-[var(--bg-surface-alt)] text-[var(--text-primary)]'
-                        : 'text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)]'
+                        ? 'bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]'
+                        : 'text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)]'
                     }`}
                     onClick={() => handleOptionClick(option)}
                     disabled={option.disabled}
                   >
                     <span>{option.label}</span>
                     {option.value === value && (
-                      <FaCheck className="text-primary text-sm" />
+                      <FaCheck className="text-[var(--color-amber)] text-sm" />
                     )}
                   </button>
                 ))}
@@ -269,10 +269,10 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         </div>
 
         {error && (
-          <p className="mt-1 text-sm text-error">{error}</p>
+          <p className="mt-1 text-sm text-[var(--color-error)]">{error}</p>
         )}
         {helperText && !error && (
-          <p className="mt-1 text-sm text-[var(--text-muted)]">{helperText}</p>
+          <p className="mt-1 text-sm text-[var(--color-text-muted)]">{helperText}</p>
         )}
       </div>
     );

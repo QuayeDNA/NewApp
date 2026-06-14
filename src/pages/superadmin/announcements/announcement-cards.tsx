@@ -23,8 +23,8 @@ export const AnnouncementCards: React.FC<Props> = ({
 }) => {
   if (loading) {
     return (
-      <div className="p-6 text-center text-[var(--text-muted)]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--border-color)] mx-auto mb-2"></div>
+      <div className="p-6 text-center text-[var(--color-text-muted)]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-border)] mx-auto mb-2"></div>
         Loading...
       </div>
     );
@@ -32,27 +32,27 @@ export const AnnouncementCards: React.FC<Props> = ({
 
   if (announcements.length === 0) {
     return (
-      <div className="p-6 text-center text-[var(--text-muted)]">No announcements found</div>
+      <div className="p-6 text-center text-[var(--color-text-muted)]">No announcements found</div>
     );
   }
 
   return (
-    <div className="divide-y divide-[var(--border-color)]">
+    <div className="divide-y divide-[var(--color-border)]">
       {announcements.map((a) => (
-        <div key={a._id} className="p-4 hover:bg-[var(--bg-surface-alt)]">
+        <div key={a._id} className="p-4 hover:bg-[var(--color-surface-alt)]">
           <div className="flex justify-between items-start mb-3">
             <div className="flex-1 min-w-0">
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] truncate">
+              <h3 className="text-sm font-semibold text-[var(--color-text-primary)] truncate">
                 {a.title}
               </h3>
-              <p className="text-sm text-[var(--text-secondary)] mt-1 line-clamp-2">
+              <p className="text-sm text-[var(--color-text-secondary)] mt-1 line-clamp-2">
                 {a.message}
               </p>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-3">
-            <span className="px-2 py-1 text-xs font-semibold rounded-full bg-[var(--info)]/10 text-[var(--info)]">
+            <span className="px-2 py-1 text-xs font-semibold rounded-full bg-[var(--color-info)]/10 text-[var(--color-info)]">
               {a.type}
             </span>
             <span className={`px-2 py-1 text-xs font-semibold rounded-full ${priorityColor(a.priority)}`}>
@@ -68,7 +68,7 @@ export const AnnouncementCards: React.FC<Props> = ({
               ? a.targetAudience.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-0.5 text-xs font-medium rounded-full bg-[var(--color-accent-soft)] text-[var(--color-secondary)]"
+                    className="px-2 py-0.5 text-xs font-medium rounded-full bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]"
                   >
                     {t.replace("_", " ")}
                   </span>
@@ -89,7 +89,7 @@ export const AnnouncementCards: React.FC<Props> = ({
               </Button>
             )}
             <Button variant="ghost" size="sm" onClick={() => onDelete(a._id)} className="p-2">
-              <Trash2 className="w-4 h-4 text-[var(--error)]" />
+              <Trash2 className="w-4 h-4 text-[var(--color-error)]" />
             </Button>
           </div>
         </div>

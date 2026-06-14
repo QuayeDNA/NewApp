@@ -332,14 +332,14 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
   return (
     <Dialog isOpen={isOpen} onClose={onClose} size="md">
       <DialogHeader className="flex items-start justify-between">
-        <h2 className="text-lg font-semibold text-[var(--text-primary)]">
+        <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">
           {showSummary ? "Order Summary" : "Order Bundle"}
         </h2>
         <Button
           variant="ghost"
           size="sm"
           onClick={onClose}
-          className="text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+          className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
         >
           <FaTimes size={20} />
         </Button>
@@ -358,15 +358,15 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
               <CardBody>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h3 className="font-medium text-[var(--text-primary)]">{bundle.name}</h3>
+                    <h3 className="font-medium text-[var(--color-text-primary)]">{bundle.name}</h3>
                     {bundle.description && (
-                      <p className="text-sm text-[var(--text-secondary)] mt-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] mt-1">
                         {bundle.description}
                       </p>
                     )}
                   </div>
                   <div className="text-right flex-shrink-0 ml-3">
-                    <div className="text-xs text-[var(--text-secondary)]">Price</div>
+                    <div className="text-xs text-[var(--color-text-secondary)]">Price</div>
                     <div
                       className="text-lg font-bold mt-0.5"
                       style={{ color: providerColors.primary }}
@@ -380,12 +380,12 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
                 </div>
 
                 <div className="flex flex-wrap gap-3 text-sm">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-surface-alt)] text-[var(--text-primary)]">
-                    <FaWifi className="text-[var(--info)]" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]">
+                    <FaWifi className="text-[var(--color-info)]" />
                     {bundle.dataVolume} {bundle.dataUnit}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--bg-surface-alt)] text-[var(--text-primary)]">
-                    <FaClock className="text-[var(--success)]" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]">
+                    <FaClock className="text-[var(--color-success)]" />
                     {bundle.validity === "unlimited" &&
                       bundle.validityUnit === "unlimited"
                       ? "Unlimited"
@@ -399,7 +399,7 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
             <div>
               <label
                 htmlFor="Phone Number"
-                className="block text-sm font-medium text-[var(--text-secondary)] mb-2"
+                className="block text-sm font-medium text-[var(--color-text-secondary)] mb-2"
               >
                 Customer Phone Number
               </label>
@@ -408,7 +408,7 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
                 value={customerPhone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 placeholder="Enter 10-digit phone number"
-                leftIcon={<FaPhone className="text-[var(--text-muted)]" />}
+                leftIcon={<FaPhone className="text-[var(--color-text-muted)]" />}
                 isInvalid={!!phoneError}
                 errorText={phoneError}
               />
@@ -448,33 +448,33 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
                 style={{ backgroundColor: providerColors.primary }}
               />
               <CardBody>
-                <h3 className="font-medium text-[var(--text-primary)] mb-4">
+                <h3 className="font-medium text-[var(--color-text-primary)] mb-4">
                   Bundle Details
                 </h3>
                 <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-center py-1 border-b border-[var(--border-color)] last:border-b-0">
-                    <span className="text-[var(--text-secondary)]">Bundle</span>
-                    <span className="font-medium text-[var(--text-primary)]">
+                  <div className="flex justify-between items-center py-1 border-b border-[var(--color-border)] last:border-b-0">
+                    <span className="text-[var(--color-text-secondary)]">Bundle</span>
+                    <span className="font-medium text-[var(--color-text-primary)]">
                       {orderSummary?.bundle.name}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-[var(--border-color)] last:border-b-0">
-                    <span className="text-[var(--text-secondary)]">Data</span>
-                    <span className="font-medium text-[var(--text-primary)]">
+                  <div className="flex justify-between items-center py-1 border-b border-[var(--color-border)] last:border-b-0">
+                    <span className="text-[var(--color-text-secondary)]">Data</span>
+                    <span className="font-medium text-[var(--color-text-primary)]">
                       {orderSummary?.bundle.dataVolume}{" "}
                       {orderSummary?.bundle.dataUnit}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-[var(--border-color)] last:border-b-0">
-                    <span className="text-[var(--text-secondary)]">Validity</span>
-                    <span className="font-medium text-[var(--text-primary)]">
+                  <div className="flex justify-between items-center py-1 border-b border-[var(--color-border)] last:border-b-0">
+                    <span className="text-[var(--color-text-secondary)]">Validity</span>
+                    <span className="font-medium text-[var(--color-text-primary)]">
                       {orderSummary?.bundle.validityUnit === "unlimited"
                         ? "Unlimited"
                         : `${orderSummary?.bundle.validity} ${orderSummary?.bundle.validityUnit}`}
                     </span>
                   </div>
                   <div className="flex justify-between items-center py-1">
-                    <span className="text-[var(--text-secondary)]">Price</span>
+                    <span className="text-[var(--color-text-secondary)]">Price</span>
                     <span
                       className="font-bold text-base"
                       style={{ color: providerColors.primary }}
@@ -494,12 +494,12 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
                 style={{ backgroundColor: providerColors.primary }}
               />
               <CardBody>
-                <h3 className="font-medium text-[var(--text-primary)] mb-3">
+                <h3 className="font-medium text-[var(--color-text-primary)] mb-3">
                   Customer Information
                 </h3>
-                <div className="flex items-center gap-2 text-sm text-[var(--text-primary)]">
-                  <div className="w-8 h-8 rounded-full bg-[var(--bg-surface-alt)] flex items-center justify-center">
-                    <FaPhone className="text-[var(--info)] text-sm" />
+                <div className="flex items-center gap-2 text-sm text-[var(--color-text-primary)]">
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center">
+                    <FaPhone className="text-[var(--color-info)] text-sm" />
                   </div>
                   <span className="font-medium">{orderSummary?.customerPhone}</span>
                 </div>
@@ -507,8 +507,8 @@ export const SingleOrderModal: React.FC<SingleOrderModalProps> = ({
             </Card>
 
             {/* Total */}
-            <div className="rounded-lg bg-[var(--bg-surface-alt)] p-4">
-              <div className="flex justify-between items-center text-base font-bold text-[var(--text-primary)]">
+            <div className="rounded-lg bg-[var(--color-surface-alt)] p-4">
+              <div className="flex justify-between items-center text-base font-bold text-[var(--color-text-primary)]">
                 <span>Total Amount</span>
                 <span
                   className="text-lg"

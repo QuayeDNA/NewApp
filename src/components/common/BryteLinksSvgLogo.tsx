@@ -1,92 +1,116 @@
-import React, { type ImgHTMLAttributes } from "react";
+import React from "react";
+import { brand } from "../../config/brand";
 
-export interface BryteLinksSvgLogoProps extends Omit<
-  ImgHTMLAttributes<HTMLImageElement>,
-  "src" | "alt"
-> {
+interface BrandLogoProps {
   width?: number | string;
   height?: number | string;
   className?: string;
+  color?: string;
 }
 
-const LOGO_FULL_SRC = "/logo-512.png";
-const LOGO_COMPACT_SRC = "/logo-192.png";
-
-export const BryteLinksSvgLogo: React.FC<BryteLinksSvgLogoProps> = ({
+// Full logo — renders brand initials in Ink & Steel style as a text mark
+export const BryteLinksSvgLogo: React.FC<BrandLogoProps> = ({
   width = 200,
   height = 180,
   className = "",
-  ...props
+  color,
 }) => {
+  const initials = brand.shortName;
   return (
-    <img
-      src={LOGO_FULL_SRC}
-      alt="BryteLinks Logo"
-      width={width}
-      height={height}
-      className={`object-contain ${className}`}
-      loading="eager"
-      {...props}
-    />
+    <div
+      className={`flex items-center justify-center font-bold tracking-tighter leading-none select-none ${className}`}
+      style={{
+        width,
+        height,
+        fontFamily: "var(--font-body)",
+        color: color ?? "var(--color-ink)",
+        fontSize: "clamp(2rem, 5vw, 4rem)",
+        lineHeight: 1,
+      }}
+      aria-label={brand.name}
+    >
+      {initials}
+    </div>
   );
 };
 
 // Horizontal compact version for headers/navbars
-export const BryteLinksSvgLogoCompact: React.FC<BryteLinksSvgLogoProps> = ({
+export const BryteLinksSvgLogoCompact: React.FC<BrandLogoProps> = ({
   width = 220,
   height = 60,
   className = "",
-  ...props
+  color,
 }) => {
   return (
-    <img
-      src={LOGO_COMPACT_SRC}
-      alt="BryteLinks Logo"
-      width={width}
-      height={height}
-      className={`object-contain ${className}`}
-      loading="lazy"
-      {...props}
-    />
+    <div
+      className={`flex items-center gap-2 ${className}`}
+      style={{ width, height }}
+      aria-label={brand.name}
+    >
+      <span
+        className="font-bold tracking-tighter leading-none"
+        style={{
+          fontFamily: "var(--font-body)",
+          color: color ?? "var(--color-ink)",
+          fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+        }}
+      >
+        {brand.shortName}
+      </span>
+    </div>
   );
 };
 
-// Modern icon-only version
-export const BryteLinksSvgIcon: React.FC<BryteLinksSvgLogoProps> = ({
+// Icon-only version
+export const BryteLinksSvgIcon: React.FC<BrandLogoProps> = ({
   width = 48,
   height = 48,
   className = "",
-  ...props
+  color,
 }) => {
+  const initials = brand.shortName.slice(0, 2);
   return (
-    <img
-      src={LOGO_COMPACT_SRC}
-      alt="BryteLinks Icon"
-      width={width}
-      height={height}
-      className={`object-contain ${className}`}
-      loading="lazy"
-      {...props}
-    />
+    <div
+      className={`flex items-center justify-center font-bold leading-none select-none ${className}`}
+      style={{
+        width,
+        height,
+        fontFamily: "var(--font-body)",
+        color: color ?? "var(--color-ink)",
+        fontSize: "clamp(0.875rem, 2vw, 1.25rem)",
+        border: "2px solid",
+        borderColor: color ?? "var(--color-ink)",
+        lineHeight: 1,
+      }}
+      aria-label={brand.name}
+    >
+      {initials}
+    </div>
   );
 };
 
 // Minimal badge version for very small spaces
-export const BryteLinksBadge: React.FC<BryteLinksSvgLogoProps> = ({
+export const BryteLinksBadge: React.FC<BrandLogoProps> = ({
   width = 32,
   height = 32,
   className = "",
-  ...props
 }) => {
+  const initials = brand.shortName.slice(0, 1);
   return (
-    <img
-      src={LOGO_COMPACT_SRC}
-      alt="BryteLinks Badge"
-      width={width}
-      height={height}
-      className={`object-contain ${className}`}
-      loading="lazy"
-      {...props}
-    />
+    <div
+      className={`flex items-center justify-center font-bold leading-none select-none ${className}`}
+      style={{
+        width,
+        height,
+        fontFamily: "var(--font-body)",
+        color: "var(--color-text-inverse)",
+        backgroundColor: "var(--color-ink)",
+        fontSize: "clamp(0.625rem, 1.5vw, 0.875rem)",
+        lineHeight: 1,
+      }}
+      aria-label={brand.name}
+    >
+      {initials}
+    </div>
   );
 };

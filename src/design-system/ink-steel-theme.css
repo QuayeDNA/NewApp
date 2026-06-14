@@ -1,0 +1,290 @@
+/* =========================================================
+   INK & STEEL — Design System
+   Aesthetic: Industrial / Technical Brutalism
+   Palette: Near-black (Ink) + Warm off-white (Steel) + Amber
+   Radii: ALL ZERO — sharp edges everywhere
+   Version: 1.0
+   ========================================================= */
+
+/* =========================================================
+   GOOGLE FONTS — loaded in index.html, declared here for
+   font-family fallback chain.
+   ========================================================= */
+
+/* =========================================================
+   LIGHT THEME (default)
+   ========================================================= */
+
+:root {
+  /* =====================================================
+     BRAND — Inks (near-black foundation)
+     ===================================================== */
+
+  --color-ink: #0c0c0f;
+  --color-ink-hover: #1a1a1f;
+  --color-ink-active: #2a2a30;
+
+  /* =====================================================
+     BRAND — Steels (warm off-white ground)
+     ===================================================== */
+
+  --color-steel: #f5f3ef;
+  --color-steel-hover: #efede8;
+  --color-steel-active: #e8e5df;
+
+  /* =====================================================
+     SURFACES
+     ===================================================== */
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #f0eeea;
+  --color-ground: var(--color-steel);
+
+  /* =====================================================
+     SHELL — sidebar, header (single value, no dark mode flip)
+     ===================================================== */
+
+  --color-sidebar: #0c0c0f;
+  --color-header: #0c0c0f;
+
+  /* =====================================================
+     SHELL TEXT — always white on the fixed dark shell
+     ===================================================== */
+
+  --color-text-header: #ffffff;
+  --color-text-sidebar: #ffffff;
+
+  /* =====================================================
+     ACCENT — Amber (singular sharp accent)
+     ===================================================== */
+
+  --color-amber: #f59e0b;
+  --color-amber-hover: #d97706;
+  --color-amber-active: #b45309;
+
+  /* =====================================================
+     BORDERS
+     ===================================================== */
+
+  --color-border: #e2dfda;
+  --color-border-strong: #c9c5be;
+
+  /* =====================================================
+     TEXT
+     ===================================================== */
+
+  --color-text-primary: #0c0c0f;
+  --color-text-secondary: #6b6760;
+  --color-text-muted: #9e9a93;
+  --color-text-inverse: #ffffff;
+
+  /* =====================================================
+     SEMANTIC / SYSTEM COLORS
+     ===================================================== */
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* =====================================================
+     ALL RADII = 0 — Sharp edges
+     ===================================================== */
+
+  --radius-none: 0px;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-full: 0px;
+
+  /* =====================================================
+     HARD-EDGE SHADOWS (no blur — industrial precision)
+     ===================================================== */
+
+  --shadow-xs: 0 1px 0 rgba(12, 12, 15, 0.08);
+  --shadow-sm: 0 2px 0 rgba(12, 12, 15, 0.1);
+  --shadow-md: 0 3px 0 rgba(12, 12, 15, 0.12);
+  --shadow-lg: 0 4px 0 rgba(12, 12, 15, 0.15);
+  --shadow-xl: 0 6px 0 rgba(12, 12, 15, 0.18);
+  --shadow-glow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+
+  /* =====================================================
+     TYPOGRAPHY
+     ===================================================== */
+
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* =====================================================
+     TRANSITIONS
+     ===================================================== */
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* =====================================================
+     LAYOUT
+     ===================================================== */
+
+  --header-height: 4rem;
+  --sidebar-width: 16rem;
+  --sidebar-collapsed-width: 5rem;
+  --container-width: 1280px;
+}
+
+/* =========================================================
+   DARK THEME — .dark class on <html> or <body>
+   ========================================================= */
+
+.dark {
+  --color-ink: #f5f3ef;
+  --color-ink-hover: #e8e5df;
+  --color-ink-active: #d4d0c8;
+
+  --color-steel: #0c0c0f;
+  --color-steel-hover: #141418;
+  --color-steel-active: #1e1e24;
+
+  --color-surface: #141418;
+  --color-surface-alt: #1a1a20;
+  --color-ground: #0c0c0f;
+
+  --color-amber: #f59e0b;
+  --color-amber-hover: #d97706;
+  --color-amber-active: #b45309;
+
+  --color-border: #2a2a30;
+  --color-border-strong: #3a3a42;
+
+  --color-text-primary: #f0eeea;
+  --color-text-secondary: #9e9a93;
+  --color-text-muted: #6b6760;
+  --color-text-inverse: #0c0c0f;
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+
+  --shadow-xs: 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-sm: 0 2px 0 rgba(255, 255, 255, 0.08);
+  --shadow-md: 0 3px 0 rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 4px 0 rgba(255, 255, 255, 0.12);
+  --shadow-xl: 0 6px 0 rgba(255, 255, 255, 0.15);
+  --shadow-glow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+}
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background: var(--color-ground);
+  color: var(--color-text-primary);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: var(--line-height-normal);
+
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+  margin-top: 0;
+}
+
+a {
+  color: var(--color-amber);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-amber-hover);
+}
+
+/* =========================================================
+   UTILITY — Glass effect (used sparingly)
+   ========================================================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(245, 158, 11, 0.25);
+  color: var(--color-text-primary);
+}

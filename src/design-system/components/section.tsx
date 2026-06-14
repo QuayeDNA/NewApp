@@ -18,11 +18,11 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
     ...props 
   }, ref) => {
     const backgroundClasses = {
-      white: 'bg-[var(--bg-surface)]',
-      gray: 'bg-[var(--bg-surface-alt)]',
-      blue: 'bg-[var(--bg-surface-alt)]',
-      gradient: 'bg-[var(--bg-surface-alt)]',
-      dark: 'bg-[var(--color-navy-dark)] text-[var(--text-inverse)]',
+      white: 'bg-[var(--color-surface)]',
+      gray: 'bg-[var(--color-surface-alt)]',
+      blue: 'bg-[var(--color-surface-alt)]',
+      gradient: 'bg-[var(--color-surface-alt)]',
+      dark: 'bg-[var(--color-ink)] text-[var(--color-text-inverse)]',
       none: 'bg-transparent',
     };
 
@@ -66,11 +66,11 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
         className={`mb-16 ${alignmentClasses} ${className}`}
         {...props}
       >
-        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+          <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
             {subtitle}
           </p>
         )}

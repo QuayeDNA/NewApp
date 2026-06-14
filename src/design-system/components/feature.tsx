@@ -19,10 +19,10 @@ export const Feature = forwardRef<HTMLDivElement, FeatureProps>(
     };
 
     const iconClasses = variant === 'horizontal' 
-      ? 'flex-shrink-0 w-8 h-8 text-primary' 
+      ? 'flex-shrink-0 w-8 h-8 text-[var(--color-ink)]' 
       : variant === 'centered'
-      ? 'mx-auto w-12 h-12 text-primary mb-4'
-      : 'w-8 h-8 text-primary mb-4';
+      ? 'mx-auto w-12 h-12 text-[var(--color-ink)] mb-4'
+      : 'w-8 h-8 text-[var(--color-ink)] mb-4';
 
     return (
       <div
@@ -37,10 +37,10 @@ export const Feature = forwardRef<HTMLDivElement, FeatureProps>(
         )}
         
         <div className={variant === 'horizontal' ? 'flex-1' : ''}>
-          <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
+          <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
             {title}
           </h3>
-          <p className="text-[var(--text-secondary)] leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] leading-relaxed">
             {description}
           </p>
         </div>

@@ -57,40 +57,40 @@ const iconOnlySizeClasses = {
 
 const semanticColors: Record<ButtonColorScheme, { solid: string; outline: string; ghost: string; link: string }> = {
   default: {
-    solid: "text-white shadow-sm",
-    outline: "bg-transparent border text-[var(--color-primary)] hover:bg-[var(--bg-surface-alt)]",
-    ghost: "bg-transparent text-[var(--color-primary)] hover:bg-[var(--bg-surface-alt)]",
-    link: "bg-transparent text-[var(--color-primary)] hover:underline p-0 h-auto",
+    solid: "text-[var(--color-text-inverse)] hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border text-[var(--color-ink)] hover:bg-[var(--color-surface-alt)]",
+    ghost: "bg-transparent text-[var(--color-ink)] hover:bg-[var(--color-surface-alt)]",
+    link: "bg-transparent text-[var(--color-ink)] hover:underline p-0 h-auto",
   },
   success: {
-    solid: "bg-[var(--success)] text-white hover:brightness-110 shadow-sm",
-    outline: "bg-transparent border border-[var(--success)] text-[var(--success)]",
-    ghost: "bg-transparent text-[var(--success)]",
-    link: "bg-transparent text-[var(--success)] hover:underline p-0 h-auto",
+    solid: "bg-[var(--color-success)] text-white hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border border-[var(--color-success)] text-[var(--color-success)] hover:bg-[var(--color-success)]/10",
+    ghost: "bg-transparent text-[var(--color-success)] hover:bg-[var(--color-success)]/10",
+    link: "bg-transparent text-[var(--color-success)] hover:underline p-0 h-auto",
   },
   warning: {
-    solid: "bg-[var(--warning)] text-white hover:brightness-110 shadow-sm",
-    outline: "bg-transparent border border-[var(--warning)] text-[var(--warning)]",
-    ghost: "bg-transparent text-[var(--warning)]",
-    link: "bg-transparent text-[var(--warning)] hover:underline p-0 h-auto",
+    solid: "bg-[var(--color-warning)] text-white hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border border-[var(--color-warning)] text-[var(--color-warning)] hover:bg-[var(--color-warning)]/10",
+    ghost: "bg-transparent text-[var(--color-warning)] hover:bg-[var(--color-warning)]/10",
+    link: "bg-transparent text-[var(--color-warning)] hover:underline p-0 h-auto",
   },
   error: {
-    solid: "bg-[var(--error)] text-white hover:brightness-110 shadow-sm",
-    outline: "bg-transparent border border-[var(--error)] text-[var(--error)]",
-    ghost: "bg-transparent text-[var(--error)]",
-    link: "bg-transparent text-[var(--error)] hover:underline p-0 h-auto",
+    solid: "bg-[var(--color-error)] text-white hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border border-[var(--color-error)] text-[var(--color-error)] hover:bg-[var(--color-error)]/10",
+    ghost: "bg-transparent text-[var(--color-error)] hover:bg-[var(--color-error)]/10",
+    link: "bg-transparent text-[var(--color-error)] hover:underline p-0 h-auto",
   },
   info: {
-    solid: "bg-[var(--info)] text-white hover:brightness-110 shadow-sm",
-    outline: "bg-transparent border border-[var(--info)] text-[var(--info)]",
-    ghost: "bg-transparent text-[var(--info)]",
-    link: "bg-transparent text-[var(--info)] hover:underline p-0 h-auto",
+    solid: "bg-[var(--color-info)] text-white hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border border-[var(--color-info)] text-[var(--color-info)] hover:bg-[var(--color-info)]/10",
+    ghost: "bg-transparent text-[var(--color-info)] hover:bg-[var(--color-info)]/10",
+    link: "bg-transparent text-[var(--color-info)] hover:underline p-0 h-auto",
   },
   danger: {
-    solid: "bg-[var(--error)] text-white hover:brightness-110 shadow-sm",
-    outline: "bg-transparent border border-[var(--error)] text-[var(--error)]",
-    ghost: "bg-transparent text-[var(--error)]",
-    link: "bg-transparent text-[var(--error)] hover:underline p-0 h-auto",
+    solid: "bg-[var(--color-error)] text-white hover:brightness-110 active:brightness-125",
+    outline: "bg-transparent border border-[var(--color-error)] text-[var(--color-error)] hover:bg-[var(--color-error)]/10",
+    ghost: "bg-transparent text-[var(--color-error)] hover:bg-[var(--color-error)]/10",
+    link: "bg-transparent text-[var(--color-error)] hover:underline p-0 h-auto",
   },
 };
 
@@ -125,50 +125,28 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       switch (variant) {
         case "primary":
         case "accent":
-          return colors.solid;
+          return `bg-[var(--color-ink)] ${colors.solid}`;
         case "secondary":
-          return "bg-gray-600 text-white hover:bg-gray-700 active:bg-gray-800 shadow-sm";
+          return `bg-[var(--color-surface-alt)] text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-border)] active:brightness-95`;
         case "outline":
-          return `${colors.outline} border`;
+          return colors.outline;
         case "ghost":
           return colors.ghost;
         case "link":
           return colors.link;
         default:
-          return colors.solid;
+          return `bg-[var(--color-ink)] ${colors.solid}`;
       }
-    };
-
-    const getThemeStyles = (): React.CSSProperties => {
-      const isSemanticVariant = variant === "danger" || variant === "success" || variant === "warning" || variant === "info";
-      if (colorScheme !== "default" || isSemanticVariant) return {};
-
-      if (variant === "primary" || variant === "accent") {
-        return {
-          background: "var(--gradient-primary)",
-          color: "white",
-        };
-      }
-      if (variant === "outline") {
-        return {
-          borderColor: "var(--color-primary)",
-          color: "var(--color-primary)",
-        };
-      }
-      if (variant === "ghost" || variant === "link") {
-        return { color: "var(--color-primary)" };
-      }
-      return {};
     };
 
     const focusRing = variant === "link"
       ? "focus:outline-none"
-      : "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]";
+      : "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-ink)]";
 
     const buttonClasses = [
       "inline-flex items-center justify-center",
       "font-medium",
-      rounded ? "rounded-full" : "rounded-md",
+      "rounded-none",
       focusRing,
       "transition-all duration-200",
       iconOnly ? iconOnlySizeClasses[size] : sizeClasses[size],
@@ -183,7 +161,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         className={buttonClasses}
-        style={{ ...getThemeStyles(), ...props.style }}
         disabled={disabled || isLoading}
         {...props}
       >

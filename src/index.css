@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "react-data-grid/lib/styles.css";
 @import "./design-system/theme.css";
-@import "./design-system/brytelinks-theme.css";
+@import "./design-system/ink-steel-theme.css";
 
 /* Excel View Custom Styles */
 .rdg-light {
@@ -47,6 +47,7 @@
 a, button, input, select, textarea {
   transition: all 0.2s ease;
 }
+
 /* Header animations */
 @keyframes slide-up {
   from {
@@ -85,7 +86,6 @@ a, button, input, select, textarea {
 }
 .animate-marquee {
   animation: marquee 10s linear infinite;
-  /* Ensure the text is wide enough to scroll */
   min-width: max-content;
 }
 

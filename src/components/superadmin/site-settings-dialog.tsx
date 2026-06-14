@@ -60,8 +60,8 @@ export const SiteSettingsDialog: React.FC<SiteSettingsDialogProps> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} size="lg">
       <DialogHeader>
-        <h2 className="text-xl font-semibold flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-          <span className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}>
+        <h2 className="text-xl font-semibold flex items-center gap-2" style={{ color: 'var(--color-text-primary)' }}>
+          <span className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}>
             🌐
           </span>
           Site Management Settings
@@ -71,16 +71,16 @@ export const SiteSettingsDialog: React.FC<SiteSettingsDialogProps> = ({
       <Form onSubmit={handleSubmit}>
         <DialogBody>
           <div className="space-y-6">
-            <div className="p-4 rounded-lg" style={{ backgroundColor: 'var(--bg-surface-alt)' }}>
+            <div className="p-4 rounded-lg" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-medium" style={{ color: 'var(--text-primary)' }}>Site Status</h3>
-                  <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
+                  <h3 className="font-medium" style={{ color: 'var(--color-text-primary)' }}>Site Status</h3>
+                  <p className="text-sm mt-1" style={{ color: 'var(--color-text-secondary)' }}>
                     Control whether the site is open for public access
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-medium" style={{ color: formData.isSiteOpen ? 'var(--success)' : 'var(--error)' }}>
+                  <span className="text-sm font-medium" style={{ color: formData.isSiteOpen ? 'var(--color-success)' : 'var(--color-error)' }}>
                     {formData.isSiteOpen ? "Open" : "Closed"}
                   </span>
                   <button
@@ -92,7 +92,7 @@ export const SiteSettingsDialog: React.FC<SiteSettingsDialogProps> = ({
                       }))
                     }
                     className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                    style={{ backgroundColor: formData.isSiteOpen ? 'var(--success)' : 'var(--border-color)' }}
+                    style={{ backgroundColor: formData.isSiteOpen ? 'var(--color-success)' : 'var(--color-border)' }}
                   >
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${formData.isSiteOpen ? "translate-x-6" : "translate-x-1"
@@ -130,12 +130,12 @@ export const SiteSettingsDialog: React.FC<SiteSettingsDialogProps> = ({
                 className="w-full"
               />
 
-              <div className="flex items-center justify-between p-3 rounded-lg border" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-color)' }}>
+              <div className="flex items-center justify-between p-3 rounded-lg border" style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-border)' }}>
                 <div>
-                  <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+                  <div className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>
                     Show welcome icon
                   </div>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>
                     Toggle whether the welcome message includes an icon.
                   </p>
                 </div>
@@ -164,7 +164,7 @@ export const SiteSettingsDialog: React.FC<SiteSettingsDialogProps> = ({
               rows={4}
               className="w-full"
             />
-            <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>
               This message will be shown to users when the site is closed for
               maintenance.
             </p>

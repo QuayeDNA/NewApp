@@ -53,8 +53,8 @@ export const StoreFooter = memo(
       <footer
         className="border-t px-4 py-8"
         style={{
-          backgroundColor: "var(--bg-muted)",
-          borderColor: "var(--border-color)",
+          backgroundColor: "var(--color-ground)",
+          borderColor: "var(--color-border)",
         }}
       >
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -66,7 +66,7 @@ export const StoreFooter = memo(
                     href={social.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-blue-600 transition"
+                    className="hover:text-[var(--color-info)] transition"
                     style={{ color: "var(--text-tertiary)" }}
                   >
                     <FaFacebook className="w-5 h-5" />
@@ -77,7 +77,7 @@ export const StoreFooter = memo(
                     href={social.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-sky-500 transition"
+                    className="hover:text-[var(--color-info)] transition"
                     style={{ color: "var(--text-tertiary)" }}
                   >
                     <FaTwitter className="w-5 h-5" />
@@ -88,7 +88,7 @@ export const StoreFooter = memo(
                     href={social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-pink-600 transition"
+                    className="hover:text-[var(--color-info)] transition"
                     style={{ color: "var(--text-tertiary)" }}
                   >
                     <FaInstagram className="w-5 h-5" />
@@ -99,7 +99,7 @@ export const StoreFooter = memo(
             {hasContact && (
               <div
                 className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {storefront.contactInfo?.phone && (
                   <a
@@ -107,7 +107,7 @@ export const StoreFooter = memo(
                     className="flex items-center gap-1.5 transition"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.color =
-                        "var(--text-primary)";
+                        "var(--color-text-primary)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "";
@@ -141,7 +141,7 @@ export const StoreFooter = memo(
                     className="flex items-center gap-1.5 transition"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.color =
-                        "var(--text-primary)";
+                        "var(--color-text-primary)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "";
@@ -160,7 +160,7 @@ export const StoreFooter = memo(
               </span>
               <span
                 className="font-medium"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {storefront.businessName}
               </span>
@@ -176,7 +176,7 @@ export const StoreFooter = memo(
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
-              style={{ color: "var(--color-primary)" }}
+              style={{ color: "var(--color-ink)" }}
             >
               DNA Studios
             </a>

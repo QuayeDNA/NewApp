@@ -34,8 +34,17 @@ export const ForgotPasswordPage = () => {
     <AuthLayout
       title="Reset password"
       subtitle="Recover access to your vendor account."
-      backLink="/login"
-      backLabel="Back"
+      footer={
+        <p className="text-[var(--color-text-secondary)]">
+          Remembered your password?{" "}
+          <Link
+            className="font-semibold text-[var(--color-ink)] hover:text-[var(--color-ink-hover)]"
+            to="/login"
+          >
+            Sign in
+          </Link>
+        </p>
+      }
     >
       {authState.error && (
         <Alert status="error" variant="left-accent" className="mb-4">
@@ -54,7 +63,7 @@ export const ForgotPasswordPage = () => {
             required
             placeholder="Phone, email, or agent code"
             fullWidth
-            leftIcon={<FaUser className="text-[var(--text-muted)]" />}
+            leftIcon={<FaUser className="text-[var(--color-text-muted)]" />}
           />
         </div>
 
@@ -70,7 +79,7 @@ export const ForgotPasswordPage = () => {
             required
             placeholder="Enter your PIN"
             fullWidth
-            leftIcon={<FaKey className="text-[var(--text-muted)]" />}
+            leftIcon={<FaKey className="text-[var(--color-text-muted)]" />}
           />
         </div>
 
@@ -85,15 +94,6 @@ export const ForgotPasswordPage = () => {
         </Button>
       </form>
 
-      <div className="mt-6 text-center text-sm text-[var(--text-secondary)]">
-        Remembered your password?{" "}
-        <Link
-          className="font-semibold text-primary hover:text-[var(--color-primary-hover)]"
-          to="/login"
-        >
-          Sign in
-        </Link>
-      </div>
     </AuthLayout>
   );
 };

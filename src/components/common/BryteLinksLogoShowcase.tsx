@@ -4,6 +4,7 @@ import {
   BryteLinksSvgLogoCompact, 
   BryteLinksSvgIcon 
 } from './BryteLinksSvgLogo';
+import { brand } from "../../config/brand";
 
 /**
  * Demo component showing all logo variations
@@ -11,14 +12,14 @@ import {
  */
 export const BryteLinksLogoShowcase: React.FC = () => {
   return (
-    <div className="p-8 space-y-12 bg-gray-50 min-h-screen">
+    <div className="p-8 space-y-12 bg-[var(--color-ground)] min-h-screen">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          BryteLinks Logo Variations
+          {brand.name} Logo Variations
         </h1>
 
         {/* Main Logo */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 mb-8">
+        <div className="bg-[var(--color-surface)] p-8 shadow-[var(--shadow-sm)] border border-[var(--color-border)] mb-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Main Logo</h2>
           <p className="text-gray-600 mb-6">
             Perfect for landing pages, about sections, and prominent brand placement.
@@ -32,7 +33,7 @@ export const BryteLinksLogoShowcase: React.FC = () => {
         </div>
 
         {/* Compact Logo */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 mb-8">
+        <div className="bg-[var(--color-surface)] p-8 shadow-[var(--shadow-sm)] border border-[var(--color-border)] mb-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Compact Logo</h2>
           <p className="text-gray-600 mb-6">
             Ideal for headers, navigation bars, and horizontal layouts.
@@ -46,7 +47,7 @@ export const BryteLinksLogoShowcase: React.FC = () => {
         </div>
 
         {/* Icon Only */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 mb-8">
+        <div className="bg-[var(--color-surface)] p-8 shadow-[var(--shadow-sm)] border border-[var(--color-border)] mb-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Icon Only</h2>
           <p className="text-gray-600 mb-6">
             Great for favicons, app icons, and small spaces where text isn't needed.
@@ -68,13 +69,13 @@ export const BryteLinksLogoShowcase: React.FC = () => {
         </div>
 
         {/* Usage Examples */}
-        <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200">
+        <div className="bg-[var(--color-surface)] p-8 shadow-[var(--shadow-sm)] border border-[var(--color-border)]">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Usage Examples</h2>
           
           {/* Header Example */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Navigation Header</h3>
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-[var(--color-surface-alt)] p-4">
               <div className="flex items-center justify-between">
                 <BryteLinksSvgLogoCompact width={140} height={40} />
                 <div className="flex space-x-4 text-sm text-gray-600">
@@ -89,11 +90,11 @@ export const BryteLinksLogoShowcase: React.FC = () => {
           {/* Card Example */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Profile Card</h3>
-            <div className="bg-gray-100 p-4 rounded-lg max-w-md">
+            <div className="bg-[var(--color-surface-alt)] p-4 max-w-md">
               <div className="flex items-center space-x-3">
                 <BryteLinksSvgIcon width={48} height={48} />
                 <div>
-                  <div className="font-medium text-gray-900">BryteLinks</div>
+                  <div className="font-medium text-gray-900">{brand.name}</div>
                   <div className="text-sm text-gray-500">Telecom Solutions</div>
                 </div>
               </div>
@@ -104,15 +105,15 @@ export const BryteLinksLogoShowcase: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium text-gray-700 mb-3">Background Variations</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white p-6 rounded-lg border text-center">
+              <div className="bg-[var(--color-surface)] p-6 border text-center">
                 <BryteLinksSvgIcon width={64} height={64} />
                 <div className="mt-2 text-sm text-gray-500">White Background</div>
               </div>
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
+              <div className="bg-[var(--color-ink)] p-6 text-center">
                 <BryteLinksSvgIcon width={64} height={64} />
                 <div className="mt-2 text-sm text-gray-300">Dark Background</div>
               </div>
-              <div className="bg-blue-50 p-6 rounded-lg text-center">
+              <div className="bg-[var(--color-info)]/10 p-6 text-center">
                 <BryteLinksSvgIcon width={64} height={64} />
                 <div className="mt-2 text-sm text-gray-500">Colored Background</div>
               </div>
@@ -121,20 +122,20 @@ export const BryteLinksLogoShowcase: React.FC = () => {
         </div>
 
         {/* Implementation Code */}
-        <div className="bg-gray-900 rounded-lg p-6 text-white">
+        <div className="bg-[var(--color-ink)] p-6 text-[var(--color-text-inverse)]">
           <h2 className="text-xl font-semibold mb-4">Implementation</h2>
           <div className="space-y-4 text-sm font-mono">
             <div>
-              <div className="text-blue-300 mb-1">// Import the logo components</div>
-              <div className="text-green-300">
+              <div className="text-[var(--color-info)] mb-1">// Import the logo components</div>
+              <div className="text-[var(--color-success)]">
                 import {`{ BryteLinksSvgLogo, BryteLinksSvgLogoCompact, BryteLinksSvgIcon }`} from './components/common';
               </div>
             </div>
             <div>
-              <div className="text-blue-300 mb-1">// Use in your components</div>
-              <div className="text-yellow-300">&lt;BryteLinksSvgLogo width={`{120}`} height={`{140}`} /&gt;</div>
-              <div className="text-yellow-300">&lt;BryteLinksSvgLogoCompact width={`{180}`} height={`{50}`} /&gt;</div>
-              <div className="text-yellow-300">&lt;BryteLinksSvgIcon width={`{40}`} height={`{40}`} /&gt;</div>
+              <div className="text-[var(--color-info)] mb-1">// Use in your components</div>
+              <div className="text-[var(--color-amber)]">&lt;BryteLinksSvgLogo width={`{120}`} height={`{140}`} /&gt;</div>
+              <div className="text-[var(--color-amber)]">&lt;BryteLinksSvgLogoCompact width={`{180}`} height={`{50}`} /&gt;</div>
+              <div className="text-[var(--color-amber)]">&lt;BryteLinksSvgIcon width={`{40}`} height={`{40}`} /&gt;</div>
             </div>
           </div>
         </div>

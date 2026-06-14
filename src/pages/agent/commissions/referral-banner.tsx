@@ -3,6 +3,7 @@ import { FaCopy, FaCheck, FaShareAlt, FaLink, FaWhatsapp, FaSms } from "react-ic
 import { Card } from "../../../design-system/components/card";
 import { Button } from "../../../design-system/components/button";
 import { useToast } from "../../../design-system/components/toast";
+import { brand } from "../../../config/brand";
 
 interface ReferralBannerProps {
   referralCode: string;
@@ -38,7 +39,7 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
   }, [addToast]);
 
   const shareVia = (platform: "whatsapp" | "sms") => {
-    const text = `Join me on BryteLinks and start vending airtime & data! Use my referral code: ${referralCode}`;
+    const text = `Join me on ${brand.name} and start vending airtime & data! Use my referral code: ${referralCode}`;
     const url = platform === "whatsapp"
       ? `https://wa.me/?text=${encodeURIComponent(text + " " + shareLink)}`
       : `sms:?body=${encodeURIComponent(text + " " + shareLink)}`;
@@ -50,19 +51,19 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
     <Card variant="elevated" className="overflow-hidden" noPadding>
       <div
         className="p-4 sm:p-6"
-        style={{ background: "var(--gradient-brand-dark)" }}
+        style={{ background: "var(--color-ink)" }}
       >
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="w-full sm:w-auto">
             <p
               className="text-[10px] sm:text-xs font-medium tracking-wider uppercase"
-              style={{ color: "var(--text-inverse)", opacity: 0.6 }}
+              style={{ color: "var(--color-text-inverse)", opacity: 0.6 }}
             >
               Your Referral Code
             </p>
             <p
               className="text-2xl sm:text-3xl font-bold tracking-[0.2em] mt-1 font-mono break-all"
-              style={{ color: "var(--text-inverse)" }}
+              style={{ color: "var(--color-text-inverse)" }}
             >
               {referralCode}
             </p>
@@ -74,8 +75,8 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
               onClick={() => copyToClipboard(referralCode)}
               className="flex-1 sm:flex-initial"
               style={{
-                background: "color-mix(in srgb, var(--text-inverse) 20%, transparent)",
-                color: "var(--text-inverse)",
+                background: "color-mix(in srgb, var(--color-text-inverse) 20%, transparent)",
+                color: "var(--color-text-inverse)",
                 border: 0,
               }}
             >
@@ -88,8 +89,8 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
                 onClick={() => setShareDropdownOpen(!shareDropdownOpen)}
                 className="flex-1 sm:flex-initial"
                 style={{
-                  background: "color-mix(in srgb, var(--text-inverse) 15%, transparent)",
-                  color: "var(--text-inverse)",
+                  background: "color-mix(in srgb, var(--color-text-inverse) 15%, transparent)",
+                  color: "var(--color-text-inverse)",
                   border: 0,
                 }}
               >
@@ -100,36 +101,36 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
                   <div className="fixed inset-0 z-40 sm:hidden" onClick={() => setShareDropdownOpen(false)} />
                   <div
                     className="fixed sm:absolute inset-x-0 bottom-0 sm:inset-auto sm:right-0 sm:top-full sm:mt-2 z-50 rounded-t-2xl sm:rounded-xl shadow-xl sm:min-w-[200px] overflow-hidden pb-safe-area sm:pb-0 animate-slide-up sm:animate-none"
-                    style={{ background: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
+                    style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
                   >
                     <div className="sm:hidden w-full flex justify-center py-3">
-                      <div className="w-12 h-1.5 rounded-full" style={{ background: "var(--border-color)" }} />
+                      <div className="w-12 h-1.5 rounded-full" style={{ background: "var(--color-border)" }} />
                     </div>
                     <div className="sm:hidden px-4 pb-2 pt-1">
-                      <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Share Referral Link</p>
+                      <p className="text-sm font-semibold" style={{ color: "var(--color-text-primary)" }}>Share Referral Link</p>
                     </div>
                     <button
                       onClick={() => { copyToClipboard(shareLink); setShareDropdownOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 sm:px-3 py-3.5 sm:py-2.5 text-sm transition-colors border-b"
                       style={{
-                        color: "var(--text-primary)",
+                        color: "var(--color-text-primary)",
                         background: "transparent",
-                        borderColor: "var(--border-color)",
+                        borderColor: "var(--color-border)",
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-primary) 8%, transparent)"}
+                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-ink) 8%, transparent)"}
                       onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                     >
-                      <FaLink className="w-4 h-4" style={{ color: "var(--text-muted)" }} /> Copy Link
+                      <FaLink className="w-4 h-4" style={{ color: "var(--color-text-muted)" }} /> Copy Link
                     </button>
                     <button
                       onClick={() => shareVia("whatsapp")}
                       className="flex items-center gap-3 w-full px-4 sm:px-3 py-3.5 sm:py-2.5 text-sm transition-colors border-b"
                       style={{
-                        color: "var(--text-primary)",
+                        color: "var(--color-text-primary)",
                         background: "transparent",
-                        borderColor: "var(--border-color)",
+                        borderColor: "var(--color-border)",
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-primary) 8%, transparent)"}
+                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-ink) 8%, transparent)"}
                       onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                     >
                       <FaWhatsapp className="w-4 h-4" style={{ color: "var(--color-whatsapp)" }} /> WhatsApp
@@ -138,13 +139,13 @@ export const ReferralBanner = ({ referralCode }: ReferralBannerProps) => {
                       onClick={() => shareVia("sms")}
                       className="flex items-center gap-3 w-full px-4 sm:px-3 py-3.5 sm:py-2.5 text-sm transition-colors"
                       style={{
-                        color: "var(--text-primary)",
+                        color: "var(--color-text-primary)",
                         background: "transparent",
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-primary) 8%, transparent)"}
+                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-ink) 8%, transparent)"}
                       onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                     >
-                      <FaSms className="w-4 h-4" style={{ color: "var(--text-muted)" }} /> SMS
+                      <FaSms className="w-4 h-4" style={{ color: "var(--color-text-muted)" }} /> SMS
                     </button>
                   </div>
                 </>

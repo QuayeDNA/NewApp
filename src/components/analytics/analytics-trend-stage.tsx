@@ -164,8 +164,8 @@ export function AnalyticsTrendStage({
             <Card className="xl:col-span-2 p-4 sm:p-5">
                 <CardHeader className="flex flex-col gap-3 pb-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h2 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Performance Trend</h2>
-                        <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+                        <h2 className="text-base sm:text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>Performance Trend</h2>
+                        <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                             Compare revenue, orders, and users over time.
                         </p>
                     </div>
@@ -191,8 +191,8 @@ export function AnalyticsTrendStage({
 
             <Card className="p-4 sm:p-5">
                 <CardHeader className="pb-3">
-                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Order Status Breakdown</h3>
-                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>Order Status Breakdown</h3>
+                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                         Distribution of order outcomes for the selected period.
                     </p>
                 </CardHeader>
@@ -225,11 +225,11 @@ export function AnalyticsTrendStage({
 
                                     return (
                                         <div key={label}>
-                                            <div className="flex items-center justify-between text-xs" style={{ color: "var(--text-secondary)" }}>
+                                            <div className="flex items-center justify-between text-xs" style={{ color: "var(--color-text-secondary)" }}>
                                                 <span>{label}</span>
                                                 <span>{value.toLocaleString()} ({ratio.toFixed(1)}%)</span>
                                             </div>
-                                            <div className="mt-1 h-1.5 w-full rounded-full overflow-hidden" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+                                            <div className="mt-1 h-1.5 w-full rounded-full overflow-hidden" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                                                 <div
                                                     className="h-full rounded-full"
                                                     style={{ width: `${Math.min(100, ratio)}%`, backgroundColor: infoColor }}

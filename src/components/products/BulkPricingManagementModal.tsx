@@ -16,14 +16,14 @@ import {
   USER_TYPE_LABELS,
 } from "../../utils/userTypeHelpers";
 
-const CELL_STYLES = "w-full px-2 py-1.5 text-xs text-center rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]";
+const CELL_STYLES = "w-full px-2 py-1.5 text-xs text-center rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[var(--color-ink)]";
 
 const USER_TYPES = [
-  { key: "customer", label: "Customer", color: "bg-[var(--info)]/10 text-[var(--info)]" },
+  { key: "customer", label: "Customer", color: "bg-[var(--color-info)]/10 text-[var(--color-info)]" },
   ...PRICING_USER_TYPES.map((type) => ({
     key: type,
     label: USER_TYPE_LABELS[type],
-    color: `bg-[var(--color-primary)]/10 text-[var(--color-primary)]`,
+    color: `bg-[var(--color-ink)]/10 text-[var(--color-ink)]`,
   })),
 ] as const;
 
@@ -49,10 +49,10 @@ const PriceCell: React.FC<PriceCellProps> = ({
     onBlur={onBlur}
     className={`${CELL_STYLES} ${
       isEditing
-        ? "border-[var(--color-primary)] ring-[var(--color-primary)]"
+        ? "border-[var(--color-ink)] ring-[var(--color-ink)]"
         : isDirty
-          ? "border-[var(--warning)] bg-[var(--warning)]/5"
-          : "border-[var(--border-color)] hover:border-[var(--border-color-strong)]"
+          ? "border-[var(--color-warning)] bg-[var(--color-warning)]/5"
+          : "border-[var(--color-border)] hover:border-[var(--color-border-strong)]"
     }`}
   />
 );
@@ -132,11 +132,11 @@ export const BulkPricingManagementModal: React.FC<BulkPricingManagementModalProp
       <DialogHeader>
         <div className="flex flex-wrap items-start justify-between gap-2 w-full">
           <div className="flex-1 min-w-0">
-            <h2 className="text-base sm:text-lg font-bold flex items-center gap-2 text-[var(--text-primary)]">
-              <FaDollarSign className="text-[var(--success)] shrink-0" />
+            <h2 className="text-base sm:text-lg font-bold flex items-center gap-2 text-[var(--color-text-primary)]">
+              <FaDollarSign className="text-[var(--color-success)] shrink-0" />
               Bulk Pricing Management
             </h2>
-            <p className="text-xs text-[var(--text-muted)] mt-0.5 truncate">
+            <p className="text-xs text-[var(--color-text-muted)] mt-0.5 truncate">
               {packageName} · {bundles.length} bundles · {USER_TYPES.length} user types
             </p>
           </div>
@@ -150,28 +150,28 @@ export const BulkPricingManagementModal: React.FC<BulkPricingManagementModalProp
 
       <DialogBody>
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-16 gap-3 text-[var(--text-muted)]">
+          <div className="flex flex-col items-center justify-center py-16 gap-3 text-[var(--color-text-muted)]">
             <Spinner size="lg" />
             <span className="text-sm">Loading pricing data…</span>
           </div>
         ) : (
           <div className="space-y-4">
             {/* Instructions accordion */}
-            <div className="rounded-lg border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 overflow-hidden text-sm">
+            <div className="rounded-lg border border-[var(--color-ink)]/20 bg-[var(--color-ink)]/5 overflow-hidden text-sm">
               <button
                 onClick={() => setShowInstructions((v) => !v)}
-                className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-[var(--color-primary)]/5 transition-colors"
+                className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-[var(--color-ink)]/5 transition-colors"
               >
-                <span className="flex items-center gap-2 font-medium text-[var(--color-primary)]">
+                <span className="flex items-center gap-2 font-medium text-[var(--color-ink)]">
                   <FaExclamationTriangle className="text-xs shrink-0" />
                   How to use
                 </span>
                 {showInstructions
-                  ? <FaChevronUp className="text-xs text-[var(--color-primary)]" />
-                  : <FaChevronDown className="text-xs text-[var(--color-primary)]" />}
+                  ? <FaChevronUp className="text-xs text-[var(--color-ink)]" />
+                  : <FaChevronDown className="text-xs text-[var(--color-ink)]" />}
               </button>
               {showInstructions && (
-                <ul className="px-4 pb-3 pt-2 border-t border-[var(--color-primary)]/20 list-disc list-inside space-y-1 text-xs text-[var(--color-primary)]">
+                <ul className="px-4 pb-3 pt-2 border-t border-[var(--color-ink)]/20 list-disc list-inside space-y-1 text-xs text-[var(--color-ink)]">
                   <li>Click any price cell to edit it inline</li>
                   <li>Modified rows turn yellow — easy to spot changes at a glance</li>
                   <li>"Save All Changes" persists every modified bundle at once</li>
@@ -183,45 +183,45 @@ export const BulkPricingManagementModal: React.FC<BulkPricingManagementModalProp
             {/* Pricing table */}
             <Card noPadding>
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-[var(--border-color)] text-xs sm:text-sm">
-                  <thead className="bg-[var(--bg-surface-alt)] sticky top-0 z-10">
+                <table className="min-w-full divide-y divide-[var(--color-border)] text-xs sm:text-sm">
+                  <thead className="bg-[var(--color-surface-alt)] sticky top-0 z-10">
                     <tr>
-                      <th className="px-3 py-2.5 text-left font-semibold text-[var(--text-secondary)] uppercase tracking-wide sticky left-0 bg-[var(--bg-surface-alt)] z-20 min-w-[140px] sm:min-w-[220px]">
+                      <th className="px-3 py-2.5 text-left font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide sticky left-0 bg-[var(--color-surface-alt)] z-20 min-w-[140px] sm:min-w-[220px]">
                         Bundle
                       </th>
-                      <th className="px-3 py-2.5 text-center font-semibold text-[var(--text-secondary)] uppercase tracking-wide min-w-[90px]">
+                      <th className="px-3 py-2.5 text-center font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide min-w-[90px]">
                         Base Price
                       </th>
                       {USER_TYPES.map(({ key, label, color }) => (
-                        <th key={key} className="px-3 py-2.5 text-center font-semibold text-[var(--text-secondary)] uppercase tracking-wide min-w-[110px]">
+                        <th key={key} className="px-3 py-2.5 text-center font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide min-w-[110px]">
                           <div className="flex flex-col items-center gap-1">
                             <span>{label}</span>
                             <Badge size="sm" className={color}>{key}</Badge>
                           </div>
                         </th>
                       ))}
-                      <th className="px-3 py-2.5 text-center font-semibold text-[var(--text-secondary)] uppercase tracking-wide min-w-[80px]">
+                      <th className="px-3 py-2.5 text-center font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide min-w-[80px]">
                         Status
                       </th>
                     </tr>
                   </thead>
 
-                  <tbody className="divide-y divide-[var(--border-color)]">
+                  <tbody className="divide-y divide-[var(--color-border)]">
                     {bundles.map((bundle) => {
                       const pricing = pricingMap[bundle._id!];
                       if (!pricing) return null;
                       const rowBg = pricing.hasChanges
-                        ? "bg-[var(--warning)]/5"
+                        ? "bg-[var(--color-warning)]/5"
                         : "";
 
                       return (
                         <tr key={bundle._id} className={`${rowBg} transition-colors`}>
-                          <td className="px-3 py-2.5 sticky left-0 z-10 bg-[var(--bg-surface)] shadow-[inset_-1px_0_0_var(--border-color)]">
+                          <td className="px-3 py-2.5 sticky left-0 z-10 bg-[var(--color-surface)] shadow-[inset_-1px_0_0_var(--color-border)]">
                             <div className="flex items-center gap-2">
-                              <FaCube className="text-[var(--color-primary)] shrink-0" />
+                              <FaCube className="text-[var(--color-ink)] shrink-0" />
                               <div className="min-w-0">
-                                <p className="font-medium text-[var(--text-primary)] truncate">{bundle.name}</p>
-                                <p className="text-[10px] text-[var(--text-muted)] truncate">
+                                <p className="font-medium text-[var(--color-text-primary)] truncate">{bundle.name}</p>
+                                <p className="text-[10px] text-[var(--color-text-muted)] truncate">
                                   {bundle.dataVolume}{bundle.dataUnit} · {bundle.validity}
                                 </p>
                               </div>
@@ -272,15 +272,15 @@ export const BulkPricingManagementModal: React.FC<BulkPricingManagementModalProp
             </Card>
 
             {/* Summary strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4">
               {[
-                { label: "Total Bundles", value: bundles.length, cls: "text-[var(--text-primary)]" },
-                { label: "Modified", value: changedCount, cls: "text-[var(--warning)]" },
-                { label: "User Types", value: USER_TYPES.length, cls: "text-[var(--color-primary)]" },
-                { label: "Total Prices", value: bundles.length * (USER_TYPES.length + 1), cls: "text-[var(--color-secondary)]" },
+                { label: "Total Bundles", value: bundles.length, cls: "text-[var(--color-text-primary)]" },
+                { label: "Modified", value: changedCount, cls: "text-[var(--color-warning)]" },
+                { label: "User Types", value: USER_TYPES.length, cls: "text-[var(--color-ink)]" },
+                { label: "Total Prices", value: bundles.length * (USER_TYPES.length + 1), cls: "text-[var(--color-amber)]" },
               ].map(({ label, value, cls }) => (
                 <div key={label}>
-                  <p className="text-[10px] sm:text-xs text-[var(--text-muted)] mb-0.5">{label}</p>
+                  <p className="text-[10px] sm:text-xs text-[var(--color-text-muted)] mb-0.5">{label}</p>
                   <p className={`text-base sm:text-lg font-bold ${cls}`}>{value}</p>
                 </div>
               ))}

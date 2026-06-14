@@ -93,16 +93,16 @@ const StepProgress: React.FC<{ current: number; steps: string[] }> = ({ current,
       return (
         <React.Fragment key={stepNum}>
           <div
-            className="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all duration-300"
+            className="flex items-center justify-center w-7 h-7 text-xs font-black transition-all duration-300"
             style={stepNum <= current
-              ? { backgroundColor: "var(--color-primary)", color: "#fff" }
+              ? { backgroundColor: "var(--color-ink)", color: "#fff" }
               : { backgroundColor: "rgba(255,255,255,0.2)", color: "#fff" }}
           >
             {stepNum < current ? <Check className="w-3.5 h-3.5" /> : stepNum}
           </div>
           {stepNum < steps.length && (
             <div
-              className="flex-1 h-1 rounded-full transition-all duration-300"
+              className="flex-1 h-1 transition-all duration-300"
               style={{ backgroundColor: stepNum < current ? "#fff" : "rgba(255,255,255,0.2)" }}
             />
           )}
@@ -189,11 +189,11 @@ export const StorefrontManager: React.FC<StorefrontManagerProps> = ({
     return (
       <Card variant="elevated" className="max-w-2xl mx-auto">
         <CardBody className="p-8 text-center">
-          <AlertCircle className="w-12 h-12 mx-auto mb-4" style={{ color: "var(--error)" }} />
-          <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text-primary)" }}>
+          <AlertCircle className="w-12 h-12 mx-auto mb-4" style={{ color: "var(--color-error)" }} />
+          <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--color-text-primary)" }}>
             Something went wrong
           </h3>
-          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>{error}</p>
+          <p className="text-sm mb-4" style={{ color: "var(--color-text-secondary)" }}>{error}</p>
           <Button
             variant="primary"
             onClick={() => window.location.reload()}
@@ -210,13 +210,13 @@ export const StorefrontManager: React.FC<StorefrontManagerProps> = ({
     return (
       <Card variant="elevated" className="max-w-2xl mx-auto">
         <CardBody className="p-8 text-center">
-          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: `color-mix(in srgb, var(--success) 15%, transparent)` }}>
-            <Store className="w-8 h-8" style={{ color: "var(--success)" }} />
+          <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'var(--color-success)' }}>
+            <Store className="w-8 h-8" style={{ color: "var(--color-success)" }} />
           </div>
-          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
+          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--color-text-primary)" }}>
             Your Storefront is Live!
           </h3>
-          <p className="mb-6" style={{ color: "var(--text-secondary)" }}>
+          <p className="mb-6" style={{ color: "var(--color-text-secondary)" }}>
             {storefront.businessName} is ready to accept orders
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -254,24 +254,24 @@ export const StorefrontManager: React.FC<StorefrontManagerProps> = ({
       <Card variant="elevated" className="max-w-2xl mx-auto">
         <CardBody className="p-6 sm:p-8 text-center">
           <div
-            className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+            className="w-16 h-16 flex items-center justify-center mx-auto mb-6"
             style={{
-              backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)`,
+              backgroundColor: 'var(--color-ink)',
             }}
           >
             <Store
               className="w-8 h-8"
               style={{
-                color: "var(--color-primary)",
+                color: "var(--color-ink)",
               }}
             />
           </div>
 
-          <h3 className="text-2xl font-bold mb-3" style={{ color: "var(--text-primary)" }}>
+          <h3 className="text-2xl font-bold mb-3" style={{ color: "var(--color-text-primary)" }}>
             Create Your Online Store
           </h3>
 
-          <p className="mb-6 max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
+          <p className="mb-6 max-w-md mx-auto" style={{ color: "var(--color-text-secondary)" }}>
             Set up your digital storefront in minutes and start selling airtime
             and data bundles online
           </p>
@@ -281,64 +281,64 @@ export const StorefrontManager: React.FC<StorefrontManagerProps> = ({
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2"
                 style={{
-                  backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)`,
+                  backgroundColor: 'var(--color-ink)',
                 }}
               >
                 <span
                   className="font-semibold text-sm"
                   style={{
-                    color: "var(--color-primary)",
+                    color: "var(--color-ink)",
                   }}
                 >
                   1
                 </span>
               </div>
-              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+              <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                 Business Details
               </p>
-              <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Add your info</p>
+              <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>Add your info</p>
             </div>
 
             <div className="text-center">
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2"
                 style={{
-                  backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)`,
+                  backgroundColor: 'var(--color-ink)',
                 }}
               >
                 <span
                   className="font-semibold text-sm"
                   style={{
-                    color: "var(--color-primary)",
+                    color: "var(--color-ink)",
                   }}
                 >
                   2
                 </span>
               </div>
-              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+              <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                 Payment Methods
               </p>
-              <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Set up payments</p>
+              <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>Set up payments</p>
             </div>
 
             <div className="text-center">
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2"
                 style={{
-                  backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)`,
+                  backgroundColor: 'var(--color-ink)',
                 }}
               >
                 <span
                   className="font-semibold text-sm"
                   style={{
-                    color: "var(--color-primary)",
+                    color: "var(--color-ink)",
                   }}
                 >
                   3
                 </span>
               </div>
-              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Launch Store</p>
-              <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Go live</p>
+              <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>Launch Store</p>
+              <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>Go live</p>
             </div>
           </div>
 
@@ -741,11 +741,11 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
     return (
       <Dialog isOpen={isOpen} onClose={onClose} size="md">
         <DialogBody className="p-8 text-center">
-          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: "var(--color-primary)" }} />
-          <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text-primary)" }}>
+          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: "var(--color-ink)" }} />
+          <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--color-text-primary)" }}>
             Setting up your wizard
           </h3>
-          <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
             Loading your profile information...
           </p>
         </DialogBody>
@@ -757,27 +757,27 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
     <Dialog isOpen={isOpen} onClose={onClose} size="xl">
       <DialogHeader
         className="relative p-6"
-        style={{ backgroundColor: 'var(--color-primary)', color: 'var(--text-inverse)' }}
+        style={{ backgroundColor: 'var(--color-ink)', color: 'var(--color-text-inverse)' }}
       >
         <Button
           variant="ghost"
           size="sm"
           onClick={onClose}
           className="absolute top-4 right-4"
-          style={{ color: 'var(--text-inverse)' }}
-          onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--text-inverse) 20%, transparent)'; }}
+          style={{ color: 'var(--color-text-inverse)' }}
+          onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-text-inverse)'; }}
           onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
         >
           <X className="w-5 h-5" />
         </Button>
 
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'color-mix(in srgb, var(--text-inverse) 20%, transparent)' }}>
-            <Store className="w-6 h-6" style={{ color: 'var(--text-inverse)' }} />
+          <div className="w-12 h-12 flex items-center justify-center" style={{ backgroundColor: 'var(--color-text-inverse)' }}>
+            <Store className="w-6 h-6" style={{ color: 'var(--color-text-inverse)' }} />
           </div>
           <div>
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--text-inverse)' }}>Create Your Store</h2>
-            <p className="text-sm" style={{ color: 'color-mix(in srgb, var(--text-inverse) 80%, transparent)' }}>
+            <h2 className="text-2xl font-bold" style={{ color: 'var(--color-text-inverse)' }}>Create Your Store</h2>
+            <p className="text-sm" style={{ color: 'var(--color-text-inverse)' }}>
               Launch your digital storefront in minutes
             </p>
           </div>
@@ -793,10 +793,10 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
 
       <DialogBody className="p-6 overflow-y-auto max-h-[60vh]">
         <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
+          <h3 className="text-xl font-semibold mb-1" style={{ color: "var(--color-text-primary)" }}>
             {STEPS[currentStep].title}
           </h3>
-          <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
             {STEPS[currentStep].description}
           </p>
         </div>
@@ -817,11 +817,11 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                 leftIcon={<Store className="w-4 h-4" />}
     
               />
-              <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+              <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                 This is used in your storefront URL and must be lowercase with no spaces.
               </p>
               {businessUrlPreview() && (
-                <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                   Preview: <span className="font-mono">{businessUrlPreview()}</span>
                 </p>
               )}
@@ -904,12 +904,12 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                       style={
                         isSelected
                           ? {
-                            borderColor: "var(--color-primary)",
-                            backgroundColor: `color-mix(in srgb, var(--color-primary) 8%, transparent)`,
+                            borderColor: "var(--color-ink)",
+                            backgroundColor: 'var(--color-ink)',
                           }
                           : option.available
-                            ? { borderColor: "var(--border-color)" }
-                            : { borderColor: "var(--border-color)", opacity: 0.6 }
+                            ? { borderColor: "var(--color-border)" }
+                            : { borderColor: "var(--color-border)", opacity: 0.6 }
                       }
                     >
                       <CardBody
@@ -928,36 +928,36 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                             className="w-10 h-10 rounded-lg flex items-center justify-center"
                             style={{
                               backgroundColor: isSelected
-                                ? `color-mix(in srgb, var(--color-primary) 15%, transparent)`
-                                : "var(--bg-surface-alt)",
+                                ? 'var(--color-ink)'
+                                : "var(--color-surface-alt)",
                             }}
                           >
                             <IconComponent
                               className="w-5 h-5"
                               style={{
                                 color: isSelected
-                                  ? "var(--color-primary)"
-                                  : "var(--text-secondary)",
+                                  ? "var(--color-ink)"
+                                  : "var(--color-text-secondary)",
                               }}
                             />
                           </div>
                           <div className="flex-1">
-                            <h4 className="font-medium" style={{ color: "var(--text-primary)" }}>
+                            <h4 className="font-medium" style={{ color: "var(--color-text-primary)" }}>
                               {option.label}
                             </h4>
-                            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                            <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                               {option.description}
                             </p>
                           </div>
                           <div
-                            className="w-5 h-5 border-2 rounded-full flex items-center justify-center"
+                            className="w-5 h-5 border-2 flex items-center justify-center"
                             style={{
-                              borderColor: isSelected ? "var(--color-primary)" : "var(--border-color)",
-                              backgroundColor: isSelected ? "var(--color-primary)" : "transparent",
+                              borderColor: isSelected ? "var(--color-ink)" : "var(--color-border)",
+                              backgroundColor: isSelected ? "var(--color-ink)" : "transparent",
                             }}
                           >
                             {isSelected && (
-                              <div className="w-2 h-2 bg-white rounded-full" />
+                              <div className="w-2 h-2 bg-white" />
                             )}
                           </div>
                         </div>
@@ -965,13 +965,13 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                     </Card>
 
                     {isSelected && method && (
-                      <div className="ml-4 space-y-3 p-4 rounded-lg" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+                      <div className="ml-4 space-y-3 p-4 rounded-lg" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                         {option.type === "mobile_money" && (
                           <div className="space-y-4">
                             {(method.details.accounts || []).map((account, accountIndex) => (
-                              <div key={accountIndex} className="p-4 rounded-lg" style={{ border: "1px solid var(--border-color)" }}>
+                              <div key={accountIndex} className="p-4 rounded-lg" style={{ border: "1px solid var(--color-border)" }}>
                                 <div className="flex items-center justify-between mb-3">
-                                  <h5 className="font-medium" style={{ color: "var(--text-primary)" }}>
+                                  <h5 className="font-medium" style={{ color: "var(--color-text-primary)" }}>
                                     Account {accountIndex + 1}
                                   </h5>
                                   {(method.details.accounts || []).length > 1 && (
@@ -979,7 +979,7 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                                       variant="outline"
                                       size="sm"
                                       onClick={() => removeMobileMoneyAccount(accountIndex)}
-                                      style={{ color: "var(--error)" }}
+                                      style={{ color: "var(--color-error)" }}
                                     >
                                       <X className="w-4 h-4" />
                                     </Button>
@@ -1109,20 +1109,20 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
             <Card
               variant="outlined"
               style={{
-                borderColor: `color-mix(in srgb, var(--success) 30%, transparent)`,
-                backgroundColor: `color-mix(in srgb, var(--success) 6%, transparent)`,
+                borderColor: 'var(--color-success)',
+                backgroundColor: 'var(--color-success)',
               }}
             >
               <CardBody className="p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `color-mix(in srgb, var(--success) 15%, transparent)` }}>
-                    <Store className="w-4 h-4" style={{ color: "var(--success)" }} />
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--color-success)' }}>
+                    <Store className="w-4 h-4" style={{ color: "var(--color-success)" }} />
                   </div>
-                  <h4 className="font-semibold" style={{ color: "var(--text-primary)" }}>
+                  <h4 className="font-semibold" style={{ color: "var(--color-text-primary)" }}>
                     Business Details
                   </h4>
                 </div>
-                <div className="text-sm space-y-1" style={{ color: "var(--text-primary)" }}>
+                <div className="text-sm space-y-1" style={{ color: "var(--color-text-primary)" }}>
                   <p>
                     <strong>Name:</strong> {formData.businessName}
                   </p>
@@ -1146,8 +1146,8 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
             <Card
               variant="outlined"
               style={{
-                borderColor: `color-mix(in srgb, var(--color-primary) 30%, transparent)`,
-                backgroundColor: `color-mix(in srgb, var(--color-primary) 6%, transparent)`,
+                borderColor: 'var(--color-ink)',
+                backgroundColor: 'var(--color-ink)',
               }}
             >
               <CardBody className="p-5">
@@ -1155,17 +1155,17 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center"
                     style={{
-                      backgroundColor: `color-mix(in srgb, var(--color-primary) 15%, transparent)`,
+                      backgroundColor: 'var(--color-ink)',
                     }}
                   >
                     <CreditCard
                       className="w-4 h-4"
                       style={{
-                        color: "var(--color-primary)",
+                        color: "var(--color-ink)",
                       }}
                     />
                   </div>
-                  <h4 className="font-semibold" style={{ color: "var(--text-primary)" }}>
+                  <h4 className="font-semibold" style={{ color: "var(--color-text-primary)" }}>
                     Payment Methods
                   </h4>
                 </div>
@@ -1182,7 +1182,7 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                           }
                         </Badge>
                         {method.type === "mobile_money" && method.details.accounts && method.details.accounts.length > 0 && (
-                          <div className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                          <div className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                             {method.details.accounts.map((account, idx) => (
                               <div key={idx}>
                                 {account.provider} - {account.number}
@@ -1193,7 +1193,7 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
                         )}
                         {method.type === "bank_transfer" &&
                           Boolean(method.details.bank) && (
-                            <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                            <span className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                               ({String(method.details.bank)} -{" "}
                               {String(method.details.account)})
                             </span>
@@ -1213,7 +1213,7 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
         )}
       </DialogBody>
 
-      <DialogFooter justify="between" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+      <DialogFooter justify="between" style={{ backgroundColor: "var(--color-surface-alt)" }}>
         <Button
           variant="outline"
           onClick={currentStep === 0 ? onClose : handleBack}
@@ -1229,7 +1229,7 @@ const StoreSetupWizardDialog: React.FC<StoreSetupWizardDialogProps> = ({
           )}
         </Button>
 
-        <div className="text-sm" style={{ color: "var(--text-muted)" }}>
+        <div className="text-sm" style={{ color: "var(--color-text-muted)" }}>
           Step {currentStep + 1} of {STEPS.length}
         </div>
 

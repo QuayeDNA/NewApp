@@ -32,23 +32,23 @@ const ReceptionStatusDropdown: React.FC<ReceptionStatusDropdownProps> = ({
     {
       value: "not_received",
       label: "Not Received",
-      color: "bg-[var(--error-lighter)] text-[var(--error)]",
+      color: "bg-[var(--error-lighter)] text-[var(--color-error)]",
     },
     {
       value: "checking",
       label: "Checking",
-      color: "bg-[var(--warning-lighter)] text-[var(--warning)]",
+      color: "bg-[var(--warning-lighter)] text-[var(--color-warning)]",
     },
     {
       value: "resolved",
       label: "Resolved",
-      color: "bg-[var(--color-accent-soft)] text-[var(--color-secondary)]",
+      color: "bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]",
     },
   ];
 
   const getReceptionStatusColor = (status: string) => {
     const option = receptionStatusOptions.find((opt) => opt.value === status);
-    return option?.color || "bg-[var(--bg-surface-alt)] text-[var(--text-muted)]";
+    return option?.color || "bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]";
   };
 
   const handleStatusChange = (newStatus: string) => {
@@ -70,7 +70,7 @@ const ReceptionStatusDropdown: React.FC<ReceptionStatusDropdownProps> = ({
 
       {isOpen && (
         <div
-          className="absolute z-10 mt-1 w-32 bg-[var(--bg-surface)] rounded-md shadow-lg border border-[var(--border-color)]"
+          className="absolute z-10 mt-1 w-32 bg-[var(--color-surface)]  shadow-[var(--shadow-lg)] border border-[var(--color-border)]"
           style={{ top: "100%", left: "0" }}
         >
           <div className="py-1 flex flex-col">
@@ -78,9 +78,9 @@ const ReceptionStatusDropdown: React.FC<ReceptionStatusDropdownProps> = ({
               <button
                 key={option.value}
                 onClick={() => handleStatusChange(option.value)}
-                className={`w-full text-left px-3 py-2 text-sm hover:bg-[var(--bg-surface-alt)] border-b border-[var(--border-color)] last:border-b-0 ${option.value === currentStatus
-                    ? "bg-[var(--color-accent-soft)] text-[var(--color-secondary)]"
-                    : "text-[var(--text-secondary)]"
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-[var(--color-surface-alt)] border-b border-[var(--color-border)] last:border-b-0 ${option.value === currentStatus
+                    ? "bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]"
+                    : "text-[var(--color-text-secondary)]"
                   }`}
               >
                 {option.label}
@@ -155,36 +155,36 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
-        return "text-[var(--success)] bg-[var(--success-lighter)]";
+        return "text-[var(--color-success)] bg-[var(--success-lighter)]";
       case "processing":
-        return "text-[var(--info)] bg-[var(--color-accent-soft)]";
+        return "text-[var(--color-info)] bg-[rgba(245, 158, 11, 0.12)]";
       case "failed":
-        return "text-[var(--error)] bg-[var(--error-lighter)]";
+        return "text-[var(--color-error)] bg-[var(--error-lighter)]";
       case "cancelled":
-        return "text-[var(--text-muted)] bg-[var(--bg-surface-alt)]";
+        return "text-[var(--color-text-muted)] bg-[var(--color-surface-alt)]";
       case "pending":
-        return "text-[var(--warning)] bg-[var(--warning-lighter)]";
+        return "text-[var(--color-warning)] bg-[var(--warning-lighter)]";
       case "confirmed":
-        return "text-[var(--color-secondary)] bg-[var(--color-accent-soft)]";
+        return "text-[var(--color-amber)] bg-[rgba(245, 158, 11, 0.12)]";
       default:
-        return "text-[var(--text-muted)] bg-[var(--bg-surface-alt)]";
+        return "text-[var(--color-text-muted)] bg-[var(--color-surface-alt)]";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "completed":
-        return <FaCheck className="text-[var(--success)]" />;
+        return <FaCheck className="text-[var(--color-success)]" />;
       case "processing":
-        return <FaClock className="text-[var(--info)]" />;
+        return <FaClock className="text-[var(--color-info)]" />;
       case "failed":
-        return <FaTimes className="text-[var(--error)]" />;
+        return <FaTimes className="text-[var(--color-error)]" />;
       case "pending":
-        return <FaClock className="text-[var(--warning)]" />;
+        return <FaClock className="text-[var(--color-warning)]" />;
       case "confirmed":
-        return <FaCheck className="text-[var(--color-secondary)]" />;
+        return <FaCheck className="text-[var(--color-amber)]" />;
       default:
-        return <FaClock className="text-[var(--text-muted)]" />;
+        return <FaClock className="text-[var(--color-text-muted)]" />;
     }
   };
 
@@ -369,11 +369,11 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
   ];
 
   return (
-    <div className="bg-[var(--bg-surface)] rounded-lg shadow overflow-hidden">
+    <div className="bg-[var(--color-surface)] rounded-lg shadow overflow-hidden">
       {/* Desktop-optimized table - minimum lg screen required */}
       <div className="overflow-x-auto min-w-full">
         <table className="min-w-full text-sm">
-          <thead className="bg-[var(--color-primary)]">
+          <thead className="bg-[var(--color-ink)]">
             <tr>
               {isAdmin && onSelect && (
                 <th className="px-6 py-3 text-left w-12">
@@ -388,40 +388,40 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                   />
                 </th>
               )}
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[200px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[200px]">
                 Order
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[150px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[150px]">
                 Customer
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[120px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[120px]">
                 Network
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[100px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[100px]">
                 Total
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[120px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[120px]">
                 Status
               </th>
               {isAdmin && (
-                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[120px]">
+                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[120px]">
                   Reception
                 </th>
               )}
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[150px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[150px]">
                 Created
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--text-inverse)] uppercase tracking-wider min-w-[120px]">
+              <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-inverse)] uppercase tracking-wider min-w-[120px]">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-[var(--bg-surface)] divide-y divide-[var(--border-color)]">
+          <tbody className="bg-[var(--color-surface)] divide-y divide-[var(--color-border)]">
             {loading ? (
               <tr>
                 <td colSpan={isAdmin ? 8 : 7} className="px-6 py-4 text-center">
                   <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[var(--color-primary)]"></div>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[var(--color-ink)]"></div>
                     <span className="ml-2">Loading orders...</span>
                   </div>
                 </td>
@@ -430,7 +430,7 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
               <tr>
                 <td
                   colSpan={isAdmin ? 8 : 7}
-                  className="px-6 py-4 text-center text-[var(--text-muted)]"
+                  className="px-6 py-4 text-center text-[var(--color-text-muted)]"
                 >
                   No orders found.
                 </td>
@@ -438,7 +438,7 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
             ) : (
               orders.map((order) => (
                 <React.Fragment key={order._id}>
-                  <tr className="hover:bg-[var(--bg-surface-alt)]">
+                  <tr className="hover:bg-[var(--color-surface-alt)]">
                     {isAdmin && onSelect && (
                       <td className="px-6 py-4">
                         <input
@@ -451,15 +451,15 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                     )}
                     <td className="px-6 py-4">
                       <div>
-                        <div className="text-sm font-medium text-[var(--text-primary)]">
+                        <div className="text-sm font-medium text-[var(--color-text-primary)]">
                           {order.orderNumber}
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-[var(--color-accent-soft)] text-[var(--color-secondary)]">
+                          <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]">
                             {order.orderType}
                           </span>
                           {order.bulkData && (
-                            <span className="text-xs text-[var(--text-muted)]">
+                            <span className="text-xs text-[var(--color-text-muted)]">
                               {order.bulkData.totalItems} items
                             </span>
                           )}
@@ -467,26 +467,26 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-[var(--text-primary)]">
+                      <div className="text-sm text-[var(--color-text-primary)]">
                         {order.customerInfo?.name || "N/A"}
                       </div>
-                      <div className="text-sm text-[var(--text-muted)]">
+                      <div className="text-sm text-[var(--color-text-muted)]">
                         {order.customerInfo?.phone ||
                           order.items[0]?.customerPhone ||
                           "N/A"}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-[var(--text-primary)]">
+                      <div className="text-sm text-[var(--color-text-primary)]">
                         {getOrderProvider(order)}
                       </div>
-                      <div className="text-xs text-[var(--text-muted)]">
+                      <div className="text-xs text-[var(--color-text-muted)]">
                         {isAfaOrder(order)
                           ? getAfaOrderInfo(order)
                           : getOrderVolume(order)}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-[var(--text-primary)]">
+                    <td className="px-6 py-4 text-sm text-[var(--color-text-primary)]">
                       {formatCurrency(
                         order.orderType === 'storefront' && order.storefrontData?.totalTierCost != null
                           ? order.storefrontData.totalTierCost
@@ -522,7 +522,7 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
 
                         {canAdminChangeStatus(order) && statusDropdowns.has(order._id!) && (
                           <div
-                            className="absolute z-10 mt-1 w-48 bg-[var(--bg-surface)] rounded-md shadow-lg border border-[var(--border-color)] status-dropdown"
+                            className="absolute z-10 mt-1 w-48 bg-[var(--color-surface)]  shadow-[var(--shadow-lg)] border border-[var(--color-border)] status-dropdown"
                             style={{ top: "100%", left: "0" }}
                           >
                             <div className="py-1 flex flex-col">
@@ -532,9 +532,9 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                                   onClick={() =>
                                     handleStatusChange(order._id!, option.value)
                                   }
-                                  className={`w-full text-left px-3 py-2 text-sm hover:bg-[var(--bg-surface-alt)] border-b border-[var(--border-color)] last:border-b-0 ${option.value === order.status
-                                      ? "bg-[var(--color-accent-soft)] text-[var(--color-secondary)]"
-                                      : "text-[var(--text-secondary)]"
+                                  className={`w-full text-left px-3 py-2 text-sm hover:bg-[var(--color-surface-alt)] border-b border-[var(--color-border)] last:border-b-0 ${option.value === order.status
+                                      ? "bg-[rgba(245, 158, 11, 0.12)] text-[var(--color-amber)]"
+                                      : "text-[var(--color-text-secondary)]"
                                     }`}
                                 >
                                   {option.label}
@@ -556,11 +556,11 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                             onStatusChange={onUpdateReceptionStatus!}
                           />
                         ) : (
-                          <span className="text-xs text-[var(--text-muted)]">N/A</span>
+                          <span className="text-xs text-[var(--color-text-muted)]">N/A</span>
                         )}
                       </td>
                     )}
-                    <td className="px-6 py-4 text-sm text-[var(--text-muted)]">
+                    <td className="px-6 py-4 text-sm text-[var(--color-text-muted)]">
                       {formatDate(order.createdAt)}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium">
@@ -587,14 +587,14 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                             variant="outline"
                             onClick={() => handleReportClick(order)}
                             title="Report delivery issue"
-                            className="text-[var(--warning)] border-[var(--warning)] hover:bg-[var(--warning-lighter)]"
+                            className="text-[var(--color-warning)] border-[var(--color-warning)] hover:bg-[var(--warning-lighter)]"
                           >
                             <FaExclamationTriangle className="w-3 h-3" />
                           </Button>
                         )}
 
                         {order.reported && !isAdmin && (
-                          <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[var(--warning)] text-xs border border-[var(--warning)]/30 bg-[var(--warning-lighter)]">
+                          <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[var(--color-warning)] text-xs border border-[var(--color-warning)]/30 bg-[var(--warning-lighter)]">
                             <FaExclamationTriangle className="w-3 h-3" />
                             Reported
                           </span>
@@ -625,27 +625,27 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                       <tr>
                         <td
                           colSpan={isAdmin ? 8 : 7}
-                          className="px-6 py-4 bg-[var(--bg-surface-alt)]"
+                          className="px-6 py-4 bg-[var(--color-surface-alt)]"
                         >
                           <div className="space-y-3">
-                            <h4 className="text-sm font-medium text-[var(--text-primary)]">
+                            <h4 className="text-sm font-medium text-[var(--color-text-primary)]">
                               Order Items
                             </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                               {order.items.map((item) => (
                                 <div
                                   key={item._id}
-                                  className="bg-[var(--bg-surface)] rounded-lg p-3 border border-[var(--border-color)]"
+                                  className="bg-[var(--color-surface)] rounded-lg p-3 border border-[var(--color-border)]"
                                 >
                                   <div className="flex justify-between items-start">
                                     <div>
-                                      <h5 className="text-sm font-medium text-[var(--text-primary)]">
+                                      <h5 className="text-sm font-medium text-[var(--color-text-primary)]">
                                         {item.packageDetails?.name || "Bundle"}
                                       </h5>
-                                      <p className="text-xs text-[var(--text-muted)]">
+                                      <p className="text-xs text-[var(--color-text-muted)]">
                                         {item.customerPhone}
                                       </p>
-                                      <p className="text-xs text-[var(--text-muted)]">
+                                      <p className="text-xs text-[var(--color-text-muted)]">
                                         {item.bundleSize?.value}
                                         {item.bundleSize?.unit}
                                       </p>

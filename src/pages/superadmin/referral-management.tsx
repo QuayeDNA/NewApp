@@ -187,7 +187,7 @@ export const ReferralManagement = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-3">
           <Spinner size="lg" />
-          <p className="text-sm text-[var(--text-secondary)]">Loading referral management...</p>
+          <p className="text-sm text-[var(--color-text-secondary)]">Loading referral management...</p>
         </div>
       </div>
     );
@@ -196,8 +196,8 @@ export const ReferralManagement = () => {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Referral & Commission Management</h1>
-        <p className="text-sm text-[var(--text-muted)] mt-0.5">
+        <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">Referral & Commission Management</h1>
+        <p className="text-sm text-[var(--color-text-muted)] mt-0.5">
           Oversee referral program performance, users, commissions, and withdrawals
         </p>
       </div>

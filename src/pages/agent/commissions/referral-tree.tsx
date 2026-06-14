@@ -44,14 +44,14 @@ const TreeNodeItem = ({
         }}
         onClick={() => setExpanded(!expanded)}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = "color-mix(in srgb, var(--color-primary) 8%, transparent)";
+          e.currentTarget.style.background = "color-mix(in srgb, var(--color-ink) 8%, transparent)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.background = "transparent";
         }}
       >
         {hasChildren ? (
-          <span className="mt-1 shrink-0" style={{ color: "var(--text-muted)" }}>
+          <span className="mt-1 shrink-0" style={{ color: "var(--color-text-muted)" }}>
             {expanded ? <FaChevronDown className="w-2.5 h-2.5" /> : <FaChevronRight className="w-2.5 h-2.5" />}
           </span>
         ) : (
@@ -61,8 +61,8 @@ const TreeNodeItem = ({
         <div
           className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
           style={{
-            background: "color-mix(in srgb, var(--color-primary) 18%, transparent)",
-            color: "var(--color-primary)",
+            background: "color-mix(in srgb, var(--color-ink) 18%, transparent)",
+            color: "var(--color-ink)",
           }}
         >
           {node.user.fullName?.charAt(0)?.toUpperCase() || "?"}
@@ -70,20 +70,20 @@ const TreeNodeItem = ({
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm font-semibold truncate" style={{ color: "var(--text-primary)" }}>
+            <span className="text-sm font-semibold truncate" style={{ color: "var(--color-text-primary)" }}>
               {node.user.fullName}
             </span>
-            <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+            <span className="text-xs" style={{ color: "var(--color-text-muted)" }}>
               {node.user.phone}
             </span>
           </div>
           <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-            <span className="inline-flex items-center gap-1 text-xs" style={{ color: "var(--text-muted)" }}>
+            <span className="inline-flex items-center gap-1 text-xs" style={{ color: "var(--color-text-muted)" }}>
               <FaCode className="w-2.5 h-2.5" />
               {node.user.referralCode}
             </span>
-            <span className="text-xs" style={{ color: "var(--text-muted)" }}>&middot;</span>
-            <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+            <span className="text-xs" style={{ color: "var(--color-text-muted)" }}>&middot;</span>
+            <span className="text-xs" style={{ color: "var(--color-text-muted)" }}>
               {formatDate(node.user.createdAt)}
             </span>
           </div>
@@ -139,9 +139,9 @@ export const ReferralTree = ({ tree, loading }: ReferralTreeProps) => {
       <Card variant="outlined">
         <CardBody>
           <div className="flex flex-col items-center justify-center py-10 text-center">
-            <FaUserPlus className="w-8 h-8 mb-2 opacity-40" style={{ color: "var(--text-muted)" }} />
-            <p className="text-sm" style={{ color: "var(--text-muted)" }}>No referrals yet</p>
-            <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+            <FaUserPlus className="w-8 h-8 mb-2 opacity-40" style={{ color: "var(--color-text-muted)" }} />
+            <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>No referrals yet</p>
+            <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
               Share your referral code to grow your network
             </p>
           </div>
@@ -153,15 +153,15 @@ export const ReferralTree = ({ tree, loading }: ReferralTreeProps) => {
   return (
     <Card variant="outlined">
       <CardBody>
-        <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-          <FaUserPlus className="w-4 h-4" style={{ color: "var(--color-secondary)" }} />
+        <h3 className="text-sm sm:text-base font-semibold mb-3 flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+          <FaUserPlus className="w-4 h-4" style={{ color: "var(--color-amber)" }} />
           Referral Network
           <Badge variant="subtle" colorScheme="info" size="sm">{tree.length}</Badge>
         </h3>
         <div
           className="rounded-lg py-1"
           style={{
-            background: "color-mix(in srgb, var(--color-primary) 4%, transparent)",
+            background: "color-mix(in srgb, var(--color-ink) 4%, transparent)",
           }}
         >
           <TreeNode nodes={tree} level={0} />

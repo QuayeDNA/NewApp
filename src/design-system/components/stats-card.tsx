@@ -53,27 +53,27 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     <Card
       className="h-full"
-      style={{ background: "var(--gradient-brand-dark)" }}
+      style={{ background: "var(--color-ink)" }}
     >
       <CardBody className="h-full">
         <div className="flex items-center justify-between gap-2 sm:gap-3 lg:gap-4">
           <div className="flex-1 min-w-0">
             <p
               className={`${classes.title} mb-0.5 sm:mb-1 lg:mb-2 truncate opacity-70`}
-              style={{ color: "var(--text-inverse)" }}
+              style={{ color: "var(--color-text-inverse)" }}
             >
               {title}
             </p>
             <p
               className={`${classes.value} leading-tight`}
-              style={{ color: "var(--text-inverse)" }}
+              style={{ color: "var(--color-text-inverse)" }}
             >
               {value}
             </p>
             {subtitle && (
               <p
                 className={`${classes.subtitle}`}
-                style={{ color: "var(--text-inverse)", opacity: 0.5 }}
+                style={{ color: "var(--color-text-inverse)", opacity: 0.5 }}
               >
                 {subtitle}
               </p>
@@ -82,14 +82,14 @@ export const StatCard: React.FC<StatCardProps> = ({
               <p
                 className={`text-xs sm:text-sm mt-1 flex items-center gap-1 ${trendUp !== undefined
                     ? trendUp
-                      ? "text-[var(--success)]"
-                      : "text-[var(--error)]"
+                      ? "text-[var(--color-success)]"
+                      : "text-[var(--color-error)]"
                     : ""
                   }`}
               >
                 {trend && <span>{trend}</span>}
                 {trendLabel && (
-                  <span style={{ color: "var(--text-inverse)", opacity: 0.5 }}>
+                  <span style={{ color: "var(--color-text-inverse)", opacity: 0.5 }}>
                     {trendLabel}
                   </span>
                 )}
@@ -98,12 +98,12 @@ export const StatCard: React.FC<StatCardProps> = ({
           </div>
           {!iconOnly && (
             <div
-              className={`${classes.iconContainer} rounded-full flex-shrink-0 hidden sm:flex items-center justify-center`}
-              style={{ backgroundColor: "color-mix(in srgb, var(--text-inverse) 20%, transparent)" }}
+              className={`${classes.iconContainer} flex-shrink-0 hidden sm:flex items-center justify-center`}
+              style={{ backgroundColor: "color-mix(in srgb, var(--color-text-inverse) 20%, transparent)" }}
             >
               <div
                 className={`${classes.icon}`}
-                style={{ color: "var(--text-inverse)" }}
+                style={{ color: "var(--color-text-inverse)" }}
               >
                 {icon}
               </div>

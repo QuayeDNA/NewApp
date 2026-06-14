@@ -114,7 +114,7 @@ export const CommissionPage = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-3">
           <Spinner size="lg" />
-          <p className="text-sm" style={{ color: "var(--text-muted)" }}>Loading commission data...</p>
+          <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>Loading commission data...</p>
         </div>
       </div>
     );
@@ -130,8 +130,8 @@ export const CommissionPage = () => {
     <div className="space-y-4 sm:space-y-6 max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold" style={{ color: "var(--text-primary)" }}>Commission & Referrals</h1>
-          <p className="text-xs sm:text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>Track earnings, withdraw commissions, and manage referrals</p>
+          <h1 className="text-xl sm:text-2xl font-bold" style={{ color: "var(--color-text-primary)" }}>Commission & Referrals</h1>
+          <p className="text-xs sm:text-sm mt-0.5" style={{ color: "var(--color-text-muted)" }}>Track earnings, withdraw commissions, and manage referrals</p>
         </div>
       </div>
 

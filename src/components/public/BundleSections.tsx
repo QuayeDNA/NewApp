@@ -43,7 +43,7 @@ interface BundleSectionsProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdBannerPlaceholder: React.FC<AdBannerProps> = ({ adSlot, adFormat }: AdBannerProps) => (
-  <div className="rounded-xl border p-3 text-center text-xs" style={{ borderColor: "var(--border-color)", color: "var(--text-tertiary)" }}>
+  <div className="border p-3 text-center text-xs" style={{ borderColor: "var(--color-border)", color: "var(--text-tertiary)" }}>
     Ad: {adSlot} ({adFormat})
   </div>
 );
@@ -143,7 +143,7 @@ export const BundleSections = memo(
                 <section key={prov.code}>
                   <div className="flex items-center gap-3 mb-4">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm shadow overflow-hidden"
+                      className="w-10 h-10 flex items-center justify-center font-black text-sm shadow overflow-hidden"
                       style={{ backgroundColor: pc.primary, color: pc.text }}
                     >
                       {getLogoUrl(prov.logo) ? (
@@ -159,7 +159,7 @@ export const BundleSections = memo(
                     <div>
                       <h2
                         className="text-base font-black"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         {prov.name}
                       </h2>
@@ -218,7 +218,7 @@ export const BundleSections = memo(
             <section key={provCode}>
               <div className="flex items-center gap-3 mb-4">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm shadow"
+                  className="w-10 h-10 flex items-center justify-center font-black text-sm shadow"
                   style={{ backgroundColor: pc.primary, color: pc.text }}
                 >
                   {provName.charAt(0)}
@@ -226,7 +226,7 @@ export const BundleSections = memo(
                 <div>
                   <h2
                     className="text-base font-black"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     {provName}
                   </h2>
@@ -289,18 +289,18 @@ const PackageHeaderFallback = ({ pkgName, count, collapsed, onToggle, color }: {
 }) => (
   <button
     onClick={onToggle}
-    className="w-full flex items-center justify-between p-3 rounded-xl shadow-sm hover:shadow-md transition-all text-left"
+    className="w-full flex items-center justify-between p-3 shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-all text-left"
     aria-expanded={!collapsed}
   >
     <div className="flex items-center gap-3">
       <div
-        className="w-8 h-8 rounded-lg flex items-center justify-center shadow-sm"
+        className="w-8 h-8 flex items-center justify-center shadow-[var(--shadow-sm)]"
         style={{ backgroundColor: color }}
       >
         <FaStore className="w-3.5 h-3.5" />
       </div>
       <div>
-        <div className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>
+        <div className="text-sm font-bold" style={{ color: "var(--color-text-primary)" }}>
           {pkgName}
         </div>
         <div className="text-xs" style={{ color: "var(--text-tertiary)" }}>

@@ -18,10 +18,10 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
     <Card variant="outlined">
       <CardBody>
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaHistory className="w-4 h-4" style={{ color: "var(--color-secondary)" }} /> Withdrawal History
+          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaHistory className="w-4 h-4" style={{ color: "var(--color-amber)" }} /> Withdrawal History
           </h3>
-          <div className="flex rounded-lg p-0.5" style={{ background: "var(--bg-surface-alt)" }}>
+          <div className="flex rounded-lg p-0.5" style={{ background: "var(--color-surface-alt)" }}>
             <button
               onClick={() => setViewMode("card")}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
@@ -30,9 +30,9 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
                   : ""
               }`}
               style={{
-                background: viewMode === "card" ? "var(--bg-surface)" : "transparent",
-                color: viewMode === "card" ? "var(--text-primary)" : "var(--text-muted)",
-                borderColor: viewMode === "card" ? "var(--border-color)" : "transparent",
+                background: viewMode === "card" ? "var(--color-surface)" : "transparent",
+                color: viewMode === "card" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                borderColor: viewMode === "card" ? "var(--color-border)" : "transparent",
               }}
             >
               <FaTh className="w-3.5 h-3.5" />
@@ -46,9 +46,9 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
                   : ""
               }`}
               style={{
-                background: viewMode === "table" ? "var(--bg-surface)" : "transparent",
-                color: viewMode === "table" ? "var(--text-primary)" : "var(--text-muted)",
-                borderColor: viewMode === "table" ? "var(--border-color)" : "transparent",
+                background: viewMode === "table" ? "var(--color-surface)" : "transparent",
+                color: viewMode === "table" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                borderColor: viewMode === "table" ? "var(--color-border)" : "transparent",
               }}
             >
               <FaList className="w-3.5 h-3.5" />
@@ -57,7 +57,7 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
           </div>
         </div>
         {withdrawals.length === 0 ? (
-          <div className="text-center py-8" style={{ color: "var(--text-muted)" }}>
+          <div className="text-center py-8" style={{ color: "var(--color-text-muted)" }}>
             <FaHistory className="w-8 h-8 mx-auto mb-2 opacity-50" />
             <p className="text-sm">No withdrawals yet</p>
           </div>
@@ -68,20 +68,20 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
                 key={w._id}
                 className="border rounded-lg p-4"
                 style={{
-                  background: "var(--bg-surface)",
-                  borderColor: "var(--border-color)",
+                  background: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
                 }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                  <span className="text-xs" style={{ color: "var(--color-text-muted)" }}>
                     {formatDate(w.createdAt)} {formatTime(w.createdAt)}
                   </span>
                 </div>
                 <p className="text-lg font-bold" style={{ color: "var(--color-success-icon)" }}>+GHS {w.amount.toFixed(2)}</p>
-                <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                <p className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
                   Balance after: GHS {(w.balanceAfter || 0).toFixed(2)}
                 </p>
-                <p className="text-xs mt-1 truncate" style={{ color: "var(--text-secondary)" }}>
+                <p className="text-xs mt-1 truncate" style={{ color: "var(--color-text-secondary)" }}>
                   {w.description || w.metadata?.type || "Commission withdrawal"}
                 </p>
               </div>
@@ -103,11 +103,11 @@ export const WithdrawalHistory = ({ withdrawals }: WithdrawalHistoryProps) => {
                   <TableRow key={w._id}>
                     <TableCell className="whitespace-nowrap">
                       <p className="text-sm">{formatDate(w.createdAt)}</p>
-                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>{formatTime(w.createdAt)}</p>
+                      <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>{formatTime(w.createdAt)}</p>
                     </TableCell>
                     <TableCell className="font-semibold" style={{ color: "var(--color-success-icon)" }}>+GHS {w.amount.toFixed(2)}</TableCell>
                     <TableCell>GHS {(w.balanceAfter || 0).toFixed(2)}</TableCell>
-                    <TableCell className="text-sm max-w-xs truncate" style={{ color: "var(--text-secondary)" }}>
+                    <TableCell className="text-sm max-w-xs truncate" style={{ color: "var(--color-text-secondary)" }}>
                       {w.description || w.metadata?.type || "Commission withdrawal"}
                     </TableCell>
                   </TableRow>

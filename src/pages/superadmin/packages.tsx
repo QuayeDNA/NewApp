@@ -272,8 +272,8 @@ function ProvidersTab() {
 
   if (error) {
     return (
-      <div className="rounded-xl border border-[var(--error)]/30 bg-[var(--error)]/5 p-6">
-        <p className="text-sm font-medium text-[var(--error)]">Error: {error}</p>
+      <div className="rounded-xl border border-[var(--color-error)]/30 bg-[var(--color-error)]/5 p-6">
+        <p className="text-sm font-medium text-[var(--color-error)]">Error: {error}</p>
       </div>
     );
   }
@@ -283,21 +283,21 @@ function ProvidersTab() {
       {/* Header */}
       <div
         className="rounded-xl p-5 sm:p-6"
-        style={{ background: "var(--gradient-brand-dark)" }}
+        style={{ background: "var(--color-ink)" }}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div
               className="flex h-10 w-10 items-center justify-center rounded-xl"
-              style={{ backgroundColor: "color-mix(in srgb, var(--text-inverse) 15%, transparent)" }}
+              style={{ backgroundColor: "color-mix(in srgb, var(--color-text-inverse) 15%, transparent)" }}
             >
-              <FaChartBar className="text-lg" style={{ color: "var(--text-inverse)" }} />
+              <FaChartBar className="text-lg" style={{ color: "var(--color-text-inverse)" }} />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-bold" style={{ color: "var(--text-inverse)" }}>
+              <h2 className="text-base sm:text-lg font-bold" style={{ color: "var(--color-text-inverse)" }}>
                 Provider Management
               </h2>
-              <p className="text-xs sm:text-sm mt-0.5" style={{ color: "var(--text-inverse)", opacity: 0.6 }}>
+              <p className="text-xs sm:text-sm mt-0.5" style={{ color: "var(--color-text-inverse)", opacity: 0.6 }}>
                 Manage telecom service providers and configurations
               </p>
             </div>
@@ -328,13 +328,13 @@ function ProvidersTab() {
       {/* Provider distribution */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
-          { code: 'MTN', count: stats.mtn, label: 'MTN', accent: 'text-[var(--warning)]' },
-          { code: 'TELECEL', count: stats.telecel, label: 'Telecel', accent: 'text-[var(--error)]' },
-          { code: 'AT', count: stats.at, label: 'AirtelTigo', accent: 'text-[var(--info)]' },
+          { code: 'MTN', count: stats.mtn, label: 'MTN', accent: 'text-[var(--color-warning)]' },
+          { code: 'TELECEL', count: stats.telecel, label: 'Telecel', accent: 'text-[var(--color-error)]' },
+          { code: 'AT', count: stats.at, label: 'AirtelTigo', accent: 'text-[var(--color-info)]' },
         ].map((p) => (
           <Card key={p.code}>
             <CardBody className="text-center">
-              <p className="text-xs text-[var(--text-muted)] font-medium mb-1">{p.label}</p>
+              <p className="text-xs text-[var(--color-text-muted)] font-medium mb-1">{p.label}</p>
               <p className={`text-lg font-bold ${p.accent}`}>{p.count}</p>
             </CardBody>
           </Card>
@@ -385,7 +385,7 @@ function ProvidersTab() {
       {selectedProviders.length > 0 && (
         <Card variant="outlined">
           <CardBody className="flex items-center justify-between flex-wrap gap-2">
-            <span className="text-sm font-medium text-[var(--info)]">
+            <span className="text-sm font-medium text-[var(--color-info)]">
               {selectedProviders.length} provider(s) selected
             </span>
             <div className="flex gap-2">
@@ -409,7 +409,7 @@ function ProvidersTab() {
           {loading ? (
             <div className="p-4 space-y-3">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 border border-[var(--border-color)] rounded-lg">
+                <div key={i} className="flex items-center gap-3 p-3 border border-[var(--color-border)] rounded-lg">
                   <Skeleton variant="circular" width={36} height={36} />
                   <div className="flex-1 space-y-1.5">
                     <Skeleton height="0.875rem" width="40%" />
@@ -421,13 +421,13 @@ function ProvidersTab() {
             </div>
           ) : providers.length === 0 ? (
             <div className="py-12 text-center">
-              <FaBuilding className="mx-auto text-3xl text-[var(--text-muted)] mb-3" />
-              <p className="text-sm text-[var(--text-muted)]">No providers found.</p>
+              <FaBuilding className="mx-auto text-3xl text-[var(--color-text-muted)] mb-3" />
+              <p className="text-sm text-[var(--color-text-muted)]">No providers found.</p>
             </div>
           ) : (
             <>
               {/* Mobile cards */}
-              <div className="sm:hidden divide-y divide-[var(--border-color)]">
+              <div className="sm:hidden divide-y divide-[var(--color-border)]">
                 {providers.map((provider) => (
                   <div key={provider._id} className="p-4">
                     <div className="flex items-start justify-between gap-3">
@@ -447,11 +447,11 @@ function ProvidersTab() {
                           </div>
                         )}
                         <div className="min-w-0">
-                          <div className="text-sm font-semibold text-[var(--text-primary)] truncate">
+                          <div className="text-sm font-semibold text-[var(--color-text-primary)] truncate">
                             {provider.name}
                           </div>
                           {provider.description && (
-                            <div className="text-xs text-[var(--text-muted)] line-clamp-2 mt-0.5">
+                            <div className="text-xs text-[var(--color-text-muted)] line-clamp-2 mt-0.5">
                               {provider.description}
                             </div>
                           )}
@@ -461,7 +461,7 @@ function ProvidersTab() {
                         type="checkbox"
                         checked={selectedProviders.includes(provider._id)}
                         onChange={() => handleSelectProvider(provider._id)}
-                        className="mt-1 rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                        className="mt-1 rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                       />
                     </div>
                     <div className="flex items-center gap-2 mt-3 flex-wrap">
@@ -474,7 +474,7 @@ function ProvidersTab() {
                       >
                         {getStatusLabel(provider.isActive, provider.isDeleted)}
                       </Badge>
-                      <span className="text-xs text-[var(--text-muted)]">
+                      <span className="text-xs text-[var(--color-text-muted)]">
                         Sales {provider.salesCount || 0}
                       </span>
                     </div>
@@ -515,7 +515,7 @@ function ProvidersTab() {
                           type="checkbox"
                           checked={selectedProviders.length === providers.length && providers.length > 0}
                           onChange={handleSelectAll}
-                          className="rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                          className="rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                         />
                       </TableHeaderCell>
                       <TableHeaderCell>Provider</TableHeaderCell>
@@ -528,13 +528,13 @@ function ProvidersTab() {
                   </TableHeader>
                   <TableBody>
                     {providers.map((provider) => (
-                      <TableRow key={provider._id} className="hover:bg-[var(--bg-surface-alt)] transition-colors">
+                      <TableRow key={provider._id} className="hover:bg-[var(--color-surface-alt)] transition-colors">
                         <TableCell>
                           <input
                             type="checkbox"
                             checked={selectedProviders.includes(provider._id)}
                             onChange={() => handleSelectProvider(provider._id)}
-                            className="rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                            className="rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                           />
                         </TableCell>
                         <TableCell>
@@ -554,11 +554,11 @@ function ProvidersTab() {
                               </div>
                             )}
                             <div className="min-w-0">
-                              <div className="text-sm font-medium text-[var(--text-primary)] truncate">
+                              <div className="text-sm font-medium text-[var(--color-text-primary)] truncate">
                                 {provider.name}
                               </div>
                               {provider.description && (
-                                <div className="text-xs text-[var(--text-muted)] line-clamp-1">
+                                <div className="text-xs text-[var(--color-text-muted)] line-clamp-1">
                                   {provider.description}
                                 </div>
                               )}
@@ -578,10 +578,10 @@ function ProvidersTab() {
                             {getStatusLabel(provider.isActive, provider.isDeleted)}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-sm text-[var(--text-primary)]">
+                        <TableCell className="text-sm text-[var(--color-text-primary)]">
                           {provider.salesCount || 0}
                         </TableCell>
-                        <TableCell className="text-xs text-[var(--text-muted)]">
+                        <TableCell className="text-xs text-[var(--color-text-muted)]">
                           {new Date(provider.createdAt).toLocaleDateString()}
                         </TableCell>
                         <TableCell>
@@ -620,7 +620,7 @@ function ProvidersTab() {
       </Card>
 
       {pagination.pages > 1 && (
-        <div className="flex justify-center border-t border-[var(--border-color)] pt-4">
+        <div className="flex justify-center border-t border-[var(--color-border)] pt-4">
           <Pagination
             currentPage={pagination.page}
             totalPages={pagination.pages}
@@ -841,7 +841,7 @@ function PackagesTab() {
       {(error || actionError) && (
         <Card>
           <CardBody>
-            <p className="text-sm font-medium text-[var(--error)]">{error || actionError}</p>
+            <p className="text-sm font-medium text-[var(--color-error)]">{error || actionError}</p>
           </CardBody>
         </Card>
       )}
@@ -852,12 +852,12 @@ function PackagesTab() {
           {loading ? (
             <div className="p-6 sm:p-8 text-center">
               <Spinner size="lg" />
-              <span className="ml-3 text-sm text-[var(--text-muted)]">Loading packages...</span>
+              <span className="ml-3 text-sm text-[var(--color-text-muted)]">Loading packages...</span>
             </div>
           ) : packages.length === 0 ? (
             <div className="p-8 sm:p-10 text-center">
-              <FaBox className="mx-auto text-3xl sm:text-4xl text-[var(--text-muted)] mb-4" />
-              <p className="text-sm text-[var(--text-muted)] mb-4">
+              <FaBox className="mx-auto text-3xl sm:text-4xl text-[var(--color-text-muted)] mb-4" />
+              <p className="text-sm text-[var(--color-text-muted)] mb-4">
                 {provider || status || category || search.trim()
                   ? 'No packages found matching your criteria.'
                   : 'No packages yet.'}
@@ -876,7 +876,7 @@ function PackagesTab() {
                 return (
                   <div
                     key={pkg._id}
-                    className="group relative rounded-xl border border-[var(--border-color)] bg-[var(--bg-surface)] overflow-hidden transition-all duration-200 hover:shadow-md"
+                    className="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden transition-all duration-200 hover:shadow-md"
                   >
                     {/* Brand color bar */}
                     <div
@@ -895,7 +895,7 @@ function PackagesTab() {
                             {PROVIDER_INITIALS[pkg.provider] || pkg.provider[0]}
                           </div>
                           <div className="min-w-0">
-                            <h3 className="text-sm font-semibold text-[var(--text-primary)] truncate leading-snug">
+                            <h3 className="text-sm font-semibold text-[var(--color-text-primary)] truncate leading-snug">
                               {pkg.name}
                             </h3>
                             <span
@@ -917,7 +917,7 @@ function PackagesTab() {
 
                       {/* Description */}
                       {pkg.description && (
-                        <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                        <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
                           {pkg.description}
                         </p>
                       )}
@@ -934,7 +934,7 @@ function PackagesTab() {
                       </div>
 
                       {/* Actions */}
-                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border-color)]">
+                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--color-border)]">
                         <Button
                           size="sm"
                           variant="outline"
@@ -985,12 +985,12 @@ function PackagesTab() {
       {/* Delete Confirmation Modal */}
       <Dialog isOpen={showDeleteModal} onClose={() => { setShowDeleteModal(false); setDeletePackage(null); }}>
         <DialogHeader>
-          <h2 className="text-lg font-bold text-[var(--text-primary)]">Delete Package</h2>
+          <h2 className="text-lg font-bold text-[var(--color-text-primary)]">Delete Package</h2>
         </DialogHeader>
         <DialogBody>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--color-text-secondary)]">
             Are you sure you want to delete{' '}
-            <span className="font-semibold text-[var(--text-primary)]">{deletePackage?.name}</span>?
+            <span className="font-semibold text-[var(--color-text-primary)]">{deletePackage?.name}</span>?
             This action cannot be undone.
           </p>
         </DialogBody>
@@ -1023,10 +1023,10 @@ export default function SuperAdminPackagesPage() {
         <CardHeader>
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+              <h1 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                 Packages & Providers
               </h1>
-              <p className="text-sm text-[var(--text-muted)] mt-0.5">
+              <p className="text-sm text-[var(--color-text-muted)] mt-0.5">
                 Manage data packages and telecom service providers
               </p>
             </div>

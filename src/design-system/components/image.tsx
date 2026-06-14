@@ -8,7 +8,6 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   fallback?: ReactNode;
   className?: string;
   containerClassName?: string;
-  rounded?: boolean;
   shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   overlay?: ReactNode;
   aspectRatio?: '1:1' | '4:3' | '16:9' | '21:9';
@@ -22,7 +21,6 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     fallback,
     className = '',
     containerClassName = '',
-    rounded = false,
     shadow = 'none',
     overlay,
     aspectRatio,
@@ -58,7 +56,6 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     const imageClasses = [
       'w-full h-full',
       objectFitClasses[objectFit],
-      rounded ? 'rounded-lg' : '',
       shadowClasses[shadow],
       'transition-all duration-300',
       className,
@@ -67,7 +64,6 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
     const containerClasses = [
       'relative overflow-hidden',
       aspectRatio ? aspectRatioClasses[aspectRatio] : '',
-      rounded ? 'rounded-lg' : '',
       containerClassName,
     ].filter(Boolean).join(' ');
 
@@ -88,7 +84,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
       <div className={containerClasses}>
         {/* Loading skeleton */}
         {isLoading && (
-          <div className="absolute inset-0 bg-[var(--bg-surface-alt)] animate-pulse" />
+          <div className="absolute inset-0 bg-[var(--color-surface-alt)] animate-pulse" />
         )}
         
         {/* Image */}
@@ -140,7 +136,6 @@ export const HeroImage = forwardRef<HTMLImageElement, HeroImageProps>(
         className={`${variantClasses[variant]} ${className}`}
         containerClassName={`${containerVariantClasses[variant]} ${containerClassName}`}
         aspectRatio="16:9"
-        rounded
         shadow="lg"
         {...props}
       />

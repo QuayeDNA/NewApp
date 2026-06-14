@@ -22,12 +22,12 @@ export const AnnouncementStatsDialog: React.FC<Props> = ({
     <Dialog isOpen={isOpen} onClose={onClose} size="lg">
       <DialogHeader>
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+          <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">
             Announcement Statistics
           </h2>
           <button
             onClick={onClose}
-            className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
+            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -38,47 +38,47 @@ export const AnnouncementStatsDialog: React.FC<Props> = ({
         {stats && announcement && (
           <div className="space-y-4">
             <div>
-              <h3 className="font-semibold text-lg text-[var(--text-primary)]">
+              <h3 className="font-semibold text-lg text-[var(--color-text-primary)]">
                 {announcement.title}
               </h3>
-              <p className="text-sm text-[var(--text-secondary)]">
+              <p className="text-sm text-[var(--color-text-secondary)]">
                 {announcement.message}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <div className="p-3 sm:p-4 bg-[var(--info)]/5 rounded-lg border border-[var(--info)]/20">
-                <div className="text-sm text-[var(--text-secondary)]">
+              <div className="p-3 sm:p-4 bg-[var(--color-info)]/5 rounded-lg border border-[var(--color-info)]/20">
+                <div className="text-sm text-[var(--color-text-secondary)]">
                   Total Eligible Users
                 </div>
-                <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                   {stats.totalEligibleUsers}
                 </div>
               </div>
 
-              <div className="p-3 sm:p-4 bg-[var(--success)]/5 rounded-lg border border-[var(--success)]/20">
-                <div className="text-sm text-[var(--text-secondary)]">Viewed</div>
-                <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+              <div className="p-3 sm:p-4 bg-[var(--color-success)]/5 rounded-lg border border-[var(--color-success)]/20">
+                <div className="text-sm text-[var(--color-text-secondary)]">Viewed</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                   {stats.viewedCount}
                 </div>
-                <div className="text-sm text-[var(--text-muted)]">
+                <div className="text-sm text-[var(--color-text-muted)]">
                   {stats.viewedPercentage}%
                 </div>
               </div>
 
-              <div className="p-3 sm:p-4 bg-[var(--color-secondary)]/5 rounded-lg border border-[var(--color-secondary)]/20">
-                <div className="text-sm text-[var(--text-secondary)]">Acknowledged</div>
-                <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+              <div className="p-3 sm:p-4 bg-[var(--color-amber)]/5 rounded-lg border border-[var(--color-amber)]/20">
+                <div className="text-sm text-[var(--color-text-secondary)]">Acknowledged</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                   {stats.acknowledgedCount}
                 </div>
-                <div className="text-sm text-[var(--text-muted)]">
+                <div className="text-sm text-[var(--color-text-muted)]">
                   {stats.acknowledgedPercentage}%
                 </div>
               </div>
 
-              <div className="p-3 sm:p-4 bg-[var(--warning)]/5 rounded-lg border border-[var(--warning)]/20">
-                <div className="text-sm text-[var(--text-secondary)]">Not Viewed</div>
-                <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+              <div className="p-3 sm:p-4 bg-[var(--color-warning)]/5 rounded-lg border border-[var(--color-warning)]/20">
+                <div className="text-sm text-[var(--color-text-secondary)]">Not Viewed</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                   {stats.totalEligibleUsers - stats.viewedCount}
                 </div>
               </div>

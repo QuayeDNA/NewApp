@@ -20,6 +20,7 @@ import { packageService } from "../services/package.service";
 import { BryteLinksSvgIcon } from "./common/BryteLinksSvgLogo";
 import { NavItem } from "./sidebar/nav-item";
 import { getNavSections, isAgent } from "./sidebar/nav-config";
+import { brand } from "../config/brand";
 import type { NavItem as NavItemConfig } from "./sidebar/nav-config";
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
@@ -217,7 +218,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           // Layout
           "fixed inset-y-0 left-0 z-30 flex w-64 flex-col",
           // Background (preserved from original)
-          "[background:var(--bg-sidebar)]",
+          "[background:var(--color-sidebar)]",
           // Slide transition
           "transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform",
           isOpen ? "translate-x-0" : "-translate-x-full",
@@ -229,13 +230,13 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div
           className="flex flex-shrink-0 items-center justify-between px-4 py-[18px]"
-          style={{ background: "var(--bg-sidebar-header, var(--bg-sidebar))", borderBottom: "1px solid var(--sb-divider)" }}
+          style={{ background: "var(--color-sidebar)", borderBottom: "1px solid var(--sb-divider)" }}
         >
           {/* Brand */}
           <div className="flex min-w-0 flex-1 items-center gap-2">
-            <BryteLinksSvgIcon className="h-9 w-9 flex-shrink-0" />
+            <BryteLinksSvgIcon className="h-9 w-9 flex-shrink-0" color="var(--color-text-sidebar)" />
             <span className="truncate text-[15px] font-bold tracking-tight text-[var(--sb-text-primary)]">
-              BryteLinks
+              {brand.name}
             </span>
           </div>
 
@@ -245,7 +246,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             onClick={onClose}
             aria-label="Close sidebar"
             className={[
-              "ml-2 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md md:hidden",
+              "ml-2 flex h-8 w-8 flex-shrink-0 items-center justify-center md:hidden",
               "text-[var(--sb-text-secondary)] transition-colors duration-150",
               "hover:bg-[var(--sb-hover-bg)] hover:text-[var(--sb-text-primary)]",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sb-accent)]",
@@ -297,18 +298,18 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         >
           {/* User card */}
           <div
-            className="flex items-center gap-2.5 rounded-lg p-2"
+            className="flex items-center gap-2.5 p-2"
             style={{ background: "var(--sb-hover-bg)" }}
           >
             {/* Avatar */}
             <div className="relative flex-shrink-0" aria-hidden="true">
               <div
                 className={[
-                  "flex h-9 w-9 items-center justify-center rounded-full",
-                  "text-[13px] font-bold tracking-wide text-[var(--sb-text-primary)]",
+                  "flex h-9 w-9 items-center justify-center",
+                  "text-[13px] font-bold tracking-wide text-white",
                 ].join(" ")}
                 style={{
-                  background: "linear-gradient(135deg, var(--color-secondary-500), var(--color-secondary-700, #2563eb))",
+                  background: "var(--color-info)",
                   boxShadow: "0 0 0 1px var(--sb-avatar-ring)",
                 }}
               >
@@ -319,9 +320,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 className={[
                   "absolute -bottom-px -right-px h-2.5 w-2.5 rounded-full",
                   "border-2 transition-colors duration-300",
-                  isOnline ? "bg-emerald-500" : "bg-[var(--sb-text-muted)]",
+                  isOnline ? "bg-[var(--color-success)]" : "bg-[var(--sb-text-muted)]",
                 ].join(" ")}
-                style={{ borderColor: "var(--bg-sidebar)" }}
+                style={{ borderColor: "var(--color-ink)" }}
                 title={isOnline ? "Online" : "Offline"}
               />
             </div>
@@ -340,7 +341,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                     className="flex-shrink-0 rounded px-1 py-px text-[10px] font-bold tracking-wider font-mono"
                     style={{
                       color: "var(--sb-accent)",
-                      background: "rgba(96, 165, 250, 0.12)",
+                      background: "var(--sb-active-bg)",
                     }}
                   >
                     {agentCode}
@@ -355,11 +356,11 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             type="button"
             onClick={handleLogout}
             className={[
-              "flex min-h-[40px] w-full items-center justify-center gap-2 rounded-md px-4 py-2",
+              "flex min-h-[40px] w-full items-center justify-center gap-2 px-4 py-2",
               "text-[13px] font-semibold transition-colors duration-150",
-              "text-red-300 border border-red-500/20 bg-red-500/10",
-              "hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70",
+"text-[var(--color-error)] border border-[var(--color-error)]/20 bg-[var(--color-error)]/10",
+               "hover:bg-[var(--color-error)]/20 hover:border-[var(--color-error)]/40 hover:text-[var(--color-error)]",
+               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-error)]/70",
             ].join(" ")}
           >
             <LogOut size={15} aria-hidden="true" />
@@ -372,7 +373,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               {appName}
             </span>
             <span
-              className="flex-shrink-0 rounded-full border px-1.5 py-px text-[10px] font-mono font-semibold tracking-wide text-[var(--sb-text-muted)]"
+              className="flex-shrink-0 border px-1.5 py-px text-[10px] font-mono font-semibold tracking-wide text-[var(--sb-text-muted)]"
               style={{ borderColor: "var(--sb-divider)", background: "var(--sb-hover-bg)" }}
             >
               v1.0.0

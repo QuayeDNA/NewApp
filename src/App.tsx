@@ -48,8 +48,8 @@ function App() {
     <StorefrontSessionProvider>
       <>
         {isImpersonating && isAuthenticatedRoute && (
-          <div className="sticky top-0 z-50 w-full p-2 sm:p-3 flex flex-col sm:flex-row sm:items-center justify-between shadow-sm" style={{ backgroundColor: 'color-mix(in srgb, var(--warning) 10%, transparent)', borderBottom: '1px solid color-mix(in srgb, var(--warning) 40%, transparent)' }}>
-            <span className="font-semibold text-sm sm:text-base mb-2 sm:mb-0" style={{ color: 'var(--warning)' }}>
+          <div className="sticky top-0 z-50 w-full p-2 sm:p-3 flex flex-col sm:flex-row sm:items-center justify-between shadow-[var(--shadow-sm)]" style={{ backgroundColor: 'var(--color-warning)', borderBottom: '1px solid var(--color-warning)' }}>
+            <span className="font-semibold text-sm sm:text-base mb-2 sm:mb-0" style={{ color: 'var(--color-warning)' }}>
               Impersonation Active: You are acting as another user.
             </span>
             <Button

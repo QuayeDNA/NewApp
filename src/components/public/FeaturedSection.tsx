@@ -111,14 +111,14 @@ export const FeaturedSection = memo(
             )}
             <h2
               className="text-sm font-black tracking-wide uppercase"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               {tab === "trending" ? "Trending Now" : "Best Value"}
             </h2>
           </div>
           <div
             className="flex rounded-xl overflow-hidden border shrink-0"
-            style={{ borderColor: "var(--border-color)" }}
+            style={{ borderColor: "var(--color-border)" }}
           >
             {(["trending", "value"] as FeaturedTab[]).map((t) => (
               <button
@@ -229,13 +229,13 @@ export const FeaturedSection = memo(
                           </div>
                         </div>
                         {isAfa && b.requiresGhanaCard && (
-                          <span className="text-[9px] bg-white/20 rounded-full px-1.5 py-0.5 font-semibold shrink-0">
+                          <span className="text-[9px] bg-white/20 px-1.5 py-0.5 font-semibold shrink-0">
                             ID
                           </span>
                         )}
                         {!isAfa && RANK_BG[idx + 1] && (
                           <span
-                            className="text-[10px] font-black px-2 py-1 rounded-full shadow-lg shrink-0"
+                            className="text-[10px] font-black px-2 py-1 shadow-[var(--shadow-lg)] shrink-0"
                             style={{
                               background: RANK_BG[idx + 1],
                               color: "#fff",
@@ -262,14 +262,14 @@ export const FeaturedSection = memo(
                       )}
 
                       <div className="flex items-center gap-2 flex-wrap">
-                        <div className="inline-flex items-center gap-1.5 bg-white/20 rounded-full px-2.5 py-1 text-[11px] font-semibold">
+                        <div className="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-1 text-[11px] font-semibold">
                           <FaWifi className="w-2.5 h-2.5 opacity-80" />
                           {fmtValidity(b.validity, b.validityUnit)}
                         </div>
                         {tab === "value" &&
                           b.dataVolume > 0 &&
                           b.price > 0 && (
-                            <div className="inline-flex items-center gap-1 bg-white/20 rounded-full px-2.5 py-1 text-[11px] font-semibold">
+                            <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-1 text-[11px] font-semibold">
                               💰 {(b.dataVolume / b.price).toFixed(1)}GB/₵
                             </div>
                           )}
@@ -293,7 +293,7 @@ export const FeaturedSection = memo(
           <div className="flex items-center justify-center gap-3 mt-4">
             <button
               onClick={() => goTo(activeIdx - 1)}
-              className="w-8 h-8 rounded-full border-2 flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="w-8 h-8 border-2 flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-offset-2"
               style={{
                 borderColor: activePc?.primary || theme.primary,
                 color: activePc?.primary || theme.primary,
@@ -307,7 +307,7 @@ export const FeaturedSection = memo(
                 <button
                   key={idx}
                   onClick={() => goTo(idx)}
-                  className="rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2"
+                  className="transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2"
                   style={{
                     width: idx === activeIdx ? "24px" : "8px",
                     height: "8px",
@@ -324,7 +324,7 @@ export const FeaturedSection = memo(
             </div>
             <button
               onClick={() => goTo(activeIdx + 1)}
-              className="w-8 h-8 rounded-full border-2 flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="w-8 h-8 border-2 flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-offset-2"
               style={{
                 borderColor: activePc?.primary || theme.primary,
                 color: activePc?.primary || theme.primary,

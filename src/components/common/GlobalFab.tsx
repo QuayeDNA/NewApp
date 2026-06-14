@@ -407,15 +407,15 @@ export function GlobalFab() {
                 "fab-item",
                 "flex items-center gap-2 rounded-full px-3.5 py-2",
                 "text-xs font-semibold whitespace-nowrap",
-                "border border-[var(--border-color)] bg-[var(--bg-surface)]",
-                "text-[var(--text-secondary)]",
-                "shadow-lg shadow-black/10",
-                "hover:bg-[var(--bg-surface-alt)] hover:border-[var(--border-color-strong)]",
+                "border border-[var(--color-border)] bg-[var(--color-surface)]",
+                "text-[var(--color-text-secondary)]",
+                "shadow-[var(--shadow-lg)] shadow-black/10",
+                "hover:bg-[var(--color-surface-alt)] hover:border-[var(--color-border-strong)]",
                 "transition-colors duration-150",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-secondary)]",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-amber)]",
               ].join(" ")}
             >
-              <FaUsers className="text-[var(--color-secondary)] text-sm flex-shrink-0" aria-hidden="true" />
+              <FaUsers className="text-[var(--color-amber)] text-sm flex-shrink-0" aria-hidden="true" />
               Community
             </a>
 
@@ -429,15 +429,15 @@ export function GlobalFab() {
                 "fab-item",
                 "flex items-center gap-2 rounded-full px-3.5 py-2",
                 "text-xs font-semibold whitespace-nowrap",
-                "border border-[var(--border-color)] bg-[var(--bg-surface)]",
-                "text-[var(--text-secondary)]",
-                "shadow-lg shadow-black/10",
-                "hover:bg-[var(--bg-surface-alt)] hover:border-[var(--border-color-strong)]",
+                "border border-[var(--color-border)] bg-[var(--color-surface)]",
+                "text-[var(--color-text-secondary)]",
+                "shadow-[var(--shadow-lg)] shadow-black/10",
+                "hover:bg-[var(--color-surface-alt)] hover:border-[var(--color-border-strong)]",
                 "transition-colors duration-150",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
+                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-success)]",
               ].join(" ")}
             >
-              <FaWhatsapp className="text-emerald-500 text-sm flex-shrink-0" aria-hidden="true" />
+              <FaWhatsapp className="text-[var(--color-success)] text-sm flex-shrink-0" aria-hidden="true" />
               Support
             </a>
           </div>
@@ -462,9 +462,9 @@ export function GlobalFab() {
           }}
         >
           {open ? (
-            <X className="h-5 w-5 text-white" aria-hidden="true" />
+            <X className="h-5 w-5 text-[var(--color-text-inverse)]" aria-hidden="true" />
           ) : (
-            <FaWhatsapp className="h-5 w-5 text-white" aria-hidden="true" />
+            <FaWhatsapp className="h-5 w-5 text-[var(--color-text-inverse)]" aria-hidden="true" />
           )}
         </button>
 

@@ -109,14 +109,14 @@ export const NotificationDropdown: React.FC = () => {
   const getCategoryBadge = (category?: string) => {
     if (!category) return null;
     const colors: Record<string, string> = {
-      system: "bg-[var(--bg-surface-alt)] text-[var(--text-muted)]",
-      order: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
+      system: "bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]",
+      order: "bg-[var(--color-ink)]/10 text-[var(--color-ink)]",
       wallet: "bg-success/10 text-success",
-      announcement: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]",
+      announcement: "bg-[var(--color-amber)]/10 text-[var(--color-amber)]",
       commission: "bg-warning/10 text-warning",
     };
     return (
-      <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${colors[category] || "bg-[var(--bg-surface-alt)] text-[var(--text-muted)]"}`}>
+      <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${colors[category] || "bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]"}`}>
         {category}
       </span>
     );
@@ -132,14 +132,14 @@ export const NotificationDropdown: React.FC = () => {
       case 'warning':
         return <FaTimes className={`${iconClasses} text-warning`} />;
       case 'info':
-        return <FaBell className={`${iconClasses} text-[var(--color-primary)]`} />;
+        return <FaBell className={`${iconClasses} text-[var(--color-ink)]`} />;
       default:
-        return <FaBell className={`${iconClasses} text-[var(--text-muted)]`} />;
+        return <FaBell className={`${iconClasses} text-[var(--color-text-muted)]`} />;
     }
   };
 
   const getNotificationBgColor = (type: string, isRead: boolean) => {
-    if (isRead) return 'bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-alt)]';
+    if (isRead) return 'bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)]';
 
     switch (type) {
       case 'success':
@@ -149,9 +149,9 @@ export const NotificationDropdown: React.FC = () => {
       case 'warning':
         return 'bg-warning/5 hover:bg-warning/10';
       case 'info':
-        return 'bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10';
+        return 'bg-[var(--color-ink)]/5 hover:bg-[var(--color-ink)]/10';
       default:
-        return 'bg-[var(--color-primary)]/5 hover:bg-[var(--color-primary)]/10';
+        return 'bg-[var(--color-ink)]/5 hover:bg-[var(--color-ink)]/10';
     }
   };
 
@@ -164,15 +164,15 @@ export const NotificationDropdown: React.FC = () => {
           variant="ghost"
           size="sm"
           onClick={() => setIsOpen(!isOpen)}
-          className="relative p-2 hover:bg-white/15 active:bg-white/20 transition-all duration-200 rounded-full"
+          className="relative p-2 hover:bg-white/15 active:bg-white/20 transition-all duration-200"
           aria-label="Notifications"
           aria-expanded={isOpen}
           aria-haspopup="true"
-          style={{ color: unreadCount > 0 ? 'var(--text-inverse)' : 'color-mix(in srgb, var(--text-inverse) 65%, transparent)' }}
+          style={{ color: unreadCount > 0 ? 'var(--color-text-header)' : 'var(--color-text-muted)' }}
         >
           <FaBell className="w-5 h-5" />
           {unreadCount > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4.5 min-w-[18px] items-center justify-center rounded-full bg-[var(--color-primary)] px-1 text-[10px] font-bold leading-none text-white shadow-sm ring-2 ring-[var(--bg-header)]">
+            <span className="absolute -top-0.5 -right-0.5 flex h-4.5 min-w-[18px] items-center justify-center bg-[var(--color-amber)] px-1 text-[10px] font-bold leading-none text-white shadow-[var(--shadow-sm)] ring-2 ring-[var(--color-header)]">
               {unreadCount > 99 ? '99+' : unreadCount}
             </span>
           )}
@@ -193,17 +193,17 @@ export const NotificationDropdown: React.FC = () => {
               ref={dropdownRef}
               className={`
                 notification-dropdown
-                z-[60] bg-[var(--bg-surface)] rounded-xl shadow-xl border border-[var(--border-color)]
+                z-[60] bg-[var(--color-surface)] shadow-[var(--shadow-xl)] border border-[var(--color-border)]
                 fixed inset-x-3 top-16 w-auto max-h-[calc(100vh-5rem)]
                 sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-[26rem] sm:max-h-[70vh] sm:inset-x-auto
               `}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-[var(--border-color)]">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+              <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
                   Notifications
                   {unreadCount > 0 && (
-                    <span className="ml-2 text-sm font-normal text-[var(--text-muted)]">
+                    <span className="ml-2 text-sm font-normal text-[var(--color-text-muted)]">
                       ({unreadCount} new)
                     </span>
                   )}
@@ -213,7 +213,7 @@ export const NotificationDropdown: React.FC = () => {
                     variant="ghost"
                     size="sm"
                     onClick={handleMarkAllAsRead}
-                    className="text-xs text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] hover:bg-[var(--color-primary)]/10 font-medium px-3 py-1 rounded-md transition-colors"
+                    className="text-xs text-[var(--color-ink)] hover:text-[var(--color-ink-hover)] hover:bg-[var(--color-ink)]/10 font-medium px-3 py-1 transition-colors"
                   >
                     Mark all read
                   </Button>
@@ -221,28 +221,28 @@ export const NotificationDropdown: React.FC = () => {
               </div>
 
               {/* Notifications List */}
-              <div className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--border-color)] scrollbar-track-transparent">
+              <div className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--color-border)] scrollbar-track-transparent">
                 {isLoading ? (
                   <div className="flex items-center justify-center p-12">
                     <div className="flex flex-col items-center space-y-3">
-                      <FaSpinner className="w-6 h-6 text-[var(--color-primary)] animate-spin" />
-                      <p className="text-sm text-[var(--text-muted)]">Loading notifications...</p>
+                      <FaSpinner className="w-6 h-6 text-[var(--color-ink)] animate-spin" />
+                      <p className="text-sm text-[var(--color-text-muted)]">Loading notifications...</p>
                     </div>
                   </div>
                 ) : notifications.length === 0 ? (
                   <div className="flex items-center justify-center p-12">
                     <div className="flex flex-col items-center space-y-3 text-center">
-                      <div className="w-16 h-16 bg-[var(--bg-surface-alt)] rounded-full flex items-center justify-center">
-                        <FaBell className="w-8 h-8 text-[var(--text-muted)]" />
+                      <div className="w-16 h-16 bg-[var(--color-surface-alt)] flex items-center justify-center">
+                        <FaBell className="w-8 h-8 text-[var(--color-text-muted)]" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-[var(--text-primary)]">No notifications</h4>
-                        <p className="text-xs text-[var(--text-muted)] mt-1">You're all caught up!</p>
+                        <h4 className="text-sm font-medium text-[var(--color-text-primary)]">No notifications</h4>
+                        <p className="text-xs text-[var(--color-text-muted)] mt-1">You're all caught up!</p>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="divide-y divide-[var(--border-color)]">
+                  <div className="divide-y divide-[var(--color-border)]">
                     {notifications.slice(0, 10).map((notification) => {
                       const isExpanded = expandedNotifications.has(notification._id);
                       const shouldTruncate = notification.message.length > 100;
@@ -254,8 +254,8 @@ export const NotificationDropdown: React.FC = () => {
                           className={`
                             p-4 transition-all duration-200
                             ${getNotificationBgColor(notification.type, notification.read)}
-                            ${!notification.read ? 'border-l-4 border-[var(--color-primary)]' : ''}
-                            hover:shadow-sm
+                            ${!notification.read ? 'border-l-4 border-[var(--color-ink)]' : ''}
+                            hover:shadow-[var(--shadow-sm)]
                           `}
                         >
                           <div className="flex items-start space-x-3">
@@ -267,24 +267,24 @@ export const NotificationDropdown: React.FC = () => {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center space-x-2">
                                     <button
-                                      className={`text-sm font-medium text-left ${!notification.read ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'
-                                        } hover:text-[var(--color-primary)] transition-colors`}
+                                      className={`text-sm font-medium text-left ${!notification.read ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)]'
+                                        } hover:text-[var(--color-ink)] transition-colors`}
                                       onClick={() => handleNotificationClick(notification)}
                                     >
                                       {notification.title}
                                     </button>
                                     {(notification as any).category && getCategoryBadge((notification as any).category)}
                                     {notification.metadata?.navigationLink && (
-                                      <FaExternalLinkAlt className="w-3 h-3 text-[var(--color-primary)] flex-shrink-0" />
+                                      <FaExternalLinkAlt className="w-3 h-3 text-[var(--color-ink)] flex-shrink-0" />
                                     )}
                                   </div>
                                   <div className="mt-1">
                                     {creatorLabel && (
-                                      <p className="text-xs text-[var(--text-muted)]">
+                                      <p className="text-xs text-[var(--color-text-muted)]">
                                         Created by {creatorLabel}
                                       </p>
                                     )}
-                                    <p className={`text-sm ${!notification.read ? 'text-[var(--text-secondary)]' : 'text-[var(--text-muted)]'
+                                    <p className={`text-sm ${!notification.read ? 'text-[var(--color-text-secondary)]' : 'text-[var(--color-text-muted)]'
                                       }`}>
                                       {isExpanded || !shouldTruncate
                                         ? notification.message
@@ -297,7 +297,7 @@ export const NotificationDropdown: React.FC = () => {
                                           e.stopPropagation();
                                           toggleNotificationExpansion(notification._id);
                                         }}
-                                        className="text-xs text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] mt-1 flex items-center space-x-1"
+                                        className="text-xs text-[var(--color-ink)] hover:text-[var(--color-ink-hover)] mt-1 flex items-center space-x-1"
                                       >
                                         <span>{isExpanded ? 'Show less' : 'Show more'}</span>
                                         {isExpanded ? (
@@ -310,11 +310,11 @@ export const NotificationDropdown: React.FC = () => {
                                   </div>
                                 </div>
                                 <div className="flex flex-col items-end ml-3">
-                                  <span className="text-xs text-[var(--text-muted)] flex-shrink-0">
+                                  <span className="text-xs text-[var(--color-text-muted)] flex-shrink-0">
                                     {formatTimeAgo(notification.createdAt)}
                                   </span>
                                   {!notification.read && (
-                                    <div className="w-2 h-2 bg-[var(--color-primary)] rounded-full mt-1"></div>
+                                    <div className="w-2 h-2 bg-[var(--color-ink)] mt-1"></div>
                                   )}
                                 </div>
                               </div>
@@ -329,16 +329,16 @@ export const NotificationDropdown: React.FC = () => {
 
               {/* Footer */}
               {notifications.length > 0 && (
-                <div className="border-t border-[var(--border-color)] p-3">
+                <div className="border-t border-[var(--color-border)] p-3">
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={handleViewAllNotifications}
-                    className="w-full text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] hover:bg-[var(--color-primary)]/10 font-medium py-2 rounded-lg transition-colors"
+                    className="w-full text-sm text-[var(--color-ink)] hover:text-[var(--color-ink-hover)] hover:bg-[var(--color-ink)]/10 font-medium py-2 transition-colors"
                   >
                     View all notifications
                     {notifications.length > 10 && (
-                      <span className="ml-1 text-xs text-[var(--text-muted)]">
+                      <span className="ml-1 text-xs text-[var(--color-text-muted)]">
                         (+{notifications.length - 10} more)
                       </span>
                     )}

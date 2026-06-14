@@ -197,17 +197,17 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
       case 'warning':
         return <FaTimes className="w-4 h-4 text-warning" />;
       default:
-        return <FaBell className="w-4 h-4 text-[var(--color-primary)]" />;
+        return <FaBell className="w-4 h-4 text-[var(--color-ink)]" />;
     }
   };
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose} size="full" className="sm:max-w-4xl">
       <DialogHeader className="p-0">
-        <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-t-lg">
+        <div className="bg-gradient-to-r from-[var(--color-ink)] to-[var(--color-ink)] text-white">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
+              <div className="w-9 h-9 bg-white/15 flex items-center justify-center">
                 <FaBell className="w-4 h-4" />
               </div>
               <div className="min-w-0">
@@ -247,19 +247,19 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
         </div>
       </DialogHeader>
 
-      <DialogBody className="flex-1 overflow-hidden bg-[var(--bg-surface)]">
+      <DialogBody className="flex-1 overflow-hidden bg-[var(--color-surface)]">
         <div className="h-full flex flex-col gap-4">
           {/* Filters Section */}
           <Card variant="outlined" size="sm">
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <FaFilter className="w-4 h-4 text-[var(--text-muted)]" />
-                  <span className="text-sm font-medium text-[var(--text-primary)]">Filter</span>
+                  <FaFilter className="w-4 h-4 text-[var(--color-text-muted)]" />
+                  <span className="text-sm font-medium text-[var(--color-text-primary)]">Filter</span>
                 </div>
                 {selectedNotifications.length > 0 && (
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-[var(--text-secondary)]">
+                    <span className="text-xs text-[var(--color-text-secondary)]">
                       {selectedNotifications.length} selected
                     </span>
                     <Button
@@ -306,17 +306,17 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
               {/* Category Filter */}
               <div className="flex flex-wrap gap-1.5">
                 {[
-                  { value: undefined, label: "All Categories", color: "bg-[var(--bg-surface-alt)] text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)]" },
-                  { value: "system", label: "System", color: "bg-[var(--bg-surface-alt)] text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)]" },
-                  { value: "order", label: "Order", color: "bg-[var(--color-primary)]/10 text-[var(--color-primary)] hover:bg-[var(--color-primary)]/20" },
+                  { value: undefined, label: "All Categories", color: "bg-[var(--color-surface-alt)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)]" },
+                  { value: "system", label: "System", color: "bg-[var(--color-surface-alt)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)]" },
+                  { value: "order", label: "Order", color: "bg-[var(--color-ink)]/10 text-[var(--color-ink)] hover:bg-[var(--color-ink)]/20" },
                   { value: "wallet", label: "Wallet", color: "bg-success/10 text-success hover:bg-success/20" },
                   { value: "commission", label: "Commission", color: "bg-warning/10 text-warning hover:bg-warning/20" },
-                  { value: "announcement", label: "Announcement", color: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/20" },
+                  { value: "announcement", label: "Announcement", color: "bg-[var(--color-amber)]/10 text-[var(--color-amber)] hover:bg-[var(--color-amber)]/20" },
                 ].map((cat) => (
                   <button
                     key={cat.value || "all"}
                     onClick={() => handleCategoryFilterChange(cat.value)}
-                    className={`text-xs font-medium px-2.5 py-1 rounded-full transition-colors ${
+                    className={`text-xs font-medium px-2.5 py-1 transition-colors ${
                       categoryFilter === cat.value
                         ? "ring-2 ring-primary-500 ring-offset-1 " + cat.color
                         : cat.color
@@ -342,26 +342,26 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
               <div className="flex items-center justify-center py-12">
                 <div className="flex flex-col items-center gap-3">
                   <Spinner size="lg" />
-                  <p className="text-sm text-[var(--text-muted)]">Loading notifications...</p>
+                  <p className="text-sm text-[var(--color-text-muted)]">Loading notifications...</p>
                 </div>
               </div>
             ) : allNotifications.length === 0 ? (
               <div className="flex items-center justify-center py-12">
                 <div className="text-center">
-                  <FaBell className="w-12 h-12 mx-auto mb-3 text-[var(--text-muted)]" />
-                  <h4 className="text-base font-medium text-[var(--text-primary)] mb-1">No notifications found</h4>
-                  <p className="text-sm text-[var(--text-muted)]">You're all caught up!</p>
+                  <FaBell className="w-12 h-12 mx-auto mb-3 text-[var(--color-text-muted)]" />
+                  <h4 className="text-base font-medium text-[var(--color-text-primary)] mb-1">No notifications found</h4>
+                  <p className="text-sm text-[var(--color-text-muted)]">You're all caught up!</p>
                 </div>
               </div>
             ) : (
               <div className="space-y-3">
                 {/* Select All */}
-                <div className="flex items-center gap-2 text-sm text-[var(--text-primary)]">
+                <div className="flex items-center gap-2 text-sm text-[var(--color-text-primary)]">
                   <input
                     type="checkbox"
                     checked={selectedNotifications.length === allNotifications.length && allNotifications.length > 0}
                     onChange={handleSelectAll}
-                    className="rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                    className="rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                   />
                   <span className="font-medium">Select All ({allNotifications.length})</span>
                 </div>
@@ -374,7 +374,7 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                       key={notification._id}
                       variant="outlined"
                       size="sm"
-                      className={!notification.read ? 'ring-1 ring-[var(--color-primary)]/30 bg-[var(--color-primary)]/5' : ''}
+                      className={!notification.read ? 'ring-1 ring-[var(--color-ink)]/30 bg-[var(--color-ink)]/5' : ''}
                     >
                     <div className="flex gap-3">
                       <div className="flex-shrink-0 pt-1">
@@ -382,7 +382,7 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                           type="checkbox"
                           checked={selectedNotifications.includes(notification._id)}
                           onChange={() => handleNotificationSelect(notification._id)}
-                          className="rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                          className="rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                         />
                       </div>
 
@@ -393,11 +393,11 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <div className="flex items-center gap-2 min-w-0">
-                            <h4 className="text-sm font-medium text-[var(--text-primary)] truncate">
+                            <h4 className="text-sm font-medium text-[var(--color-text-primary)] truncate">
                               {notification.title}
                             </h4>
                             {notification.metadata?.navigationLink && (
-                              <FaExternalLinkAlt className="w-3 h-3 text-[var(--color-primary)] flex-shrink-0" />
+                              <FaExternalLinkAlt className="w-3 h-3 text-[var(--color-ink)] flex-shrink-0" />
                             )}
                             {!notification.read && (
                               <Badge colorScheme="info" size="sm" className="ml-2">
@@ -405,17 +405,17 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                               </Badge>
                             )}
                           </div>
-                          <span className="text-xs text-[var(--text-muted)] flex-shrink-0">
+                          <span className="text-xs text-[var(--color-text-muted)] flex-shrink-0">
                             {formatTimeAgo(notification.createdAt)}
                           </span>
                         </div>
 
                         {creatorLabel && (
-                          <p className="text-xs text-[var(--text-muted)] mb-1">
+                          <p className="text-xs text-[var(--color-text-muted)] mb-1">
                             Created by {creatorLabel}
                           </p>
                         )}
-                        <p className="text-sm text-[var(--text-secondary)] mb-2 leading-relaxed">
+                        <p className="text-sm text-[var(--color-text-secondary)] mb-2 leading-relaxed">
                           {notification.message}
                         </p>
 
@@ -424,7 +424,7 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                             size="sm"
                             variant="ghost"
                             onClick={() => handleNotificationClick(notification)}
-                            className="text-xs px-3 py-1 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] hover:bg-[var(--color-primary)]/10"
+                            className="text-xs px-3 py-1 text-[var(--color-ink)] hover:text-[var(--color-ink-hover)] hover:bg-[var(--color-ink)]/10"
                           >
                             <FaExternalLinkAlt className="w-3 h-3 mr-1" />
                             View
@@ -433,7 +433,7 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
                             size="sm"
                             variant="ghost"
                             onClick={() => notification.read ? markAsUnread(notification._id) : markAsRead(notification._id)}
-                            className="text-xs px-3 py-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)]"
+                            className="text-xs px-3 py-1 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)]"
                           >
                             {notification.read ? (
                               <>
@@ -484,7 +484,7 @@ export const NotificationManagementModal: React.FC<NotificationManagementModalPr
         </div>
       </DialogBody>
 
-      <DialogFooter className="border-t border-[var(--border-color)] bg-[var(--bg-page)]">
+      <DialogFooter className="border-t border-[var(--color-border)] bg-[var(--color-ground)]">
         <Button
           variant="outline"
           onClick={onClose}

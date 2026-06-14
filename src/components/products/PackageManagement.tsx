@@ -217,16 +217,16 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+      <div className="bg-[var(--color-error)]/10 border border-[var(--color-error)]/30 p-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-red-100 rounded-lg">
-            <FaExclamationCircle className="text-red-600" />
+          <div className="p-2 bg-[var(--color-error)]/10">
+            <FaExclamationCircle className="text-[var(--color-error)]" />
           </div>
           <div>
-            <h3 className="font-medium text-red-800">
+            <h3 className="font-medium text-[var(--color-error)]">
               Error Loading {viewMode === "packages" ? "Packages" : "Bundles"}
             </h3>
-            <p className="text-red-700">{error}</p>
+            <p className="text-[var(--color-error)]">{error}</p>
           </div>
         </div>
       </div>
@@ -238,14 +238,14 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
             {isSuperAdminUser
               ? "Package Management"
               : viewMode === "packages"
               ? "Package Groups"
               : "Data Bundles"}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-[var(--color-text-secondary)]">
             {isSuperAdminUser
               ? "Create, update, and manage all packages"
               : `Manage your ${
@@ -258,7 +258,7 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
           {/* Create Package Button (only for super admin or packages view) */}
           {(isSuperAdminUser || viewMode === "packages") && (
             <button
-              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-[var(--color-info)] text-white hover:bg-[var(--color-info)]/80 transition-colors"
               onClick={() => {
                 setEditPackage(null);
                 setShowFormModal(true);
@@ -271,23 +271,23 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
 
           {/* View Mode Toggle (only for non-super admin) */}
           {!isSuperAdminUser && (
-            <div className="flex bg-gray-100 rounded-lg p-1">
+            <div className="flex bg-[var(--color-surface-alt)] p-1">
               <button
                 onClick={() => setViewMode("packages")}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-1 text-sm font-medium transition-colors ${
                   viewMode === "packages"
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "bg-[var(--color-surface)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]"
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 }`}
               >
                 Packages
               </button>
               <button
                 onClick={() => setViewMode("bundles")}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                className={`px-3 py-1 text-sm font-medium transition-colors ${
                   viewMode === "bundles"
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "bg-[var(--color-surface)] text-[var(--color-text-primary)] shadow-[var(--shadow-sm)]"
+                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 }`}
               >
                 Bundles
@@ -317,33 +317,33 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
 
       {/* Error/Loading States */}
       {actionError && (
-        <div className="text-red-600 text-sm mb-2">{actionError}</div>
+        <div className="text-[var(--color-error)] text-sm mb-2">{actionError}</div>
       )}
       {(loading || actionLoading) && (
-        <div className="text-gray-500 text-sm mb-2">Loading...</div>
+        <div className="text-[var(--color-text-muted)] text-sm mb-2">Loading...</div>
       )}
 
       {/* Content */}
       {loading ? (
-        <div className="bg-white rounded-lg border border-gray-200 p-8">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] p-8">
           <div className="flex items-center justify-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            <span className="ml-3 text-gray-600">Loading...</span>
+            <span className="ml-3 text-[var(--color-text-secondary)]">Loading...</span>
           </div>
         </div>
       ) : currentItems.length === 0 ? (
-        <div className="bg-white rounded-lg border border-gray-200 p-8">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] p-8">
           <div className="text-center">
             <FaBox className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-sm font-medium text-gray-900">
+            <h3 className="mt-2 text-sm font-medium text-[var(--color-text-primary)]">
               No {viewMode === "packages" ? "packages" : "bundles"} found
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-[var(--color-text-muted)]">
               Get started by creating a new{" "}
               {viewMode === "packages" ? "package" : "bundle"}.
             </p>
             <div className="mt-6">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[var(--color-text-muted)]">
                 {isSuperAdminUser
                   ? "Create a new package to get started."
                   : "Contact your administrator to add new packages."}
@@ -352,60 +352,60 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-[var(--color-border)]">
+              <thead className="bg-[var(--color-surface-alt)]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                     {viewMode === "packages" ? "Package" : "Bundle"} Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                     Provider
                   </th>
                   {viewMode === "bundles" && (
                     <>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                         Data
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                         Validity
                       </th>
                     </>
                   )}
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                     Price
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                     Status
                   </th>
                   {isSuperAdminUser && viewMode === "packages" && (
                     <>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                         Created
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
                         Actions
                       </th>
                     </>
                   )}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-[var(--color-surface)] divide-y divide-[var(--color-border)]">
                 {(currentItems || []).map((item) => {
                   const providerColors = getProviderColors(
                     (item.provider || (item as Bundle).providerId) as string
                   );
 
                   return (
-                    <tr key={item._id} className="hover:bg-gray-50">
+                    <tr key={item._id} className="hover:bg-[var(--color-surface-alt)]">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm font-medium text-[var(--color-text-primary)]">
                             {item.name}
                           </div>
                           {item.description && (
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-[var(--color-text-muted)]">
                               {item.description}
                             </div>
                           )}
@@ -424,17 +424,17 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                       </td>
                       {viewMode === "bundles" && (
                         <>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-primary)]">
                             {(item as Bundle).dataVolume}{" "}
                             {(item as Bundle).dataUnit}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-primary)]">
                             {(item as Bundle).validity}{" "}
                             {(item as Bundle).validityUnit}
                           </td>
                         </>
                       )}
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-primary)]">
                         {viewMode === "bundles"
                           ? formatCurrency(
                               getPriceForUserType(item as Bundle, userType),
@@ -446,8 +446,8 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             item.isActive
-                              ? "bg-green-100 text-green-800"
-                              : "bg-red-100 text-red-800"
+                              ? "bg-[var(--color-success)]/10 text-[var(--color-success)]"
+                              : "bg-[var(--color-error)]/10 text-[var(--color-error)]"
                           }`}
                         >
                           {item.isActive ? "Active" : "Inactive"}
@@ -455,7 +455,7 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                       </td>
                       {isSuperAdminUser && viewMode === "packages" && (
                         <>
-                          <td className="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
+                          <td className="px-6 py-4 whitespace-nowrap text-xs text-[var(--color-text-muted)]">
                             {(item as Package).createdAt
                               ? (() => {
                                   const createdAt = (item as Package).createdAt;
@@ -486,7 +486,7 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                               <FaEdit />
                             </button>
                             <button
-                              className="text-red-600 hover:text-red-900"
+                              className="text-[var(--color-error)] hover:text-red-900"
                               onClick={() => {
                                 setDeletePackage(item as Package);
                                 setShowDeleteModal(true);
@@ -518,27 +518,27 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
 
           {/* Pagination */}
           {pagination.pages > 1 && (
-            <div className="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+            <div className="bg-[var(--color-surface)] px-4 py-3 border-t border-[var(--color-border)] sm:px-6">
               <div className="flex items-center justify-between">
                 <div className="flex-1 flex justify-between sm:hidden">
                   <button
                     onClick={() => handlePageChange(pagination.page - 1)}
                     disabled={pagination.page <= 1}
-                    className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative inline-flex items-center px-4 py-2 border border-[var(--color-border-strong)] text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
                   <button
                     onClick={() => handlePageChange(pagination.page + 1)}
                     disabled={pagination.page >= pagination.pages}
-                    className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="ml-3 relative inline-flex items-center px-4 py-2 border border-[var(--color-border-strong)] text-sm font-medium text-[var(--color-text-secondary)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>
                 </div>
                 <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-[var(--color-text-secondary)]">
                       Showing{" "}
                       <span className="font-medium">
                         {(pagination.page - 1) * pagination.limit + 1}
@@ -555,18 +555,18 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                     </p>
                   </div>
                   <div>
-                    <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                    <nav className="relative z-0 inline-flex shadow-[var(--shadow-sm)] -space-x-px">
                       <button
                         onClick={() => handlePageChange(pagination.page - 1)}
                         disabled={pagination.page <= 1}
-                        className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="relative inline-flex items-center px-2 py-2 border border-[var(--color-border-strong)] bg-[var(--color-surface)] text-sm font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-surface-alt)] disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Previous
                       </button>
                       <button
                         onClick={() => handlePageChange(pagination.page + 1)}
                         disabled={pagination.page >= pagination.pages}
-                        className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="relative inline-flex items-center px-2 py-2 border border-[var(--color-border-strong)] bg-[var(--color-surface)] text-sm font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-surface-alt)] disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Next
                       </button>
@@ -594,8 +594,8 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
 
       {/* Delete Confirmation Modal (only for super admin) */}
       {isSuperAdminUser && showDeleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-ink)]/40">
+          <div className="bg-[var(--color-surface)] shadow-[var(--shadow-lg)] w-full max-w-md p-6 relative">
             <h2 className="text-lg font-bold mb-4">Delete Package</h2>
             <p>
               Are you sure you want to delete{" "}
@@ -603,7 +603,7 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
             </p>
             <div className="flex justify-end gap-2 mt-6">
               <button
-                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="px-4 py-2 border border-[var(--color-border-strong)] text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-alt)]"
                 onClick={() => {
                   setShowDeleteModal(false);
                   setDeletePackage(null);
@@ -613,7 +613,7 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                 Cancel
               </button>
               <button
-                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+                className="px-4 py-2 bg-[var(--color-error)] text-white hover:bg-[var(--color-error)]/80"
                 onClick={handleDelete}
                 disabled={actionLoading}
               >

@@ -47,15 +47,15 @@ export const WithdrawForm = ({
       <DialogHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Banknote className="w-5 h-5" style={{ color: "var(--color-secondary)" }} />
-            <h2 className="text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            <Banknote className="w-5 h-5" style={{ color: "var(--color-amber)" }} />
+            <h2 className="text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
               Withdraw Commission
             </h2>
           </div>
           <button
             onClick={handleClose}
-            className="p-1 rounded-lg transition-colors hover:bg-[var(--bg-surface-alt)]"
-            style={{ color: "var(--text-muted)" }}
+            className="p-1 rounded-lg transition-colors hover:bg-[var(--color-surface-alt)]"
+            style={{ color: "var(--color-text-muted)" }}
           >
             <X className="w-5 h-5" />
           </button>
@@ -66,12 +66,12 @@ export const WithdrawForm = ({
         <DialogBody>
           <div
             className="flex items-center gap-3 p-3 rounded-lg mb-4"
-            style={{ background: "var(--bg-surface-alt)" }}
+            style={{ background: "var(--color-surface-alt)" }}
           >
-            <Wallet className="w-5 h-5" style={{ color: "var(--color-primary)" }} />
+            <Wallet className="w-5 h-5" style={{ color: "var(--color-ink)" }} />
             <div>
-              <p className="text-xs" style={{ color: "var(--text-muted)" }}>Available Balance</p>
-              <p className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>
+              <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>Available Balance</p>
+              <p className="text-lg font-bold" style={{ color: "var(--color-text-primary)" }}>
                 GHS {balance.toFixed(2)}
               </p>
             </div>
@@ -98,11 +98,11 @@ export const WithdrawForm = ({
                   onClick={() => setAmount(v.toString())}
                   className="text-xs px-3 py-1.5 rounded-lg transition-colors"
                   style={{
-                    background: "var(--bg-surface-alt)",
-                    color: "var(--text-secondary)",
+                    background: "var(--color-surface-alt)",
+                    color: "var(--color-text-secondary)",
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-primary) 15%, transparent)"}
-                  onMouseLeave={(e) => e.currentTarget.style.background = "var(--bg-surface-alt)"}
+                  onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--color-ink) 15%, transparent)"}
+                  onMouseLeave={(e) => e.currentTarget.style.background = "var(--color-surface-alt)"}
                   disabled={withdrawing}
                 >
                   GHS {v}

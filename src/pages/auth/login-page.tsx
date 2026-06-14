@@ -11,6 +11,7 @@ import { Button, Input, Alert } from "../../design-system";
 import { useAuth } from "../../hooks";
 import { AuthLayout } from "../../layouts/auth-layout";
 import { FIELD_LABELS } from "../../constants/auth";
+import { brand } from "../../config/brand";
 
 export const LoginPage = () => {
   const { authState, login, clearErrors } = useAuth();
@@ -26,7 +27,7 @@ export const LoginPage = () => {
   }, [authState, navigate]);
 
   useEffect(() => {
-    document.title = "BryteLinks - Login";
+    document.title = `${brand.name} - Login`;
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,8 +76,17 @@ export const LoginPage = () => {
     <AuthLayout
       title="Welcome back"
       subtitle="Sign in to your agent account."
-      backLink="/home"
-      backLabel="Back"
+      footer={
+        <p className="text-[var(--color-text-secondary)]">
+          Don't have an account?{" "}
+          <Link
+            className="font-semibold text-[var(--color-ink)] hover:text-[var(--color-ink-hover)]"
+            to="/register"
+          >
+            Create one
+          </Link>
+        </p>
+      }
     >
       {(localError || authState.error) && (
         <Alert status="error" variant="left-accent" className="mb-4">
@@ -89,11 +99,11 @@ export const LoginPage = () => {
         </Alert>
       )}
 
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <form className="space-y-5" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-[var(--text-secondary)]"
+            className="block text-sm font-medium text-[var(--color-text-secondary)]"
           >
             {FIELD_LABELS.email}
           </label>
@@ -112,7 +122,7 @@ export const LoginPage = () => {
         <div className="space-y-2">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-[var(--text-secondary)]"
+            className="block text-sm font-medium text-[var(--color-text-secondary)]"
           >
             {FIELD_LABELS.password}
           </label>
@@ -129,7 +139,7 @@ export const LoginPage = () => {
             />
             <button
               type="button"
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
               onClick={() => setShowPassword(!showPassword)}
               disabled={isSubmitting || authState.isLoading}
             >
@@ -139,19 +149,19 @@ export const LoginPage = () => {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          <label className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
+          <label className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
             <input
               id="remember_me"
               name="remember_me"
               type="checkbox"
-              className="h-4 w-4 rounded border-[var(--border-color)] text-primary focus:ring-primary"
+              className="h-4 w-4 border border-[var(--color-border)] text-primary focus:ring-primary"
               disabled={isSubmitting || authState.isLoading}
             />
             Remember me
           </label>
 
           <Link
-            className="text-sm font-medium text-primary hover:text-[var(--color-primary-hover)]"
+            className="text-sm font-medium text-primary hover:text-[var(--color-ink-hover)]"
             to="/forgot-password"
           >
             Forgot password?
@@ -169,15 +179,6 @@ export const LoginPage = () => {
         </Button>
       </form>
 
-      <div className="mt-6 text-center text-sm text-[var(--text-secondary)]">
-        Don't have an account?{" "}
-        <Link
-          className="font-semibold text-primary hover:text-[var(--color-primary-hover)]"
-          to="/register"
-        >
-          Create one
-        </Link>
-      </div>
     </AuthLayout>
   );
 };

@@ -64,7 +64,7 @@ export const UpdatePinDialog: React.FC<UpdatePinDialogProps> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} size="md">
       <DialogHeader>
-        <h2 className="text-xl font-semibold text-[var(--text-primary)]">
+        <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">
           Update Security PIN
         </h2>
       </DialogHeader>
@@ -72,7 +72,7 @@ export const UpdatePinDialog: React.FC<UpdatePinDialogProps> = ({
       <Form onSubmit={handleSubmit}>
         <DialogBody>
           <div className="space-y-4">
-            <p className="text-sm text-[var(--text-secondary)] mb-4">
+            <p className="text-sm text-[var(--color-text-secondary)] mb-4">
               Create a new 4-digit security PIN for your account. This PIN is
               required for secure account operations and password resets.
             </p>

@@ -136,9 +136,9 @@ export const ReportModal: React.FC<ReportModalProps> = ({
           &#8203;
         </span>
 
-        <div className="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full z-[10000]">
+        <div className="relative inline-block align-bottom bg-[var(--color-surface)] text-left overflow-hidden shadow-[var(--shadow-xl)] transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full z-[10000]">
           {/* Header */}
-          <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-4">
+          <div className="bg-gradient-to-r from-[var(--color-error)] to-[var(--color-error)] px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <FaExclamationTriangle className="h-6 w-6 text-white" />
@@ -148,7 +148,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
               </div>
               <button
                 onClick={handleClose}
-                className="text-white hover:text-gray-200 transition-colors"
+                className="text-white hover:text-[var(--color-text-secondary)] transition-colors"
               >
                 <svg
                   className="w-6 h-6"
@@ -179,7 +179,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
               </p>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg mb-6">
+            <div className="bg-[var(--color-surface-alt)] p-4 mb-6">
               <div className="space-y-2 text-sm">
                 <div>
                   <strong>Order:</strong> {orderNumber}
@@ -210,7 +210,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="bg-gray-50 px-6 py-4 flex justify-between">
+          <div className="bg-[var(--color-surface-alt)] px-6 py-4 flex justify-between">
             <Button
               variant="outline"
               onClick={handleClose}
@@ -222,7 +222,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
             <Button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="bg-red-600 hover:bg-red-700"
+              className="bg-[var(--color-error)] hover:bg-[var(--color-error)]/80"
             >
               {isSubmitting ? (
                 "Submitting..."

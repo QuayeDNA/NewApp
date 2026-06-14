@@ -30,29 +30,29 @@ const quickLinks = [
     icon: (
       <FaUsers
         className="text-xl sm:text-2xl"
-        style={{ color: "var(--color-primary)" }}
+        style={{ color: "var(--color-ink)" }}
       />
     ),
   },
   {
     to: "/superadmin/packages",
     label: "Manage Packages & Providers",
-     icon: <FaBox className="text-xl sm:text-2xl" style={{ color: "var(--warning)" }} />,
+     icon: <FaBox className="text-xl sm:text-2xl" style={{ color: "var(--color-warning)" }} />,
   },
   {
     to: "/superadmin/orders",
     label: "View Orders",
-    icon: <FaClipboardList className="text-[var(--warning)] text-xl sm:text-2xl" />,
+    icon: <FaClipboardList className="text-[var(--color-warning)] text-xl sm:text-2xl" />,
   },
   {
     to: "/superadmin/wallet/top-ups",
     label: "Wallet & Transactions",
-    icon: <FaWallet className="text-[var(--accent)] text-xl sm:text-2xl" />,
+    icon: <FaWallet className="text-[var(--color-amber)] text-xl sm:text-2xl" />,
   },
   {
     to: "/superadmin/settings",
     label: "Settings",
-    icon: <FaCog className="text-[var(--text-muted)] text-xl sm:text-2xl" />,
+    icon: <FaCog className="text-[var(--color-text-muted)] text-xl sm:text-2xl" />,
   },
 ];
 
@@ -152,7 +152,7 @@ export default function SuperAdminDashboard() {
   if (error && !stats) {
     return (
       <div className="text-center py-8">
-        <div className="text-[var(--error)] mb-4">{error}</div>
+        <div className="text-[var(--color-error)] mb-4">{error}</div>
         <Button onClick={() => window.location.reload()}>Retry</Button>
       </div>
     );
@@ -165,13 +165,13 @@ export default function SuperAdminDashboard() {
       {loadingStats ? (
         <Card className="animate-pulse">
           <CardBody>
-            <div className="h-5 bg-[var(--bg-surface-alt)] rounded w-40 mb-4"></div>
+            <div className="h-5 bg-[var(--color-surface-alt)] rounded w-40 mb-4"></div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[...Array(4)].map((_, i) => (
                 <div key={i}>
-                  <div className="h-3 bg-[var(--bg-surface-alt)] rounded w-20 mb-2"></div>
-                  <div className="h-7 bg-[var(--bg-surface-alt)] rounded w-14 mb-1"></div>
-                  <div className="h-2 bg-[var(--bg-surface-alt)] rounded w-24"></div>
+                  <div className="h-3 bg-[var(--color-surface-alt)] rounded w-20 mb-2"></div>
+                  <div className="h-7 bg-[var(--color-surface-alt)] rounded w-14 mb-1"></div>
+                  <div className="h-2 bg-[var(--color-surface-alt)] rounded w-24"></div>
                 </div>
               ))}
             </div>
@@ -181,68 +181,68 @@ export default function SuperAdminDashboard() {
         <Card>
           <CardBody>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base sm:text-lg font-semibold text-[var(--text-primary)]">
+              <h2 className="text-base sm:text-lg font-semibold text-[var(--color-text-primary)]">
                 Today's Snapshot
               </h2>
-              <span className="text-xs text-[var(--text-muted)]">
+              <span className="text-xs text-[var(--color-text-muted)]">
                 {new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "short", year: "numeric" })}
               </span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               {/* Orders Today */}
               <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Orders Today</p>
-                <p className="text-2xl sm:text-3xl font-bold" style={{ color: "var(--color-primary)" }}>
+                <p className="text-xs text-[var(--color-text-muted)] mb-1">Orders Today</p>
+                <p className="text-2xl sm:text-3xl font-bold" style={{ color: "var(--color-ink)" }}>
                   {stats.orders.today.total}
                 </p>
                 <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
                   {stats.orders.today.completed > 0 && (
-                    <span className="text-[10px] text-[var(--success)]">{stats.orders.today.completed} completed</span>
+                    <span className="text-[10px] text-[var(--color-success)]">{stats.orders.today.completed} completed</span>
                   )}
                   {stats.orders.today.pending > 0 && (
-                    <span className="text-[10px] text-[var(--warning)]">{stats.orders.today.pending} pending</span>
+                    <span className="text-[10px] text-[var(--color-warning)]">{stats.orders.today.pending} pending</span>
                   )}
                   {stats.orders.today.processing > 0 && (
-                    <span className="text-[10px] text-[var(--color-secondary)]">{stats.orders.today.processing} processing</span>
+                    <span className="text-[10px] text-[var(--color-amber)]">{stats.orders.today.processing} processing</span>
                   )}
                   {stats.orders.today.failed > 0 && (
-                    <span className="text-[10px] text-[var(--error)]">{stats.orders.today.failed} failed</span>
+                    <span className="text-[10px] text-[var(--color-error)]">{stats.orders.today.failed} failed</span>
                   )}
                   {stats.orders.today.cancelled > 0 && (
-                    <span className="text-[10px] text-[var(--text-muted)]">{stats.orders.today.cancelled} cancelled</span>
+                    <span className="text-[10px] text-[var(--color-text-muted)]">{stats.orders.today.cancelled} cancelled</span>
                   )}
                   {stats.orders.today.total === 0 && (
-                    <span className="text-[10px] text-[var(--text-muted)]">No orders yet</span>
+                    <span className="text-[10px] text-[var(--color-text-muted)]">No orders yet</span>
                   )}
                 </div>
               </div>
               {/* Revenue Today */}
               <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Revenue Today</p>
-                <p className="text-2xl sm:text-3xl font-bold text-[var(--success)]">
+                <p className="text-xs text-[var(--color-text-muted)] mb-1">Revenue Today</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[var(--color-success)]">
                   {formatCurrency(stats.revenue.today)}
                 </p>
-                <p className="text-[10px] text-[var(--text-muted)] mt-1">
+                <p className="text-[10px] text-[var(--color-text-muted)] mt-1">
                   This month: {formatCurrency(stats.revenue.thisMonth)}
                 </p>
               </div>
               {/* New Users */}
               <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">New Users This Week</p>
-                <p className="text-2xl sm:text-3xl font-bold text-[var(--color-secondary)]">
+                <p className="text-xs text-[var(--color-text-muted)] mb-1">New Users This Week</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[var(--color-amber)]">
                   {stats.users.newThisWeek}
                 </p>
-                <p className="text-[10px] text-[var(--text-muted)] mt-1">
+                <p className="text-[10px] text-[var(--color-text-muted)] mt-1">
                   {stats.users.total} total users
                 </p>
               </div>
               {/* Platform Health */}
               <div>
-                <p className="text-xs text-[var(--text-muted)] mb-1">Success Rate</p>
-                <p className="text-2xl sm:text-3xl font-bold" style={{ color: stats.orders.successRate >= 90 ? "var(--success)" : stats.orders.successRate >= 70 ? "var(--warning)" : "var(--error)" }}>
+                <p className="text-xs text-[var(--color-text-muted)] mb-1">Success Rate</p>
+                <p className="text-2xl sm:text-3xl font-bold" style={{ color: stats.orders.successRate >= 90 ? "var(--color-success)" : stats.orders.successRate >= 70 ? "var(--color-warning)" : "var(--color-error)" }}>
                   {stats.orders.successRate}%
                 </p>
-                <p className="text-[10px] text-[var(--text-muted)] mt-1">
+                <p className="text-[10px] text-[var(--color-text-muted)] mt-1">
                   {stats.orders.completed.toLocaleString()} of {stats.orders.total.toLocaleString()} orders
                 </p>
               </div>
@@ -273,7 +273,7 @@ export default function SuperAdminDashboard() {
             icon={<FaClipboardList />}
           />
           {/* User Type Carousel */}
-          <Card style={{ background: "var(--gradient-brand-dark)" }}>
+          <Card style={{ background: "var(--color-ink)" }}>
             <CardBody>
               <div className="flex items-center justify-between gap-2">
                 <button
@@ -285,7 +285,7 @@ export default function SuperAdminDashboard() {
                     )
                   }
                   className="p-1 sm:p-1.5 transition-colors"
-                  style={{ color: "var(--text-inverse)", opacity: 0.7 }}
+                  style={{ color: "var(--color-text-inverse)", opacity: 0.7 }}
                   aria-label="Previous user type"
                 >
                   <FaChevronLeft size={14} />
@@ -293,19 +293,19 @@ export default function SuperAdminDashboard() {
                 <div className="flex-1 text-center min-w-0">
                   <p
                     className="text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 truncate"
-                    style={{ color: "var(--text-inverse)", opacity: 0.6 }}
+                    style={{ color: "var(--color-text-inverse)", opacity: 0.6 }}
                   >
                     {userTypeCarousel[carouselIndex].label}
                   </p>
                   <p
                     className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight truncate"
-                    style={{ color: "var(--text-inverse)" }}
+                    style={{ color: "var(--color-text-inverse)" }}
                   >
                     {getUserTypeCount(userTypeCarousel[carouselIndex].key)}
                   </p>
                   <p
                     className="text-[9px] xs:text-xs truncate"
-                    style={{ color: "var(--text-inverse)", opacity: 0.5 }}
+                    style={{ color: "var(--color-text-inverse)", opacity: 0.5 }}
                   >
                     total {userTypeCarousel[carouselIndex].label.toLowerCase()}
                   </p>
@@ -317,7 +317,7 @@ export default function SuperAdminDashboard() {
                     )
                   }
                   className="p-1 sm:p-1.5 transition-colors"
-                  style={{ color: "var(--text-inverse)", opacity: 0.7 }}
+                  style={{ color: "var(--color-text-inverse)", opacity: 0.7 }}
                   aria-label="Next user type"
                 >
                   <FaChevronRight size={14} />
@@ -331,8 +331,8 @@ export default function SuperAdminDashboard() {
                     className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors duration-200"
                     style={{
                       backgroundColor: index === carouselIndex
-                        ? "var(--text-inverse)"
-                        : "color-mix(in srgb, var(--text-inverse) 30%, transparent)",
+                        ? "var(--color-text-inverse)"
+                        : "color-mix(in srgb, var(--color-text-inverse) 30%, transparent)",
                     }}
                     aria-label={`Go to ${userTypeCarousel[index].label}`}
                   />
@@ -350,7 +350,7 @@ export default function SuperAdminDashboard() {
       ) : (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {[...Array(5)].map((_, i) => (
-            <Card key={i} className="animate-pulse" style={{ background: "var(--gradient-brand-dark)" }}>
+            <Card key={i} className="animate-pulse" style={{ background: "var(--color-ink)" }}>
               <CardBody>
                 <div className="h-3 bg-white/20 rounded w-16 mb-2"></div>
                 <div className="h-6 bg-white/20 rounded w-12 mb-1"></div>
@@ -372,7 +372,7 @@ export default function SuperAdminDashboard() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="flex flex-col items-center gap-2 p-3 bg-[var(--bg-surface-alt)] rounded-lg hover:bg-[var(--bg-surface-alt)] transition-colors text-center"
+                className="flex flex-col items-center gap-2 p-3 bg-[var(--color-surface-alt)] rounded-lg hover:bg-[var(--color-surface-alt)] transition-colors text-center"
               >
                 {link.icon}
                 <span className="font-medium text-xs">{link.label}</span>
@@ -386,10 +386,10 @@ export default function SuperAdminDashboard() {
       <div className="space-y-3">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>
               Analytics Summary
             </h3>
-            <p className="text-sm" style={{ color: "var(--text-secondary)", maxWidth: "32rem" }}>
+            <p className="text-sm" style={{ color: "var(--color-text-secondary)", maxWidth: "32rem" }}>
               A quick overview of your top business KPIs. See the full analytics
               dashboard for detailed trends and breakdowns.
             </p>
@@ -398,9 +398,9 @@ export default function SuperAdminDashboard() {
             to="/superadmin/analytics"
             className="inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold transition"
             style={{
-              borderColor: "var(--border-color)",
-              backgroundColor: "var(--bg-surface)",
-              color: "var(--text-primary)",
+              borderColor: "var(--color-border)",
+              backgroundColor: "var(--color-surface)",
+              color: "var(--color-text-primary)",
             }}
           >
             See more
@@ -413,12 +413,12 @@ export default function SuperAdminDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <Card className="animate-pulse">
             <CardBody>
-              <div className="h-6 bg-[var(--bg-surface-alt)] rounded w-32 mb-4"></div>
+              <div className="h-6 bg-[var(--color-surface-alt)] rounded w-32 mb-4"></div>
               <div className="space-y-3">
                 {[...Array(5)].map((_, i) => (
                   <div key={i} className="flex justify-between items-center">
-                    <div className="h-4 bg-[var(--bg-surface-alt)] rounded w-24"></div>
-                    <div className="h-4 bg-[var(--bg-surface-alt)] rounded w-12"></div>
+                    <div className="h-4 bg-[var(--color-surface-alt)] rounded w-24"></div>
+                    <div className="h-4 bg-[var(--color-surface-alt)] rounded w-12"></div>
                   </div>
                 ))}
               </div>
@@ -426,12 +426,12 @@ export default function SuperAdminDashboard() {
           </Card>
           <Card className="animate-pulse">
             <CardBody>
-              <div className="h-6 bg-[var(--bg-surface-alt)] rounded w-32 mb-4"></div>
+              <div className="h-6 bg-[var(--color-surface-alt)] rounded w-32 mb-4"></div>
               <div className="space-y-3">
                 {[...Array(3)].map((_, i) => (
                   <div key={i} className="flex justify-between items-center">
-                    <div className="h-4 bg-[var(--bg-surface-alt)] rounded w-24"></div>
-                    <div className="h-4 bg-[var(--bg-surface-alt)] rounded w-12"></div>
+                    <div className="h-4 bg-[var(--color-surface-alt)] rounded w-24"></div>
+                    <div className="h-4 bg-[var(--color-surface-alt)] rounded w-12"></div>
                   </div>
                 ))}
               </div>
@@ -444,30 +444,30 @@ export default function SuperAdminDashboard() {
           <Card>
             <CardHeader>
               <h3 className="text-lg font-semibold flex items-center gap-2">
-                <FaClipboardList style={{ color: "var(--warning)" }} />
+                <FaClipboardList style={{ color: "var(--color-warning)" }} />
                 Order Statistics
               </h3>
             </CardHeader>
             <CardBody>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Completed Orders</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Completed Orders</span>
                   <Badge colorScheme="success" size="sm">{stats.orders.completed}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Pending Orders</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Pending Orders</span>
                   <Badge colorScheme="warning" size="sm">{stats.orders.pending}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Failed Orders</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Failed Orders</span>
                   <Badge colorScheme="error" size="sm">{stats.orders.failed}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Total Orders</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Total Orders</span>
                   <span className="font-medium">{stats.orders.total}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Success Rate</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Success Rate</span>
                   <Badge colorScheme="success" size="sm">{stats.orders.successRate}%</Badge>
                 </div>
               </div>
@@ -478,34 +478,34 @@ export default function SuperAdminDashboard() {
           <Card>
             <CardHeader>
               <h3 className="text-lg font-semibold flex items-center gap-2">
-                <FaMoneyBillWave style={{ color: "var(--success)" }} />
+                <FaMoneyBillWave style={{ color: "var(--color-success)" }} />
                 Revenue Statistics
               </h3>
             </CardHeader>
             <CardBody>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Total Revenue</span>
-                  <span className="font-medium" style={{ color: "var(--success)" }}>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Total Revenue</span>
+                  <span className="font-medium" style={{ color: "var(--color-success)" }}>
                     {formatCurrency(stats.revenue.total)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Avg Order Value</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Avg Order Value</span>
                   <span className="font-medium">
                     {formatCurrency(stats.revenue.averageOrderValue)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Total Providers</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Total Providers</span>
                   <span className="font-medium">{stats.providers.total}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>Active Providers</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>Active Providers</span>
                   <Badge colorScheme="success" size="sm">{stats.providers.active}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>New This Month</span>
+                  <span className="text-sm" style={{ color: "var(--color-text-muted)" }}>New This Month</span>
                   <span className="font-medium">{stats.providers.newThisMonth}</span>
                 </div>
               </div>

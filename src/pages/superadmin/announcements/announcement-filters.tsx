@@ -9,7 +9,7 @@ interface Props {
 
 export const AnnouncementFiltersBar: React.FC<Props> = ({ filters, onChange }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4 bg-[var(--bg-surface)] rounded-lg shadow-[var(--shadow-sm)]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4 bg-[var(--color-surface)] rounded-lg shadow-[var(--shadow-sm)]">
       <Select
         value={filters.status || ""}
         onChange={(value) =>

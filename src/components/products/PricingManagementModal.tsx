@@ -43,13 +43,13 @@ const userTypeDescriptions: Record<string, string> = {
 };
 
 const userTypeColors: Record<string, string> = {
-  agent: "bg-[var(--info)]/10 text-[var(--info)] border-[var(--info)]/20",
-  super_agent: "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)]/20",
-  dealer: "bg-[var(--success)]/10 text-[var(--success)] border-[var(--success)]/20",
-  super_dealer: "bg-[var(--warning)]/10 text-[var(--warning)] border-[var(--warning)]/20",
-  elite_dealer: "bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] border-[var(--color-secondary)]/20",
-  master_dealer: "bg-[var(--error)]/10 text-[var(--error)] border-[var(--error)]/20",
-  default: "bg-[var(--bg-surface-alt)] text-[var(--text-secondary)] border-[var(--border-color)]",
+  agent: "bg-[var(--color-info)]/10 text-[var(--color-info)] border-[var(--color-info)]/20",
+  super_agent: "bg-[var(--color-ink)]/10 text-[var(--color-ink)] border-[var(--color-ink)]/20",
+  dealer: "bg-[var(--color-success)]/10 text-[var(--color-success)] border-[var(--color-success)]/20",
+  super_dealer: "bg-[var(--color-warning)]/10 text-[var(--color-warning)] border-[var(--color-warning)]/20",
+  elite_dealer: "bg-[var(--color-amber)]/10 text-[var(--color-amber)] border-[var(--color-amber)]/20",
+  master_dealer: "bg-[var(--color-error)]/10 text-[var(--color-error)] border-[var(--color-error)]/20",
+  default: "bg-[var(--color-surface-alt)] text-[var(--color-text-secondary)] border-[var(--color-border)]",
 };
 
 export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
@@ -205,14 +205,14 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
     <Dialog isOpen={isOpen} onClose={onClose} className="max-w-4xl">
       <DialogHeader>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+          <div className="p-2 rounded-lg bg-[var(--color-ink)]/10 text-[var(--color-ink)]">
             <FaDollarSign className="w-5 h-5" />
           </div>
           <div className="min-w-0">
-            <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">
               Pricing Management
             </h3>
-            <p className="text-sm text-[var(--text-muted)] truncate">
+            <p className="text-sm text-[var(--color-text-muted)] truncate">
               Set user type-specific pricing for "{bundleName}"
             </p>
           </div>
@@ -223,25 +223,25 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
         {loading ? (
           <div className="flex items-center justify-center py-12">
             <Spinner size="lg" />
-            <span className="ml-3 text-sm text-[var(--text-muted)]">Loading pricing data...</span>
+            <span className="ml-3 text-sm text-[var(--color-text-muted)]">Loading pricing data...</span>
           </div>
         ) : (
           <div className="space-y-6">
             {/* Base Price Info */}
-            <div className="rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4">
+            <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] shrink-0">
+                  <div className="p-2 rounded-lg bg-[var(--color-ink)]/10 text-[var(--color-ink)] shrink-0">
                     <FaTag className="text-sm" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-[var(--text-primary)]">Base Price</h4>
-                    <p className="text-sm text-[var(--text-muted)]">
+                    <h4 className="font-medium text-[var(--color-text-primary)]">Base Price</h4>
+                    <p className="text-sm text-[var(--color-text-muted)]">
                       The original bundle price set during creation
                     </p>
                   </div>
                 </div>
-                <div className="text-lg font-bold text-[var(--text-primary)]">
+                <div className="text-lg font-bold text-[var(--color-text-primary)]">
                   {formatCurrency(basePrice)}
                 </div>
               </div>
@@ -249,7 +249,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
 
             {/* User Type Pricing */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-[var(--text-primary)]">
+              <div className="flex items-center gap-2 text-[var(--color-text-primary)]">
                 <FaUsers className="w-4 h-4" />
                 <h4 className="font-medium">User Type Pricing</h4>
               </div>
@@ -263,7 +263,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
                     return (
                       <div
                         key={userType}
-                        className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-4 transition-colors"
+                        className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1 min-w-0">
@@ -280,7 +280,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
                                 </Badge>
                               )}
                             </div>
-                            <p className="text-xs text-[var(--text-muted)]">
+                            <p className="text-xs text-[var(--color-text-muted)]">
                               {userTypeDescriptions[userType]}
                             </p>
                           </div>
@@ -305,7 +305,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
                                 className="pl-8"
                                 placeholder="0.00"
                               />
-                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[var(--text-muted)]">
+                              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[var(--color-text-muted)]">
                                 ₵
                               </div>
                             </div>
@@ -317,7 +317,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
               </div>
 
               {/* Default Price Row */}
-              <div className="rounded-xl border border-dashed border-[var(--border-color)] bg-[var(--bg-surface-alt)] p-4">
+              <div className="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface-alt)] p-4">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-0.5">
@@ -325,7 +325,7 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
                         Default Price
                       </Badge>
                     </div>
-                    <p className="text-xs text-[var(--text-muted)]">
+                    <p className="text-xs text-[var(--color-text-muted)]">
                       Base fallback price — always synced to the bundle base price.
                     </p>
                   </div>
@@ -340,17 +340,17 @@ export const PricingManagementModal: React.FC<PricingManagementModalProps> = ({
               </div>
 
               {/* Pricing Summary */}
-              <div className="rounded-lg border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 p-4">
-                <h4 className="font-medium text-[var(--color-primary)] mb-3">
+              <div className="rounded-lg border border-[var(--color-ink)]/20 bg-[var(--color-ink)]/5 p-4">
+                <h4 className="font-medium text-[var(--color-ink)] mb-3">
                   Pricing Summary
                 </h4>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
                   {Object.entries(pricingTiers).map(([userType, price]) => (
-                    <div key={userType} className="flex items-center justify-between gap-2 rounded-md bg-[var(--bg-surface)] px-3 py-2">
-                      <span className="text-[var(--text-secondary)]">
+                    <div key={userType} className="flex items-center justify-between gap-2 rounded-md bg-[var(--color-surface)] px-3 py-2">
+                      <span className="text-[var(--color-text-secondary)]">
                         {userType === "default" ? "Default Price" : USER_TYPE_LABELS[userType as UserType]}:
                       </span>
-                      <span className="font-semibold text-[var(--text-primary)]">
+                      <span className="font-semibold text-[var(--color-text-primary)]">
                         {formatCurrency(price)}
                       </span>
                     </div>

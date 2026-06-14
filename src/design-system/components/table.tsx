@@ -18,8 +18,8 @@ const sizeClasses = { sm: "text-xs", md: "text-sm", lg: "text-base" };
 
 const variantClasses = {
   simple: "",
-  striped: "[&_tbody_tr:nth-child(odd)]:bg-[var(--bg-surface-alt)]",
-  bordered: "border border-[var(--border-color)]",
+  striped: "[&_tbody_tr:nth-child(odd)]:bg-[var(--color-surface-alt)]",
+  bordered: "border border-[var(--color-border)]",
 };
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(
@@ -34,7 +34,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     ].join(" ");
 
     return (
-      <div className="overflow-x-auto rounded-lg border border-[var(--border-color)]">
+      <div className="overflow-x-auto border border-[var(--color-border)]">
         <table ref={ref} className={tableClasses} {...props}>
           {children}
         </table>
@@ -46,7 +46,7 @@ Table.displayName = "Table";
 
 export const TableHeader = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ children, className = "", ...props }, ref) => (
-    <thead ref={ref} className={`bg-[var(--bg-surface-alt)] text-[var(--text-primary)] ${className}`} {...props}>
+    <thead ref={ref} className={`bg-[var(--color-surface-alt)] text-[var(--color-text-primary)] ${className}`} {...props}>
       {children}
     </thead>
   ),
@@ -61,7 +61,7 @@ interface TableHeaderCellProps extends ThHTMLAttributes<HTMLTableCellElement> {
 
 export const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
   ({ children, className = "", ...props }, ref) => (
-    <th ref={ref} className={`px-4 py-3 text-left font-semibold text-[var(--text-primary)] border-b border-[var(--border-color)] ${className}`} {...props}>
+    <th ref={ref} className={`px-4 py-3 text-left font-semibold text-[var(--color-text-primary)] border-b border-[var(--color-border)] ${className}`} {...props}>
       {children}
     </th>
   ),
@@ -70,7 +70,7 @@ TableHeaderCell.displayName = "TableHeaderCell";
 
 export const TableBody = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ children, className = "", ...props }, ref) => (
-    <tbody ref={ref} className={`divide-y divide-[var(--border-color)] ${className}`} {...props}>
+    <tbody ref={ref} className={`divide-y divide-[var(--color-border)] ${className}`} {...props}>
       {children}
     </tbody>
   ),
@@ -79,7 +79,7 @@ TableBody.displayName = "TableBody";
 
 export const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>(
   ({ children, className = "", ...props }, ref) => (
-    <tr ref={ref} className={`hover:bg-[var(--bg-surface-alt)] transition-colors duration-150 ${className}`} {...props}>
+    <tr ref={ref} className={`hover:bg-[var(--color-surface-alt)] transition-colors duration-150 ${className}`} {...props}>
       {children}
     </tr>
   ),
@@ -88,7 +88,7 @@ TableRow.displayName = "TableRow";
 
 export const TableCell = forwardRef<HTMLTableCellElement, TdHTMLAttributes<HTMLTableCellElement>>(
   ({ children, className = "", ...props }, ref) => (
-    <td ref={ref} className={`px-4 py-3 text-[var(--text-secondary)] ${className}`} {...props}>
+    <td ref={ref} className={`px-4 py-3 text-[var(--color-text-secondary)] ${className}`} {...props}>
       {children}
     </td>
   ),

@@ -3,6 +3,7 @@
 // precise grids, brand-first presence. Trust and scale communicated through
 // restraint and confident composition.
 
+import { brand } from "../config/brand";
 import { useState, useEffect, useRef, useCallback, type FC } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -184,17 +185,17 @@ const FEATURES = [
 const NETWORKS = [
   {
     name: "MTN Ghana",
-    brandColor: "var(--warning)",
+    brandColor: "var(--color-warning)",
     services: ["Airtime", "Data Bundles", "Flexi Bundles"],
   },
   {
     name: "Telecel Ghana",
-    brandColor: "var(--error)",
+    brandColor: "var(--color-error)",
     services: ["Airtime", "Data Bundles", "Unlimited Plans"],
   },
   {
     name: "AirtelTigo",
-    brandColor: "var(--color-secondary)",
+    brandColor: "var(--color-amber)",
     services: ["Airtime", "iShare Bundles", "BigTime Bundles"],
   },
 ] as const;
@@ -226,7 +227,7 @@ const TESTIMONIALS = [
     role: "Agent",
     company: "Kumasi",
     content:
-      "BryteLinks changed the way I run my business. The wallet system is seamless and I can track every cedi.",
+      `${brand.name} changed the way I run my business. The wallet system is seamless and I can track every cedi.`,
     rating: 5,
   },
   {
@@ -335,7 +336,7 @@ export const LandingPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "BryteLinks — Telecom Platform";
+    document.title = `${brand.name} ${brand.titleSuffix}`;
   }, []);
 
   const scrollTo = useCallback((id: string) => {
@@ -348,7 +349,7 @@ export const LandingPage: FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-page)] overflow-hidden">
+    <div className="min-h-screen bg-[var(--color-ground)] overflow-hidden">
       {/* Grain overlay for texture */}
       <div
         className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.025]"
@@ -368,9 +369,9 @@ export const LandingPage: FC = () => {
         }`}
         style={{
           backgroundColor: isScrolled
-            ? "color-mix(in srgb, var(--bg-page) 88%, transparent)"
+            ? "color-mix(in srgb, var(--color-ground) 88%, transparent)"
             : "transparent",
-          borderColor: "var(--border-color)",
+          borderColor: "var(--color-border)",
         }}
       >
         <Container>
@@ -384,13 +385,13 @@ export const LandingPage: FC = () => {
                 <button
                   key={l.id}
                   onClick={() => scrollTo(l.id)}
-                  className="relative px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-[var(--bg-surface-alt)]"
-                  style={{ color: "var(--text-secondary)" }}
+                  className="relative px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-[var(--color-surface-alt)]"
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   {l.label}
                 </button>
               ))}
-              <div className="w-px h-6 mx-2" style={{ backgroundColor: "var(--border-color)" }} />
+              <div className="w-px h-6 mx-2" style={{ backgroundColor: "var(--color-border)" }} />
               <Link to="/login">
                 <Button variant="ghost" size="sm">
                   Sign In
@@ -402,10 +403,10 @@ export const LandingPage: FC = () => {
             </div>
 
             <button
-              className="md:hidden p-2 rounded-lg hover:bg-[var(--bg-surface-alt)] transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-[var(--color-surface-alt)] transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -415,9 +416,9 @@ export const LandingPage: FC = () => {
             <div
               className="md:hidden pb-6 border-t backdrop-blur-xl"
               style={{
-                borderColor: "var(--border-color)",
+                borderColor: "var(--color-border)",
                 backgroundColor:
-                  "color-mix(in srgb, var(--bg-page) 95%, transparent)",
+                  "color-mix(in srgb, var(--color-ground) 95%, transparent)",
               }}
             >
               <div className="flex flex-col gap-1 pt-4">
@@ -425,20 +426,20 @@ export const LandingPage: FC = () => {
                   <button
                     key={l.id}
                     onClick={() => scrollTo(l.id)}
-                    className="text-left py-2.5 px-3 rounded-lg font-medium transition-colors hover:bg-[var(--bg-surface-alt)]"
-                    style={{ color: "var(--text-primary)" }}
+                    className="text-left py-2.5 px-3 rounded-lg font-medium transition-colors hover:bg-[var(--color-surface-alt)]"
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     {l.label}
                   </button>
                 ))}
                 <hr
                   className="my-3"
-                  style={{ borderColor: "var(--border-color)" }}
+                  style={{ borderColor: "var(--color-border)" }}
                 />
                 <Link
                   to="/login"
                   className="py-2.5 px-3 font-medium"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign In
@@ -458,19 +459,19 @@ export const LandingPage: FC = () => {
       {/*  HERO                                                             */}
       {/* ================================================================ */}
       <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-36 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-page)] via-[var(--bg-surface-alt)] to-[var(--bg-page)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-ground)] via-[var(--color-surface-alt)] to-[var(--color-ground)]" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-[0.08] pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, var(--color-secondary) 0%, transparent 70%)",
+              "radial-gradient(circle, var(--color-amber) 0%, transparent 70%)",
           }}
         />
         <div
           className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-[0.05] pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
+              "radial-gradient(circle, var(--color-ink) 0%, transparent 70%)",
           }}
         />
 
@@ -480,11 +481,11 @@ export const LandingPage: FC = () => {
               <div
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-8 border"
                 style={{
-                  color: "var(--color-secondary)",
+                  color: "var(--color-amber)",
                   borderColor:
-                    "color-mix(in srgb, var(--color-secondary) 30%, transparent)",
+                    "color-mix(in srgb, var(--color-amber) 30%, transparent)",
                   backgroundColor:
-                    "color-mix(in srgb, var(--color-secondary) 8%, transparent)",
+                    "color-mix(in srgb, var(--color-amber) 8%, transparent)",
                 }}
               >
                 <Zap className="w-3 h-3" />
@@ -495,14 +496,14 @@ export const LandingPage: FC = () => {
             <RevealOnScroll>
               <h1
                 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-[-0.03em] mb-6"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 Sell Airtime &amp; Data.{" "}
                 <span
                   className="bg-clip-text text-transparent"
                   style={{
                     backgroundImage:
-                      "linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)",
+                      "linear-gradient(135deg, var(--color-ink) 0%, var(--color-amber) 100%)",
                   }}
                 >
                   Earn More.
@@ -513,9 +514,9 @@ export const LandingPage: FC = () => {
             <RevealOnScroll>
               <p
                 className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-10"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
-                BryteLinks is the all-in-one platform that lets agents, dealers,
+                {brand.name} is the all-in-one platform that lets agents, dealers,
                 and enterprises sell mobile airtime &amp; data bundles across
                 every Ghanaian network.
               </p>
@@ -534,8 +535,8 @@ export const LandingPage: FC = () => {
                 </Link>
                 <button
                   onClick={() => scrollTo("services")}
-                  className="group inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-lg transition-colors hover:bg-[var(--bg-surface-alt)]"
-                  style={{ color: "var(--text-secondary)" }}
+                  className="group inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium rounded-lg transition-colors hover:bg-[var(--color-surface-alt)]"
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   Learn More
                   <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
@@ -552,7 +553,7 @@ export const LandingPage: FC = () => {
                     className="text-center border-0 shadow-sm"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--bg-surface) 75%, transparent)",
+                        "color-mix(in srgb, var(--color-surface) 75%, transparent)",
                       backdropFilter: "blur(8px)",
                     }}
                     noPadding
@@ -560,17 +561,17 @@ export const LandingPage: FC = () => {
                     <CardBody className="p-4 sm:p-5">
                       <s.icon
                         className="w-5 h-5 mx-auto mb-2"
-                        style={{ color: "var(--color-secondary)" }}
+                        style={{ color: "var(--color-amber)" }}
                       />
                       <div
                         className="text-2xl sm:text-3xl font-bold tracking-tight"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         {s.value}
                       </div>
                       <div
                         className="text-xs sm:text-sm font-medium"
-                        style={{ color: "var(--text-muted)" }}
+                        style={{ color: "var(--color-text-muted)" }}
                       >
                         {s.label}
                       </div>
@@ -604,7 +605,7 @@ export const LandingPage: FC = () => {
         <Container>
           <SectionHeader
             title="Everything You Need"
-            subtitle="From airtime top-ups to data bundles — BryteLinks handles it all so you can focus on growing."
+            subtitle={`From airtime top-ups to data bundles — ${brand.name} handles it all so you can focus on growing.`}
           />
 
           <FeatureGrid columns={3} gap="lg">
@@ -613,15 +614,15 @@ export const LandingPage: FC = () => {
                 key={svc.title}
                 icon={
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300 group-hover:bg-[var(--color-secondary)]"
+                    className="w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300 group-hover:bg-[var(--color-amber)]"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--color-secondary) 12%, transparent)",
+                        "color-mix(in srgb, var(--color-amber) 12%, transparent)",
                     }}
                   >
                     <svc.icon
                       className="w-5 h-5 transition-colors duration-300"
-                      style={{ color: "var(--color-secondary)" }}
+                      style={{ color: "var(--color-amber)" }}
                     />
                   </div>
                 }
@@ -641,7 +642,7 @@ export const LandingPage: FC = () => {
         <Container>
           <SectionHeader
             title="Get Started in Minutes"
-            subtitle="Four steps to start earning with BryteLinks."
+            subtitle={`Four steps to start earning with ${brand.name}.`}
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 lg:gap-8">
@@ -652,33 +653,33 @@ export const LandingPage: FC = () => {
                     <div
                       className="hidden lg:block absolute top-8 left-[60%] w-[60%] border-t-2 border-dashed transition-colors duration-300"
                       style={{
-                        borderColor: "var(--border-color)",
+                        borderColor: "var(--color-border)",
                       }}
                     />
                   )}
                   <div
                     className="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-white text-xl font-bold mb-5 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl"
                     style={{
-                      background: "var(--gradient-primary)",
+                      background: "var(--color-ink)",
                     }}
                   >
                     <item.icon className="w-7 h-7" />
                   </div>
                   <span
                     className="block text-xs font-semibold tracking-widest uppercase mb-2"
-                    style={{ color: "var(--color-secondary)" }}
+                    style={{ color: "var(--color-amber)" }}
                   >
                     Step {item.step}
                   </span>
                   <h3
                     className="text-lg font-bold mb-2"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     {item.title}
                   </h3>
                   <p
                     className="text-sm leading-relaxed max-w-xs mx-auto"
-                    style={{ color: "var(--text-muted)" }}
+                    style={{ color: "var(--color-text-muted)" }}
                   >
                     {item.description}
                   </p>
@@ -703,18 +704,18 @@ export const LandingPage: FC = () => {
             <div>
               <h2
                 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight tracking-[-0.02em]"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 Built for Reliability.{" "}
-                <span style={{ color: "var(--color-secondary)" }}>
+                <span style={{ color: "var(--color-amber)" }}>
                   Designed for Growth.
                 </span>
               </h2>
               <p
                 className="text-lg mb-10 leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
-                Every feature in BryteLinks is purpose-built for Ghana&rsquo;s
+                Every feature in {brand.name} is purpose-built for Ghana&rsquo;s
                 telecom market — from the security layer to the analytics
                 engine.
               </p>
@@ -726,24 +727,24 @@ export const LandingPage: FC = () => {
                       className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                       style={{
                         backgroundColor:
-                          "color-mix(in srgb, var(--color-secondary) 12%, transparent)",
+                          "color-mix(in srgb, var(--color-amber) 12%, transparent)",
                       }}
                     >
                       <f.icon
                         className="w-5 h-5"
-                        style={{ color: "var(--color-secondary)" }}
+                        style={{ color: "var(--color-amber)" }}
                       />
                     </div>
                     <div>
                       <h4
                         className="font-semibold mb-1"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         {f.title}
                       </h4>
                       <p
                         className="text-sm leading-relaxed"
-                        style={{ color: "var(--text-muted)" }}
+                        style={{ color: "var(--color-text-muted)" }}
                       >
                         {f.description}
                       </p>
@@ -759,7 +760,7 @@ export const LandingPage: FC = () => {
                   className="p-6 sm:p-8"
                   style={{
                     background:
-                      "linear-gradient(135deg, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 60%, var(--color-secondary)) 100%)",
+                      "linear-gradient(135deg, var(--color-ink) 0%, color-mix(in srgb, var(--color-ink) 60%, var(--color-amber)) 100%)",
                   }}
                 >
                   <div className="flex items-center justify-between mb-6">
@@ -768,14 +769,14 @@ export const LandingPage: FC = () => {
                       <div>
                         <div
                           className="font-bold text-sm"
-                          style={{ color: "var(--text-inverse)" }}
+                          style={{ color: "var(--color-text-inverse)" }}
                         >
-                          BryteLinks Dashboard
+                          {brand.name} Dashboard
                         </div>
                         <div
                           className="text-xs"
                           style={{
-                            color: "color-mix(in srgb, var(--text-inverse) 60%, transparent)",
+                            color: "color-mix(in srgb, var(--color-text-inverse) 60%, transparent)",
                           }}
                         >
                           Real-time overview
@@ -785,15 +786,15 @@ export const LandingPage: FC = () => {
                     <div className="flex gap-1.5">
                       <span
                         className="w-2.5 h-2.5 rounded-full animate-pulse"
-                        style={{ backgroundColor: "var(--success)" }}
+                        style={{ backgroundColor: "var(--color-success)" }}
                       />
                       <span
                         className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: "var(--warning)" }}
+                        style={{ backgroundColor: "var(--color-warning)" }}
                       />
                       <span
                         className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: "var(--error)" }}
+                        style={{ backgroundColor: "var(--color-error)" }}
                       />
                     </div>
                   </div>
@@ -803,13 +804,13 @@ export const LandingPage: FC = () => {
                       className="rounded-xl p-4"
                       style={{
                         backgroundColor:
-                          "color-mix(in srgb, var(--text-inverse) 10%, transparent)",
+                          "color-mix(in srgb, var(--color-text-inverse) 10%, transparent)",
                         backdropFilter: "blur(8px)",
                       }}
                     >
                       <div
                         className="text-2xl sm:text-3xl font-bold"
-                        style={{ color: "var(--text-inverse)" }}
+                        style={{ color: "var(--color-text-inverse)" }}
                       >
                         {'\u20B5'}12,450
                       </div>
@@ -817,12 +818,12 @@ export const LandingPage: FC = () => {
                         className="text-xs flex items-center gap-1 mt-1"
                         style={{
                           color:
-                            "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                            "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                         }}
                       >
                         <TrendingUp
                           className="w-3 h-3"
-                          style={{ color: "var(--success)" }}
+                          style={{ color: "var(--color-success)" }}
                         />
                         Wallet Balance
                       </div>
@@ -831,13 +832,13 @@ export const LandingPage: FC = () => {
                       className="rounded-xl p-4"
                       style={{
                         backgroundColor:
-                          "color-mix(in srgb, var(--text-inverse) 10%, transparent)",
+                          "color-mix(in srgb, var(--color-text-inverse) 10%, transparent)",
                         backdropFilter: "blur(8px)",
                       }}
                     >
                       <div
                         className="text-2xl sm:text-3xl font-bold"
-                        style={{ color: "var(--text-inverse)" }}
+                        style={{ color: "var(--color-text-inverse)" }}
                       >
                         327
                       </div>
@@ -845,10 +846,10 @@ export const LandingPage: FC = () => {
                         className="text-xs flex items-center gap-1 mt-1"
                         style={{
                           color:
-                            "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                            "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                         }}
                       >
-                        <ShoppingCart className="w-3 h-3" style={{ color: "var(--color-secondary)" }} />
+                        <ShoppingCart className="w-3 h-3" style={{ color: "var(--color-amber)" }} />
                         Orders Today
                       </div>
                     </div>
@@ -858,7 +859,7 @@ export const LandingPage: FC = () => {
                     className="rounded-xl p-4"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--text-inverse) 10%, transparent)",
+                        "color-mix(in srgb, var(--color-text-inverse) 10%, transparent)",
                       backdropFilter: "blur(8px)",
                     }}
                   >
@@ -866,7 +867,7 @@ export const LandingPage: FC = () => {
                       className="text-xs font-medium mb-3"
                       style={{
                         color:
-                          "color-mix(in srgb, var(--text-inverse) 80%, transparent)",
+                          "color-mix(in srgb, var(--color-text-inverse) 80%, transparent)",
                       }}
                     >
                       Weekly Revenue
@@ -879,12 +880,12 @@ export const LandingPage: FC = () => {
                           style={{
                             height: `${h}%`,
                             backgroundColor:
-                              "color-mix(in srgb, var(--text-inverse) 20%, transparent)",
+                              "color-mix(in srgb, var(--color-text-inverse) 20%, transparent)",
                           }}
                         />
                       ))}
                     </div>
-                    <div className="flex justify-between text-[10px] mt-2" style={{ color: "color-mix(in srgb, var(--text-inverse) 50%, transparent)" }}>
+                    <div className="flex justify-between text-[10px] mt-2" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)" }}>
                       {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
                         (d) => (
                           <span key={d}>{d}</span>
@@ -898,8 +899,8 @@ export const LandingPage: FC = () => {
               <div
                 className="absolute -top-4 -right-4 w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl"
                 style={{
-                  background: "var(--success)",
-                  color: "var(--text-inverse)",
+                  background: "var(--color-success)",
+                  color: "var(--color-text-inverse)",
                 }}
               >
                 <TrendingUp className="w-6 h-6" />
@@ -931,7 +932,7 @@ export const LandingPage: FC = () => {
                 variant="interactive"
                 className="text-center border-0 hover:shadow-xl transition-all duration-300"
                 style={{
-                  backgroundColor: `color-mix(in srgb, ${net.brandColor} 6%, var(--bg-surface))`,
+                  backgroundColor: `color-mix(in srgb, ${net.brandColor} 6%, var(--color-surface))`,
                 }}
               >
                 <CardBody className="py-8">
@@ -954,11 +955,11 @@ export const LandingPage: FC = () => {
                       <li
                         key={s}
                         className="flex items-center justify-center gap-2 text-sm"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         <Check
                           className="w-4 h-4 flex-shrink-0"
-                          style={{ color: "var(--success)" }}
+                          style={{ color: "var(--color-success)" }}
                         />
                         {s}
                       </li>
@@ -983,7 +984,7 @@ export const LandingPage: FC = () => {
         <Container>
           <SectionHeader
             title="Built for Every Level"
-            subtitle="Whether you're a solo agent or managing an entire distribution network — BryteLinks scales with you."
+            subtitle={`Whether you're a solo agent or managing an entire distribution network — ${brand.name} scales with you.`}
           />
 
           <div className="grid sm:grid-cols-3 gap-6 lg:gap-8">
@@ -992,30 +993,30 @@ export const LandingPage: FC = () => {
                 key={t.title}
                 variant="interactive"
                 className="text-center border-0 hover:shadow-xl transition-all duration-300"
-                style={{ backgroundColor: "var(--bg-surface)" }}
+                style={{ backgroundColor: "var(--color-surface)" }}
               >
                 <CardBody className="py-10">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--color-secondary) 12%, transparent)",
+                        "color-mix(in srgb, var(--color-amber) 12%, transparent)",
                     }}
                   >
                     <t.icon
                       className="w-7 h-7"
-                      style={{ color: "var(--color-secondary)" }}
+                      style={{ color: "var(--color-amber)" }}
                     />
                   </div>
                   <h3
                     className="text-xl font-bold mb-3"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     {t.title}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: "var(--text-muted)" }}
+                    style={{ color: "var(--color-text-muted)" }}
                   >
                     {t.description}
                   </p>
@@ -1038,7 +1039,7 @@ export const LandingPage: FC = () => {
         <Container>
           <SectionHeader
             title="Loved by Agents Across Ghana"
-            subtitle="Real stories from real people building real businesses on BryteLinks."
+            subtitle={`Real stories from real people building real businesses on ${brand.name}.`}
           />
 
           <div className="grid sm:grid-cols-3 gap-6 lg:gap-8">
@@ -1071,21 +1072,21 @@ export const LandingPage: FC = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-primary) 50%, color-mix(in srgb, var(--color-primary) 70%, var(--color-secondary)) 100%)",
+              "linear-gradient(135deg, var(--color-ink) 0%, var(--color-ink) 50%, color-mix(in srgb, var(--color-ink) 70%, var(--color-amber)) 100%)",
           }}
         />
         <div
           className="absolute top-10 left-10 w-72 h-72 rounded-full opacity-20 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, var(--color-secondary) 0%, transparent 70%)",
+              "radial-gradient(circle, var(--color-amber) 0%, transparent 70%)",
           }}
         />
         <div
           className="absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-20 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
+              "radial-gradient(circle, var(--color-amber) 0%, transparent 70%)",
           }}
         />
 
@@ -1094,7 +1095,7 @@ export const LandingPage: FC = () => {
             <RevealOnScroll>
               <h2
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-[-0.02em]"
-                style={{ color: "var(--text-inverse)" }}
+                style={{ color: "var(--color-text-inverse)" }}
               >
                 Ready to Grow Your Telecom Business?
               </h2>
@@ -1105,11 +1106,11 @@ export const LandingPage: FC = () => {
                 className="text-lg sm:text-xl mb-10 leading-relaxed"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 80%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 80%, transparent)",
                 }}
               >
                 Join hundreds of agents and dealers already earning more with
-                BryteLinks. No setup fees — start selling today.
+                {brand.name}. No setup fees — start selling today.
               </p>
             </RevealOnScroll>
 
@@ -1121,8 +1122,8 @@ export const LandingPage: FC = () => {
                     variant="secondary"
                     className="text-base px-8 shadow-xl hover:shadow-2xl transition-all duration-300"
                     style={{
-                      background: "var(--text-inverse)",
-                      color: "var(--color-primary)",
+                      background: "var(--color-text-inverse)",
+                      color: "var(--color-ink)",
                     }}
                   >
                     Get Started Free
@@ -1135,8 +1136,8 @@ export const LandingPage: FC = () => {
                     variant="outline"
                     className="text-base px-8 border-2 transition-all duration-300 hover:bg-white/10"
                     style={{
-                      borderColor: "var(--text-inverse)",
-                      color: "var(--text-inverse)",
+                      borderColor: "var(--color-text-inverse)",
+                      color: "var(--color-text-inverse)",
                     }}
                   >
                     Sign In
@@ -1150,7 +1151,7 @@ export const LandingPage: FC = () => {
                 className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-sm"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 80%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 80%, transparent)",
                 }}
               >
                 <span className="flex items-center gap-2">
@@ -1173,8 +1174,8 @@ export const LandingPage: FC = () => {
       {/* ================================================================ */}
       <footer
         style={{
-          backgroundColor: "var(--color-navy-dark)",
-          color: "var(--text-inverse)",
+          backgroundColor: "var(--color-ink)",
+          color: "var(--color-text-inverse)",
         }}
       >
         <Container>
@@ -1182,13 +1183,13 @@ export const LandingPage: FC = () => {
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <BryteLinksSvgIcon width={32} height={32} />
-                <span className="text-xl font-bold">BryteLinks</span>
+                <span className="text-xl font-bold">{brand.name}</span>
               </div>
               <p
                 className="text-sm leading-relaxed max-w-xs"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 60%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 60%, transparent)",
                 }}
               >
                 Ghana&rsquo;s smart telecom platform for agents, dealers, and
@@ -1201,7 +1202,7 @@ export const LandingPage: FC = () => {
                 className="font-semibold text-xs uppercase tracking-widest mb-4"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 50%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)",
                 }}
               >
                 Platform
@@ -1218,7 +1219,7 @@ export const LandingPage: FC = () => {
                       className="transition-colors hover:opacity-80"
                       style={{
                         color:
-                          "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                          "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                       }}
                     >
                       {l.label}
@@ -1233,7 +1234,7 @@ export const LandingPage: FC = () => {
                 className="font-semibold text-xs uppercase tracking-widest mb-4"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 50%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)",
                 }}
               >
                 Services
@@ -1242,7 +1243,7 @@ export const LandingPage: FC = () => {
                 className="space-y-2.5 text-sm"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                 }}
               >
                 <li>Airtime Top-Up</li>
@@ -1256,7 +1257,7 @@ export const LandingPage: FC = () => {
                 className="font-semibold text-xs uppercase tracking-widest mb-4"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 50%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)",
                 }}
               >
                 Supported Networks
@@ -1265,7 +1266,7 @@ export const LandingPage: FC = () => {
                 className="space-y-2.5 text-sm"
                 style={{
                   color:
-                    "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                    "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                 }}
               >
                 <li>MTN Ghana</li>
@@ -1279,29 +1280,29 @@ export const LandingPage: FC = () => {
             className="py-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
             style={{
               borderColor:
-                "color-mix(in srgb, var(--text-inverse) 15%, transparent)",
+                "color-mix(in srgb, var(--color-text-inverse) 15%, transparent)",
             }}
           >
             <p
               className="text-xs"
               style={{
                 color:
-                  "color-mix(in srgb, var(--text-inverse) 50%, transparent)",
+                  "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)",
               }}
             >
-              &copy; {new Date().getFullYear()} BryteLinks. All rights reserved.
+              &copy; {new Date().getFullYear()} {brand.name}. All rights reserved.
             </p>
             <div
               className="flex items-center gap-1 text-xs"
               style={{
                 color:
-                  "color-mix(in srgb, var(--text-inverse) 50%, transparent)",
+                  "color-mix(in srgb, var(--color-text-inverse) 50%, transparent)",
               }}
             >
               <span>Designed &amp; Developed with</span>
               <Star
                 className="w-3 h-3"
-                style={{ color: "var(--warning)", fill: "var(--warning)" }}
+                style={{ color: "var(--color-warning)", fill: "var(--color-warning)" }}
               />
               <span>
                 by{" "}
@@ -1312,7 +1313,7 @@ export const LandingPage: FC = () => {
                   className="transition-colors font-medium hover:opacity-80"
                   style={{
                     color:
-                      "color-mix(in srgb, var(--text-inverse) 70%, transparent)",
+                      "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)",
                   }}
                 >
                   Dave

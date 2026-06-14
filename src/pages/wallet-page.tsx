@@ -180,16 +180,16 @@ export const WalletPage = () => {
       transaction.type === "credit" &&
       transaction.status === "rejected"
     ) {
-      return "var(--error)";
+      return "var(--color-error)";
     }
 
     switch (type) {
       case "credit":
-        return "var(--success)";
+        return "var(--color-success)";
       case "debit":
-        return "var(--error)";
+        return "var(--color-error)";
       default:
-        return "var(--text-muted)";
+        return "var(--color-text-muted)";
     }
   };
 
@@ -213,7 +213,7 @@ export const WalletPage = () => {
       case "debit":
         return <FaArrowDown style={{ color }} />;
       default:
-        return <FaWallet style={{ color: "var(--text-muted)" }} />;
+        return <FaWallet style={{ color: "var(--color-text-muted)" }} />;
     }
   };
 
@@ -282,13 +282,13 @@ export const WalletPage = () => {
           <div className="flex-1">
             <h1
               className="text-2xl sm:text-3xl font-bold mb-2"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               Wallet
             </h1>
             <p
               className="text-sm sm:text-base"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               Manage your wallet balance and storefront earnings
             </p>
@@ -352,7 +352,7 @@ export const WalletPage = () => {
               <div>
                 <h2
                   className="text-lg sm:text-xl font-semibold"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   Current Balance
                 </h2>
@@ -371,11 +371,11 @@ export const WalletPage = () => {
             <CardBody className="py-3">
               <div
                 className="text-3xl sm:text-4xl font-bold mb-1"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 {formatCurrency(walletBalance)}
               </div>
-              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
                 Available for transactions and purchases
               </p>
             </CardBody>
@@ -385,20 +385,20 @@ export const WalletPage = () => {
           <Card className="mb-6">
             <CardHeader
               className="p-4"
-              style={{ borderBottom: "1px solid var(--border-color)" }}
+              style={{ borderBottom: "1px solid var(--color-border)" }}
             >
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <div>
                   <h2
                     className="text-lg sm:text-xl font-semibold"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     Transaction History
                   </h2>
                   {totalTransactions > 0 && (
                     <p
                       className="text-xs mt-0.5"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       {totalTransactions} transaction
                       {totalTransactions !== 1 ? "s" : ""} total
@@ -412,7 +412,7 @@ export const WalletPage = () => {
                     <button
                       onClick={clearTxFilters}
                       className="flex items-center gap-1 text-xs transition-colors"
-                      style={{ color: "var(--error)" }}
+                      style={{ color: "var(--color-error)" }}
                     >
                       <FaTimes className="text-xs" /> Clear filters
                     </button>
@@ -423,14 +423,14 @@ export const WalletPage = () => {
                     style={
                       showTxFilters || hasActiveFilters
                         ? {
-                            backgroundColor: `color-mix(in srgb, var(--color-secondary) 10%, transparent)`,
-                            borderColor: "var(--color-secondary)",
-                            color: "var(--color-secondary)",
+                            backgroundColor: `color-mix(in srgb, var(--color-amber) 10%, transparent)`,
+                            borderColor: "var(--color-amber)",
+                            color: "var(--color-amber)",
                           }
                         : {
-                            backgroundColor: "var(--bg-surface)",
-                            borderColor: "var(--border-color)",
-                            color: "var(--text-secondary)",
+                            backgroundColor: "var(--color-surface)",
+                            borderColor: "var(--color-border)",
+                            color: "var(--color-text-secondary)",
                           }
                     }
                   >
@@ -440,8 +440,8 @@ export const WalletPage = () => {
                       <span
                         className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full text-xs"
                         style={{
-                          backgroundColor: "var(--color-secondary)",
-                          color: "var(--text-inverse)",
+                          backgroundColor: "var(--color-amber)",
+                          color: "var(--color-text-inverse)",
                         }}
                       >
                         {
@@ -460,9 +460,9 @@ export const WalletPage = () => {
                     disabled={isLoadingTransactions}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm font-medium transition-colors disabled:opacity-50"
                     style={{
-                      borderColor: "var(--border-color)",
-                      backgroundColor: "var(--bg-surface)",
-                      color: "var(--text-secondary)",
+                      borderColor: "var(--color-border)",
+                      backgroundColor: "var(--color-surface)",
+                      color: "var(--color-text-secondary)",
                     }}
                   >
                     <FaSync
@@ -481,13 +481,13 @@ export const WalletPage = () => {
               {showTxFilters && (
                 <div
                   className="mt-3 pt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
-                  style={{ borderTop: "1px solid var(--border-color)" }}
+                  style={{ borderTop: "1px solid var(--color-border)" }}
                 >
                   {/* Text search */}
                   <div className="relative">
                     <FaSearch
                       className="absolute left-2.5 top-2.5 text-xs"
-                      style={{ color: "var(--text-muted)" }}
+                      style={{ color: "var(--color-text-muted)" }}
                     />
                     <input
                       type="text"
@@ -496,9 +496,9 @@ export const WalletPage = () => {
                       onChange={(e) => setTxSearch(e.target.value)}
                       className="w-full pl-8 pr-3 py-2 text-sm rounded-lg"
                       style={{
-                        border: "1px solid var(--border-color)",
-                        backgroundColor: "var(--bg-surface)",
-                        color: "var(--text-primary)",
+                        border: "1px solid var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
                         borderRadius: "var(--radius-lg)",
                         outline: "none",
                       }}
@@ -512,9 +512,9 @@ export const WalletPage = () => {
                     }
                     className="w-full px-3 py-2 text-sm rounded-lg"
                     style={{
-                      border: "1px solid var(--border-color)",
-                      backgroundColor: "var(--bg-surface)",
-                      color: "var(--text-primary)",
+                      border: "1px solid var(--color-border)",
+                      backgroundColor: "var(--color-surface)",
+                      color: "var(--color-text-primary)",
                       borderRadius: "var(--radius-lg)",
                       outline: "none",
                     }}
@@ -527,7 +527,7 @@ export const WalletPage = () => {
                   <div>
                     <label
                       className="block text-xs mb-1"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       From
                     </label>
@@ -537,9 +537,9 @@ export const WalletPage = () => {
                       onChange={(e) => setTxStartDate(e.target.value)}
                       className="w-full px-3 py-2 text-sm rounded-lg"
                       style={{
-                        border: "1px solid var(--border-color)",
-                        backgroundColor: "var(--bg-surface)",
-                        color: "var(--text-primary)",
+                        border: "1px solid var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
                         borderRadius: "var(--radius-lg)",
                         outline: "none",
                       }}
@@ -549,7 +549,7 @@ export const WalletPage = () => {
                   <div>
                     <label
                       className="block text-xs mb-1"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       To
                     </label>
@@ -559,9 +559,9 @@ export const WalletPage = () => {
                       onChange={(e) => setTxEndDate(e.target.value)}
                       className="w-full px-3 py-2 text-sm rounded-lg"
                       style={{
-                        border: "1px solid var(--border-color)",
-                        backgroundColor: "var(--bg-surface)",
-                        color: "var(--text-primary)",
+                        border: "1px solid var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
                         borderRadius: "var(--radius-lg)",
                         outline: "none",
                       }}
@@ -575,18 +575,18 @@ export const WalletPage = () => {
                 (hasActiveFilters || transactions.length > 0) && (
                   <div
                     className="mt-3 pt-3 grid grid-cols-3 gap-2 text-center"
-                    style={{ borderTop: "1px solid var(--border-color)" }}
+                    style={{ borderTop: "1px solid var(--color-border)" }}
                   >
                     <div>
                       <p
                         className="text-xs"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         Total In
                       </p>
                       <p
                         className="text-sm font-semibold"
-                        style={{ color: "var(--success)" }}
+                        style={{ color: "var(--color-success)" }}
                       >
                         {formatCurrency(txSummary.totalCredits)}
                       </p>
@@ -594,13 +594,13 @@ export const WalletPage = () => {
                     <div>
                       <p
                         className="text-xs"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         Total Out
                       </p>
                       <p
                         className="text-sm font-semibold"
-                        style={{ color: "var(--error)" }}
+                        style={{ color: "var(--color-error)" }}
                       >
                         {formatCurrency(txSummary.totalDebits)}
                       </p>
@@ -608,7 +608,7 @@ export const WalletPage = () => {
                     <div>
                       <p
                         className="text-xs"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         Net
                       </p>
@@ -617,8 +617,8 @@ export const WalletPage = () => {
                         style={{
                           color:
                             txSummary.net >= 0
-                              ? "var(--success)"
-                              : "var(--error)",
+                              ? "var(--color-success)"
+                              : "var(--color-error)",
                         }}
                       >
                         {txSummary.net >= 0 ? "+" : ""}
@@ -633,13 +633,13 @@ export const WalletPage = () => {
               {isLoadingTransactions ? (
                 <div className="flex items-center justify-center py-8">
                   <Spinner size="lg" color="primary" />
-                  <span className="ml-3" style={{ color: "var(--text-secondary)" }}>
+                  <span className="ml-3" style={{ color: "var(--color-text-secondary)" }}>
                     Loading transactions...
                   </span>
                 </div>
               ) : filteredTransactions.length === 0 ? (
-                <div className="text-center py-8" style={{ color: "var(--text-secondary)" }}>
-                  <FaWallet className="text-4xl mx-auto mb-4" style={{ color: "var(--text-muted)" }} />
+                <div className="text-center py-8" style={{ color: "var(--color-text-secondary)" }}>
+                  <FaWallet className="text-4xl mx-auto mb-4" style={{ color: "var(--color-text-muted)" }} />
                   <p>
                     {hasActiveFilters
                       ? "No transactions match your filters"
@@ -648,7 +648,7 @@ export const WalletPage = () => {
                   {hasActiveFilters && (
                     <button
                       onClick={clearTxFilters}
-                      className="mt-2 text-sm hover:underline" style={{ color: "var(--color-primary)" }}
+                      className="mt-2 text-sm hover:underline" style={{ color: "var(--color-ink)" }}
                     >
                       Clear filters
                     </button>
@@ -682,7 +682,7 @@ export const WalletPage = () => {
                         className="p-3 sm:p-4 border rounded-xl transition-all"
                         style={{
                           borderColor: `color-mix(in srgb, ${txColor} 30%, transparent)`,
-                          backgroundColor: `color-mix(in srgb, ${txColor} 8%, var(--bg-surface))`,
+                          backgroundColor: `color-mix(in srgb, ${txColor} 8%, var(--color-surface))`,
                           boxShadow: "var(--shadow-sm)",
                         }}
                       >
@@ -690,7 +690,7 @@ export const WalletPage = () => {
                           <div
                             className="flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0 mt-0.5"
                             style={{
-                              backgroundColor: "var(--bg-surface)",
+                              backgroundColor: "var(--color-surface)",
                               boxShadow: "var(--shadow-sm)",
                             }}
                           >
@@ -717,11 +717,11 @@ export const WalletPage = () => {
                                   <span
                                     className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium"
                                     style={{
-                                      backgroundColor: `color-mix(in srgb, ${transaction.status === "pending" ? "var(--warning)" : "var(--error)"} 15%, transparent)`,
+                                      backgroundColor: `color-mix(in srgb, ${transaction.status === "pending" ? "var(--color-warning)" : "var(--color-error)"} 15%, transparent)`,
                                       color:
                                         transaction.status === "pending"
-                                          ? "var(--warning)"
-                                          : "var(--error)",
+                                          ? "var(--color-warning)"
+                                          : "var(--color-error)",
                                     }}
                                   >
                                     {transaction.status}
@@ -731,8 +731,8 @@ export const WalletPage = () => {
                                 <span
                                   className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs"
                                   style={{
-                                    backgroundColor: "var(--bg-surface-alt)",
-                                    color: "var(--text-secondary)",
+                                    backgroundColor: "var(--color-surface-alt)",
+                                    color: "var(--color-text-secondary)",
                                   }}
                                 >
                                   <FaReceipt className="text-xs" /> {orderRef}
@@ -741,14 +741,14 @@ export const WalletPage = () => {
                             </div>
                             <p
                               className="font-medium text-sm truncate"
-                              style={{ color: "var(--text-primary)" }}
+                              style={{ color: "var(--color-text-primary)" }}
                             >
                               {transaction.description}
                             </p>
                             <div className="flex flex-wrap items-center gap-2 mt-0.5">
                               <p
                                 className="text-xs"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 {formatDate(transaction.createdAt)}
                               </p>
@@ -756,7 +756,7 @@ export const WalletPage = () => {
                                 !transaction.reference.startsWith("TXN") && (
                                   <p
                                     className="text-xs font-mono truncate max-w-[180px]"
-                                    style={{ color: "var(--text-muted)" }}
+                                    style={{ color: "var(--color-text-muted)" }}
                                   >
                                     Ref: {transaction.reference.slice(0, 24)}
                                   </p>
@@ -778,7 +778,7 @@ export const WalletPage = () => {
                         {isTopUp && transaction.status === "pending" ? (
                           <div
                             className="mt-2.5 ml-12 text-xs"
-                            style={{ color: "var(--warning)" }}
+                            style={{ color: "var(--color-warning)" }}
                           >
                             Pending top-up — wallet will be updated once payment
                             confirmation is received.
@@ -794,16 +794,16 @@ export const WalletPage = () => {
                                 <div className="flex flex-col items-center">
                                   <span
                                     className="uppercase tracking-wide text-[10px] leading-none mb-0.5"
-                                    style={{ color: "var(--text-muted)" }}
+                                    style={{ color: "var(--color-text-muted)" }}
                                   >
                                     Before
                                   </span>
                                   <span
                                     className="font-mono font-medium rounded px-1.5 py-0.5 whitespace-nowrap"
                                     style={{
-                                      color: "var(--text-secondary)",
-                                      backgroundColor: "var(--bg-surface)",
-                                      border: "1px solid var(--border-color)",
+                                      color: "var(--color-text-secondary)",
+                                      backgroundColor: "var(--color-surface)",
+                                      border: "1px solid var(--color-border)",
                                     }}
                                   >
                                     {formatCurrency(balanceBefore)}
@@ -812,7 +812,7 @@ export const WalletPage = () => {
                                 <div className="flex flex-col items-center">
                                   <span
                                     className="text-[10px] leading-none mb-0.5"
-                                    style={{ color: "var(--text-muted)" }}
+                                    style={{ color: "var(--color-text-muted)" }}
                                   >
                                     &nbsp;
                                   </span>
@@ -829,16 +829,16 @@ export const WalletPage = () => {
                                 <div className="flex flex-col items-center">
                                   <span
                                     className="uppercase tracking-wide text-[10px] leading-none mb-0.5"
-                                    style={{ color: "var(--text-muted)" }}
+                                    style={{ color: "var(--color-text-muted)" }}
                                   >
                                     After
                                   </span>
                                   <span
                                     className="font-mono font-semibold rounded px-1.5 py-0.5 whitespace-nowrap"
                                     style={{
-                                      color: "var(--text-primary)",
-                                      backgroundColor: "var(--bg-surface)",
-                                      border: "1px solid var(--border-color)",
+                                      color: "var(--color-text-primary)",
+                                      backgroundColor: "var(--color-surface)",
+                                      border: "1px solid var(--color-border)",
                                       boxShadow: "var(--shadow-sm)",
                                     }}
                                   >
@@ -877,9 +877,9 @@ export const WalletPage = () => {
           <div
             className="mb-4 p-4 rounded-lg text-sm"
             style={{
-              backgroundColor: `color-mix(in srgb, var(--color-secondary) 8%, transparent)`,
-              border: `1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent)`,
-              color: 'var(--color-secondary)',
+              backgroundColor: `color-mix(in srgb, var(--color-amber) 8%, transparent)`,
+              border: `1px solid color-mix(in srgb, var(--color-amber) 20%, transparent)`,
+              color: 'var(--color-amber)',
             }}
           >
             <strong>Your storefront earnings</strong> are stored securely in

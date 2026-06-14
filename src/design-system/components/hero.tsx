@@ -31,9 +31,9 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(
 
     // Background classes
     const backgroundClasses = {
-      gradient: 'bg-[var(--bg-surface-alt)]',
-      solid: 'bg-[var(--bg-surface-alt)]',
-      image: backgroundImage ? `bg-cover bg-center bg-no-repeat` : 'bg-[var(--bg-surface-alt)]',
+      gradient: 'bg-[var(--color-surface-alt)]',
+      solid: 'bg-[var(--color-surface-alt)]',
+      image: backgroundImage ? `bg-cover bg-center bg-no-repeat` : 'bg-[var(--color-surface-alt)]',
     };
 
     const baseClasses = 'relative overflow-hidden';
@@ -52,7 +52,7 @@ export const Hero = forwardRef<HTMLElement, HeroProps>(
       >
         {/* Background overlay for image background */}
         {background === 'image' && (
-          <div className="absolute inset-0 bg-[var(--color-navy-dark)]/50" />
+          <div className="absolute inset-0 bg-[var(--color-ink)]/50" />
         )}
         
         <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${containerClasses}`}>
@@ -85,7 +85,7 @@ export const HeroTitle = forwardRef<HTMLHeadingElement, HeroTitleProps>(
     return (
       <Component
         ref={ref}
-        className={`font-bold text-[var(--text-primary)] leading-tight ${sizeClasses[size]} ${className}`}
+        className={`font-bold text-[var(--color-text-primary)] leading-tight ${sizeClasses[size]} ${className}`}
         {...props}
       >
         {children}
@@ -114,7 +114,7 @@ export const HeroSubtitle = forwardRef<HTMLParagraphElement, HeroSubtitleProps>(
     return (
       <p
         ref={ref}
-        className={`text-[var(--text-secondary)] leading-relaxed ${sizeClasses[size]} ${className}`}
+        className={`text-[var(--color-text-secondary)] leading-relaxed ${sizeClasses[size]} ${className}`}
         {...props}
       >
         {children}

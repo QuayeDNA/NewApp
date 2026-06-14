@@ -132,27 +132,27 @@ function StoreDetailDialog({
     `GH₵ ${v.toLocaleString("en-GH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
   const orderStatusStyle: Record<string, { color: string; backgroundColor: string }> = {
-    completed: { color: 'var(--success)', backgroundColor: 'color-mix(in srgb, var(--success) 10%, transparent)' },
-    confirmed: { color: 'var(--color-primary)', backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' },
-    processing: { color: 'var(--color-secondary)', backgroundColor: 'color-mix(in srgb, var(--color-secondary) 10%, transparent)' },
-    pending: { color: 'var(--warning)', backgroundColor: 'color-mix(in srgb, var(--warning) 10%, transparent)' },
-    pending_payment: { color: 'var(--warning)', backgroundColor: 'color-mix(in srgb, var(--warning) 10%, transparent)' },
-    failed: { color: 'var(--error)', backgroundColor: 'color-mix(in srgb, var(--error) 10%, transparent)' },
-    cancelled: { color: 'var(--text-muted)', backgroundColor: 'var(--bg-surface-alt)' },
+    completed: { color: 'var(--color-success)', backgroundColor: 'color-mix(in srgb, var(--color-success) 10%, transparent)' },
+    confirmed: { color: 'var(--color-ink)', backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' },
+    processing: { color: 'var(--color-amber)', backgroundColor: 'color-mix(in srgb, var(--color-amber) 10%, transparent)' },
+    pending: { color: 'var(--color-warning)', backgroundColor: 'color-mix(in srgb, var(--color-warning) 10%, transparent)' },
+    pending_payment: { color: 'var(--color-warning)', backgroundColor: 'color-mix(in srgb, var(--color-warning) 10%, transparent)' },
+    failed: { color: 'var(--color-error)', backgroundColor: 'color-mix(in srgb, var(--color-error) 10%, transparent)' },
+    cancelled: { color: 'var(--color-text-muted)', backgroundColor: 'var(--color-surface-alt)' },
   };
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose} size="lg">
       <DialogHeader>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}>
-            <Store className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}>
+            <Store className="w-5 h-5" style={{ color: 'var(--color-ink)' }} />
           </div>
           <div className="min-w-0">
-            <h3 className="text-lg font-semibold truncate" style={{ color: 'var(--text-primary)' }}>
+            <h3 className="text-lg font-semibold truncate" style={{ color: 'var(--color-text-primary)' }}>
               {d.displayName || d.businessName}
             </h3>
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>/{d.businessName}</p>
+            <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>/{d.businessName}</p>
           </div>
           <div className="ml-auto shrink-0">
             <StatusBadge store={store} />
@@ -165,7 +165,7 @@ function StoreDetailDialog({
         {detailLoading && (
           <div className="flex items-center justify-center py-6">
             <Spinner size="sm" />
-            <span className="ml-2 text-sm" style={{ color: 'var(--text-muted)' }}>Loading full details…</span>
+            <span className="ml-2 text-sm" style={{ color: 'var(--color-text-muted)' }}>Loading full details…</span>
           </div>
         )}
 
@@ -176,7 +176,7 @@ function StoreDetailDialog({
               <p className="font-medium">This store is suspended</p>
               {store.suspensionReason && <p className="text-sm mt-1">Reason: {store.suspensionReason}</p>}
               {store.suspendedAt && (
-                <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+                <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>
                   Since {new Date(store.suspendedAt).toLocaleDateString()}
                 </p>
               )}
@@ -187,21 +187,21 @@ function StoreDetailDialog({
         {/* ── Order Stats ─────────────────────────────────────────────────── */}
         {orderStats && (
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'var(--bg-surface-alt)' }}>
-              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>Total Orders</p>
-              <p className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{orderStats.totalOrders}</p>
+            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
+              <p className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>Total Orders</p>
+              <p className="text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>{orderStats.totalOrders}</p>
             </div>
-            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--success) 10%, transparent)' }}>
-              <p className="text-xs" style={{ color: 'var(--success)' }}>Completed</p>
-              <p className="text-lg font-bold" style={{ color: 'var(--success)' }}>{orderStats.completedOrders}</p>
+            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-success) 10%, transparent)' }}>
+              <p className="text-xs" style={{ color: 'var(--color-success)' }}>Completed</p>
+              <p className="text-lg font-bold" style={{ color: 'var(--color-success)' }}>{orderStats.completedOrders}</p>
             </div>
-            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}>
-              <p className="text-xs" style={{ color: 'var(--color-primary)' }}>Revenue</p>
-              <p className="text-sm font-bold" style={{ color: 'var(--color-primary)' }}>{fmtCurrency(orderStats.totalRevenue)}</p>
+            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}>
+              <p className="text-xs" style={{ color: 'var(--color-ink)' }}>Revenue</p>
+              <p className="text-sm font-bold" style={{ color: 'var(--color-ink)' }}>{fmtCurrency(orderStats.totalRevenue)}</p>
             </div>
-            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--success) 10%, transparent)' }}>
-              <p className="text-xs" style={{ color: 'var(--success)' }}>Profit</p>
-              <p className="text-sm font-bold" style={{ color: 'var(--success)' }}>{fmtCurrency(orderStats.totalProfit)}</p>
+            <div className="rounded-lg p-3 text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--color-success) 10%, transparent)' }}>
+              <p className="text-xs" style={{ color: 'var(--color-success)' }}>Profit</p>
+              <p className="text-sm font-bold" style={{ color: 'var(--color-success)' }}>{fmtCurrency(orderStats.totalProfit)}</p>
             </div>
           </div>
         )}
@@ -209,40 +209,40 @@ function StoreDetailDialog({
         {/* ── Agent + Earnings ────────────────────────────────────────────── */}
         {agent && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-lg p-3 space-y-1.5" style={{ backgroundColor: 'var(--bg-surface-alt)' }}>
-              <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-secondary)' }}>Agent</p>
+            <div className="rounded-lg p-3 space-y-1.5" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
+              <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--color-text-secondary)' }}>Agent</p>
               <div className="flex items-center gap-1.5 text-sm">
-                <User className="w-3.5 h-3.5" style={{ color: 'var(--text-muted)' }} />
-                <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{agent.fullName}</span>
+                <User className="w-3.5 h-3.5" style={{ color: 'var(--color-text-muted)' }} />
+                <span className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{agent.fullName}</span>
                 <Badge colorScheme="info" variant="subtle" size="xs">
                   {agent.userType.replace(/_/g, " ")}
                 </Badge>
               </div>
-              <div className="flex items-center gap-1.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                <Mail className="w-3.5 h-3.5" style={{ color: 'var(--text-muted)' }} />
+              <div className="flex items-center gap-1.5 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                <Mail className="w-3.5 h-3.5" style={{ color: 'var(--color-text-muted)' }} />
                 <span className="truncate">{agent.email}</span>
               </div>
               {agent.phone && (
-                <div className="text-xs" style={{ color: 'var(--text-secondary)' }}>📞 {agent.phone}</div>
+                <div className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>📞 {agent.phone}</div>
               )}
               {(agent as any).createdAt && (
-                <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                <div className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
                   Agent since {new Date((agent as any).createdAt).toLocaleDateString()}
                 </div>
               )}
             </div>
 
-            <div className="rounded-lg p-3 space-y-1.5" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-color)', borderWidth: 1 }}>
-              <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-secondary)' }}>Balances</p>
+            <div className="rounded-lg p-3 space-y-1.5" style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-border)', borderWidth: 1 }}>
+              <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--color-text-secondary)' }}>Balances</p>
               <div className="flex items-center justify-between">
-                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Wallet</span>
-                <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>Wallet</span>
+                <span className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
                   {typeof agent.walletBalance === 'number' ? fmtCurrency(agent.walletBalance) : '—'}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Earnings</span>
-                <span className="text-sm font-semibold" style={{ color: 'var(--success)' }}>
+                <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>Earnings</span>
+                <span className="text-sm font-semibold" style={{ color: 'var(--color-success)' }}>
                   {typeof agent.earningsBalance === 'number' ? fmtCurrency(agent.earningsBalance) : '—'}
                 </span>
               </div>
@@ -265,36 +265,36 @@ function StoreDetailDialog({
         {/* ── Store Details ───────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Created</p>
-            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Created</p>
+            <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>
               {d.createdAt ? new Date(d.createdAt).toLocaleDateString() : "—"}
             </p>
           </div>
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Approved</p>
-            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Approved</p>
+            <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>
               {d.isApproved
                 ? (d.approvedAt ? new Date(d.approvedAt).toLocaleDateString() : "Yes")
                 : "Pending"}
             </p>
           </div>
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Contact</p>
-            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>{d.contactInfo?.phone || "—"}</p>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Contact</p>
+            <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{d.contactInfo?.phone || "—"}</p>
           </div>
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Email</p>
-            <p className="font-medium truncate" style={{ color: 'var(--text-primary)' }}>{d.contactInfo?.email || "—"}</p>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Email</p>
+            <p className="font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>{d.contactInfo?.email || "—"}</p>
           </div>
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Payment Methods</p>
-            <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Payment Methods</p>
+            <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>
               {d.paymentMethods?.filter(pm => pm.isActive).length || 0} active
             </p>
           </div>
           <div>
-            <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>Subaccount</p>
-            <p className="font-medium text-xs truncate" style={{ color: 'var(--text-primary)' }}>
+            <p className="text-xs mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Subaccount</p>
+            <p className="font-medium text-xs truncate" style={{ color: 'var(--color-text-primary)' }}>
               {d.paystackSubaccountId || "—"}
             </p>
           </div>
@@ -303,47 +303,47 @@ function StoreDetailDialog({
         {/* ── Recent Orders ───────────────────────────────────────────────── */}
         {!detailLoading && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: 'var(--color-text-secondary)' }}>
               Recent Orders {recentOrders.length > 0 && `(last ${recentOrders.length})`}
             </p>
             {recentOrders.length === 0 ? (
-              <p className="text-sm py-2" style={{ color: 'var(--text-muted)' }}>No orders yet</p>
+              <p className="text-sm py-2" style={{ color: 'var(--color-text-muted)' }}>No orders yet</p>
             ) : (
               <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
                 {recentOrders.map(order => (
                   <div
                     key={order._id}
                     className="flex items-center gap-2 p-2.5 rounded-lg border transition"
-                    style={{ borderColor: 'var(--border-color)' }}
-                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--bg-surface-alt)'; }}
+                    style={{ borderColor: 'var(--color-border)' }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-surface-alt)'; }}
                     onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-xs font-mono font-semibold" style={{ color: 'var(--text-primary)' }}>
+                        <span className="text-xs font-mono font-semibold" style={{ color: 'var(--color-text-primary)' }}>
                           #{order.orderNumber}
                         </span>
                         <span
                           className="text-xs px-1.5 py-0.5 rounded-full font-medium"
-                          style={orderStatusStyle[order.status] ?? { color: 'var(--text-muted)', backgroundColor: 'var(--bg-surface-alt)' }}
+                          style={orderStatusStyle[order.status] ?? { color: 'var(--color-text-muted)', backgroundColor: 'var(--color-surface-alt)' }}
                         >
                           {order.status.replace(/_/g, " ")}
                         </span>
                       </div>
-                      <p className="text-xs truncate mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+                      <p className="text-xs truncate mt-0.5" style={{ color: 'var(--color-text-secondary)' }}>
                         {order.storefrontData?.customerInfo?.name || "Customer"}
                         {" · "}
                         {order.storefrontData?.items?.length ?? 0} item{(order.storefrontData?.items?.length ?? 0) !== 1 ? "s" : ""}
                       </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                      <p className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
                         {fmtCurrency(order.storefrontData?.totalTierCost ?? order.total)}
                       </p>
                       {(order.storefrontData?.totalMarkup ?? 0) > 0 && (
-                        <p className="text-xs" style={{ color: 'var(--success)' }}>+{fmtCurrency(order.storefrontData!.totalMarkup!)}</p>
+                        <p className="text-xs" style={{ color: 'var(--color-success)' }}>+{fmtCurrency(order.storefrontData!.totalMarkup!)}</p>
                       )}
-                      <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                      <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
                         {new Date(order.createdAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -443,7 +443,7 @@ function ConfirmDialog({
     <Dialog isOpen={opts.isOpen} onClose={onClose} size="sm">
       <DialogHeader>{opts.title}</DialogHeader>
       <DialogBody>
-        <p className="text-sm" style={{ color: 'var(--text-primary)' }}>{opts.message}</p>
+        <p className="text-sm" style={{ color: 'var(--color-text-primary)' }}>{opts.message}</p>
         {opts.hasInput && (
           <FormField label={opts.inputLabel} className="mt-4">
             <Input
@@ -776,8 +776,8 @@ export default function StoresPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Agent Stores</h1>
-          <p className="text-xs sm:text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          <h1 className="text-xl sm:text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>Agent Stores</h1>
+          <p className="text-xs sm:text-sm mt-0.5" style={{ color: 'var(--color-text-secondary)' }}>
             Manage and monitor all agent storefronts
           </p>
         </div>
@@ -832,8 +832,8 @@ export default function StoresPage() {
       <Card>
         <CardBody className="flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Storefront Availability</h3>
-            <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            <h3 className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Storefront Availability</h3>
+            <p className="text-xs mt-0.5" style={{ color: 'var(--color-text-secondary)' }}>
               {storefrontsOpen
                 ? "All storefronts are open to customers"
                 : "All storefronts are closed by admin"}
@@ -859,9 +859,9 @@ export default function StoresPage() {
               disabled={storefrontsOpenLoading}
             />
             <div className="w-11 h-6 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"
-              style={{ backgroundColor: storefrontsOpen ? 'var(--color-primary)' : 'var(--border-color)' }}
+              style={{ backgroundColor: storefrontsOpen ? 'var(--color-ink)' : 'var(--color-border)' }}
             ></div>
-            <span className="ml-3 text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            <span className="ml-3 text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>
               {storefrontsOpen ? "Open" : "Closed"}
             </span>
           </label>
@@ -872,8 +872,8 @@ export default function StoresPage() {
       <Card>
         <CardBody className="flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Auto-Approve New Storefronts</h3>
-            <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            <h3 className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Auto-Approve New Storefronts</h3>
+            <p className="text-xs mt-0.5" style={{ color: 'var(--color-text-secondary)' }}>
               {autoApprove
                 ? "New agent storefronts are approved automatically"
                 : "New storefronts require manual admin approval"}
@@ -900,9 +900,9 @@ export default function StoresPage() {
               disabled={autoApproveLoading}
             />
             <div className="w-11 h-6 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"
-              style={{ backgroundColor: autoApprove ? 'var(--color-primary)' : 'var(--border-color)' }}
+              style={{ backgroundColor: autoApprove ? 'var(--color-ink)' : 'var(--color-border)' }}
             ></div>
-            <span className="ml-3 text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+            <span className="ml-3 text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>
               {autoApprove ? "Auto" : "Manual"}
             </span>
           </label>
@@ -923,7 +923,7 @@ export default function StoresPage() {
       <Card noPadding>
         <CardBody className="p-0">
           {/* Search + Filter Tabs */}
-          <div className="p-3 sm:p-4 space-y-3 border-b" style={{ borderColor: 'var(--border-color)' }}>
+          <div className="p-3 sm:p-4 space-y-3 border-b" style={{ borderColor: 'var(--color-border)' }}>
             {/* Search */}
             <Input
               leftIcon={<Search className="w-4 h-4" />}
@@ -966,9 +966,9 @@ export default function StoresPage() {
                   {/* Empty State */}
                   {!loading && filteredStores.length === 0 && (
                     <div className="py-12 sm:py-16 text-center px-4">
-                      <Store className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3" style={{ color: 'var(--text-muted)' }} />
-                      <h3 className="text-base sm:text-lg font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>No stores found</h3>
-                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                      <Store className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3" style={{ color: 'var(--color-text-muted)' }} />
+                      <h3 className="text-base sm:text-lg font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>No stores found</h3>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
                         {search ? "Try adjusting your search or filters." : "No agent stores have been created yet."}
                       </p>
                     </div>
@@ -1000,31 +1000,31 @@ export default function StoresPage() {
                                       onClick={() => openStoreDetail(store)}
                                     >
                                       <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
-                                        style={{ backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}
-                                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--color-primary) 20%, transparent)'; }}
-                                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--color-primary) 10%, transparent)'; }}
+                                        style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}
+                                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--color-ink) 20%, transparent)'; }}
+                                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--color-ink) 10%, transparent)'; }}
                                       >
-                                        <Store className="w-4 h-4" style={{ color: 'var(--color-primary)' }} />
+                                        <Store className="w-4 h-4" style={{ color: 'var(--color-ink)' }} />
                                       </div>
                                       <div className="min-w-0">
-                                        <p className="font-medium truncate transition-colors" style={{ color: 'var(--text-primary)' }}
-                                          onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-primary)'; }}
-                                          onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; }}
+                                        <p className="font-medium truncate transition-colors" style={{ color: 'var(--color-text-primary)' }}
+                                          onMouseEnter={e => { e.currentTarget.style.color = 'var(--color-ink)'; }}
+                                          onMouseLeave={e => { e.currentTarget.style.color = 'var(--color-text-primary)'; }}
                                         >
                                           {store.displayName || store.businessName}
                                         </p>
-                                        <p className="text-xs truncate" style={{ color: 'var(--text-muted)' }}>/{store.businessName}</p>
+                                        <p className="text-xs truncate" style={{ color: 'var(--color-text-muted)' }}>/{store.businessName}</p>
                                       </div>
                                     </button>
                                   </TableCell>
                                   <TableCell>
                                     {agent ? (
                                       <div className="min-w-0">
-                                        <p className="font-medium truncate" style={{ color: 'var(--text-primary)' }}>{agent.fullName}</p>
-                                        <p className="text-xs truncate" style={{ color: 'var(--text-muted)' }}>{agent.email}</p>
+                                        <p className="font-medium truncate" style={{ color: 'var(--color-text-primary)' }}>{agent.fullName}</p>
+                                        <p className="text-xs truncate" style={{ color: 'var(--color-text-muted)' }}>{agent.email}</p>
                                       </div>
                                     ) : (
-                                      <span className="text-sm" style={{ color: 'var(--text-muted)' }}>N/A</span>
+                                      <span className="text-sm" style={{ color: 'var(--color-text-muted)' }}>N/A</span>
                                     )}
                                   </TableCell>
                                   <TableCell>
@@ -1042,7 +1042,7 @@ export default function StoresPage() {
                                     </div>
                                   </TableCell>
                                   <TableCell>
-                                    <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                    <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
                                       {store.createdAt ? new Date(store.createdAt).toLocaleDateString() : "—"}
                                     </span>
                                   </TableCell>
@@ -1055,7 +1055,7 @@ export default function StoresPage() {
                                             iconOnly
                                             variant="ghost"
                                             size="sm"
-                                            leftIcon={<DollarSign className="w-4 h-4" style={{ color: pendingPayoutsMap[agentId as string] ? 'var(--warning)' : 'var(--text-muted)' }} />}
+                                            leftIcon={<DollarSign className="w-4 h-4" style={{ color: pendingPayoutsMap[agentId as string] ? 'var(--color-warning)' : 'var(--color-text-muted)' }} />}
                                             onClick={() => { setSelectedPayoutsStore(store); openPayoutsForAgent(agentId as string); }}
                                             aria-label="View payouts"
                                           />
@@ -1117,8 +1117,8 @@ export default function StoresPage() {
                             <div
                               key={store._id}
                               className="p-3 sm:p-4 transition-colors"
-                              style={{ borderTop: '1px solid var(--border-color)' }}
-                              onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = 'var(--bg-surface-alt)'; }}
+                              style={{ borderTop: '1px solid var(--color-border)' }}
+                              onMouseDown={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = 'var(--color-surface-alt)'; }}
                               onMouseUp={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = 'transparent'; }}
                               onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = 'transparent'; }}
                             >
@@ -1128,15 +1128,15 @@ export default function StoresPage() {
                                 onClick={() => openStoreDetail(store)}
                               >
                                 <div className="flex items-center gap-2.5 min-w-0">
-                                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}>
-                                    <Store className="w-4 h-4" style={{ color: 'var(--color-primary)' }} />
+                                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}>
+                                    <Store className="w-4 h-4" style={{ color: 'var(--color-ink)' }} />
                                   </div>
                                   <div className="min-w-0">
-                                    <p className="font-medium text-sm truncate" style={{ color: 'var(--text-primary)' }}>
+                                    <p className="font-medium text-sm truncate" style={{ color: 'var(--color-text-primary)' }}>
                                       {store.displayName || store.businessName}
                                     </p>
                                     {agent && (
-                                      <p className="text-xs truncate" style={{ color: 'var(--text-muted)' }}>{agent.fullName}</p>
+                                      <p className="text-xs truncate" style={{ color: 'var(--color-text-muted)' }}>{agent.fullName}</p>
                                     )}
                                   </div>
                                 </div>
@@ -1156,7 +1156,7 @@ export default function StoresPage() {
 
                               {/* Bottom: Agent email + Actions */}
                               <div className="flex items-center justify-between gap-2 ml-[46px]">
-                                <span className="text-xs truncate" style={{ color: 'var(--text-muted)' }}>
+                                <span className="text-xs truncate" style={{ color: 'var(--color-text-muted)' }}>
                                   {agent?.email || ""}
                                 </span>
                                 <div className="flex items-center gap-1.5 flex-shrink-0">
@@ -1167,7 +1167,7 @@ export default function StoresPage() {
                                         iconOnly
                                         variant="ghost"
                                         size="xs"
-                                        leftIcon={<DollarSign className="w-3.5 h-3.5" style={{ color: pendingPayoutsMap[agentId as string] ? 'var(--warning)' : 'var(--text-muted)' }} />}
+                                        leftIcon={<DollarSign className="w-3.5 h-3.5" style={{ color: pendingPayoutsMap[agentId as string] ? 'var(--color-warning)' : 'var(--color-text-muted)' }} />}
                                         onClick={() => { setSelectedPayoutsStore(store); openPayoutsForAgent(agentId as string); }}
                                         aria-label="View payouts"
                                       />
@@ -1207,7 +1207,7 @@ export default function StoresPage() {
                               {/* Suspension reason on mobile */}
                               {store.suspendedByAdmin && store.suspensionReason && (
                                 <div className="mt-2 ml-[46px]">
-                                  <p className="text-xs rounded px-2 py-1 inline-block" style={{ color: 'var(--error)', backgroundColor: 'color-mix(in srgb, var(--error) 10%, transparent)' }}>
+                                  <p className="text-xs rounded px-2 py-1 inline-block" style={{ color: 'var(--color-error)', backgroundColor: 'color-mix(in srgb, var(--color-error) 10%, transparent)' }}>
                                     <AlertTriangle className="w-3 h-3 inline mr-1" />
                                     {store.suspensionReason}
                                   </p>
@@ -1219,7 +1219,7 @@ export default function StoresPage() {
                       </div>
 
                       {/* Results count */}
-                      <div className="px-3 sm:px-4 py-2.5 text-xs sm:text-sm" style={{ backgroundColor: 'var(--bg-surface-alt)', borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
+                      <div className="px-3 sm:px-4 py-2.5 text-xs sm:text-sm" style={{ backgroundColor: 'var(--color-surface-alt)', borderTop: '1px solid var(--color-border)', color: 'var(--color-text-secondary)' }}>
                         Showing {(total === 0 ? 0 : (page - 1) * limit + 1)} - {Math.min(page * limit, total)} of {total} stores
                       </div>
 

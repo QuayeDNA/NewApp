@@ -51,7 +51,7 @@ interface TabsListProps {
 export function TabsList({ children, className = "" }: TabsListProps) {
   return (
     <div
-      className={`flex w-full overflow-x-auto flex-nowrap scroll-smooth h-10 items-center justify-center rounded-lg bg-[var(--bg-surface-alt)] p-1 text-[var(--text-secondary)] ${className}`}
+      className={`flex w-full overflow-x-auto flex-nowrap scroll-smooth h-10 items-center justify-center bg-[var(--color-surface-alt)] p-1 text-[var(--color-text-secondary)] ${className}`}
       role="tablist"
     >
       {children}
@@ -85,14 +85,14 @@ export function TabsTrigger({
       aria-selected={isActive}
       onClick={() => setActiveTab(value)}
       className={`
-        inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium 
-        ring-offset-[var(--bg-surface)] transition-all focus-visible:outline-none focus-visible:ring-2 
-        focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none 
+        inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium 
+        ring-offset-[var(--color-surface)] transition-all focus-visible:outline-none focus-visible:ring-2 
+        focus-visible:ring-[var(--color-amber)] focus-visible:ring-offset-2 disabled:pointer-events-none 
         disabled:opacity-50
         ${
           isActive
-            ? "bg-[var(--bg-surface)] text-[var(--text-primary)] shadow-sm"
-            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            ? "bg-[var(--color-surface)] text-[var(--color-text-primary)] shadow-sm"
+            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
         }
         ${className}
       `}
@@ -127,7 +127,7 @@ export function TabsContent({
   return (
     <div
       role="tabpanel"
-      className={`mt-2 ring-offset-[var(--bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${className}`}
+      className={`mt-2 ring-offset-[var(--color-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-amber)] focus-visible:ring-offset-2 ${className}`}
     >
       {children}
     </div>

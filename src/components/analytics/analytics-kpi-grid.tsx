@@ -37,7 +37,7 @@ const cardToneMap: Record<
         downTrendClass: "",
         flatTrendClass: "",
         cardStyle: {
-            background: "var(--gradient-brand-dark)",
+            background: "var(--color-ink)",
             borderColor: "transparent",
         },
     },
@@ -50,8 +50,8 @@ const cardToneMap: Record<
         downTrendClass: "",
         flatTrendClass: "",
         cardStyle: {
-            backgroundColor: "color-mix(in srgb, var(--info) 10%, var(--bg-surface))",
-            borderColor: "color-mix(in srgb, var(--info) 30%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-info) 10%, var(--color-surface))",
+            borderColor: "color-mix(in srgb, var(--color-info) 30%, transparent)",
         },
     },
     revenue: {
@@ -63,8 +63,8 @@ const cardToneMap: Record<
         downTrendClass: "",
         flatTrendClass: "",
         cardStyle: {
-            backgroundColor: "color-mix(in srgb, var(--success) 10%, var(--bg-surface))",
-            borderColor: "color-mix(in srgb, var(--success) 30%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-success) 10%, var(--color-surface))",
+            borderColor: "color-mix(in srgb, var(--color-success) 30%, transparent)",
         },
     },
     wallet: {
@@ -76,8 +76,8 @@ const cardToneMap: Record<
         downTrendClass: "",
         flatTrendClass: "",
         cardStyle: {
-            backgroundColor: "color-mix(in srgb, var(--color-secondary) 10%, var(--bg-surface))",
-            borderColor: "color-mix(in srgb, var(--color-secondary) 30%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-amber) 10%, var(--color-surface))",
+            borderColor: "color-mix(in srgb, var(--color-amber) 30%, transparent)",
         },
     },
     providers: {
@@ -89,15 +89,15 @@ const cardToneMap: Record<
         downTrendClass: "",
         flatTrendClass: "",
         cardStyle: {
-            backgroundColor: "color-mix(in srgb, var(--accent) 10%, var(--bg-surface))",
-            borderColor: "color-mix(in srgb, var(--accent) 30%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-amber) 10%, var(--color-surface))",
+            borderColor: "color-mix(in srgb, var(--color-amber) 30%, transparent)",
         },
     },
 };
 
 const fallbackTone = {
     cardClass: "",
-    cardStyle: { backgroundColor: "var(--bg-surface-alt)", borderColor: "var(--border-color)" } as React.CSSProperties,
+    cardStyle: { backgroundColor: "var(--color-surface-alt)", borderColor: "var(--color-border)" } as React.CSSProperties,
     iconClass: "",
     titleClass: "",
     valueClass: "",
@@ -147,21 +147,21 @@ export function AnalyticsKpiGrid({ cards }: AnalyticsKpiGridProps) {
                         <CardBody className="pt-0">
                             <div className="flex items-center gap-3">
                                 <div className={`shrink-0 text-base sm:text-lg ${tone.iconClass}`}
-                                    style={{ color: card.id === "users" ? "var(--text-inverse)" : "var(--text-secondary)" }}>
+                                    style={{ color: card.id === "users" ? "var(--color-text-inverse)" : "var(--color-text-secondary)" }}>
                                     {card.icon}
                                 </div>
 
                                 <div className="min-w-0 flex-1">
                                     <p className={`text-[10px] uppercase tracking-wide font-medium truncate ${tone.titleClass}`}
-                                        style={{ color: card.id === "users" ? "color-mix(in srgb, var(--text-inverse) 70%, transparent)" : "var(--text-secondary)" }}>
+                                        style={{ color: card.id === "users" ? "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)" : "var(--color-text-secondary)" }}>
                                         {card.title}
                                     </p>
                                     <p className={`text-base sm:text-lg font-bold leading-tight truncate ${tone.valueClass}`}
-                                        style={{ color: card.id === "users" ? "var(--text-inverse)" : "var(--text-primary)" }}>
+                                        style={{ color: card.id === "users" ? "var(--color-text-inverse)" : "var(--color-text-primary)" }}>
                                         {card.value}
                                     </p>
                                     <p className={`mt-0.5 text-[11px] font-medium truncate inline-flex items-center gap-1 ${trend.className}`}
-                                        style={{ color: card.id === "users" ? "color-mix(in srgb, var(--text-inverse) 75%, transparent)" : "var(--success)" }}>
+                                        style={{ color: card.id === "users" ? "color-mix(in srgb, var(--color-text-inverse) 75%, transparent)" : "var(--color-success)" }}>
                                         {trend.icon}
                                         <span>{card.subtitle}</span>
                                     </p>

@@ -30,24 +30,24 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 const typeToVars = {
   success: {
-    bg: "var(--success)",
-    border: "var(--success)",
-    color: "var(--text-inverse)",
+    bg: "var(--color-success)",
+    border: "var(--color-success)",
+    color: "var(--color-text-inverse)",
   },
   error: {
-    bg: "var(--error)",
-    border: "var(--error)",
-    color: "var(--text-inverse)",
+    bg: "var(--color-error)",
+    border: "var(--color-error)",
+    color: "var(--color-text-inverse)",
   },
   warning: {
-    bg: "var(--warning)",
-    border: "var(--warning)",
-    color: "var(--text-inverse)",
+    bg: "var(--color-warning)",
+    border: "var(--color-warning)",
+    color: "var(--color-text-inverse)",
   },
   info: {
-    bg: "var(--info)",
-    border: "var(--info)",
-    color: "var(--text-inverse)",
+    bg: "var(--color-info)",
+    border: "var(--color-info)",
+    color: "var(--color-text-inverse)",
   },
 } as const satisfies Record<ToastType, Record<string, string>>;
 
@@ -124,9 +124,9 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(
           background: vars.bg,
           borderColor: vars.border,
           color: vars.color,
-          borderRadius: "var(--radius-lg)",
+          borderRadius: 0,
           boxShadow: "var(--shadow-xl)",
-          fontFamily: "var(--font-family)",
+          fontFamily: "var(--font-body)",
           fontWeight: "var(--font-weight-semibold)",
           fontSize: "var(--font-2xl)",
           transition: "all var(--transition-normal)",
@@ -164,7 +164,7 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(
             border: "none",
             cursor: "pointer",
             padding: 0,
-            color: "var(--text-inverse)",
+            color: "var(--color-text-inverse)",
             opacity: 0.8,
             width: "var(--space-5)",
             height: "var(--space-5)",

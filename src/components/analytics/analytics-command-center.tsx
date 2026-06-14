@@ -47,7 +47,7 @@ const snapshotToneMap: Record<
 > = {
     default: {
         cardClass: "",
-        cardStyle: { backgroundColor: "var(--bg-surface-alt)", borderColor: "var(--border-color)" },
+        cardStyle: { backgroundColor: "var(--color-surface-alt)", borderColor: "var(--color-border)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -57,7 +57,7 @@ const snapshotToneMap: Record<
     },
     success: {
         cardClass: "",
-        cardStyle: { backgroundColor: "color-mix(in srgb, var(--success) 10%, var(--bg-surface))", borderColor: "color-mix(in srgb, var(--success) 30%, transparent)" },
+        cardStyle: { backgroundColor: "color-mix(in srgb, var(--color-success) 10%, var(--color-surface))", borderColor: "color-mix(in srgb, var(--color-success) 30%, transparent)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -67,7 +67,7 @@ const snapshotToneMap: Record<
     },
     warning: {
         cardClass: "",
-        cardStyle: { backgroundColor: "color-mix(in srgb, var(--warning) 10%, var(--bg-surface))", borderColor: "color-mix(in srgb, var(--warning) 30%, transparent)" },
+        cardStyle: { backgroundColor: "color-mix(in srgb, var(--color-warning) 10%, var(--color-surface))", borderColor: "color-mix(in srgb, var(--color-warning) 30%, transparent)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -77,7 +77,7 @@ const snapshotToneMap: Record<
     },
     error: {
         cardClass: "",
-        cardStyle: { backgroundColor: "color-mix(in srgb, var(--error) 10%, var(--bg-surface))", borderColor: "color-mix(in srgb, var(--error) 30%, transparent)" },
+        cardStyle: { backgroundColor: "color-mix(in srgb, var(--color-error) 10%, var(--color-surface))", borderColor: "color-mix(in srgb, var(--color-error) 30%, transparent)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -87,7 +87,7 @@ const snapshotToneMap: Record<
     },
     info: {
         cardClass: "",
-        cardStyle: { backgroundColor: "color-mix(in srgb, var(--info) 10%, var(--bg-surface))", borderColor: "color-mix(in srgb, var(--info) 30%, transparent)" },
+        cardStyle: { backgroundColor: "color-mix(in srgb, var(--color-info) 10%, var(--color-surface))", borderColor: "color-mix(in srgb, var(--color-info) 30%, transparent)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -97,7 +97,7 @@ const snapshotToneMap: Record<
     },
     gray: {
         cardClass: "",
-        cardStyle: { backgroundColor: "var(--bg-surface-alt)", borderColor: "var(--border-color-strong)" },
+        cardStyle: { backgroundColor: "var(--color-surface-alt)", borderColor: "var(--color-border-strong)" },
         iconClass: "",
         titleClass: "",
         valueClass: "",
@@ -122,11 +122,11 @@ export function AnalyticsCommandCenter({
         <div className="space-y-4">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div>
-                    <h1 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>Sales & Operations Analytics</h1>
-                    <p className="text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+                    <h1 className="text-xl font-bold" style={{ color: "var(--color-text-primary)" }}>Sales & Operations Analytics</h1>
+                    <p className="text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                         Monitor platform performance across revenue, orders, users, and payouts.
                     </p>
-                    <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs" style={{ color: "var(--text-secondary)" }}>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs" style={{ color: "var(--color-text-secondary)" }}>
                         <span className="inline-flex items-center gap-1.5">
                             <FaChartLine />
                             Last updated: {generatedAt ? formatDateTime(generatedAt) : "Awaiting data"}
@@ -190,13 +190,13 @@ export function AnalyticsCommandCenter({
                                             </div>
 
                                             <div className="min-w-0 flex-1">
-                                                <p className={`text-[10px] uppercase tracking-wide font-medium truncate ${tone.titleClass}`} style={{ color: "var(--text-secondary)" }}>
+                                                <p className={`text-[10px] uppercase tracking-wide font-medium truncate ${tone.titleClass}`} style={{ color: "var(--color-text-secondary)" }}>
                                                     {snapshot.label}
                                                 </p>
-                                                <p className={`text-base sm:text-lg font-bold leading-tight truncate ${tone.valueClass}`} style={{ color: "var(--text-primary)" }}>
+                                                <p className={`text-base sm:text-lg font-bold leading-tight truncate ${tone.valueClass}`} style={{ color: "var(--color-text-primary)" }}>
                                                     {snapshot.value}
                                                 </p>
-                                                <p className={`mt-0.5 text-[11px] font-medium truncate inline-flex items-center gap-1 ${tone.subtitleClass}`} style={{ color: "var(--text-secondary)" }}>
+                                                <p className={`mt-0.5 text-[11px] font-medium truncate inline-flex items-center gap-1 ${tone.subtitleClass}`} style={{ color: "var(--color-text-secondary)" }}>
                                                     {tone.trendIcon}
                                                     <span>{tone.subtitleText}</span>
                                                 </p>

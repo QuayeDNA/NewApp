@@ -160,11 +160,11 @@ export default function WalletHistoryPage() {
       {/* ── Page header ─────────────────────────────────────────────────────── */}
       <div
         className="rounded-xl p-4 sm:p-6"
-        style={{ backgroundImage: "linear-gradient(to right, #334155, #1e293b)", color: "var(--text-inverse)" }}
+        style={{ backgroundImage: "linear-gradient(to right, #334155, #1e293b)", color: "var(--color-text-inverse)" }}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl" style={{ backgroundColor: "color-mix(in srgb, var(--text-inverse) 20%, transparent)" }}>
+            <div className="p-2.5 rounded-xl" style={{ backgroundColor: "color-mix(in srgb, var(--color-text-inverse) 20%, transparent)" }}>
               <FaHistory className="text-xl sm:text-2xl" />
             </div>
             <div>
@@ -179,9 +179,9 @@ export default function WalletHistoryPage() {
             size="sm"
             className="self-start sm:self-auto"
             style={{
-              borderColor: hoveredRefreshBtn ? "color-mix(in srgb, var(--text-inverse) 20%, transparent)" : "color-mix(in srgb, var(--text-inverse) 40%, transparent)",
-              color: "var(--text-inverse)",
-              backgroundColor: hoveredRefreshBtn ? "color-mix(in srgb, var(--text-inverse) 10%, transparent)" : undefined,
+              borderColor: hoveredRefreshBtn ? "color-mix(in srgb, var(--color-text-inverse) 20%, transparent)" : "color-mix(in srgb, var(--color-text-inverse) 40%, transparent)",
+              color: "var(--color-text-inverse)",
+              backgroundColor: hoveredRefreshBtn ? "color-mix(in srgb, var(--color-text-inverse) 10%, transparent)" : undefined,
             }}
             onMouseEnter={() => setHoveredRefreshBtn(true)}
             onMouseLeave={() => setHoveredRefreshBtn(false)}
@@ -196,7 +196,7 @@ export default function WalletHistoryPage() {
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
           {loading ? (
             [...Array(4)].map((_, i) => (
-              <div key={i} className="rounded-lg px-3 py-2.5" style={{ backgroundColor: "color-mix(in srgb, var(--text-inverse) 15%, transparent)" }}>
+              <div key={i} className="rounded-lg px-3 py-2.5" style={{ backgroundColor: "color-mix(in srgb, var(--color-text-inverse) 15%, transparent)" }}>
                 <Skeleton height="0.625rem" width="60%" className="mb-1 opacity-50" />
                 <Skeleton height="1.25rem" width="80%" className="mb-1 opacity-60" />
                 <Skeleton height="0.625rem" width="50%" className="opacity-40" />
@@ -204,27 +204,27 @@ export default function WalletHistoryPage() {
             ))
           ) : (
             <>
-              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2" style={{ backgroundColor: "color-mix(in srgb, var(--text-inverse) 15%, transparent)" }}>
-                <FaUsers className="text-sm flex-shrink-0" style={{ color: "color-mix(in srgb, var(--text-inverse) 60%, transparent)" }} />
+              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2" style={{ backgroundColor: "color-mix(in srgb, var(--color-text-inverse) 15%, transparent)" }}>
+                <FaUsers className="text-sm flex-shrink-0" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 60%, transparent)" }} />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--text-inverse) 70%, transparent)" }}>Total</p>
-                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--text-inverse)" }}>{pagination.total}</p>
+                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)" }}>Total</p>
+                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--color-text-inverse)" }}>{pagination.total}</p>
                   <p className="text-[10px]" style={{ color: "color-mix(in srgb, var(--text-tertiary) 80%, transparent)" }}>transactions</p>
                 </div>
               </div>
-              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 border" style={{ backgroundColor: "color-mix(in srgb, var(--success) 30%, transparent)", borderColor: "color-mix(in srgb, var(--success) 30%, transparent)" }}>
-                <FaArrowUp className="text-sm flex-shrink-0" style={{ color: "var(--success)" }} />
+              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 border" style={{ backgroundColor: "color-mix(in srgb, var(--color-success) 30%, transparent)", borderColor: "color-mix(in srgb, var(--color-success) 30%, transparent)" }}>
+                <FaArrowUp className="text-sm flex-shrink-0" style={{ color: "var(--color-success)" }} />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--text-inverse) 70%, transparent)" }}>Credits</p>
-                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--text-inverse)" }}>{fmt(summary.totalCredits)}</p>
+                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)" }}>Credits</p>
+                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--color-text-inverse)" }}>{fmt(summary.totalCredits)}</p>
                   <p className="text-[10px]" style={{ color: "color-mix(in srgb, var(--text-tertiary) 80%, transparent)" }}>{summary.creditCount} transactions</p>
                 </div>
               </div>
-              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 border" style={{ backgroundColor: "color-mix(in srgb, var(--error) 30%, transparent)", borderColor: "color-mix(in srgb, var(--error) 30%, transparent)" }}>
-                <FaArrowDown className="text-sm flex-shrink-0" style={{ color: "var(--error)" }} />
+              <div className="rounded-lg px-3 py-2.5 flex items-center gap-2 border" style={{ backgroundColor: "color-mix(in srgb, var(--color-error) 30%, transparent)", borderColor: "color-mix(in srgb, var(--color-error) 30%, transparent)" }}>
+                <FaArrowDown className="text-sm flex-shrink-0" style={{ color: "var(--color-error)" }} />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--text-inverse) 70%, transparent)" }}>Debits</p>
-                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--text-inverse)" }}>{fmt(summary.totalDebits)}</p>
+                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)" }}>Debits</p>
+                  <p className="font-bold text-sm sm:text-base" style={{ color: "var(--color-text-inverse)" }}>{fmt(summary.totalDebits)}</p>
                   <p className="text-[10px]" style={{ color: "color-mix(in srgb, var(--text-tertiary) 80%, transparent)" }}>{summary.debitCount} transactions</p>
                 </div>
               </div>
@@ -232,19 +232,19 @@ export default function WalletHistoryPage() {
                 className="rounded-lg px-3 py-2.5 flex items-center gap-2 border"
                 style={{
                   backgroundColor: summary.totalCredits - summary.totalDebits >= 0
-                    ? "color-mix(in srgb, var(--success) 20%, transparent)"
-                    : "color-mix(in srgb, var(--error) 20%, transparent)",
+                    ? "color-mix(in srgb, var(--color-success) 20%, transparent)"
+                    : "color-mix(in srgb, var(--color-error) 20%, transparent)",
                   borderColor: summary.totalCredits - summary.totalDebits >= 0
-                    ? "color-mix(in srgb, var(--success) 20%, transparent)"
-                    : "color-mix(in srgb, var(--error) 20%, transparent)",
+                    ? "color-mix(in srgb, var(--color-success) 20%, transparent)"
+                    : "color-mix(in srgb, var(--color-error) 20%, transparent)",
                 }}
               >
-                <FaExchangeAlt className="text-sm flex-shrink-0" style={{ color: "color-mix(in srgb, var(--text-inverse) 60%, transparent)" }} />
+                <FaExchangeAlt className="text-sm flex-shrink-0" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 60%, transparent)" }} />
                 <div className="min-w-0">
-                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--text-inverse) 70%, transparent)" }}>Net (page)</p>
+                  <p className="text-[10px] font-medium uppercase tracking-wide" style={{ color: "color-mix(in srgb, var(--color-text-inverse) 70%, transparent)" }}>Net (page)</p>
                   <p
                     className="font-bold text-sm sm:text-base"
-                    style={{ color: summary.totalCredits - summary.totalDebits >= 0 ? "var(--success)" : "var(--error)" }}
+                    style={{ color: summary.totalCredits - summary.totalDebits >= 0 ? "var(--color-success)" : "var(--color-error)" }}
                   >
                     {summary.totalCredits - summary.totalDebits >= 0 ? "+" : ""}{fmt(summary.totalCredits - summary.totalDebits)}
                   </p>
@@ -283,7 +283,7 @@ export default function WalletHistoryPage() {
       {/* ── Results count ───────────────────────────────────────────────────── */}
       {!loading && (
         <div className="flex items-center justify-between px-1">
-          <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
             {pagination.total > 0
               ? `Showing ${(pagination.page - 1) * pagination.limit + 1}–${Math.min(pagination.page * pagination.limit, pagination.total)} of ${pagination.total} transactions`
               : "No transactions found"}
@@ -292,7 +292,7 @@ export default function WalletHistoryPage() {
             <button
               onClick={handleClearFilters}
               className="text-xs flex items-center gap-1"
-              style={{ color: hoveredClearFilter ? "color-mix(in srgb, var(--color-primary) 80%, transparent)" : "var(--color-primary)" }}
+              style={{ color: hoveredClearFilter ? "color-mix(in srgb, var(--color-ink) 80%, transparent)" : "var(--color-ink)" }}
               onMouseEnter={() => setHoveredClearFilter(true)}
               onMouseLeave={() => setHoveredClearFilter(false)}
             >
@@ -307,7 +307,7 @@ export default function WalletHistoryPage() {
         {loading ? (
           <div className="p-4 space-y-3">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="p-3 rounded-xl border" style={{ borderColor: "var(--border-color)" }}>
+              <div key={i} className="p-3 rounded-xl border" style={{ borderColor: "var(--color-border)" }}>
                 <div className="flex items-start gap-3">
                   <Skeleton variant="circular" width={36} height={36} />
                   <div className="flex-1 space-y-1.5">
@@ -330,11 +330,11 @@ export default function WalletHistoryPage() {
           </div>
         ) : transactions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 gap-3" style={{ color: "var(--text-tertiary)" }}>
-            <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: "var(--bg-muted)" }}>
+            <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: "var(--color-ground)" }}>
               <FaHistory className="text-2xl" />
             </div>
             <div className="text-center">
-              <p className="font-medium" style={{ color: "var(--text-secondary)" }}>No transactions found</p>
+              <p className="font-medium" style={{ color: "var(--color-text-secondary)" }}>No transactions found</p>
               <p className="text-sm mt-0.5" style={{ color: "var(--text-tertiary)" }}>
                 {hasActiveFilters ? "Try adjusting your filters or date range." : "No wallet transactions recorded yet."}
               </p>
@@ -348,7 +348,7 @@ export default function WalletHistoryPage() {
         ) : (
           <>
             {/* Mobile card view */}
-            <div className="sm:hidden divide-y divide-[var(--border-color)]">
+            <div className="sm:hidden divide-y divide-[var(--color-border)]">
               {transactions.map((txn) => {
                 const isCredit = txn.type === "credit";
                 const balanceBefore = isCredit
@@ -359,8 +359,8 @@ export default function WalletHistoryPage() {
                     key={txn._id}
                     className="p-3 transition-colors border-l-4"
                     style={{
-                      borderLeftColor: isCredit ? "var(--success)" : "var(--error)",
-                      backgroundColor: hoveredRowId === txn._id ? "color-mix(in srgb, var(--bg-muted) 70%, transparent)" : undefined,
+                      borderLeftColor: isCredit ? "var(--color-success)" : "var(--color-error)",
+                      backgroundColor: hoveredRowId === txn._id ? "color-mix(in srgb, var(--color-ground) 70%, transparent)" : undefined,
                     }}
                     onMouseEnter={() => setHoveredRowId(txn._id)}
                     onMouseLeave={() => setHoveredRowId(null)}
@@ -369,11 +369,11 @@ export default function WalletHistoryPage() {
                       {/* Icon */}
                       <div
                         className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ backgroundColor: isCredit ? "color-mix(in srgb, var(--success) 15%, transparent)" : "color-mix(in srgb, var(--error) 15%, transparent)" }}
+                        style={{ backgroundColor: isCredit ? "color-mix(in srgb, var(--color-success) 15%, transparent)" : "color-mix(in srgb, var(--color-error) 15%, transparent)" }}
                       >
                         {isCredit
-                          ? <FaArrowUp className="text-xs" style={{ color: "var(--success)" }} />
-                          : <FaArrowDown className="text-xs" style={{ color: "var(--error)" }} />}
+                          ? <FaArrowUp className="text-xs" style={{ color: "var(--color-success)" }} />
+                          : <FaArrowDown className="text-xs" style={{ color: "var(--color-error)" }} />}
                       </div>
 
                       {/* Details */}
@@ -382,25 +382,25 @@ export default function WalletHistoryPage() {
                           <Badge colorScheme={txnTypeBadgeColor(txn.type)} size="xs">{txn.type}</Badge>
                           <Badge colorScheme={txnStatusBadgeColor(txn.status)} size="xs">{txn.status}</Badge>
                         </div>
-                        <p className="font-semibold text-sm truncate" style={{ color: "var(--text-primary)" }}>{getUserDisplayName(txn.user)}</p>
+                        <p className="font-semibold text-sm truncate" style={{ color: "var(--color-text-primary)" }}>{getUserDisplayName(txn.user)}</p>
                         {getUserIdentifier(txn.user) && (
-                          <p className="text-xs font-mono truncate" style={{ color: "var(--color-primary)" }}>{getUserIdentifier(txn.user)}</p>
+                          <p className="text-xs font-mono truncate" style={{ color: "var(--color-ink)" }}>{getUserIdentifier(txn.user)}</p>
                         )}
-                        <p className="text-xs mt-0.5 line-clamp-1" style={{ color: "var(--text-secondary)" }}>{txn.description}</p>
+                        <p className="text-xs mt-0.5 line-clamp-1" style={{ color: "var(--color-text-secondary)" }}>{txn.description}</p>
                         <p className="text-[10px] mt-0.5" style={{ color: "var(--text-tertiary)" }}>{formatDate(txn.createdAt)}</p>
                       </div>
 
                       {/* Amount + actions */}
                       <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                        <p className="font-bold text-base leading-tight" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>
+                        <p className="font-bold text-base leading-tight" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>
                           {isCredit ? "+" : "\u2212"}{fmt(txn.amount)}
                         </p>
                         <button
                           onClick={() => { setSelectedTransaction(txn); setDetailModalOpen(true); }}
                           className="p-1.5 rounded-lg transition-colors"
                           style={{
-                            color: "var(--color-primary)",
-                            backgroundColor: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-primary) 8%, transparent)" : undefined,
+                            color: "var(--color-ink)",
+                            backgroundColor: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-ink) 8%, transparent)" : undefined,
                           }}
                           onMouseEnter={() => setHoveredViewBtnId(txn._id)}
                           onMouseLeave={() => setHoveredViewBtnId(null)}
@@ -415,16 +415,16 @@ export default function WalletHistoryPage() {
                     <div className="mt-2 ml-12 flex items-center gap-1.5 text-xs flex-wrap">
                       <div className="flex flex-col items-center">
                         <span className="uppercase tracking-wide text-[9px] leading-none mb-0.5" style={{ color: "var(--text-tertiary)" }}>Before</span>
-                        <span className="font-mono font-medium rounded px-1.5 py-0.5 whitespace-nowrap text-[10px]" style={{ color: "var(--text-secondary)", backgroundColor: "var(--bg-muted)" }}>
+                        <span className="font-mono font-medium rounded px-1.5 py-0.5 whitespace-nowrap text-[10px]" style={{ color: "var(--color-text-secondary)", backgroundColor: "var(--color-ground)" }}>
                           {fmt(balanceBefore)}
                         </span>
                       </div>
-                      <span className="font-semibold whitespace-nowrap text-[10px]" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>
+                      <span className="font-semibold whitespace-nowrap text-[10px]" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>
                         {isCredit ? "\uFF0B" : "\uFF0D"}{fmt(txn.amount)} \u2192
                       </span>
                       <div className="flex flex-col items-center">
                         <span className="uppercase tracking-wide text-[9px] leading-none mb-0.5" style={{ color: "var(--text-tertiary)" }}>After</span>
-                        <span className="font-mono font-semibold rounded px-1.5 py-0.5 whitespace-nowrap text-[10px] shadow-sm border" style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-surface)", borderColor: "var(--border-color)" }}>
+                        <span className="font-mono font-semibold rounded px-1.5 py-0.5 whitespace-nowrap text-[10px] shadow-sm border" style={{ color: "var(--color-text-primary)", backgroundColor: "var(--color-surface)", borderColor: "var(--color-border)" }}>
                           {fmt(txn.balanceAfter)}
                         </span>
                       </div>
@@ -460,13 +460,13 @@ export default function WalletHistoryPage() {
                         key={txn._id}
                         className="transition-colors border-l-2"
                         style={{
-                          borderLeftColor: isCredit ? "var(--success)" : "var(--error)",
-                          backgroundColor: hoveredRowId === txn._id ? "color-mix(in srgb, var(--bg-muted) 70%, transparent)" : undefined,
+                          borderLeftColor: isCredit ? "var(--color-success)" : "var(--color-error)",
+                          backgroundColor: hoveredRowId === txn._id ? "color-mix(in srgb, var(--color-ground) 70%, transparent)" : undefined,
                         }}
                         onMouseEnter={() => setHoveredRowId(txn._id)}
                         onMouseLeave={() => setHoveredRowId(null)}
                       >
-                        <TableCell className="whitespace-nowrap text-xs" style={{ color: "var(--text-secondary)" }}>
+                        <TableCell className="whitespace-nowrap text-xs" style={{ color: "var(--color-text-secondary)" }}>
                           {formatDate(txn.createdAt)}
                         </TableCell>
                         <TableCell>
@@ -474,14 +474,14 @@ export default function WalletHistoryPage() {
                             <div
                               className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
                               style={{
-                                color: "var(--text-inverse)",
-                                backgroundColor: isCredit ? "var(--success)" : "var(--error)",
+                                color: "var(--color-text-inverse)",
+                                backgroundColor: isCredit ? "var(--color-success)" : "var(--color-error)",
                               }}
                             >
                               {getUserDisplayName(txn.user).charAt(0).toUpperCase()}
                             </div>
                             <div className="min-w-0">
-                              <div className="font-semibold text-sm truncate max-w-[140px]" style={{ color: "var(--text-primary)" }}>{getUserDisplayName(txn.user)}</div>
+                              <div className="font-semibold text-sm truncate max-w-[140px]" style={{ color: "var(--color-text-primary)" }}>{getUserDisplayName(txn.user)}</div>
                               <div className="text-xs font-mono truncate" style={{ color: "var(--text-tertiary)" }}>{getUserIdentifier(txn.user)}</div>
                             </div>
                           </div>
@@ -493,21 +493,21 @@ export default function WalletHistoryPage() {
                           </div>
                         </TableCell>
                         <TableCell className="whitespace-nowrap">
-                          <span className="font-bold text-sm" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>
+                          <span className="font-bold text-sm" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>
                             {isCredit ? "+" : "\u2212"}{fmt(txn.amount)}
                           </span>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-1 text-xs flex-wrap">
-                            <span className="font-mono px-1.5 py-0.5 rounded whitespace-nowrap" style={{ color: "var(--text-secondary)", backgroundColor: "var(--bg-muted)" }}>{fmt(balanceBefore)}</span>
-                            <span className="font-semibold text-[10px]" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>→</span>
-                            <span className="font-mono font-semibold px-1.5 py-0.5 rounded whitespace-nowrap shadow-sm border" style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-surface)", borderColor: "var(--border-color)" }}>{fmt(txn.balanceAfter)}</span>
+                            <span className="font-mono px-1.5 py-0.5 rounded whitespace-nowrap" style={{ color: "var(--color-text-secondary)", backgroundColor: "var(--color-ground)" }}>{fmt(balanceBefore)}</span>
+                            <span className="font-semibold text-[10px]" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>→</span>
+                            <span className="font-mono font-semibold px-1.5 py-0.5 rounded whitespace-nowrap shadow-sm border" style={{ color: "var(--color-text-primary)", backgroundColor: "var(--color-surface)", borderColor: "var(--color-border)" }}>{fmt(txn.balanceAfter)}</span>
                           </div>
                         </TableCell>
-                        <TableCell className="hidden lg:table-cell text-sm max-w-[200px] truncate" style={{ color: "var(--text-secondary)" }}>
+                        <TableCell className="hidden lg:table-cell text-sm max-w-[200px] truncate" style={{ color: "var(--color-text-secondary)" }}>
                           {txn.description}
                         </TableCell>
-                        <TableCell className="hidden xl:table-cell text-xs" style={{ color: "var(--text-secondary)" }}>
+                        <TableCell className="hidden xl:table-cell text-xs" style={{ color: "var(--color-text-secondary)" }}>
                           {txn.approvedBy ? getUserDisplayName(txn.approvedBy) : "—"}
                         </TableCell>
                         <TableCell>
@@ -515,8 +515,8 @@ export default function WalletHistoryPage() {
                             onClick={() => { setSelectedTransaction(txn); setDetailModalOpen(true); }}
                             className="p-1.5 rounded-lg transition-colors"
                             style={{
-                              color: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-primary) 80%, transparent)" : "var(--color-primary)",
-                              backgroundColor: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-primary) 8%, transparent)" : undefined,
+                              color: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-ink) 80%, transparent)" : "var(--color-ink)",
+                              backgroundColor: hoveredViewBtnId === txn._id ? "color-mix(in srgb, var(--color-ink) 8%, transparent)" : undefined,
                             }}
                             onMouseEnter={() => setHoveredViewBtnId(txn._id)}
                             onMouseLeave={() => setHoveredViewBtnId(null)}
@@ -535,7 +535,7 @@ export default function WalletHistoryPage() {
         )}
 
         {pagination.pages > 1 && !loading && (
-          <div className="border-t border-[var(--border-color)] px-4 py-3">
+          <div className="border-t border-[var(--color-border)] px-4 py-3">
             <Pagination
               currentPage={pagination.page}
               totalPages={pagination.pages}
@@ -570,76 +570,76 @@ export default function WalletHistoryPage() {
               <div
                 className="rounded-xl p-4 flex items-center gap-4 border"
                 style={{
-                  backgroundColor: isCredit ? "color-mix(in srgb, var(--success) 8%, transparent)" : "color-mix(in srgb, var(--error) 8%, transparent)",
-                  borderColor: isCredit ? "color-mix(in srgb, var(--success) 30%, transparent)" : "color-mix(in srgb, var(--error) 30%, transparent)",
+                  backgroundColor: isCredit ? "color-mix(in srgb, var(--color-success) 8%, transparent)" : "color-mix(in srgb, var(--color-error) 8%, transparent)",
+                  borderColor: isCredit ? "color-mix(in srgb, var(--color-success) 30%, transparent)" : "color-mix(in srgb, var(--color-error) 30%, transparent)",
                 }}
               >
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
-                    color: "var(--text-inverse)",
-                    backgroundColor: isCredit ? "var(--success)" : "var(--error)",
+                    color: "var(--color-text-inverse)",
+                    backgroundColor: isCredit ? "var(--color-success)" : "var(--color-error)",
                   }}
                 >
                   {isCredit ? <FaArrowUp className="text-lg" /> : <FaArrowDown className="text-lg" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold" style={{ color: "var(--text-primary)" }}>{getUserDisplayName(selectedTransaction.user)}</p>
-                  <p className="text-xs font-mono" style={{ color: "var(--text-secondary)" }}>{getUserIdentifier(selectedTransaction.user)}</p>
+                  <p className="font-semibold" style={{ color: "var(--color-text-primary)" }}>{getUserDisplayName(selectedTransaction.user)}</p>
+                  <p className="text-xs font-mono" style={{ color: "var(--color-text-secondary)" }}>{getUserIdentifier(selectedTransaction.user)}</p>
                   <div className="flex gap-1 mt-1 flex-wrap">
                     <Badge colorScheme={txnTypeBadgeColor(selectedTransaction.type)} size="xs">{selectedTransaction.type}</Badge>
                     <Badge colorScheme={txnStatusBadgeColor(selectedTransaction.status)} size="xs">{selectedTransaction.status}</Badge>
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="font-bold text-xl leading-tight" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>
+                  <p className="font-bold text-xl leading-tight" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>
                     {isCredit ? "+" : "\u2212"}{fmt(selectedTransaction.amount)}
                   </p>
                 </div>
               </div>
 
               {/* Balance timeline */}
-              <div className="rounded-xl p-3" style={{ backgroundColor: "var(--bg-muted)" }}>
-                <p className="text-xs mb-2 font-medium uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>Balance Change</p>
+              <div className="rounded-xl p-3" style={{ backgroundColor: "var(--color-ground)" }}>
+                <p className="text-xs mb-2 font-medium uppercase tracking-wide" style={{ color: "var(--color-text-secondary)" }}>Balance Change</p>
                 <div className="flex items-center gap-2 flex-wrap">
                   <div className="flex flex-col items-center">
                     <span className="text-[10px] uppercase tracking-wide mb-1" style={{ color: "var(--text-tertiary)" }}>Before</span>
-                    <span className="font-mono font-medium rounded-lg px-3 py-1.5 text-sm border" style={{ color: "var(--text-secondary)", backgroundColor: "var(--bg-surface)", borderColor: "var(--border-color)" }}>{fmt(balanceBefore)}</span>
+                    <span className="font-mono font-medium rounded-lg px-3 py-1.5 text-sm border" style={{ color: "var(--color-text-secondary)", backgroundColor: "var(--color-surface)", borderColor: "var(--color-border)" }}>{fmt(balanceBefore)}</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <span className="text-[10px] text-transparent mb-1">_</span>
-                    <span className="font-semibold text-sm" style={{ color: isCredit ? "var(--success)" : "var(--error)" }}>
+                    <span className="font-semibold text-sm" style={{ color: isCredit ? "var(--color-success)" : "var(--color-error)" }}>
                       {isCredit ? "\uFF0B" : "\uFF0D"}{fmt(selectedTransaction.amount)} →
                     </span>
                   </div>
                   <div className="flex flex-col items-center">
                     <span className="text-[10px] uppercase tracking-wide mb-1" style={{ color: "var(--text-tertiary)" }}>After</span>
-                    <span className="font-mono font-bold rounded-lg px-3 py-1.5 text-sm shadow-sm border-2" style={{ color: "var(--text-primary)", backgroundColor: "var(--bg-surface)", borderColor: "var(--border-color)" }}>{fmt(selectedTransaction.balanceAfter)}</span>
+                    <span className="font-mono font-bold rounded-lg px-3 py-1.5 text-sm shadow-sm border-2" style={{ color: "var(--color-text-primary)", backgroundColor: "var(--color-surface)", borderColor: "var(--color-border)" }}>{fmt(selectedTransaction.balanceAfter)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Meta grid */}
               <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="rounded-lg p-3" style={{ backgroundColor: "var(--bg-muted)" }}>
-                  <p className="text-xs mb-0.5" style={{ color: "var(--text-secondary)" }}>Date</p>
-                  <p className="font-medium text-xs" style={{ color: "var(--text-primary)" }}>{formatDate(selectedTransaction.createdAt)}</p>
+                <div className="rounded-lg p-3" style={{ backgroundColor: "var(--color-ground)" }}>
+                  <p className="text-xs mb-0.5" style={{ color: "var(--color-text-secondary)" }}>Date</p>
+                  <p className="font-medium text-xs" style={{ color: "var(--color-text-primary)" }}>{formatDate(selectedTransaction.createdAt)}</p>
                 </div>
-                <div className="rounded-lg p-3" style={{ backgroundColor: "var(--bg-muted)" }}>
-                  <p className="text-xs mb-0.5" style={{ color: "var(--text-secondary)" }}>Reference</p>
-                  <p className="font-mono text-[11px] break-all" style={{ color: "var(--text-primary)" }}>{selectedTransaction.reference || selectedTransaction._id}</p>
+                <div className="rounded-lg p-3" style={{ backgroundColor: "var(--color-ground)" }}>
+                  <p className="text-xs mb-0.5" style={{ color: "var(--color-text-secondary)" }}>Reference</p>
+                  <p className="font-mono text-[11px] break-all" style={{ color: "var(--color-text-primary)" }}>{selectedTransaction.reference || selectedTransaction._id}</p>
                 </div>
                 {selectedTransaction.approvedBy && (
-                  <div className="rounded-lg p-3 col-span-2" style={{ backgroundColor: "var(--bg-muted)" }}>
-                    <p className="text-xs mb-0.5" style={{ color: "var(--text-secondary)" }}>Processed By</p>
-                    <p className="font-medium" style={{ color: "var(--text-primary)" }}>{getUserDisplayName(selectedTransaction.approvedBy)}</p>
+                  <div className="rounded-lg p-3 col-span-2" style={{ backgroundColor: "var(--color-ground)" }}>
+                    <p className="text-xs mb-0.5" style={{ color: "var(--color-text-secondary)" }}>Processed By</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{getUserDisplayName(selectedTransaction.approvedBy)}</p>
                   </div>
                 )}
               </div>
 
-              <div className="rounded-lg p-3" style={{ backgroundColor: "var(--bg-muted)" }}>
-                <p className="text-xs mb-1 font-medium" style={{ color: "var(--text-secondary)" }}>Description</p>
-                <p className="text-sm break-words" style={{ color: "var(--text-primary)" }}>{selectedTransaction.description || "No description provided"}</p>
+              <div className="rounded-lg p-3" style={{ backgroundColor: "var(--color-ground)" }}>
+                <p className="text-xs mb-1 font-medium" style={{ color: "var(--color-text-secondary)" }}>Description</p>
+                <p className="text-sm break-words" style={{ color: "var(--color-text-primary)" }}>{selectedTransaction.description || "No description provided"}</p>
               </div>
 
               <div className="flex justify-end pt-1">

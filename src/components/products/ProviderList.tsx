@@ -102,8 +102,8 @@ export const ProviderList: React.FC = () => {
 
   if (error) {
     return (
-      <div className="p-6 bg-red-50 border border-red-200 rounded-lg">
-        <p className="text-red-800">Error: {error}</p>
+      <div className="p-6 bg-[var(--color-error)]/10 border border-[var(--color-error)]/30">
+        <p className="text-[var(--color-error)]">Error: {error}</p>
       </div>
     );
   }
@@ -112,12 +112,12 @@ export const ProviderList: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-bold text-gray-900">Network Providers</h1>
+        <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">Network Providers</h1>
 
         {isSuperAdmin && (
           <button
             onClick={handleCreateNew}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-info)] text-white hover:bg-[var(--color-info)]/80 focus:outline-none focus:ring-2 focus:ring-[var(--color-info)]"
           >
             <FaPlus className="text-sm" />
             Add Provider
@@ -143,18 +143,18 @@ export const ProviderList: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 3 }, (_, index) => (
-            <div key={`loading-${index}`} className="bg-white rounded-lg shadow-md p-6 animate-pulse">
-              <div className="w-16 h-16 bg-gray-200 rounded-full mb-4"></div>
-              <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+            <div key={`loading-${index}`} className="bg-[var(--color-surface)] shadow-[var(--shadow-md)] p-6 animate-pulse">
+              <div className="w-16 h-16 bg-[var(--color-surface-alt)] mb-4"></div>
+              <div className="h-6 bg-[var(--color-surface-alt)] w-3/4 mb-2"></div>
+              <div className="h-4 bg-[var(--color-surface-alt)] w-1/2"></div>
             </div>
           ))}
         </div>
       ) : !providers || providers.length === 0 ? (
         <div className="text-center py-12">
-          <div className="text-gray-400 text-6xl mb-4">📱</div>
-          <h3 className="text-xl font-medium text-gray-900 mb-2">No providers found</h3>
-          <p className="text-gray-500 mb-6">
+          <div className="text-[var(--color-text-muted)] text-6xl mb-4">📱</div>
+          <h3 className="text-xl font-medium text-[var(--color-text-primary)] mb-2">No providers found</h3>
+          <p className="text-[var(--color-text-muted)] mb-6">
             {isSuperAdmin 
               ? "Get started by adding your first network provider" 
               : "No network providers are currently available"
@@ -163,7 +163,7 @@ export const ProviderList: React.FC = () => {
           {isSuperAdmin && (
             <button
               onClick={handleCreateNew}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-info)] text-white hover:bg-[var(--color-info)]/80"
             >
               <FaPlus className="text-sm" />
               Add Provider
@@ -175,7 +175,7 @@ export const ProviderList: React.FC = () => {
           {providers.map((provider) => (
             <div
               key={provider._id}
-              className={`bg-white rounded-lg shadow-md overflow-hidden ${
+              className={`bg-[var(--color-surface)] shadow-[var(--shadow-md)] overflow-hidden ${
                 provider.isDeleted ? 'opacity-60' : ''
               }`}
             >
@@ -185,36 +185,36 @@ export const ProviderList: React.FC = () => {
                     <img
                       src={provider.logo.url}
                       alt={provider.logo.alt ?? provider.name}
-                      className="w-16 h-16 object-contain rounded-full bg-gray-100"
+                      className="w-16 h-16 object-contain bg-[var(--color-surface-alt)]"
                     />
                   ) : (
-                    <div className="w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 text-2xl font-bold">
+                    <div className="w-16 h-16 flex items-center justify-center bg-[var(--color-surface-alt)] text-[var(--color-text-muted)] text-2xl font-bold">
                       {provider.name.charAt(0)}
                     </div>
                   )}
                   
                   <div className="relative">
                     <button
-                      className="p-2 rounded-full hover:bg-gray-100"
+                      className="p-2 hover:bg-[var(--color-surface-alt)]"
                       aria-label="More options"
                     >
-                      <FaEllipsisV className="text-gray-500" />
+                      <FaEllipsisV className="text-[var(--color-text-muted)]" />
                     </button>
                     {/* Dropdown menu can be added here */}
                   </div>
                 </div>
 
-                <h3 className="text-lg font-medium text-gray-900 mb-1">{provider.name}</h3>
+                <h3 className="text-lg font-medium text-[var(--color-text-primary)] mb-1">{provider.name}</h3>
                 {provider.description && (
-                  <p className="text-gray-500 text-sm mb-3">{provider.description}</p>
+                  <p className="text-[var(--color-text-muted)] text-sm mb-3">{provider.description}</p>
                 )}
 
                 <div className="flex items-center justify-between mt-4">
                   <span
-                    className={`px-2 py-1 text-xs font-medium rounded-full ${
+                    className={`px-2 py-1 text-xs font-medium ${
                       provider.isActive
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-yellow-100 text-yellow-800'
+                        ? 'bg-[var(--color-success)]/10 text-[var(--color-success)]'
+                        : 'bg-[var(--color-amber)]/10 text-[var(--color-amber)]'
                     }`}
                   >
                     {provider.isActive ? 'Active' : 'Inactive'}
@@ -225,10 +225,10 @@ export const ProviderList: React.FC = () => {
                       <>
                         <button
                           onClick={() => handleToggleStatus(provider._id ?? '', provider.isActive)}
-                          className={`p-2 rounded ${
+                          className={`p-2 ${
                             provider.isActive
-                              ? 'text-yellow-600 hover:bg-yellow-50'
-                              : 'text-green-600 hover:bg-green-50'
+                              ? 'text-[var(--color-amber)] hover:bg-[var(--color-amber)]/10'
+                              : 'text-[var(--color-success)] hover:bg-[var(--color-success)]/10'
                           }`}
                           title={provider.isActive ? 'Deactivate' : 'Activate'}
                         >
@@ -237,7 +237,7 @@ export const ProviderList: React.FC = () => {
                         
                         <button
                           onClick={() => handleEdit(provider)}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded"
+                          className="p-2 text-[var(--color-info)] hover:bg-[var(--color-info)]/10"
                           title="Edit"
                         >
                           <FaEdit />
@@ -246,7 +246,7 @@ export const ProviderList: React.FC = () => {
                         {provider.isDeleted ? (
                           <button
                             onClick={() => handleRestore(provider._id ?? '')}
-                            className="p-2 text-green-600 hover:bg-green-50 rounded"
+                            className="p-2 text-[var(--color-success)] hover:bg-[var(--color-success)]/10"
                             title="Restore"
                           >
                             <FaUndo />
@@ -254,7 +254,7 @@ export const ProviderList: React.FC = () => {
                         ) : (
                           <button
                             onClick={() => handleDelete(provider._id ?? '')}
-                            className="p-2 text-red-600 hover:bg-red-50 rounded"
+                            className="p-2 text-[var(--color-error)] hover:bg-[var(--color-error)]/10"
                             title="Delete"
                           >
                             <FaTrash />
@@ -276,10 +276,10 @@ export const ProviderList: React.FC = () => {
           <button
             onClick={() => handlePageChange(Math.max(1, pagination.page - 1))}
             disabled={pagination.page === 1}
-            className={`px-3 py-1 border rounded ${
+            className={`px-3 py-1 border ${
               pagination.page === 1
-                ? 'text-gray-400 cursor-not-allowed'
-                : 'hover:bg-gray-100'
+                ? 'text-[var(--color-text-muted)] cursor-not-allowed'
+                : 'hover:bg-[var(--color-surface-alt)]'
             }`}
           >
             Previous
@@ -289,10 +289,10 @@ export const ProviderList: React.FC = () => {
             <button
               key={`page-${index + 1}`}
               onClick={() => handlePageChange(index + 1)}
-              className={`px-3 py-1 border rounded ${
+              className={`px-3 py-1 border ${
                 pagination.page === index + 1
-                  ? 'bg-blue-100 text-blue-600 border-blue-300'
-                  : 'hover:bg-gray-100'
+                  ? 'bg-[var(--color-info)]/10 text-[var(--color-info)] border-[var(--color-info)]/50'
+                  : 'hover:bg-[var(--color-surface-alt)]'
               }`}
             >
               {index + 1}
@@ -302,10 +302,10 @@ export const ProviderList: React.FC = () => {
           <button
             onClick={() => handlePageChange(Math.min(pagination.pages, pagination.page + 1))}
             disabled={pagination.page === pagination.pages}
-            className={`px-3 py-1 border rounded ${
+            className={`px-3 py-1 border ${
               pagination.page === pagination.pages
-                ? 'text-gray-400 cursor-not-allowed'
-                : 'hover:bg-gray-100'
+                ? 'text-[var(--color-text-muted)] cursor-not-allowed'
+                : 'hover:bg-[var(--color-surface-alt)]'
             }`}
           >
             Next

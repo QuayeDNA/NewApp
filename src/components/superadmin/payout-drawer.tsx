@@ -188,19 +188,19 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
 
         if (confirm.type === 'approve') {
             return (
-                <div className="space-y-3 text-sm" style={{ color: 'var(--text-primary)' }}>
+                <div className="space-y-3 text-sm" style={{ color: 'var(--color-text-primary)' }}>
                     <p>Approving will deduct <strong>{fmt(p.amount)}</strong> from this agent&apos;s earnings.</p>
-                    {!autoMode && paystackConfigured && <p style={{ color: 'var(--color-primary)' }}>Use <strong>Send via Paystack</strong> or <strong>Mark Paid</strong> after approval.</p>}
-                    {!autoMode && !paystackConfigured && <p style={{ color: 'var(--warning)' }}>Send funds manually then use <strong>Mark Paid</strong>.</p>}
+                    {!autoMode && paystackConfigured && <p style={{ color: 'var(--color-ink)' }}>Use <strong>Send via Paystack</strong> or <strong>Mark Paid</strong> after approval.</p>}
+                    {!autoMode && !paystackConfigured && <p style={{ color: 'var(--color-warning)' }}>Send funds manually then use <strong>Mark Paid</strong>.</p>}
                 </div>
             );
         }
         if (confirm.type === 'process') {
             return (
-                <div className="space-y-3 text-sm" style={{ color: 'var(--text-primary)' }}>
+                <div className="space-y-3 text-sm" style={{ color: 'var(--color-text-primary)' }}>
                     <p>Transfers <strong>{fmt(net ?? p.amount)}</strong> from your Paystack balance to the agent.</p>
                     {p.paystackTransfer?.failureReason && (
-                        <div className="p-3 rounded-lg text-xs" style={{ color: 'var(--error)', backgroundColor: 'color-mix(in srgb, var(--error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--error) 30%, transparent)' }}>
+                        <div className="p-3 rounded-lg text-xs" style={{ color: 'var(--color-error)', backgroundColor: 'color-mix(in srgb, var(--color-error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--color-error) 30%, transparent)' }}>
                             <strong>Previous failure:</strong> {p.paystackTransfer.failureReason}
                         </div>
                     )}
@@ -209,7 +209,7 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
         }
         if (confirm.type === 'markPaid') {
             return (
-                <div className="space-y-3 text-sm" style={{ color: 'var(--text-primary)' }}>
+                <div className="space-y-3 text-sm" style={{ color: 'var(--color-text-primary)' }}>
                     <p>Send <strong>{fmt(net ?? p.amount)}</strong> to <strong>{destLabel(p.destination)}</strong>, then enter the reference and confirm.</p>
                     <FormField label="Transfer reference (recommended)">
                         <Input value={confirmInput} onChange={e => setConfirmInput(e.target.value)} placeholder="MoMo ID or bank reference" />
@@ -219,7 +219,7 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
         }
         if (confirm.type === 'reject') {
             return (
-                <div className="space-y-3 text-sm" style={{ color: 'var(--text-primary)' }}>
+                <div className="space-y-3 text-sm" style={{ color: 'var(--color-text-primary)' }}>
                     <p>The agent will be notified. If earnings were already deducted, they will be refunded.</p>
                     <FormField label="Reason (optional)">
                         <Input value={confirmInput} onChange={e => setConfirmInput(e.target.value)} placeholder="e.g. Invalid account details" />
@@ -267,30 +267,30 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
             <div className="fixed inset-0 z-40 bg-black/40" onClick={onClose} />
 
             {/* Slide-in panel */}
-            <div className="fixed right-0 top-0 h-full w-full sm:w-[520px] z-50 flex flex-col" style={{ backgroundColor: 'var(--bg-surface)', boxShadow: 'var(--shadow-xl)' }}>
+            <div className="fixed right-0 top-0 h-full w-full sm:w-[520px] z-50 flex flex-col" style={{ backgroundColor: 'var(--color-surface)', boxShadow: 'var(--shadow-xl)' }}>
 
                 {/* Header */}
-                <div className="flex items-center justify-between px-5 py-4 border-b shrink-0" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-color)' }}>
+                <div className="flex items-center justify-between px-5 py-4 border-b shrink-0" style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-border)' }}>
                     <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                            <DollarSign className="w-5 h-5 shrink-0" style={{ color: 'var(--color-primary)' }} />
-                            <h3 className="font-semibold" style={{ color: 'var(--text-primary)' }}>{title}</h3>
+                            <DollarSign className="w-5 h-5 shrink-0" style={{ color: 'var(--color-ink)' }} />
+                            <h3 className="font-semibold" style={{ color: 'var(--color-text-primary)' }}>{title}</h3>
                             {/* Mode pill */}
                             {autoMode ? (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--success)', backgroundColor: 'color-mix(in srgb, var(--success) 10%, transparent)' }}>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--color-success)', backgroundColor: 'color-mix(in srgb, var(--color-success) 10%, transparent)' }}>
                                     <Zap className="w-3 h-3" /> Auto
                                 </span>
                             ) : paystackConfigured ? (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--color-primary)', backgroundColor: 'color-mix(in srgb, var(--color-primary) 10%, transparent)' }}>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--color-ink)', backgroundColor: 'color-mix(in srgb, var(--color-ink) 10%, transparent)' }}>
                                     <Send className="w-3 h-3" /> Semi-Auto
                                 </span>
                             ) : (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--warning)', backgroundColor: 'color-mix(in srgb, var(--warning) 10%, transparent)' }}>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style={{ color: 'var(--color-warning)', backgroundColor: 'color-mix(in srgb, var(--color-warning) 10%, transparent)' }}>
                                     <AlertCircle className="w-3 h-3" /> Manual
                                 </span>
                             )}
                         </div>
-                        {subtitle && <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--text-secondary)' }}>{subtitle}</p>}
+                        {subtitle && <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--color-text-secondary)' }}>{subtitle}</p>}
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
@@ -304,8 +304,8 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                             leftIcon={<RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />}
                             onClick={onRefresh} disabled={loading}
                         />
-                        <button onClick={onClose} className="p-1.5 rounded-lg transition-colors" style={{ color: 'var(--text-secondary)' }}
-                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--bg-surface-alt)'; }}
+                        <button onClick={onClose} className="p-1.5 rounded-lg transition-colors" style={{ color: 'var(--color-text-secondary)' }}
+                            onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-surface-alt)'; }}
                             onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
                         >
                             <X className="w-5 h-5" />
@@ -315,10 +315,10 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
 
                 {/* Mode hint */}
                 {!autoMode && (
-                    <div className="px-4 py-2.5 border-b text-xs flex items-center gap-2" style={{ backgroundColor: 'var(--bg-surface-alt)', color: 'var(--text-secondary)', borderColor: 'var(--border-color)' }}>
+                    <div className="px-4 py-2.5 border-b text-xs flex items-center gap-2" style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-text-secondary)', borderColor: 'var(--color-border)' }}>
                         {paystackConfigured
-                            ? <><Send className="w-3.5 h-3.5 shrink-0" style={{ color: 'var(--color-primary)' }} /> Approve → Send via Paystack, or Mark Paid if sent manually.</>
-                            : <><AlertCircle className="w-3.5 h-3.5 shrink-0" style={{ color: 'var(--warning)' }} /> Approve → send funds manually → Mark Paid.</>
+                            ? <><Send className="w-3.5 h-3.5 shrink-0" style={{ color: 'var(--color-ink)' }} /> Approve → Send via Paystack, or Mark Paid if sent manually.</>
+                            : <><AlertCircle className="w-3.5 h-3.5 shrink-0" style={{ color: 'var(--color-warning)' }} /> Approve → send funds manually → Mark Paid.</>
                         }
                     </div>
                 )}
@@ -326,14 +326,14 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                 {/* Payout list */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-3">
                     {loading ? (
-                        <div className="flex items-center justify-center py-16 gap-2" style={{ color: 'var(--text-secondary)' }}>
+                        <div className="flex items-center justify-center py-16 gap-2" style={{ color: 'var(--color-text-secondary)' }}>
                             <Spinner size="sm" /> Loading payouts…
                         </div>
                     ) : payouts.length === 0 ? (
                         <div className="py-16 text-center">
-                            <DollarSign className="w-12 h-12 mx-auto mb-3" style={{ color: 'var(--text-muted)' }} />
-                            <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>No payout requests</p>
-                            <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>No pending, approved or processing payouts.</p>
+                            <DollarSign className="w-12 h-12 mx-auto mb-3" style={{ color: 'var(--color-text-muted)' }} />
+                            <p className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>No payout requests</p>
+                            <p className="text-xs mt-1" style={{ color: 'var(--color-text-muted)' }}>No pending, approved or processing payouts.</p>
                         </div>
                     ) : (
                         payouts.map(p => {
@@ -345,7 +345,7 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                                 <div
                                     key={p._id}
                                     className="border rounded-xl p-4"
-                                    style={isActionable ? { borderColor: 'color-mix(in srgb, var(--color-primary) 30%, transparent)', backgroundColor: 'color-mix(in srgb, var(--color-primary) 5%, transparent)' } : { borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-surface)' }}
+                                    style={isActionable ? { borderColor: 'color-mix(in srgb, var(--color-ink) 30%, transparent)', backgroundColor: 'color-mix(in srgb, var(--color-ink) 5%, transparent)' } : { borderColor: 'var(--color-border)', backgroundColor: 'var(--color-surface)' }}
                                 >
                                     {/* Status + amount row */}
                                     <div className="flex items-start justify-between gap-2 mb-3">
@@ -359,14 +359,14 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                                                     {statusLabel(p.status)}
                                                 </span>
                                             </Badge>
-                                            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                                            <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
                                                 {new Date(p.requestedAt || p.createdAt).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                             </span>
                                         </div>
                                         <div className="text-right shrink-0">
-                                            <div className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>{fmt(p.amount)}</div>
+                                            <div className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>{fmt(p.amount)}</div>
                                             {net != null && (
-                                                <div className="text-xs font-medium mt-0.5" style={{ color: isNetZero ? 'var(--error)' : 'var(--success)' }}>
+                                                <div className="text-xs font-medium mt-0.5" style={{ color: isNetZero ? 'var(--color-error)' : 'var(--color-success)' }}>
                                                     Receives: {fmt(net)}
                                                 </div>
                                             )}
@@ -376,26 +376,26 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                                     {/* Details grid */}
                                     <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs mb-3">
                                         <div>
-                                            <div className="mb-0.5" style={{ color: 'var(--text-muted)' }}>Destination</div>
-                                            <div className="font-medium flex items-center gap-1" style={{ color: 'var(--text-primary)' }}>
+                                            <div className="mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Destination</div>
+                                            <div className="font-medium flex items-center gap-1" style={{ color: 'var(--color-text-primary)' }}>
                                                 {p.destination?.type === 'mobile_money'
-                                                    ? <Smartphone className="w-3 h-3 shrink-0" style={{ color: 'var(--text-muted)' }} />
-                                                    : <Building2 className="w-3 h-3 shrink-0" style={{ color: 'var(--text-muted)' }} />
+                                                    ? <Smartphone className="w-3 h-3 shrink-0" style={{ color: 'var(--color-text-muted)' }} />
+                                                    : <Building2 className="w-3 h-3 shrink-0" style={{ color: 'var(--color-text-muted)' }} />
                                                 }
                                                 {destLabel(p.destination)}
                                             </div>
                                         </div>
                                         {(p.destination?.accountName || p.destination?.recipientName) && (
                                             <div>
-                                                <div className="mb-0.5" style={{ color: 'var(--text-muted)' }}>Account name</div>
-                                                <div className="font-medium" style={{ color: 'var(--text-primary)' }}>
+                                                <div className="mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Account name</div>
+                                                <div className="font-medium" style={{ color: 'var(--color-text-primary)' }}>
                                                     {p.destination?.accountName || p.destination?.recipientName}
                                                 </div>
                                             </div>
                                         )}
                                         <div>
-                                            <div className="mb-0.5" style={{ color: 'var(--text-muted)' }}>Transfer fee</div>
-                                            <div className="font-medium" style={{ color: 'var(--warning)' }}>
+                                            <div className="mb-0.5" style={{ color: 'var(--color-text-muted)' }}>Transfer fee</div>
+                                            <div className="font-medium" style={{ color: 'var(--color-warning)' }}>
                                                 {p.transferFee != null ? fmt(p.transferFee) : '—'}
                                             </div>
                                         </div>
@@ -403,34 +403,34 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
 
                                     {/* Zero net warning */}
                                     {isNetZero && (
-                                        <div className="text-xs rounded-lg px-2.5 py-1.5 mb-3" style={{ color: 'var(--error)', backgroundColor: 'color-mix(in srgb, var(--error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--error) 30%, transparent)' }}>
+                                        <div className="text-xs rounded-lg px-2.5 py-1.5 mb-3" style={{ color: 'var(--color-error)', backgroundColor: 'color-mix(in srgb, var(--color-error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--color-error) 30%, transparent)' }}>
                                             Fee equals or exceeds payout amount — agent receives nothing. Adjust fees or amount before approving.
                                         </div>
                                     )}
 
                                     {/* Paystack transfer info */}
                                     {p.paystackTransfer?.transferReference && (
-                                        <div className="rounded-lg px-2.5 py-2 text-xs mb-3" style={{ backgroundColor: 'var(--bg-surface-alt)', color: 'var(--text-secondary)' }}>
-                                            Ref: <span className="font-mono" style={{ color: 'var(--text-primary)' }}>{p.paystackTransfer.transferReference}</span>
+                                        <div className="rounded-lg px-2.5 py-2 text-xs mb-3" style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-text-secondary)' }}>
+                                            Ref: <span className="font-mono" style={{ color: 'var(--color-text-primary)' }}>{p.paystackTransfer.transferReference}</span>
                                         </div>
                                     )}
                                     {p.paystackTransfer?.failureReason && (
-                                        <div className="text-xs rounded-lg px-2.5 py-2 mb-3" style={{ color: 'var(--error)', backgroundColor: 'color-mix(in srgb, var(--error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--error) 30%, transparent)' }}>
+                                        <div className="text-xs rounded-lg px-2.5 py-2 mb-3" style={{ color: 'var(--color-error)', backgroundColor: 'color-mix(in srgb, var(--color-error) 10%, transparent)', border: '1px solid color-mix(in srgb, var(--color-error) 30%, transparent)' }}>
                                             {p.paystackTransfer.failureReason}
                                         </div>
                                     )}
 
                                     {/* Auto mode — no actions needed */}
                                     {autoMode && (
-                                        <div className="pt-2 text-xs flex items-center gap-1" style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
-                                            <Zap className="w-3 h-3" style={{ color: 'var(--success)' }} />
+                                        <div className="pt-2 text-xs flex items-center gap-1" style={{ borderTop: '1px solid var(--color-border)', color: 'var(--color-text-secondary)' }}>
+                                            <Zap className="w-3 h-3" style={{ color: 'var(--color-success)' }} />
                                             {p.status === 'processing' ? 'Transfer in progress — awaiting Paystack confirmation.' : 'Transfer handled automatically.'}
                                         </div>
                                     )}
 
                                     {/* Semi-auto / manual actions */}
                                     {!autoMode && isActionable && (
-                                        <div className="flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid var(--border-color)' }}>
+                                        <div className="flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid var(--color-border)' }}>
                                             {p.status === 'pending' && (
                                                 <>
                                                     <Button
@@ -507,7 +507,7 @@ export const PayoutDrawer: React.FC<PayoutDrawerProps> = ({
                 </div>
 
                 {/* Footer */}
-                <div className="px-5 py-3 border-t shrink-0 text-xs text-center" style={{ backgroundColor: 'var(--bg-surface-alt)', color: 'var(--text-secondary)', borderColor: 'var(--border-color)' }}>
+                <div className="px-5 py-3 border-t shrink-0 text-xs text-center" style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-text-secondary)', borderColor: 'var(--color-border)' }}>
                     {payouts.length > 0 && `${payouts.length} payout request${payouts.length !== 1 ? 's' : ''} total`}
                 </div>
             </div>

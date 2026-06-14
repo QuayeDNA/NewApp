@@ -72,9 +72,9 @@ const ConnectionBadge = ({
   status: "websocket" | "polling" | "disconnected" | string;
 }) => {
   const map = {
-    websocket:    { icon: <FaWifi className="w-2.5 h-2.5" />, label: "Live",    cls: "text-emerald-400" },
-    polling:      { icon: <FaSync className="w-2.5 h-2.5 animate-spin" />, label: "Syncing", cls: "text-amber-400" },
-    disconnected: { icon: <FaWifi className="w-2.5 h-2.5" />, label: "Offline", cls: "text-red-400" },
+    websocket:    { icon: <FaWifi className="w-2.5 h-2.5" />, label: "Live",    cls: "text-[var(--color-success)]" },
+    polling:      { icon: <FaSync className="w-2.5 h-2.5 animate-spin" />, label: "Syncing", cls: "text-[var(--color-amber)]" },
+    disconnected: { icon: <FaWifi className="w-2.5 h-2.5" />, label: "Offline", cls: "text-[var(--color-error)]" },
   } as const;
   const config = map[status as keyof typeof map] ?? {
     icon: <FaWifi className="w-2.5 h-2.5" />,
@@ -220,8 +220,8 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
   /* ── Render ────────────────────────────────────────────────────────────── */
   return (
     <header
-      className="sticky top-0 z-10 border-b border-[var(--border-color)] rounded-b-xl shadow-sm"
-      style={{ background: "var(--bg-header)" }}
+      className="sticky top-0 z-10 border-b border-[var(--color-border)] shadow-[var(--shadow-sm)]"
+      style={{ background: "var(--color-header)" }}
     >
       <div className="px-3 sm:px-5 lg:px-7 py-3 sm:py-4">
 
@@ -235,7 +235,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
             variant="ghost"
             size="sm"
             onClick={onMenuClick}
-            className="md:hidden flex-shrink-0 h-9 w-9 p-0 flex items-center justify-center rounded-lg text-white hover:bg-white/10 transition-colors"
+            className="md:hidden flex-shrink-0 h-9 w-9 p-0 flex items-center justify-center text-[var(--color-text-header)] hover:bg-white/10 transition-colors"
             aria-label="Open sidebar menu"
           >
             <FaBars className="w-4 h-4" />
@@ -253,7 +253,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                 ref={greetingTextRef}
                 className={[
                   "inline-block whitespace-nowrap",
-                  "text-sm sm:text-base font-semibold text-white leading-snug",
+                  "text-sm sm:text-base font-semibold text-[var(--color-text-header)] leading-snug",
                   "animate-slide-in-from-bottom",
                   greetingMarquee ? "animate-marquee min-w-max" : "",
                 ].filter(Boolean).join(" ")}
@@ -303,7 +303,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                   }
                 >
                   {isTogglingSite ? (
-                    <div className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                    <div className="h-3 w-3 border-2 border-current border-t-transparent animate-spin" />
                   ) : siteStatus?.isSiteOpen ? (
                     <FaCheck className="w-3 h-3" />
                   ) : (
@@ -326,8 +326,8 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                 <button
                   onClick={copyReferralCode}
                   className={[
-                    "flex items-center gap-1.5 h-8 px-2.5 rounded-lg",
-                    "text-[11px] font-mono font-bold tracking-widest text-white",
+                    "flex items-center gap-1.5 h-8 px-2.5",
+                    "text-[11px] font-mono font-bold tracking-widest text-[var(--color-text-header)]",
                     "bg-white/10 hover:bg-white/20 border border-white/20",
                     "transition-all duration-150",
                   ].join(" ")}
@@ -335,7 +335,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                 >
                   <FaShareAlt className="h-2.5 w-2.5 flex-shrink-0" />
                   <span>{referralCode}</span>
-                  {referralCopied && <FaCopy className="h-2.5 w-2.5 text-emerald-400 flex-shrink-0" />}
+                  {referralCopied && <FaCopy className="h-2.5 w-2.5 text-[var(--color-success)] flex-shrink-0" />}
                 </button>
               </div>
             )}
@@ -357,17 +357,17 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                 onClick={() => setIsDropdownOpen((v) => !v)}
                 aria-label="User menu"
                 aria-expanded={isDropdownOpen}
-                className="relative flex h-9 w-9 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="relative flex h-9 w-9 items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                 style={{
-                  background: "linear-gradient(135deg, var(--color-primary), var(--color-primary-hover, #1d4ed8))",
+                  background: "linear-gradient(135deg, var(--color-amber), var(--color-amber-hover))",
                 }}
               >
-                <span className="text-[13px] font-bold text-white leading-none">
+                <span className="text-[13px] font-bold text-[var(--color-text-header)] leading-none">
                   {initials}
                 </span>
                 {/* Impersonation pulse dot */}
                 {isImpersonating && (
-                  <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-amber-400 animate-pulse" />
+                  <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 border-2 border-[var(--color-text-header)] bg-[var(--color-amber)] animate-pulse" />
                 )}
               </button>
 
@@ -388,37 +388,37 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                       "absolute right-0 mt-2 z-20",
                       // Width: full width on very small, fixed on larger
                       "w-[min(288px,calc(100vw-1.5rem))]",
-                      "rounded-xl border border-[var(--border-color)] shadow-2xl",
-                      "bg-[var(--bg-surface)]",
+                      "border border-[var(--color-border)] shadow-[var(--shadow-2xl)]",
+                      "bg-[var(--color-surface)]",
                       "overflow-hidden",
                     ].join(" ")}
                   >
                     {/* User identity block */}
-                    <div className="px-4 py-3.5 border-b border-[var(--border-color)]">
+                    <div className="px-4 py-3.5 border-b border-[var(--color-border)]">
                       <div className="flex items-start gap-3">
                         {/* Mini avatar */}
                         <div
-                          className="h-9 w-9 flex-shrink-0 rounded-full flex items-center justify-center text-[12px] font-bold text-white"
-                          style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-primary-hover, #1d4ed8))" }}
+                          className="h-9 w-9 flex-shrink-0 flex items-center justify-center text-[12px] font-bold text-[var(--color-text-header)]"
+                          style={{ background: "linear-gradient(135deg, var(--color-ink), var(--color-ink-hover, #1d4ed8))" }}
                         >
                           {initials}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold text-[var(--text-primary)] leading-snug">
+                          <p className="truncate text-sm font-semibold text-[var(--color-text-primary)] leading-snug">
                             {authState.user?.fullName}
                           </p>
-                          <p className="truncate text-xs text-[var(--text-muted)] mt-0.5">
+                          <p className="truncate text-xs text-[var(--color-text-muted)] mt-0.5">
                             {authState.user?.email}
                           </p>
                           {/* Referral code in dropdown */}
                           {isAgent && referralCode && (
                             <button
                               onClick={copyReferralCode}
-                              className="mt-1.5 flex items-center gap-1.5 rounded-md bg-[var(--bg-surface-alt)] px-2 py-1 text-[11px] font-mono font-bold text-[var(--color-primary)] hover:opacity-80 transition-opacity"
+                              className="mt-1.5 flex items-center gap-1.5 rounded-md bg-[var(--color-surface-alt)] px-2 py-1 text-[11px] font-mono font-bold text-[var(--color-ink)] hover:opacity-80 transition-opacity"
                             >
                               <FaShareAlt className="h-2.5 w-2.5" />
                               {referralCode}
-                              {referralCopied && <FaCopy className="h-2.5 w-2.5 text-emerald-500" />}
+                              {referralCopied && <FaCopy className="h-2.5 w-2.5 text-[var(--color-success)]" />}
                             </button>
                           )}
                         </div>
@@ -426,11 +426,11 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
 
                       {/* Impersonation warning — inside identity block */}
                       {isImpersonating && (
-                        <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-amber-500/25 px-3 py-2">
-                          <div className="mt-0.5 h-2 w-2 flex-shrink-0 rounded-full bg-amber-400 animate-pulse" />
+                        <div className="mt-3 flex items-start gap-2 bg-[var(--color-amber)]/10 border border-[var(--color-amber)]/25 px-3 py-2">
+                          <div className="mt-0.5 h-2 w-2 flex-shrink-0 bg-[var(--color-amber)] animate-pulse" />
                           <div>
-                            <p className="text-xs font-semibold text-amber-300">Impersonating User</p>
-                            <p className="text-[11px] text-amber-400/80 mt-0.5">You are acting as another user</p>
+                            <p className="text-xs font-semibold text-[var(--color-amber)]">Impersonating User</p>
+                            <p className="text-[11px] text-[var(--color-amber)]/80 mt-0.5">You are acting as another user</p>
                           </div>
                         </div>
                       )}
@@ -446,7 +446,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                             className="w-full text-xs h-8 gap-1.5 justify-center"
                           >
                             {isTogglingSite ? (
-                              <div className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                              <div className="h-3 w-3 border-2 border-current border-t-transparent animate-spin" />
                             ) : siteStatus?.isSiteOpen ? (
                               <FaCheck className="w-3 h-3" />
                             ) : (
@@ -465,20 +465,20 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                       {canShowWallet && (
                         <Link
                           to="/agent/dashboard/profile"
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)] transition-colors"
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors"
                           onClick={() => setIsDropdownOpen(false)}
                         >
-                          <FaUser className="w-3.5 h-3.5 flex-shrink-0 text-[var(--text-muted)]" />
+                          <FaUser className="w-3.5 h-3.5 flex-shrink-0 text-[var(--color-text-muted)]" />
                           My Profile
                         </Link>
                       )}
                       {canShowWallet && (
                         <Link
                           to="/agent/dashboard/afa-registration"
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-surface-alt)] transition-colors"
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors"
                           onClick={() => setIsDropdownOpen(false)}
                         >
-                          <svg className="w-3.5 h-3.5 flex-shrink-0 text-[var(--text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3.5 h-3.5 flex-shrink-0 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                           </svg>
                           AFA Registration
@@ -487,11 +487,11 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                     </div>
 
                     {/* Divider + actions */}
-                    <div className="border-t border-[var(--border-color)] py-1">
+                    <div className="border-t border-[var(--color-border)] py-1">
                       {isImpersonating && (
                         <button
                           onClick={handleReturnToAdmin}
-                          className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-medium text-amber-400 hover:bg-amber-500/10 transition-colors"
+                          className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--color-amber)] hover:bg-[var(--color-amber)]/10 transition-colors"
                         >
                           <FaSignOutAlt className="w-3.5 h-3.5 flex-shrink-0" />
                           Return to Admin
@@ -499,7 +499,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                       )}
                       <button
                         onClick={() => { setIsDropdownOpen(false); logout(); }}
-                        className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-400 hover:bg-red-500/10 transition-colors"
+                        className="flex w-full items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--color-error)] hover:bg-red-500/10 transition-colors"
                       >
                         <FaSignOutAlt className="w-3.5 h-3.5 flex-shrink-0" />
                         Logout
@@ -527,7 +527,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
               }}
               aria-label="Refresh wallet balance and spending data"
               className={[
-                "w-full rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm",
+                "w-full border border-white/15 bg-white/10 backdrop-blur-sm",
                 "px-3 sm:px-4 py-2.5 sm:py-3",
                 "hover:bg-white/15 active:scale-[0.99]",
                 "transition-all duration-150",
@@ -537,8 +537,8 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
               <div className="flex items-center gap-3 sm:gap-4">
 
                 {/* Wallet icon */}
-                <div className="hidden sm:flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15">
-                  <FaWallet className="w-4 h-4 text-white" />
+                <div className="hidden sm:flex h-9 w-9 flex-shrink-0 items-center justify-center bg-white/15">
+                  <FaWallet className="w-4 h-4 text-[var(--color-text-header)]" />
                 </div>
 
                 {/* ── Balance ───────────────────────────────────────── */}
@@ -549,7 +549,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                     </span>
                     <ConnectionBadge status={connectionStatus} />
                   </div>
-                  <div className="text-lg sm:text-xl font-bold text-white tabular-nums">
+                  <div className="text-lg sm:text-xl font-bold text-[var(--color-text-header)] tabular-nums">
                     {formatAmount(walletBalance)}
                   </div>
                 </div>
@@ -562,7 +562,7 @@ export const Header = ({ onMenuClick }: HeaderProps) => {
                   <div className="mb-0.5 text-[11px] font-medium text-white/70 uppercase tracking-wide">
                     Today's Spending
                   </div>
-                  <div className="text-lg sm:text-xl font-bold text-white tabular-nums">
+                  <div className="text-lg sm:text-xl font-bold text-[var(--color-text-header)] tabular-nums">
                     {dailySpendingLoading || isLoading ? (
                       /* Skeleton shimmer while loading */
                       <span className="inline-block h-6 w-24 rounded bg-white/15 animate-pulse" />

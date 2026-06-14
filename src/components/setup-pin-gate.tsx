@@ -40,17 +40,17 @@ export const SetupPinGate = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[var(--bg-surface-alt)] to-[var(--bg-surface)] p-4 sm:p-6 fixed inset-0 z-50 overflow-y-auto">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[var(--color-surface-alt)] to-[var(--color-surface)] p-4 sm:p-6 fixed inset-0 z-50 overflow-y-auto">
       <div className="flex-grow flex items-center justify-center">
         <Card className="w-full max-w-md" variant="elevated" size="lg">
           <CardHeader className="text-center">
-            <div className="mx-auto bg-[var(--bg-surface-alt)] p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <div className="mx-auto bg-[var(--color-surface-alt)] p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
               <FaShieldAlt className="text-primary text-2xl" />
             </div>
-            <h2 className="text-2xl font-bold text-[var(--text-primary)]">
+            <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
               Set Up Security PIN
             </h2>
-            <p className="mt-2 text-[var(--text-secondary)] text-sm">
+            <p className="mt-2 text-[var(--color-text-secondary)] text-sm">
               For your security, we've upgraded our authentication system.
               Please set a secure 4-digit PIN. This PIN will be used for future
               password resets and critical account operations.
@@ -87,7 +87,7 @@ export const SetupPinGate = () => {
                   variant="outline"
                   colorScheme="default"
                   fullWidth
-                  leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+                  leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
                 />
               </div>
 
@@ -107,7 +107,7 @@ export const SetupPinGate = () => {
                 variant="outline"
                 colorScheme="default"
                 fullWidth
-                leftIcon={<FaLock className="text-[var(--text-muted)]" />}
+                leftIcon={<FaLock className="text-[var(--color-text-muted)]" />}
                 />
               <Button
                 type="submit"

@@ -6,28 +6,28 @@ import { Button } from "../../design-system/components/button";
 const typeConfig: Record<string, { icon: React.ReactNode; fg: string; bg: string }> = {
   success: {
     icon: <CheckCircle className="w-5 h-5" />,
-    fg: "var(--success)",
-    bg: "color-mix(in srgb, var(--success) 10%, transparent)",
+    fg: "var(--color-success)",
+    bg: "var(--color-success)",
   },
   error: {
     icon: <AlertCircle className="w-5 h-5" />,
-    fg: "var(--error)",
-    bg: "color-mix(in srgb, var(--error) 10%, transparent)",
+    fg: "var(--color-error)",
+    bg: "var(--color-error)",
   },
   warning: {
     icon: <AlertTriangle className="w-5 h-5" />,
-    fg: "var(--warning)",
-    bg: "color-mix(in srgb, var(--warning) 10%, transparent)",
+    fg: "var(--color-warning)",
+    bg: "var(--color-warning)",
   },
   maintenance: {
     icon: <Wrench className="w-5 h-5" />,
-    fg: "var(--color-secondary)",
-    bg: "color-mix(in srgb, var(--color-secondary) 10%, transparent)",
+    fg: "var(--color-amber)",
+    bg: "var(--color-amber)",
   },
   info: {
     icon: <Info className="w-5 h-5" />,
-    fg: "var(--info)",
-    bg: "color-mix(in srgb, var(--info) 10%, transparent)",
+    fg: "var(--color-info)",
+    bg: "var(--color-info)",
   },
 };
 
@@ -64,7 +64,7 @@ export const AnnouncementBanner: React.FC = () => {
   return (
     <div
       className="flex items-start gap-3 px-4 py-3 border-b text-sm"
-      style={{ backgroundColor: config.bg, borderColor: "color-mix(in srgb, " + config.fg + " 25%, transparent)", color: config.fg }}
+      style={{ backgroundColor: config.bg, borderColor: config.fg, color: config.fg }}
     >
       <div className="shrink-0 mt-0.5">{config.icon}</div>
       <div className="flex-1 min-w-0">
@@ -79,7 +79,7 @@ export const AnnouncementBanner: React.FC = () => {
         )}
         <button
           onClick={handleDismiss}
-          className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+          className="p-1 hover:bg-[var(--color-ink)]/10 dark:hover:bg-white/10 transition-colors"
           aria-label="Dismiss announcement"
         >
           <X className="w-4 h-4" />

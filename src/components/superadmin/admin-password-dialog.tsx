@@ -105,7 +105,7 @@ export const AdminPasswordDialog: React.FC<AdminPasswordDialogProps> = ({
   return (
     <Dialog isOpen={isOpen} onClose={handleClose} size="md">
       <DialogHeader>
-        <h2 className="text-xl font-semibold text-[var(--text-primary)] flex items-center gap-2">
+        <h2 className="text-xl font-semibold text-[var(--color-text-primary)] flex items-center gap-2">
           <span className="w-8 h-8 bg-error/20 rounded-lg flex items-center justify-center">
             🔒
           </span>
@@ -151,7 +151,7 @@ export const AdminPasswordDialog: React.FC<AdminPasswordDialogProps> = ({
                 <button
                   type="button"
                   onClick={() => togglePasswordVisibility("current")}
-                  className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
                 >
                   {showPasswords.current ? "🙈" : "👁️"}
                 </button>
@@ -174,13 +174,13 @@ export const AdminPasswordDialog: React.FC<AdminPasswordDialogProps> = ({
                 <button
                   type="button"
                   onClick={() => togglePasswordVisibility("new")}
-                  className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
                 >
                   {showPasswords.new ? "🙈" : "👁️"}
                 </button>
               }
             />
-            <p className="text-xs text-[var(--text-muted)] mt-1">
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">
               Password must be at least 8 characters long
             </p>
 
@@ -200,7 +200,7 @@ export const AdminPasswordDialog: React.FC<AdminPasswordDialogProps> = ({
                 <button
                   type="button"
                   onClick={() => togglePasswordVisibility("confirm")}
-                  className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                  className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
                 >
                   {showPasswords.confirm ? "🙈" : "👁️"}
                 </button>

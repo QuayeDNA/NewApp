@@ -72,8 +72,8 @@ export function AnalyticsBreakdownStage({
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
             <Card className="p-4 sm:p-5">
                 <CardHeader className="pb-3">
-                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>User Type Distribution</h3>
-                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>User Type Distribution</h3>
+                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                         Distribution of users across platform roles.
                     </p>
                 </CardHeader>
@@ -104,8 +104,8 @@ export function AnalyticsBreakdownStage({
 
             <Card className="p-4 sm:p-5">
                 <CardHeader className="pb-3">
-                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Order Type Performance</h3>
-                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--text-secondary)" }}>
+                    <h3 className="text-base sm:text-lg font-semibold" style={{ color: "var(--color-text-primary)" }}>Order Type Performance</h3>
+                    <p className="text-xs sm:text-sm mt-1" style={{ color: "var(--color-text-secondary)" }}>
                         Order volume and revenue by order category.
                     </p>
                 </CardHeader>
@@ -119,28 +119,28 @@ export function AnalyticsBreakdownStage({
                             </div>
                         ))
                     ) : leaders.length === 0 ? (
-                        <p className="text-sm" style={{ color: "var(--text-secondary)" }}>No order type data available for this period.</p>
+                        <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>No order type data available for this period.</p>
                     ) : (
                         leaders.map((row) => {
                             const ratio = (row.count / maxLeaderCount) * 100;
 
                             return (
-                                <div key={row.orderType} className="rounded-xl p-3" style={{ border: "1px solid var(--border-color)" }}>
+                                <div key={row.orderType} className="rounded-xl p-3" style={{ border: "1px solid var(--color-border)" }}>
                                     <div className="flex items-center justify-between gap-3">
                                         <div>
-                                            <p className="text-sm font-semibold capitalize" style={{ color: "var(--text-primary)" }}>
+                                            <p className="text-sm font-semibold capitalize" style={{ color: "var(--color-text-primary)" }}>
                                                 {row.orderType.replace(/_/g, " ")}
                                             </p>
-                                            <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                                            <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
                                                 {formatNumber(row.count)} orders
                                             </p>
                                         </div>
-                                        <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                                        <p className="text-sm font-semibold" style={{ color: "var(--color-text-primary)" }}>
                                             {formatCurrency(row.revenue)}
                                         </p>
                                     </div>
 
-                                    <div className="mt-2 h-2 w-full rounded-full overflow-hidden" style={{ backgroundColor: "var(--bg-surface-alt)" }}>
+                                    <div className="mt-2 h-2 w-full rounded-full overflow-hidden" style={{ backgroundColor: "var(--color-surface-alt)" }}>
                                         <div
                                             className="h-full rounded-full"
                                             style={{ width: `${Math.max(8, ratio)}%`, backgroundColor: primaryColor }}

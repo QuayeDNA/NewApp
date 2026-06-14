@@ -153,9 +153,9 @@ export const TrackOrderDrawer = memo(
                     className="text-sm font-semibold leading-tight"
                     style={{
                       color: step.failed
-                        ? "var(--error)"
+                        ? "var(--color-error)"
                         : step.done
-                          ? "var(--text-primary)"
+                          ? "var(--color-text-primary)"
                           : "var(--text-tertiary)",
                     }}
                   >
@@ -174,7 +174,7 @@ export const TrackOrderDrawer = memo(
           {order.items.length > 0 && (
             <div
               className="mt-2 pt-3 border-t space-y-2"
-              style={{ borderColor: "var(--border-color)" }}
+              style={{ borderColor: "var(--color-border)" }}
             >
               <p
                 className="text-[10px] font-black uppercase tracking-widest"
@@ -190,7 +190,7 @@ export const TrackOrderDrawer = memo(
                   <div className="min-w-0">
                     <span
                       className="font-semibold"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       {item.bundleName}
                     </span>
@@ -207,7 +207,7 @@ export const TrackOrderDrawer = memo(
                   <div className="text-right shrink-0 flex items-center gap-2">
                     <p
                       className="font-mono"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       {showFull
                         ? item.customerPhone
@@ -234,12 +234,12 @@ export const TrackOrderDrawer = memo(
                       style={{
                         color:
                           item.processingStatus === "completed"
-                            ? "var(--success)"
+                            ? "var(--color-success)"
                             : item.processingStatus === "failed"
-                              ? "var(--error)"
+                              ? "var(--color-error)"
                               : item.processingStatus === "processing"
-                                ? "var(--color-primary)"
-                                : "var(--warning)",
+                                ? "var(--color-ink)"
+                                : "var(--color-warning)",
                       }}
                     >
                       {item.processingStatus}
@@ -261,22 +261,22 @@ export const TrackOrderDrawer = memo(
       return (
         <div
           key={entry.orderId}
-          className="rounded-2xl border overflow-hidden shadow-sm"
+          className=" border overflow-hidden shadow-[var(--shadow-sm)]"
           style={{
-            borderColor: "var(--border-color)",
-            backgroundColor: "var(--bg-surface)",
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-surface)",
           }}
         >
           <button
             onClick={() => handleExpand(entry)}
             className="w-full p-4 flex items-start justify-between gap-3 text-left transition"
-            style={{ backgroundColor: "var(--bg-muted)" }}
+            style={{ backgroundColor: "var(--color-ground)" }}
           >
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span
                   className="text-xs font-mono font-bold shrink-0"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   {entry.orderNumber}
                 </span>
@@ -289,7 +289,7 @@ export const TrackOrderDrawer = memo(
               </div>
               <p
                 className="text-sm font-semibold mt-1 truncate"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 {entry.bundleName}
               </p>
@@ -321,8 +321,8 @@ export const TrackOrderDrawer = memo(
             <div
               className="px-4 pb-4 border-t"
               style={{
-                backgroundColor: "var(--bg-muted)",
-                borderColor: "var(--border-color)",
+                backgroundColor: "var(--color-ground)",
+                borderColor: "var(--color-border)",
               }}
             >
               {live ? (
@@ -346,16 +346,16 @@ export const TrackOrderDrawer = memo(
       const cfg = ORDER_STATUS_CFG[order.status] ?? ORDER_STATUS_CFG.pending;
       return (
         <div
-          className="rounded-2xl border p-4"
+          className=" border p-4"
           style={{
-            borderColor: "var(--border-color)",
-            backgroundColor: "var(--bg-surface)",
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-surface)",
           }}
         >
           <div className="flex items-center justify-between mb-1">
             <span
               className="text-xs font-mono font-bold"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               {order.orderNumber}
             </span>
@@ -382,14 +382,14 @@ export const TrackOrderDrawer = memo(
           className={`absolute inset-0 bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
         />
         <div
-          className={`relative w-full max-w-md h-full flex flex-col  shadow-2xl transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-          style={{ backgroundColor: "var(--bg-surface)" }}
+          className={`relative w-full max-w-md h-full flex flex-col  shadow-[var(--shadow-2xl)] transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+          style={{ backgroundColor: "var(--color-surface)" }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
           <div
             className="flex items-center justify-between px-5 py-4 border-b shrink-0"
-            style={{ borderColor: "var(--border-color)" }}
+            style={{ borderColor: "var(--color-border)" }}
           >
             <div className="flex items-center gap-2.5">
               <div
@@ -404,7 +404,7 @@ export const TrackOrderDrawer = memo(
               <div>
                 <h2
                   className="font-black text-base leading-tight"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   My Orders
                 </h2>
@@ -421,9 +421,9 @@ export const TrackOrderDrawer = memo(
                 onClick={onClose}
                 className="w-8 h-8 rounded-xl border flex items-center justify-center transition"
                 style={{
-                  color: "var(--text-secondary)",
-                  backgroundColor: "var(--bg-muted)",
-                  borderColor: "var(--border-color)",
+                  color: "var(--color-text-secondary)",
+                  backgroundColor: "var(--color-ground)",
+                  borderColor: "var(--color-border)",
                 }}
               >
                 <FaXmark className="w-3.5 h-3.5" />
@@ -436,8 +436,8 @@ export const TrackOrderDrawer = memo(
             {savedOrders.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 text-center px-4">
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "var(--bg-muted)" }}
+                  className="w-16 h-16  flex items-center justify-center mb-4"
+                  style={{ backgroundColor: "var(--color-ground)" }}
                 >
                   <FaBoxOpen
                     className="w-8 h-8"
@@ -446,7 +446,7 @@ export const TrackOrderDrawer = memo(
                 </div>
                 <p
                   className="font-bold"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   No recent orders
                 </p>
@@ -472,8 +472,8 @@ export const TrackOrderDrawer = memo(
           <div
             className="border-t px-4 py-4 shrink-0 space-y-3"
             style={{
-              backgroundColor: "var(--bg-muted)",
-              borderColor: "var(--border-color)",
+              backgroundColor: "var(--color-ground)",
+              borderColor: "var(--color-border)",
             }}
           >
             <button
@@ -483,7 +483,7 @@ export const TrackOrderDrawer = memo(
                 setTrackError(null);
               }}
               className="flex items-center justify-between w-full text-sm font-bold transition"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               <span>Track by order number</span>
               <FaChevronDown
@@ -516,7 +516,7 @@ export const TrackOrderDrawer = memo(
                 {trackError && (
                   <p
                     className="text-xs text-center"
-                    style={{ color: "var(--error)" }}
+                    style={{ color: "var(--color-error)" }}
                   >
                     {trackError}
                   </p>

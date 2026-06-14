@@ -45,23 +45,23 @@ export const ReferralCommissionsTab = ({
     <Card variant="outlined">
       <CardBody>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
-          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--text-primary)" }}>
-            <FaMoneyBillWave className="w-4 h-4" style={{ color: "var(--color-secondary)" }} />
+          <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2" style={{ color: "var(--color-text-primary)" }}>
+            <FaMoneyBillWave className="w-4 h-4" style={{ color: "var(--color-amber)" }} />
             Commission History
             <Badge variant="subtle" colorScheme="info" size="sm">{pagination.total}</Badge>
           </h3>
           <div className="flex items-center gap-2 flex-wrap">
             <ReferralCommissionFilter value={filter} onChange={onFilterChange} />
-            <div className="flex rounded-lg p-0.5 shrink-0" style={{ background: "var(--bg-surface-alt)" }}>
+            <div className="flex rounded-lg p-0.5 shrink-0" style={{ background: "var(--color-surface-alt)" }}>
               <button
                 onClick={() => setViewMode("card")}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                   viewMode === "card" ? "shadow-sm border" : ""
                 }`}
                 style={{
-                  background: viewMode === "card" ? "var(--bg-surface)" : "transparent",
-                  color: viewMode === "card" ? "var(--text-primary)" : "var(--text-muted)",
-                  borderColor: viewMode === "card" ? "var(--border-color)" : "transparent",
+                  background: viewMode === "card" ? "var(--color-surface)" : "transparent",
+                  color: viewMode === "card" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                  borderColor: viewMode === "card" ? "var(--color-border)" : "transparent",
                 }}
               >
                 <FaTh className="w-3.5 h-3.5" />
@@ -73,9 +73,9 @@ export const ReferralCommissionsTab = ({
                   viewMode === "table" ? "shadow-sm border" : ""
                 }`}
                 style={{
-                  background: viewMode === "table" ? "var(--bg-surface)" : "transparent",
-                  color: viewMode === "table" ? "var(--text-primary)" : "var(--text-muted)",
-                  borderColor: viewMode === "table" ? "var(--border-color)" : "transparent",
+                  background: viewMode === "table" ? "var(--color-surface)" : "transparent",
+                  color: viewMode === "table" ? "var(--color-text-primary)" : "var(--color-text-muted)",
+                  borderColor: viewMode === "table" ? "var(--color-border)" : "transparent",
                 }}
               >
                 <FaList className="w-3.5 h-3.5" />
@@ -90,7 +90,7 @@ export const ReferralCommissionsTab = ({
             <Spinner size="lg" />
           </div>
         ) : commissions.length === 0 ? (
-          <div className="text-center py-8" style={{ color: "var(--text-muted)" }}>
+          <div className="text-center py-8" style={{ color: "var(--color-text-muted)" }}>
             <FaMoneyBillWave className="w-8 h-8 mx-auto mb-2 opacity-50" />
             <p className="text-sm">No commission records found</p>
           </div>
@@ -102,25 +102,25 @@ export const ReferralCommissionsTab = ({
                   key={c._id}
                   className="border rounded-lg p-4"
                   style={{
-                    background: "var(--bg-surface)",
-                    borderColor: "var(--border-color)",
+                    background: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
                   }}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <Badge colorScheme="info" variant="subtle" size="sm">{formatDate(c.date)}</Badge>
                     {statusBadge(c.status)}
                   </div>
-                  <p className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>GHS {c.amount.toFixed(2)}</p>
+                  <p className="text-lg font-bold" style={{ color: "var(--color-text-primary)" }}>GHS {c.amount.toFixed(2)}</p>
                   {typeof c.referrer === "object" && (
-                    <div className="flex items-center gap-1.5 mt-1.5 text-xs" style={{ color: "var(--text-secondary)" }}>
+                    <div className="flex items-center gap-1.5 mt-1.5 text-xs" style={{ color: "var(--color-text-secondary)" }}>
                       <FaUser className="w-3 h-3" />
                       <span>{referrerName(c.referrer)}</span>
                       {referrerDetail(c.referrer) && (
-                        <span className="truncate" style={{ color: "var(--text-muted)" }}>· {referrerDetail(c.referrer)}</span>
+                        <span className="truncate" style={{ color: "var(--color-text-muted)" }}>· {referrerDetail(c.referrer)}</span>
                       )}
                     </div>
                   )}
-                  <div className="flex gap-4 mt-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
+                  <div className="flex gap-4 mt-1.5 text-xs" style={{ color: "var(--color-text-muted)" }}>
                     <span>{c.rate}% rate</span>
                     <span>{c.ordersCount || 0} orders</span>
                     <span>{c.qualifiedUsersCount || 0} users</span>
@@ -160,11 +160,11 @@ export const ReferralCommissionsTab = ({
                     <TableRow key={c._id}>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          <FaUser className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--text-muted)" }} />
+                          <FaUser className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--color-text-muted)" }} />
                           <div>
                             <p className="text-sm font-medium">{referrerName(c.referrer)}</p>
                             {referrerDetail(c.referrer) && (
-                              <p className="text-xs" style={{ color: "var(--text-muted)" }}>{referrerDetail(c.referrer)}</p>
+                              <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>{referrerDetail(c.referrer)}</p>
                             )}
                           </div>
                         </div>

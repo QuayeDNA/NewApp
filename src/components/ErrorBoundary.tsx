@@ -44,7 +44,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <div className="text-center max-w-md">
             <div className="mb-6">
               <svg
-                className="w-16 h-16 text-red-500 mx-auto mb-4"
+                className="w-16 h-16 text-[var(--color-error)] mx-auto mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -65,11 +65,11 @@ export class ErrorBoundary extends Component<Props, State> {
             </div>
             
             {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="text-left mb-6 p-4 bg-red-50 rounded-lg border border-red-200">
-                <summary className="cursor-pointer text-red-800 font-medium mb-2">
+              <details className="text-left mb-6 p-4 bg-[var(--color-error)]/10 border border-[var(--color-error)]/30">
+                <summary className="cursor-pointer text-[var(--color-error)] font-medium mb-2">
                   Error Details (Development)
                 </summary>
-                <pre className="text-xs text-red-700 overflow-auto">
+                <pre className="text-xs text-[var(--color-error)] overflow-auto">
                   {this.state.error.stack}
                 </pre>
               </details>

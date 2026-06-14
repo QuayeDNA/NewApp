@@ -28,12 +28,12 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
 
     // Color classes
     const colorClasses = {
-      primary: 'border-primary',
-      white: 'border-white',
-      gray: 'border-[var(--text-secondary)]',
-      success: 'border-success',
-      warning: 'border-warning',
-      error: 'border-error',
+      primary: 'border-[var(--color-ink)]',
+      white: 'border-[var(--color-text-inverse)]',
+      gray: 'border-[var(--color-text-secondary)]',
+      success: 'border-[var(--color-success)]',
+      warning: 'border-[var(--color-warning)]',
+      error: 'border-[var(--color-error)]',
     };
 
     // Thickness classes
@@ -43,7 +43,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
       thick: 'border-[3px]',
     };
 
-    const baseClasses = 'animate-spin rounded-full border-solid border-t-transparent';
+    const baseClasses = 'animate-spin border-solid border-t-transparent';
 
     return (
       <div

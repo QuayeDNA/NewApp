@@ -43,12 +43,12 @@ export const AnnouncementFormDialog: React.FC<Props> = ({
     <Dialog isOpen={isOpen} onClose={onClose} size="full" className="sm:max-w-2xl">
       <DialogHeader>
         <div className="flex items-center justify-between p-4 sm:p-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] pr-8">
+          <h2 className="text-lg sm:text-xl font-semibold text-[var(--color-text-primary)] pr-8">
             {isEdit ? "Edit Announcement" : "Create Announcement"}
           </h2>
           <button
             onClick={onClose}
-            className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors p-1"
+            className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors p-1"
           >
             <X className="w-5 h-5" />
           </button>
@@ -59,7 +59,7 @@ export const AnnouncementFormDialog: React.FC<Props> = ({
         <div className="space-y-4 sm:space-y-6">
           {!isEdit && templates.length > 0 && (
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
+              <label className="block text-sm font-medium text-[var(--color-text-primary)] mb-3">
                 Quick Templates
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
@@ -84,7 +84,7 @@ export const AnnouncementFormDialog: React.FC<Props> = ({
                   >
                     <div>
                       <div className="font-medium text-sm">{template.name}</div>
-                      <div className="text-xs text-[var(--text-muted)] mt-1">
+                      <div className="text-xs text-[var(--color-text-muted)] mt-1">
                         {template.type} &bull; {template.priority}
                       </div>
                     </div>
@@ -180,27 +180,27 @@ export const AnnouncementFormDialog: React.FC<Props> = ({
                   onChange={(e) => update({ expiresAt: e.target.value })}
                   className="text-sm"
                 />
-                <p className="text-xs text-[var(--text-muted)] mt-1">
+                <p className="text-xs text-[var(--color-text-muted)] mt-1">
                   Leave empty for auto-expiration in 1 day
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 bg-[var(--bg-surface-alt)] rounded-lg">
+            <div className="flex items-center gap-3 p-3 bg-[var(--color-surface-alt)] rounded-lg">
               <input
                 type="checkbox"
                 id="actionRequired"
                 checked={formData.actionRequired}
                 onChange={(e) => update({ actionRequired: e.target.checked })}
-                className="rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                className="rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
               />
-              <label htmlFor="actionRequired" className="text-sm text-[var(--text-secondary)] font-medium">
+              <label htmlFor="actionRequired" className="text-sm text-[var(--color-text-secondary)] font-medium">
                 Action Required
               </label>
             </div>
 
             {formData.actionRequired && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[var(--color-accent-soft)] rounded-lg">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[rgba(245, 158, 11, 0.12)] rounded-lg">
                 <Input
                   label="Action Text"
                   value={formData.actionText || ""}

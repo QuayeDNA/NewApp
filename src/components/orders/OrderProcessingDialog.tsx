@@ -83,8 +83,8 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
     <Dialog isOpen={isOpen} onClose={onClose} size="lg">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-            <FaCopy className="text-blue-600 text-lg" />
+          <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-info)]/10 flex items-center justify-center">
+            <FaCopy className="text-[var(--color-info)] text-lg" />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-900">
@@ -98,11 +98,11 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
 
         {/* Copy Format Preview */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-2">
             Copy Format Preview:
           </label>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 max-h-40 overflow-y-auto">
-            <pre className="text-xs font-mono text-gray-700 whitespace-pre-wrap">
+          <div className="bg-[var(--color-surface-alt)] border border-[var(--color-border)] p-3 max-h-40 overflow-y-auto">
+            <pre className="text-xs font-mono text-[var(--color-text-secondary)] whitespace-pre-wrap">
               {formattedPreview}
               {orders.length > 3 &&
                 `\n... and ${orders.length - 3} more`}
@@ -112,7 +112,7 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
 
         {/* Status Update Options */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-2">
             Update Status After Copy:
           </label>
           <div className="space-y-2">
@@ -127,9 +127,9 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
                     e.target.value as "none" | "processing" | "completed"
                   )
                 }
-                className="text-blue-600 focus:ring-blue-500"
+                className="text-[var(--color-info)] focus:ring-[var(--color-info)]"
               />
-              <span className="text-sm text-gray-700">Don't update status</span>
+              <span className="text-sm text-[var(--color-text-secondary)]">Don't update status</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -142,9 +142,9 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
                     e.target.value as "none" | "processing" | "completed"
                   )
                 }
-                className="text-blue-600 focus:ring-blue-500"
+                className="text-[var(--color-info)] focus:ring-[var(--color-info)]"
               />
-              <span className="text-sm text-gray-700">Mark as Processing</span>
+              <span className="text-sm text-[var(--color-text-secondary)]">Mark as Processing</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -157,9 +157,9 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
                     e.target.value as "none" | "processing" | "completed"
                   )
                 }
-                className="text-blue-600 focus:ring-blue-500"
+                className="text-[var(--color-info)] focus:ring-[var(--color-info)]"
               />
-              <span className="text-sm text-gray-700">Mark as Completed</span>
+              <span className="text-sm text-[var(--color-text-secondary)]">Mark as Completed</span>
             </label>
           </div>
         </div>
@@ -167,7 +167,7 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
         {/* Batch Size */}
         {statusUpdate !== "none" && (
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-2">
               Batch Size: {batchSize} orders at a time
             </label>
             <input
@@ -179,7 +179,7 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
               onChange={(e) => setBatchSize(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">
               Smaller batches work better on slow networks
             </p>
           </div>
@@ -190,14 +190,14 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
           <button
             onClick={onClose}
             disabled={isProcessing}
-            className="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors disabled:opacity-50"
+            className="flex-1 px-4 py-2 bg-[var(--color-surface-alt)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface-alt)] transition-colors disabled:opacity-50"
           >
             Cancel
           </button>
           <button
             onClick={handleCopyOnly}
             disabled={isProcessing}
-            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+            className="flex-1 px-4 py-2 bg-[var(--color-info)] text-white hover:bg-[var(--color-info)]/80 transition-colors disabled:opacity-50"
           >
             {isProcessing ? (
               <span className="flex items-center justify-center gap-2">
@@ -211,7 +211,7 @@ export const OrderProcessingDialog: React.FC<OrderProcessingDialogProps> = ({
           <button
             onClick={handleCopyAndProcess}
             disabled={isProcessing}
-            className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50"
+            className="flex-1 px-4 py-2 bg-[var(--color-success)] text-white hover:bg-[var(--color-success)]/80 transition-colors disabled:opacity-50"
           >
             Copy & Process
           </button>
@@ -243,8 +243,8 @@ export const ProgressDialog: React.FC<ProgressDialogProps> = ({
     <Dialog isOpen={isOpen} onClose={() => {}} size="md">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-            <FaSpinner className="text-blue-600 text-lg animate-spin" />
+          <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-info)]/10 flex items-center justify-center">
+            <FaSpinner className="text-[var(--color-info)] text-lg animate-spin" />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-900">
@@ -256,15 +256,15 @@ export const ProgressDialog: React.FC<ProgressDialogProps> = ({
 
         {/* Progress Bar */}
         <div className="mb-4">
-          <div className="flex justify-between text-sm text-gray-700 mb-2">
+          <div className="flex justify-between text-sm text-[var(--color-text-secondary)] mb-2">
             <span>
               Progress: {current}/{total} orders
             </span>
             <span>{Math.round((current / total) * 100)}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div className="w-full bg-[var(--color-surface-alt)] h-3 overflow-hidden">
             <div
-              className="bg-blue-600 h-full transition-all duration-300 ease-out"
+              className="bg-[var(--color-info)] h-full transition-all duration-300 ease-out"
               style={{
                 width: `${(current / total) * 100}%`,
               }}
@@ -285,15 +285,15 @@ export const ProgressDialog: React.FC<ProgressDialogProps> = ({
                 key={index}
                 className={`flex items-center gap-2 p-2 rounded ${
                   isComplete
-                    ? "bg-green-50 text-green-700"
+                    ? "bg-[var(--color-success)]/10 text-[var(--color-success)]"
                     : isCurrent
-                    ? "bg-blue-50 text-blue-700"
-                    : "bg-gray-50 text-gray-500"
+                    ? "bg-[var(--color-info)]/10 text-[var(--color-info)]"
+                    : "bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]"
                 }`}
               >
-                {isComplete && <FaCheck className="text-green-600" />}
+                {isComplete && <FaCheck className="text-[var(--color-success)]" />}
                 {isCurrent && (
-                  <FaSpinner className="text-blue-600 animate-spin" />
+                  <FaSpinner className="text-[var(--color-info)] animate-spin" />
                 )}
                 {isPending && <FaClock className="text-gray-400" />}
                 <span>

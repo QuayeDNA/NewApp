@@ -20,10 +20,10 @@ export const Spinner: React.FC<SpinnerProps> = ({
   };
 
   const colorClasses = {
-    primary: 'text-primary',
-    secondary: 'text-[var(--text-secondary)]',
-    white: 'text-white',
-    gray: 'text-[var(--text-muted)]'
+    primary: 'text-[var(--color-ink)]',
+    secondary: 'text-[var(--color-text-secondary)]',
+    white: 'text-[var(--color-text-inverse)]',
+    gray: 'text-[var(--color-text-muted)]'
   };
 
   return (
@@ -68,12 +68,12 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   const getVariantClasses = () => {
     switch (variant) {
       case 'circular':
-        return 'rounded-full';
+        return '';
       case 'rectangular':
-        return 'rounded';
+        return '';
       case 'text':
       default:
-        return 'rounded';
+        return '';
     }
   };
 
@@ -85,7 +85,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   return (
     <div
       className={`
-        bg-[var(--bg-surface-alt)]
+        bg-[var(--color-surface-alt)]
         ${getVariantClasses()} 
         ${animation ? 'animate-pulse' : ''} 
         ${className}
@@ -107,7 +107,7 @@ export const LoadingCard: React.FC<LoadingCardProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`p-4 border border-[var(--border-color)] rounded-lg ${className}`}>
+    <div className={`p-4 border border-[var(--color-border)] ${className}`}>
       <div className="flex items-start space-x-4">
         {showAvatar && (
           <Skeleton variant="circular" width={40} height={40} />
@@ -169,10 +169,10 @@ export const FullPageLoading: React.FC<FullPageLoadingProps> = ({
   size = 'lg'
 }) => {
   return (
-    <div className="fixed inset-0 bg-[var(--bg-surface)]/90 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-[var(--color-surface)]/90 flex items-center justify-center z-50">
       <div className="text-center">
         <Spinner size={size} className="mx-auto mb-4" />
-        <p className="text-[var(--text-secondary)] text-sm">{message}</p>
+        <p className="text-[var(--color-text-secondary)] text-sm">{message}</p>
       </div>
     </div>
   );
@@ -192,7 +192,7 @@ export const InlineLoading: React.FC<InlineLoadingProps> = ({
   return (
     <div className={`flex items-center space-x-2 ${className}`}>
       <Spinner size={size} />
-      <span className="text-[var(--text-secondary)] text-sm">{text}</span>
+      <span className="text-[var(--color-text-secondary)] text-sm">{text}</span>
     </div>
   );
 };

@@ -173,7 +173,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
       {/* Spotlight on target element */}
       {targetRect && (
         <div 
-          className="absolute rounded-md"
+          className="absolute"
           style={{
             top: targetRect.top - 8 + window.scrollY,
             left: targetRect.left - 8,
@@ -187,14 +187,14 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
       
       {/* Enhanced Tooltip */}
       <div 
-        className="absolute bg-white rounded-lg shadow-xl w-96 p-6 pointer-events-auto z-70 border-2 border-blue-500"
+        className="absolute bg-[var(--color-surface)] shadow-[var(--shadow-xl)] w-96 p-6 pointer-events-auto z-70 border-2 border-[var(--color-info)]"
         style={tooltipStyle}
       >
         {/* Header with Icon */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
-            <div className="bg-blue-100 p-2 rounded-full mr-3">
-              {steps[currentStep]?.icon || <FaLightbulb className="text-blue-600" />}
+            <div className="bg-[var(--color-info)]/10 p-2 mr-3">
+              {steps[currentStep]?.icon || <FaLightbulb className="text-[var(--color-info)]" />}
             </div>
             <div>
               <h3 className="font-bold text-gray-900 text-lg">{steps[currentStep]?.title}</h3>
@@ -216,9 +216,9 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({
         </div>
         
         {/* Progress bar */}
-        <div className="h-2 w-full bg-gray-200 rounded-full mb-6">
+        <div className="h-2 w-full bg-[var(--color-surface-alt)] mb-6">
           <div 
-            className="h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-300"
+            className="h-2 bg-gradient-to-r from-[var(--color-info)] to-[var(--color-info)] transition-all duration-300"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -288,7 +288,7 @@ export const TourTrigger: React.FC<TourTriggerProps> = ({ onStartTour, className
   return (
     <button
       onClick={onStartTour}
-      className={`inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 ${className}`}
+      className={`inline-flex items-center text-sm font-medium text-[var(--color-info)] hover:text-[var(--color-info)] ${className}`}
     >
       <FaRedo className="mr-1" /> Take the tour
     </button>

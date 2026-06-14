@@ -28,7 +28,7 @@ export const Testimonial = forwardRef<HTMLDivElement, TestimonialProps>(
   }, ref) => {
     const variantClasses = {
       default: 'p-6',
-      card: 'bg-[var(--bg-surface)] p-6 rounded-lg shadow-sm border border-[var(--border-color)]',
+      card: 'bg-[var(--color-surface)] p-6 shadow-sm border border-[var(--color-border)]',
       minimal: 'p-4',
     };
 
@@ -39,7 +39,7 @@ export const Testimonial = forwardRef<HTMLDivElement, TestimonialProps>(
             <FaStar
               key={i}
               className={`text-lg ${
-                i < rating ? 'text-yellow-400' : 'text-[var(--text-muted)]'
+                i < rating ? 'text-[var(--color-amber)]' : 'text-[var(--color-text-muted)]'
               }`}
             />
           ))}
@@ -49,7 +49,7 @@ export const Testimonial = forwardRef<HTMLDivElement, TestimonialProps>(
 
     const renderQuote = () => {
       if (variant === 'minimal') return null;
-      return <FaQuoteLeft className="text-primary text-2xl mx-auto mb-4" />;
+      return <FaQuoteLeft className="text-[var(--color-ink)] text-2xl mx-auto mb-4" />;
     };
 
     const renderAuthor = () => {
@@ -63,9 +63,9 @@ export const Testimonial = forwardRef<HTMLDivElement, TestimonialProps>(
             </div>
           )}
           <div className={variant === 'minimal' ? 'text-left' : 'text-center'}>
-            <div className="font-semibold text-[var(--text-primary)]">{author}</div>
+            <div className="font-semibold text-[var(--color-text-primary)]">{author}</div>
             {displayRole && (
-              <div className="text-[var(--text-muted)] text-sm">{displayRole}</div>
+              <div className="text-[var(--color-text-muted)] text-sm">{displayRole}</div>
             )}
           </div>
         </div>
@@ -80,7 +80,7 @@ export const Testimonial = forwardRef<HTMLDivElement, TestimonialProps>(
       >
         {variant !== 'minimal' && renderStars()}
         {renderQuote()}
-        <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
+        <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed">
           "{content}"
         </p>
         {renderAuthor()}
@@ -120,14 +120,14 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     return (
       <div
         ref={ref}
-        className={`${sizeClasses[size]} bg-gradient-to-br from-primary to-[var(--color-primary-hover)] rounded-full flex items-center justify-center text-[var(--text-inverse)] font-bold shadow-md ${className}`}
+        className={`${sizeClasses[size]} bg-gradient-to-br from-[var(--color-ink)] to-[var(--color-ink-hover)] flex items-center justify-center text-[var(--color-text-inverse)] font-bold shadow-md ${className}`}
         {...props}
       >
         {src ? (
           <img
             src={src}
             alt={alt || name}
-            className="w-full h-full rounded-full object-cover"
+            className="w-full h-full object-cover"
           />
         ) : (
           <span>{getInitials(name)}</span>

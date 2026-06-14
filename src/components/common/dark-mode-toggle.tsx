@@ -6,12 +6,12 @@ export const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative inline-flex h-9 w-16 items-center justify-center gap-2 rounded-full border border-[var(--border-color)] bg-[var(--bg-surface)] px-3 transition-[background,border-color] duration-250 ease-in-out hover:border-[var(--color-secondary)]"
+      className="relative flex h-7 w-12 items-center justify-center gap-1 rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 transition-[background,border-color] duration-250 ease-in-out hover:border-[var(--color-amber)]"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {/* Sun icon */}
       <svg
-        className="h-4 w-4"
+        className="h-3 w-3"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -19,7 +19,7 @@ export const DarkModeToggle = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         style={{
-          color: isDark ? "var(--text-muted)" : "var(--warning)",
+          color: isDark ? "var(--color-text-muted)" : "var(--color-warning)",
           transition: "color 0.25s ease",
         }}
       >
@@ -36,7 +36,7 @@ export const DarkModeToggle = () => {
 
       {/* Moon icon */}
       <svg
-        className="h-4 w-4"
+        className="h-3 w-3"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -44,7 +44,7 @@ export const DarkModeToggle = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         style={{
-          color: isDark ? "var(--color-secondary)" : "var(--text-muted)",
+          color: isDark ? "var(--color-amber)" : "var(--color-text-muted)",
           transition: "color 0.25s ease",
         }}
       >

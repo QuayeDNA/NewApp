@@ -100,7 +100,7 @@ export const RecentActivityFeed = ({ limit = 20 }: RecentActivityFeedProps) => {
                 return (
                   <div
                     key={entry._id}
-                    className="rounded-lg border border-gray-200 bg-white p-3"
+                    className="border border-[var(--color-border)] bg-[var(--color-surface)] p-3"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0 flex-1">
@@ -127,7 +127,7 @@ export const RecentActivityFeed = ({ limit = 20 }: RecentActivityFeedProps) => {
                     </div>
 
                     {expanded && metadata.length > 0 && (
-                      <div className="mt-3 rounded bg-gray-50 p-3">
+                      <div className="mt-3 bg-[var(--color-surface-alt)] p-3">
                         <div className="space-y-1">
                           {metadata.map(({ label, value }) => (
                             <div key={label} className="flex gap-2 text-xs">

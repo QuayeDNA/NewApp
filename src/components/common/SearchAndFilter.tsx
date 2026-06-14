@@ -143,7 +143,7 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
               placeholder={searchPlaceholder}
               value={immediateSearchTerm}
               onChange={(e) => handleSearchInputChange(e.target.value)}
-              leftIcon={<FaSearch className="text-[var(--text-muted)]" />}
+              leftIcon={<FaSearch className="text-[var(--color-text-muted)]" />}
               disabled={isLoading}
             />
           </form>
@@ -189,7 +189,7 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
         </div>
 
         {(Object.keys(filters).length > 0 || showDateRange) && (
-          <div className={`mt-4 pt-4 border-t border-[var(--border-color)] ${showMobileFilters ? 'block' : 'hidden'} sm:block`}>
+          <div className={`mt-4 pt-4 border-t border-[var(--color-border)] ${showMobileFilters ? 'block' : 'hidden'} sm:block`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {Object.entries(filters).map(([filterKey, filter]) => (
                 <div key={filterKey}>
@@ -237,17 +237,17 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
         )}
 
         {(hasActiveFilters || hasSearchTerm || hasImmediateSearchTerm) && (
-          <div className="mt-4 pt-4 border-t border-[var(--border-color)]">
+          <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
             <div className="flex flex-wrap gap-2">
               {(hasSearchTerm || hasImmediateSearchTerm) && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--color-ink)]/10 text-[var(--color-ink)]">
                   <span>Search: "{hasSearchTerm ? searchTerm : immediateSearchTerm}"</span>
                   <button
                     onClick={() => {
                       setImmediateSearchTerm('');
                       onSearchChange('');
                     }}
-                    className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
+                    className="text-[var(--color-ink)] hover:text-[var(--color-ink-hover)]"
                     aria-label="Clear search"
                   >
                     <FaTimes className="text-xs" />
@@ -259,11 +259,11 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
                 if (filter.value) {
                   const selectedOption = filter.options.find(opt => opt.value === filter.value);
                   return (
-                    <span key={filterKey} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--bg-surface-alt)] text-[var(--text-primary)]">
+                    <span key={filterKey} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]">
                       <span>{filter.label}: {selectedOption?.label}</span>
                       <button
                         onClick={() => onFilterChange(filterKey, '')}
-                        className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                        className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                         aria-label={`Clear ${filter.label} filter`}
                       >
                         <FaTimes className="text-xs" />
@@ -275,11 +275,11 @@ export const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
               })}
 
               {showDateRange && dateRange && (dateRange.startDate || dateRange.endDate) && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--success)]/10 text-[var(--success)]">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm bg-[var(--color-success)]/10 text-[var(--color-success)]">
                   <span>Date: {dateRange.startDate || 'Start'} - {dateRange.endDate || 'End'}</span>
                   <button
                     onClick={() => onDateRangeChange?.('', '')}
-                    className="text-[var(--success)] hover:text-[var(--success)]"
+                    className="text-[var(--color-success)] hover:text-[var(--color-success)]"
                     aria-label="Clear date range"
                   >
                     <FaTimes className="text-xs" />

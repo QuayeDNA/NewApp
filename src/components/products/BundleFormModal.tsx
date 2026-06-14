@@ -116,32 +116,32 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
 
   if (!open) return null;
 
-  const inputClass = "w-full px-3 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--bg-surface)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all";
-  const labelClass = "block text-sm font-medium text-[var(--text-secondary)] mb-1.5";
-  const sectionTitleClass = "text-base font-semibold text-[var(--text-primary)]";
+  const inputClass = "w-full px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-primary)] focus:ring-2 focus:ring-[var(--color-ink)] focus:border-transparent transition-all";
+  const labelClass = "block text-sm font-medium text-[var(--color-text-secondary)] mb-1.5";
+  const sectionTitleClass = "text-base font-semibold text-[var(--color-text-primary)]";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4 border border-[var(--border-color)] bg-[var(--bg-surface)]">
+      <div className="rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4 border border-[var(--color-border)] bg-[var(--color-surface)]">
         <div className="p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+              <div className="p-2.5 rounded-full bg-[var(--color-ink)]/10 text-[var(--color-ink)]">
                 <FaCube className="text-lg" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-[var(--text-primary)]">
+                <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
                   {initialData ? 'Edit Bundle' : 'Create Bundle'}
                 </h2>
-                <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
                   {isAfaBundle ? 'AFA Registration Service' : 'Data Bundle Configuration'}
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-[var(--text-muted)] hover:bg-[var(--bg-surface-alt)] hover:text-[var(--text-primary)] transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-[var(--color-text-muted)] hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-text-primary)] transition-colors"
               disabled={loading}
             >
               <FaTimes />
@@ -152,8 +152,8 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Error Message */}
             {error && (
-              <div className="rounded-lg border border-[var(--error)]/20 bg-[var(--error)]/5 p-4">
-                <p className="text-sm font-medium text-[var(--error)]">{error}</p>
+              <div className="rounded-lg border border-[var(--color-error)]/20 bg-[var(--color-error)]/5 p-4">
+                <p className="text-sm font-medium text-[var(--color-error)]">{error}</p>
               </div>
             )}
 
@@ -319,10 +319,10 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
                   type="checkbox"
                   checked={formData.isActive || false}
                   onChange={(e) => handleInputChange('isActive', e.target.checked)}
-                  className="h-4 w-4 rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                  className="h-4 w-4 rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                   disabled={loading}
                 />
-                <span className="text-sm text-[var(--text-primary)]">Active Bundle</span>
+                <span className="text-sm text-[var(--color-text-primary)]">Active Bundle</span>
               </label>
             </div>
 
@@ -330,7 +330,7 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
             {isAfaBundle && (
               <div className="space-y-4">
                 <h3 className={sectionTitleClass}>AFA Registration Requirements</h3>
-                <p className="text-sm text-[var(--text-muted)]">
+                <p className="text-sm text-[var(--color-text-muted)]">
                   Configure the requirements for this AFA registration service.
                 </p>
 
@@ -339,10 +339,10 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
                     type="checkbox"
                     checked={formData.requiresGhanaCard || false}
                     onChange={(e) => handleInputChange('requiresGhanaCard', e.target.checked)}
-                    className="h-4 w-4 rounded border-[var(--border-color)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+                    className="h-4 w-4 rounded border-[var(--color-border)] text-[var(--color-ink)] focus:ring-[var(--color-ink)]"
                     disabled={loading}
                   />
-                  <span className="text-sm text-[var(--text-primary)]">
+                  <span className="text-sm text-[var(--color-text-primary)]">
                     Require Ghana Card Number for registration
                   </span>
                 </label>
@@ -357,7 +357,7 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
                     className={`${inputClass} resize-none`}
                     disabled={loading}
                   />
-                  <p className="text-xs text-[var(--text-muted)] mt-1">
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">
                     List any additional documents or information required (one per line)
                   </p>
                 </div>
@@ -372,13 +372,13 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
                   {packageId && (
                     <div>
                       <label className={labelClass}>Package ID</label>
-                      <Input type="text" value={packageId} disabled className="bg-[var(--bg-surface-alt)]" />
+                      <Input type="text" value={packageId} disabled className="bg-[var(--color-surface-alt)]" />
                     </div>
                   )}
                   {providerId && (
                     <div>
                       <label className={labelClass}>Provider</label>
-                      <Input type="text" value={providerId} disabled className="bg-[var(--bg-surface-alt)]" />
+                      <Input type="text" value={providerId} disabled className="bg-[var(--color-surface-alt)]" />
                     </div>
                   )}
                 </div>
@@ -386,7 +386,7 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
             )}
 
             {/* Actions */}
-            <div className="flex justify-end gap-3 pt-5 border-t border-[var(--border-color)]">
+            <div className="flex justify-end gap-3 pt-5 border-t border-[var(--color-border)]">
               <Button type="button" variant="outline" onClick={onClose} disabled={loading}>
                 Cancel
               </Button>

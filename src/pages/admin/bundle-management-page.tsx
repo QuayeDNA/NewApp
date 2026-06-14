@@ -62,11 +62,11 @@ const PROVIDER_INITIALS: Record<string, string> = {
 };
 
 const STAT_BG: Record<string, string> = {
-  total: "bg-[var(--info)]/10 text-[var(--info)]",
-  active: "bg-[var(--success)]/10 text-[var(--success)]",
-  inactive: "bg-[var(--error)]/10 text-[var(--error)]",
-  value: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
-  provider: "bg-[var(--warning)]/10 text-[var(--warning)]",
+  total: "bg-[var(--color-info)]/10 text-[var(--color-info)]",
+  active: "bg-[var(--color-success)]/10 text-[var(--color-success)]",
+  inactive: "bg-[var(--color-error)]/10 text-[var(--color-error)]",
+  value: "bg-[var(--color-ink)]/10 text-[var(--color-ink)]",
+  provider: "bg-[var(--color-warning)]/10 text-[var(--color-warning)]",
 };
 
 export const BundleManagementPage: React.FC = () => {
@@ -440,7 +440,7 @@ export const BundleManagementPage: React.FC = () => {
       <div className="p-6 text-center">
         <div className="flex items-center justify-center gap-3">
           <Spinner size="lg" />
-          <span className="text-sm text-[var(--text-muted)]">Loading package details...</span>
+          <span className="text-sm text-[var(--color-text-muted)]">Loading package details...</span>
         </div>
       </div>
     );
@@ -449,8 +449,8 @@ export const BundleManagementPage: React.FC = () => {
   if (error && !pkg) {
     return (
       <div className="p-6">
-        <div className="rounded-xl border border-[var(--error)]/30 bg-[var(--error)]/5 p-4">
-          <p className="text-sm font-medium text-[var(--error)]">{error}</p>
+        <div className="rounded-xl border border-[var(--color-error)]/30 bg-[var(--color-error)]/5 p-4">
+          <p className="text-sm font-medium text-[var(--color-error)]">{error}</p>
         </div>
       </div>
     );
@@ -472,15 +472,15 @@ export const BundleManagementPage: React.FC = () => {
                 Back
               </Button>
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
+                <h1 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)]">
                   Bundle Management
                 </h1>
-                <p className="text-sm text-[var(--text-secondary)]">
+                <p className="text-sm text-[var(--color-text-secondary)]">
                   Managing bundles for:{" "}
-                  <span className="font-semibold text-[var(--text-primary)]">{pkg?.name}</span>
+                  <span className="font-semibold text-[var(--color-text-primary)]">{pkg?.name}</span>
                 </p>
                 {pkg?.description && (
-                  <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                  <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
                     {pkg.description}
                   </p>
                 )}
@@ -512,10 +512,10 @@ export const BundleManagementPage: React.FC = () => {
             <CardBody>
               <div className="flex items-center justify-between">
                 <div className="min-w-0">
-                  <p className="text-xs sm:text-sm font-medium text-[var(--text-secondary)] truncate">
+                  <p className="text-xs sm:text-sm font-medium text-[var(--color-text-secondary)] truncate">
                     {s.label}
                   </p>
-                  <p className="text-lg sm:text-2xl font-bold text-[var(--text-primary)] mt-0.5 truncate">
+                  <p className="text-lg sm:text-2xl font-bold text-[var(--color-text-primary)] mt-0.5 truncate">
                     {s.value}
                   </p>
                 </div>
@@ -530,17 +530,17 @@ export const BundleManagementPage: React.FC = () => {
 
       {/* Bulk Pricing Info Banner */}
       {bundles.length > 0 && (
-        <Card className="border-[var(--color-primary)]/20">
+        <Card className="border-[var(--color-ink)]/20">
           <CardBody>
             <div className="flex items-start gap-3">
-              <div className="p-2 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] shrink-0">
+              <div className="p-2 rounded-lg bg-[var(--color-ink)]/10 text-[var(--color-ink)] shrink-0">
                 <FaDollarSign className="text-xl" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
+                <h3 className="text-sm font-semibold text-[var(--color-text-primary)] mb-1">
                   Bulk Pricing Management Available
                 </h3>
-                <p className="text-xs text-[var(--text-secondary)] mb-2">
+                <p className="text-xs text-[var(--color-text-secondary)] mb-2">
                   Manage pricing for all {bundles.length} bundles across
                   multiple user types (Customer, Agent, Super Agent, Dealer,
                   Super Dealer) in one place.
@@ -576,7 +576,7 @@ export const BundleManagementPage: React.FC = () => {
       {(error || actionError) && (
         <Card>
           <CardBody>
-            <p className="text-sm font-medium text-[var(--error)]">{error || actionError}</p>
+            <p className="text-sm font-medium text-[var(--color-error)]">{error || actionError}</p>
           </CardBody>
         </Card>
       )}
@@ -587,12 +587,12 @@ export const BundleManagementPage: React.FC = () => {
           {loading ? (
             <div className="p-6 sm:p-8 text-center">
               <Spinner size="lg" />
-              <span className="ml-3 text-sm text-[var(--text-muted)]">Loading bundles...</span>
+              <span className="ml-3 text-sm text-[var(--color-text-muted)]">Loading bundles...</span>
             </div>
           ) : bundles.length === 0 ? (
             <div className="p-8 sm:p-10 text-center">
-              <FaCube className="mx-auto text-3xl sm:text-4xl text-[var(--text-muted)] mb-4" />
-              <p className="text-sm text-[var(--text-muted)] mb-4">
+              <FaCube className="mx-auto text-3xl sm:text-4xl text-[var(--color-text-muted)] mb-4" />
+              <p className="text-sm text-[var(--color-text-muted)] mb-4">
                 {status || category || dataUnit || search.trim()
                   ? "No bundles found matching your criteria."
                   : "No bundles yet."}
@@ -707,8 +707,8 @@ export const BundleManagementPage: React.FC = () => {
                       onClick={() => handleDelete(bundle)}
                       disabled={actionLoading}
                       className="flex-shrink-0 py-2 px-3 rounded-lg text-xs font-semibold transition
-                        bg-[var(--error)]/20 border border-[var(--error)]/30 text-white
-                        hover:bg-[var(--error)]/40 active:bg-[var(--error)]/50
+                        bg-[var(--color-error)]/20 border border-[var(--color-error)]/30 text-white
+                        hover:bg-[var(--color-error)]/40 active:bg-[var(--color-error)]/50
                         disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                     >
                       <FaTrash />
@@ -744,12 +744,12 @@ export const BundleManagementPage: React.FC = () => {
         }}
       >
         <DialogHeader>
-          <h2 className="text-lg font-bold text-[var(--text-primary)]">Delete Bundle</h2>
+          <h2 className="text-lg font-bold text-[var(--color-text-primary)]">Delete Bundle</h2>
         </DialogHeader>
         <DialogBody>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--color-text-secondary)]">
             Are you sure you want to delete{" "}
-            <span className="font-semibold text-[var(--text-primary)]">{deleteBundle?.name}</span>?
+            <span className="font-semibold text-[var(--color-text-primary)]">{deleteBundle?.name}</span>?
             This action cannot be undone.
           </p>
         </DialogBody>

@@ -21,7 +21,7 @@ export const NetworkStatusIndicator: React.FC<NetworkStatusIndicatorProps> = ({
 
   return (
     <div className={`fixed top-4 right-4 z-50 max-w-sm ${className}`}>
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-3 space-y-2">
+      <div className="bg-[var(--color-surface)] shadow-[var(--shadow-lg)] border border-[var(--color-border)] p-3 space-y-2">
         {/* Network Status */}
         <div className="flex items-center space-x-2">
           {isOnline ? (
@@ -41,7 +41,7 @@ export const NetworkStatusIndicator: React.FC<NetworkStatusIndicatorProps> = ({
               : "Offline"}
           </span>
           {connectionType && (
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+            <span className="text-xs text-[var(--color-text-muted)]">
               ({effectiveType || connectionType})
             </span>
           )}
@@ -49,7 +49,7 @@ export const NetworkStatusIndicator: React.FC<NetworkStatusIndicatorProps> = ({
 
         {/* Offline Queue Status */}
         {queue.length > 0 && (
-          <div className="border-t border-gray-200 dark:border-gray-600 pt-2">
+          <div className="border-t border-[var(--color-border)]  pt-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <AlertTriangle className="w-4 h-4 text-orange-500" />
@@ -73,7 +73,7 @@ export const NetworkStatusIndicator: React.FC<NetworkStatusIndicatorProps> = ({
               </Button>
             </div>
             {!isOnline && (
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-xs text-gray-600  mt-1">
                 Requests will sync when connection is restored
               </p>
             )}
@@ -82,7 +82,7 @@ export const NetworkStatusIndicator: React.FC<NetworkStatusIndicatorProps> = ({
 
         {/* Slow Connection Warning */}
         {isOnline && isSlowConnection && (
-          <div className="border-t border-gray-200 dark:border-gray-600 pt-2">
+          <div className="border-t border-[var(--color-border)]  pt-2">
             <div className="flex items-center space-x-2">
               <AlertTriangle className="w-4 h-4 text-yellow-500" />
               <span className="text-sm text-yellow-700 dark:text-yellow-300">

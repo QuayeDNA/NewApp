@@ -274,7 +274,7 @@ export const ProviderPackageDisplay: React.FC<ProviderPackageDisplayProps> = ({
                   {[...Array(6)].map((_, bi) => (
                     <div
                       key={bi}
-                      className="rounded-xl p-4 bg-[var(--bg-surface-alt)] flex flex-col gap-3"
+                      className="rounded-xl p-4 bg-[var(--color-surface-alt)] flex flex-col gap-3"
                     >
                       <div className="flex items-center justify-between">
                         <Skeleton
@@ -332,11 +332,11 @@ export const ProviderPackageDisplay: React.FC<ProviderPackageDisplayProps> = ({
         <Card>
           <CardBody>
             <div className="text-center">
-              <FaBox className="mx-auto h-12 w-12 text-[var(--text-muted)]" />
-              <h3 className="mt-2 text-sm font-medium text-[var(--text-primary)]">
+              <FaBox className="mx-auto h-12 w-12 text-[var(--color-text-muted)]" />
+              <h3 className="mt-2 text-sm font-medium text-[var(--color-text-primary)]">
                 No packages found
               </h3>
-              <p className="mt-1 text-sm text-[var(--text-secondary)]">
+              <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
                 No data packages available for this provider.
               </p>
             </div>
@@ -373,10 +373,10 @@ export const ProviderPackageDisplay: React.FC<ProviderPackageDisplayProps> = ({
                 )}
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-[var(--text-primary)]">
+                <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
                   {providerData?.name || effectiveProvider} Data Packages
                 </h2>
-                <p className="text-[var(--text-secondary)]">
+                <p className="text-[var(--color-text-secondary)]">
                   Browse and order data bundles
                 </p>
               </div>
@@ -394,11 +394,11 @@ export const ProviderPackageDisplay: React.FC<ProviderPackageDisplayProps> = ({
               <CardBody>
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <div>
-                    <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                    <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
                       {pkg.name}
                     </h3>
                     {pkg.description && (
-                      <p className="text-sm text-[var(--text-secondary)] mt-1">
+                      <p className="text-sm text-[var(--color-text-secondary)] mt-1">
                         {pkg.description}
                       </p>
                     )}
@@ -504,7 +504,7 @@ export const ProviderPackageDisplay: React.FC<ProviderPackageDisplayProps> = ({
                               );
                               return discount > 0 ? (
                                 <div className="flex items-center gap-2">
-                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--success)]/30 text-white">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--color-success)]/30 text-white">
                                     {discount}% OFF
                                   </span>
                                   <span className="text-sm text-white/60 line-through">

@@ -109,7 +109,7 @@ export const AuditStatsWidget = () => {
           <StatsGrid stats={topStatCards} columns={3} gap="sm" />
 
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-            <div className="rounded-lg border border-gray-200 p-3 sm:p-4">
+            <div className="border border-[var(--color-border)] p-3 sm:p-4">
               <h4 className="mb-3 text-sm font-semibold sm:text-base">
                 Category Breakdown
               </h4>
@@ -124,10 +124,10 @@ export const AuditStatsWidget = () => {
                     })}
                   </svg>
                   <div
-                    className="absolute inset-0 h-full w-full rounded-full"
+                    className="absolute inset-0 h-full w-full"
                     style={pieStyle}
                   >
-                    <div className="absolute inset-[22%] rounded-full bg-white" />
+                    <div className="absolute inset-[22%] bg-white" />
                   </div>
                 </div>
                 <div className="space-y-1.5 sm:space-y-2">
@@ -137,7 +137,7 @@ export const AuditStatsWidget = () => {
                       className="flex items-center gap-2 text-sm"
                     >
                       <span
-                        className="inline-block h-2.5 w-2.5 shrink-0 rounded-full sm:h-3 sm:w-3"
+                        className="inline-block h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3"
                         style={{
                           backgroundColor: palette[index % palette.length],
                         }}
@@ -152,7 +152,7 @@ export const AuditStatsWidget = () => {
               </div>
             </div>
 
-            <div className="rounded-lg border border-gray-200 p-3 sm:p-4">
+            <div className="border border-[var(--color-border)] p-3 sm:p-4">
               <h4 className="mb-3 text-sm font-semibold sm:text-base">
                 Severity Breakdown
               </h4>
@@ -183,9 +183,9 @@ export const AuditStatsWidget = () => {
                           {value}
                         </span>
                       </div>
-                      <div className="h-2 rounded-full bg-gray-100">
+                      <div className="h-2 bg-[var(--color-surface-alt)]">
                         <div
-                          className="h-2 rounded-full"
+                          className="h-2"
                           style={{
                             width,
                             backgroundColor:
@@ -199,7 +199,7 @@ export const AuditStatsWidget = () => {
               </div>
             </div>
 
-            <div className="rounded-lg border border-gray-200 p-3 sm:p-4">
+            <div className="border border-[var(--color-border)] p-3 sm:p-4">
             <h4 className="mb-3 text-sm font-semibold sm:text-base">
               Top 5 Active Users
             </h4>
@@ -207,7 +207,7 @@ export const AuditStatsWidget = () => {
               {(data?.stats.topUsers ?? []).slice(0, 5).map((user, index) => (
                 <div
                   key={`${user.userId}-${index}`}
-                  className="flex items-center justify-between rounded-md bg-gray-50 px-3 py-2 text-sm"
+                  className="flex items-center justify-between bg-[var(--color-surface-alt)] px-3 py-2 text-sm"
                 >
                   <span className="font-medium text-gray-700">
                     {user.userName}

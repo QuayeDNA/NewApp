@@ -335,11 +335,11 @@ const BundleCardSkeleton = memo(() => (
   <div
     className="rounded-2xl overflow-hidden border shadow-sm"
     style={{
-      borderColor: "var(--border-color)",
-      backgroundColor: "var(--bg-surface)",
+      borderColor: "var(--color-border)",
+      backgroundColor: "var(--color-surface)",
     }}
   >
-    <div className="h-1" style={{ backgroundColor: "var(--bg-muted)" }} />
+    <div className="h-1" style={{ backgroundColor: "var(--color-ground)" }} />
     <div className="p-4 space-y-3">
       <Skeleton height="1.75rem" width="60%" />
       <Skeleton height="0.9rem" width="80%" />
@@ -444,14 +444,14 @@ const FeaturedSection = memo(
             )}
             <h2
               className="text-sm font-black tracking-wide uppercase"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               {tab === "trending" ? "Trending Now" : "Best Value"}
             </h2>
           </div>
           <div
             className="flex rounded-xl overflow-hidden border shrink-0"
-            style={{ borderColor: "var(--border-color)" }}
+            style={{ borderColor: "var(--color-border)" }}
           >
             {(["trending", "value"] as FeaturedTab[]).map((t) => (
               <button
@@ -520,7 +520,7 @@ const FeaturedSection = memo(
                   >
                     <div
                       className="relative p-6 pb-7 overflow-hidden"
-                      style={{ color: "var(--text-inverse)" }}
+                      style={{ color: "var(--color-text-inverse)" }}
                     >
                       {/* Decorative blobs */}
                       <div className="absolute -top-12 -right-12 w-52 h-52 rounded-full bg-white/10 pointer-events-none" />
@@ -726,7 +726,7 @@ const BundleCard = memo(
         {selected && (
           <div
             className="absolute top-3 right-3 z-10 w-7 h-7 rounded-full shadow-md flex items-center justify-center"
-            style={{ backgroundColor: "var(--bg-surface)" }}
+            style={{ backgroundColor: "var(--color-surface)" }}
           >
             <FaCircleCheck className="w-4 h-4" style={{ color: pc.primary }} />
           </div>
@@ -839,7 +839,7 @@ const PackageHeader = memo(
         <div>
           <div
             className="text-sm font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             {pkgName}
           </div>
@@ -866,7 +866,7 @@ const PackageHeader = memo(
 // =============================================================================
 
 const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
-  <div className="min-h-screen" style={{ backgroundColor: "var(--bg-muted)" }}>
+  <div className="min-h-screen" style={{ backgroundColor: "var(--color-ground)" }}>
     {/* Hero skeleton */}
     <div
       className="h-48 sm:h-64"
@@ -876,7 +876,7 @@ const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
       {/* Popular row skeleton */}
       <div
         className="rounded-2xl p-4 shadow-sm"
-        style={{ backgroundColor: "var(--bg-surface)" }}
+        style={{ backgroundColor: "var(--color-surface)" }}
       >
         <Skeleton height="1rem" width="160px" className="mb-3" />
         <div className="flex gap-3 overflow-hidden">
@@ -884,7 +884,7 @@ const StoreSkeleton = memo(({ theme }: { theme: ThemeConfig }) => (
             <div
               key={i}
               className="shrink-0 w-36 h-28 rounded-2xl animate-pulse"
-              style={{ backgroundColor: "var(--bg-muted)" }}
+              style={{ backgroundColor: "var(--color-ground)" }}
             />
           ))}
         </div>
@@ -907,30 +907,30 @@ const StoreError = memo(
   ({ error, onRetry }: { error: string; onRetry: () => void }) => (
     <div
       className="min-h-screen flex items-center justify-center p-6"
-      style={{ backgroundColor: "var(--bg-muted)" }}
+      style={{ backgroundColor: "var(--color-ground)" }}
     >
       <div className="max-w-sm w-full text-center space-y-5">
         <div
           className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto"
           style={{
-            backgroundColor: "color-mix(in srgb, var(--error) 8%, transparent)",
+            backgroundColor: "color-mix(in srgb, var(--color-error) 8%, transparent)",
           }}
         >
           <FaTriangleExclamation
             className="w-8 h-8"
-            style={{ color: "var(--error)" }}
+            style={{ color: "var(--color-error)" }}
           />
         </div>
         <div>
           <h2
             className="text-xl font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             Store unavailable
           </h2>
           <p
             className="text-sm mt-2"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "var(--color-text-secondary)" }}
           >
             {error}
           </p>
@@ -941,16 +941,16 @@ const StoreError = memo(
             className="px-5 py-2.5 rounded-xl font-semibold text-sm transition active:scale-95"
             style={{
               backgroundColor:
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)",
-              color: "var(--text-inverse)",
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)",
+              color: "var(--color-text-inverse)",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 75%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 75%, transparent)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)";
             }}
           >
             Try again
@@ -959,8 +959,8 @@ const StoreError = memo(
             onClick={() => (window.location.href = "/")}
             className="px-5 py-2.5 rounded-xl font-semibold text-sm border transition"
             style={{
-              backgroundColor: "var(--bg-muted)",
-              borderColor: "var(--border-color)",
+              backgroundColor: "var(--color-ground)",
+              borderColor: "var(--color-border)",
             }}
           >
             Go home
@@ -976,7 +976,7 @@ const EmptyBundles = memo(
     <div className="py-20 text-center px-4">
       <div
         className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-        style={{ backgroundColor: "var(--bg-muted)" }}
+        style={{ backgroundColor: "var(--color-ground)" }}
       >
         <FaWifi className="w-8 h-8" style={{ color: "var(--text-tertiary)" }} />
       </div>
@@ -984,7 +984,7 @@ const EmptyBundles = memo(
         <>
           <h3
             className="text-lg font-bold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             No results for "{searchTerm}"
           </h3>
@@ -999,16 +999,16 @@ const EmptyBundles = memo(
             className="px-4 py-2 rounded-xl text-sm font-semibold transition"
             style={{
               backgroundColor:
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)",
-              color: "var(--text-inverse)",
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)",
+              color: "var(--color-text-inverse)",
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 75%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 75%, transparent)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.backgroundColor =
-                "color-mix(in srgb, var(--text-primary) 92%, transparent)";
+                "color-mix(in srgb, var(--color-text-primary) 92%, transparent)";
             }}
           >
             Clear search
@@ -1021,7 +1021,7 @@ const EmptyBundles = memo(
           </p>
           <p
             className="text-sm mt-2"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "var(--color-text-secondary)" }}
           >
             The store owner may not have activated any bundles yet. Check back
             later or contact them for assistance.
@@ -1255,9 +1255,9 @@ const TrackOrderDrawer = memo(
                     className="text-sm font-semibold leading-tight"
                     style={{
                       color: step.failed
-                        ? "var(--error)"
+                        ? "var(--color-error)"
                         : step.done
-                          ? "var(--text-primary)"
+                          ? "var(--color-text-primary)"
                           : "var(--text-tertiary)",
                     }}
                   >
@@ -1276,7 +1276,7 @@ const TrackOrderDrawer = memo(
           {order.items.length > 0 && (
             <div
               className="mt-2 pt-3 border-t space-y-2"
-              style={{ borderColor: "var(--border-color)" }}
+              style={{ borderColor: "var(--color-border)" }}
             >
               <p
                 className="text-[10px] font-black uppercase tracking-widest"
@@ -1292,7 +1292,7 @@ const TrackOrderDrawer = memo(
                   <div className="min-w-0">
                     <span
                       className="font-semibold"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       {item.bundleName}
                     </span>
@@ -1309,7 +1309,7 @@ const TrackOrderDrawer = memo(
                   <div className="text-right shrink-0 flex items-center gap-2">
                     <p
                       className="font-mono"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       {showFull
                         ? item.customerPhone
@@ -1336,12 +1336,12 @@ const TrackOrderDrawer = memo(
                       style={{
                         color:
                           item.processingStatus === "completed"
-                            ? "var(--success)"
+                            ? "var(--color-success)"
                             : item.processingStatus === "failed"
-                              ? "var(--error)"
+                              ? "var(--color-error)"
                               : item.processingStatus === "processing"
-                                ? "var(--color-primary)"
-                                : "var(--warning)",
+                                ? "var(--color-ink)"
+                                : "var(--color-warning)",
                       }}
                     >
                       {item.processingStatus}
@@ -1365,20 +1365,20 @@ const TrackOrderDrawer = memo(
           key={entry.orderId}
           className="rounded-2xl border overflow-hidden shadow-sm"
           style={{
-            borderColor: "var(--border-color)",
-            backgroundColor: "var(--bg-surface)",
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-surface)",
           }}
         >
           <button
             onClick={() => handleExpand(entry)}
             className="w-full p-4 flex items-start justify-between gap-3 text-left transition"
-            style={{ backgroundColor: "var(--bg-muted)" }}
+            style={{ backgroundColor: "var(--color-ground)" }}
           >
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span
                   className="text-xs font-mono font-bold shrink-0"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   {entry.orderNumber}
                 </span>
@@ -1391,7 +1391,7 @@ const TrackOrderDrawer = memo(
               </div>
               <p
                 className="text-sm font-semibold mt-1 truncate"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 {entry.bundleName}
               </p>
@@ -1423,8 +1423,8 @@ const TrackOrderDrawer = memo(
             <div
               className="px-4 pb-4 border-t"
               style={{
-                backgroundColor: "var(--bg-muted)",
-                borderColor: "var(--border-color)",
+                backgroundColor: "var(--color-ground)",
+                borderColor: "var(--color-border)",
               }}
             >
               {live ? (
@@ -1450,14 +1450,14 @@ const TrackOrderDrawer = memo(
         <div
           className="rounded-2xl border p-4"
           style={{
-            borderColor: "var(--border-color)",
-            backgroundColor: "var(--bg-surface)",
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-surface)",
           }}
         >
           <div className="flex items-center justify-between mb-1">
             <span
               className="text-xs font-mono font-bold"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               {order.orderNumber}
             </span>
@@ -1485,13 +1485,13 @@ const TrackOrderDrawer = memo(
         />
         <div
           className={`relative w-full max-w-md h-full flex flex-col  shadow-2xl transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-          style={{ backgroundColor: "var(--bg-surface)" }}
+          style={{ backgroundColor: "var(--color-surface)" }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
           <div
             className="flex items-center justify-between px-5 py-4 border-b shrink-0"
-            style={{ borderColor: "var(--border-color)" }}
+            style={{ borderColor: "var(--color-border)" }}
           >
             <div className="flex items-center gap-2.5">
               <div
@@ -1506,7 +1506,7 @@ const TrackOrderDrawer = memo(
               <div>
                 <h2
                   className="font-black text-base leading-tight"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   My Orders
                 </h2>
@@ -1523,9 +1523,9 @@ const TrackOrderDrawer = memo(
                 onClick={onClose}
                 className="w-8 h-8 rounded-xl border flex items-center justify-center transition"
                 style={{
-                  color: "var(--text-secondary)",
-                  backgroundColor: "var(--bg-muted)",
-                  borderColor: "var(--border-color)",
+                  color: "var(--color-text-secondary)",
+                  backgroundColor: "var(--color-ground)",
+                  borderColor: "var(--color-border)",
                 }}
               >
                 <FaXmark className="w-3.5 h-3.5" />
@@ -1539,7 +1539,7 @@ const TrackOrderDrawer = memo(
               <div className="flex flex-col items-center justify-center py-16 text-center px-4">
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "var(--bg-muted)" }}
+                  style={{ backgroundColor: "var(--color-ground)" }}
                 >
                   <FaBoxOpen
                     className="w-8 h-8"
@@ -1548,7 +1548,7 @@ const TrackOrderDrawer = memo(
                 </div>
                 <p
                   className="font-bold"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   No recent orders
                 </p>
@@ -1574,8 +1574,8 @@ const TrackOrderDrawer = memo(
           <div
             className="border-t px-4 py-4 shrink-0 space-y-3"
             style={{
-              backgroundColor: "var(--bg-muted)",
-              borderColor: "var(--border-color)",
+              backgroundColor: "var(--color-ground)",
+              borderColor: "var(--color-border)",
             }}
           >
             <button
@@ -1585,7 +1585,7 @@ const TrackOrderDrawer = memo(
                 setTrackError(null);
               }}
               className="flex items-center justify-between w-full text-sm font-bold transition"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               <span>Track by order number</span>
               <FaChevronDown
@@ -1618,7 +1618,7 @@ const TrackOrderDrawer = memo(
                 {trackError && (
                   <p
                     className="text-xs text-center"
-                    style={{ color: "var(--error)" }}
+                    style={{ color: "var(--color-error)" }}
                   >
                     {trackError}
                   </p>
@@ -2210,13 +2210,13 @@ const PublicStore: React.FC = () => {
           />
           <h1
             className="text-2xl font-black tracking-tight"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             {storefront.displayName}
           </h1>
           <p
             className="text-sm mt-1"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "var(--color-text-secondary)" }}
           >
             {displayTagline}
           </p>
@@ -2292,7 +2292,7 @@ const PublicStore: React.FC = () => {
           />
           <h1
             className="text-3xl sm:text-5xl font-black tracking-tight leading-none"
-            style={{ color: "var(--text-inverse)" }}
+            style={{ color: "var(--color-text-inverse)" }}
           >
             {storefront.displayName}
           </h1>
@@ -2317,25 +2317,25 @@ const PublicStore: React.FC = () => {
     return (
       <div
         className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b shadow-sm"
-        style={{ borderColor: "var(--border-color)" }}
+        style={{ borderColor: "var(--color-border)" }}
       >
         <div className="max-w-7xl mx-auto px-4 py-3 space-y-3">
           {publicAnnouncement && (
             <div
               className="rounded-xl border p-3 text-sm flex items-start justify-between gap-3"
               style={{
-                color: "var(--color-primary)",
+                color: "var(--color-ink)",
                 backgroundColor:
-                  "color-mix(in srgb, var(--color-primary) 8%, transparent)",
+                  "color-mix(in srgb, var(--color-ink) 8%, transparent)",
                 borderColor:
-                  "color-mix(in srgb, var(--color-primary) 30%, transparent)",
+                  "color-mix(in srgb, var(--color-ink) 30%, transparent)",
               }}
             >
               <div className="min-w-0">
                 <div className="font-semibold">{publicAnnouncement.title}</div>
                 <div
                   className="truncate text-xs mt-1"
-                  style={{ color: "var(--color-primary)" }}
+                  style={{ color: "var(--color-ink)" }}
                 >
                   {publicAnnouncement.message}
                 </div>
@@ -2353,11 +2353,11 @@ const PublicStore: React.FC = () => {
             <div
               className="rounded-xl border p-3 text-sm"
               style={{
-                color: "var(--warning)",
+                color: "var(--color-warning)",
                 backgroundColor:
-                  "color-mix(in srgb, var(--warning) 8%, transparent)",
+                  "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                 borderColor:
-                  "color-mix(in srgb, var(--warning) 30%, transparent)",
+                  "color-mix(in srgb, var(--color-warning) 30%, transparent)",
               }}
             >
               <strong className="font-semibold">
@@ -2371,9 +2371,9 @@ const PublicStore: React.FC = () => {
               className="rounded-xl border p-3 text-sm"
               style={{
                 backgroundColor:
-                  "color-mix(in srgb, var(--warning) 8%, transparent)",
+                  "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                 borderColor:
-                  "color-mix(in srgb, var(--warning) 30%, transparent)",
+                  "color-mix(in srgb, var(--color-warning) 30%, transparent)",
               }}
             >
               <strong className="font-semibold">
@@ -2397,8 +2397,8 @@ const PublicStore: React.FC = () => {
                 className="w-full pl-9 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:border-transparent transition"
                 style={
                   {
-                    backgroundColor: "var(--bg-muted)",
-                    borderColor: "var(--border-color)",
+                    backgroundColor: "var(--color-ground)",
+                    borderColor: "var(--color-border)",
                     "--tw-ring-color": theme.primary + "40",
                   } as React.CSSProperties
                 }
@@ -2409,8 +2409,8 @@ const PublicStore: React.FC = () => {
               title="Track my orders"
               className="shrink-0 flex items-center gap-1.5 px-3 py-2.5 rounded-xl border text-sm font-semibold transition whitespace-nowrap"
               style={{
-                color: "var(--text-secondary)",
-                borderColor: "var(--border-color)",
+                color: "var(--color-text-secondary)",
+                borderColor: "var(--color-border)",
               }}
             >
               <FaBoxOpen className="w-3.5 h-3.5" />
@@ -2596,7 +2596,7 @@ const PublicStore: React.FC = () => {
                     <div>
                       <h2
                         className="text-base font-black"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         {prov.name}
                       </h2>
@@ -2663,7 +2663,7 @@ const PublicStore: React.FC = () => {
                 <div>
                   <h2
                     className="text-base font-black"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     {provName}
                   </h2>
@@ -2821,7 +2821,7 @@ const PublicStore: React.FC = () => {
                     )}
                     <h3
                       className="font-bold mt-1"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       {bundle.name}
                     </h3>
@@ -2829,8 +2829,8 @@ const PublicStore: React.FC = () => {
                       <span
                         className="text-xs px-2 py-0.5 rounded-full border font-medium shadow-sm"
                         style={{
-                          color: "var(--text-secondary)",
-                          backgroundColor: "var(--bg-surface)",
+                          color: "var(--color-text-secondary)",
+                          backgroundColor: "var(--color-surface)",
                         }}
                       >
                         {fmtValidity(bundle.validity, bundle.validityUnit)}
@@ -2879,7 +2879,7 @@ const PublicStore: React.FC = () => {
                 <div>
                   <label
                     className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     <FaPhone className="w-3 h-3 opacity-60" />
                     Recipient Number *
@@ -2896,7 +2896,7 @@ const PublicStore: React.FC = () => {
                   {orderPhone && !phoneOk && (
                     <p
                       className="text-xs mt-1.5 flex items-center gap-1"
-                      style={{ color: "var(--error)" }}
+                      style={{ color: "var(--color-error)" }}
                     >
                       <FaTriangleExclamation className="w-3 h-3" />
                       Enter a valid 10-digit Ghana number (e.g. 0244123456)
@@ -2905,7 +2905,7 @@ const PublicStore: React.FC = () => {
                   {phoneOk && (
                     <p
                       className="text-xs mt-1.5 flex items-center gap-1"
-                      style={{ color: "var(--success)" }}
+                      style={{ color: "var(--color-success)" }}
                     >
                       <FaCircleCheck className="w-3 h-3" /> Looks good!
                     </p>
@@ -2918,7 +2918,7 @@ const PublicStore: React.FC = () => {
                     <div>
                       <label
                         className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         <FaIdCard className="w-3 h-3 opacity-60" /> Recipient
                         Full Name *
@@ -2935,7 +2935,7 @@ const PublicStore: React.FC = () => {
                       <div>
                         <label
                           className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                          style={{ color: "var(--text-primary)" }}
+                          style={{ color: "var(--color-text-primary)" }}
                         >
                           <FaIdCard className="w-3 h-3 opacity-60" /> Ghana Card
                           Number *
@@ -2951,7 +2951,7 @@ const PublicStore: React.FC = () => {
                           !/^[A-Z]{3}-?\d{9}-?\d$/i.test(orderGhanaCard) && (
                             <p
                               className="text-xs mt-1"
-                              style={{ color: "var(--error)" }}
+                              style={{ color: "var(--color-error)" }}
                             >
                               Format: GHA-000000000-0
                             </p>
@@ -2972,20 +2972,20 @@ const PublicStore: React.FC = () => {
                   >
                     <p
                       className="font-bold"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       Price Breakdown (Paystack)
                     </p>
                     <div
                       className="flex justify-between"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Bundle price</span>
                       <span>{fmt(bundle.price)}</span>
                     </div>
                     <div
                       className="flex justify-between"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Processing fee (~1.95%)</span>
                       <span>+{fmt(feeEstimate.fee)}</span>
@@ -2994,7 +2994,7 @@ const PublicStore: React.FC = () => {
                       className="flex justify-between font-black pt-1 border-t"
                       style={{
                         color: theme.primary,
-                        borderColor: "var(--border-color)",
+                        borderColor: "var(--color-border)",
                       }}
                     >
                       <span>You pay</span>
@@ -3041,13 +3041,13 @@ const PublicStore: React.FC = () => {
               <div className="space-y-1">
                 <h3
                   className="font-black text-lg"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   Complete your details
                 </h3>
                 <p
                   className="text-sm"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   Ordering <strong>{bundle.name}</strong> →{" "}
                   <span className="font-mono">
@@ -3063,7 +3063,7 @@ const PublicStore: React.FC = () => {
                   <div>
                     <label
                       className="block text-xs font-bold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       Your Full Name *
                     </label>
@@ -3081,7 +3081,7 @@ const PublicStore: React.FC = () => {
                 <div>
                   <label
                     className="block text-xs font-bold mb-2 uppercase tracking-wide"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     How would you like to pay?
                   </label>
@@ -3129,7 +3129,7 @@ const PublicStore: React.FC = () => {
                           <div className="flex-1 min-w-0">
                             <p
                               className="text-sm font-bold"
-                              style={{ color: "var(--text-primary)" }}
+                              style={{ color: "var(--color-text-primary)" }}
                             >
                               {labels[pm.type] || pm.type}
                             </p>
@@ -3180,7 +3180,7 @@ const PublicStore: React.FC = () => {
                             {acc.provider && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Provider</span>
                                 <span className="font-semibold">
@@ -3191,7 +3191,7 @@ const PublicStore: React.FC = () => {
                             {acc.number && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Number</span>
                                 <span className="font-bold text-lg tracking-wider">
@@ -3202,7 +3202,7 @@ const PublicStore: React.FC = () => {
                             {acc.accountName && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Account Name</span>
                                 <span className="font-semibold">
@@ -3222,7 +3222,7 @@ const PublicStore: React.FC = () => {
                               >
                                 <span
                                   className="capitalize"
-                                  style={{ color: "var(--text-secondary)" }}
+                                  style={{ color: "var(--color-text-secondary)" }}
                                 >
                                   {k.replace(/([A-Z])/g, " $1").trim()}
                                 </span>
@@ -3245,7 +3245,7 @@ const PublicStore: React.FC = () => {
                       </p>
                       <p
                         className="text-xs mt-0.5"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         ✅ Send the exact amount — do not round up or down
                       </p>
@@ -3258,7 +3258,7 @@ const PublicStore: React.FC = () => {
                   <div>
                     <label
                       className="block text-xs font-bold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       MoMo Transaction Reference *
                     </label>
@@ -3286,13 +3286,13 @@ const PublicStore: React.FC = () => {
                 >
                   <p
                     className="text-xs font-bold uppercase tracking-wide mb-2"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     Order Summary
                   </p>
                   <div
                     className="flex justify-between text-sm"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     <span>{bundle.name}</span>
                     <span>{fmt(bundle.price)}</span>
@@ -3300,7 +3300,7 @@ const PublicStore: React.FC = () => {
                   {feeEstimate && paymentType === "paystack" && (
                     <div
                       className="flex justify-between text-xs"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Paystack processing fee (~1.95%)</span>
                       <span>+{fmt(feeEstimate.fee)}</span>
@@ -3367,7 +3367,7 @@ const PublicStore: React.FC = () => {
                 <FaCircleCheck className="w-6 h-6" />
                 <h3
                   className="font-black text-lg"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   Order Placed! 🎉
                 </h3>
@@ -3381,22 +3381,22 @@ const PublicStore: React.FC = () => {
                     className="w-20 h-20 rounded-2xl border-2 flex items-center justify-center mb-3"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--success) 8%, transparent)",
+                        "color-mix(in srgb, var(--color-success) 8%, transparent)",
                       borderColor:
-                        "color-mix(in srgb, var(--success) 30%, transparent)",
+                        "color-mix(in srgb, var(--color-success) 30%, transparent)",
                     }}
                   >
                     <FaCircleCheck className="w-10 h-10" />
                   </div>
                   <p
                     className="text-xl font-black"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     Thank you!
                   </p>
                   <p
                     className="text-sm mt-0.5"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     Order #{orderResult.orderNumber}
                   </p>
@@ -3415,12 +3415,12 @@ const PublicStore: React.FC = () => {
                 {/* Order breakdown */}
                 <div
                   className="rounded-2xl p-4 space-y-2 text-sm"
-                  style={{ backgroundColor: "var(--bg-muted)" }}
+                  style={{ backgroundColor: "var(--color-ground)" }}
                 >
                   <div className="flex justify-between">
                     <span
                       className=""
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       Bundle
                     </span>
@@ -3429,7 +3429,7 @@ const PublicStore: React.FC = () => {
                   <div className="flex justify-between">
                     <span
                       className=""
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       For number
                     </span>
@@ -3444,7 +3444,7 @@ const PublicStore: React.FC = () => {
                         <div className="flex justify-between">
                           <span
                             className=""
-                            style={{ color: "var(--text-secondary)" }}
+                            style={{ color: "var(--color-text-secondary)" }}
                           >
                             Bundle price
                           </span>
@@ -3453,7 +3453,7 @@ const PublicStore: React.FC = () => {
                         <div className="flex justify-between">
                           <span
                             className=""
-                            style={{ color: "var(--text-secondary)" }}
+                            style={{ color: "var(--color-text-secondary)" }}
                           >
                             Processing fee
                           </span>
@@ -3468,7 +3468,7 @@ const PublicStore: React.FC = () => {
                     )}
                   <div
                     className="flex justify-between font-black text-lg pt-2 border-t"
-                    style={{ borderColor: "var(--border-color)" }}
+                    style={{ borderColor: "var(--color-border)" }}
                   >
                     <span>Total Charged</span>
                     <span style={{ color: theme.primary }}>
@@ -3487,7 +3487,7 @@ const PublicStore: React.FC = () => {
                           <div className="flex justify-between items-center">
                             <span
                               className="text-sm font-semibold"
-                              style={{ color: "var(--text-secondary)" }}
+                              style={{ color: "var(--color-text-secondary)" }}
                             >
                               Payment Status
                             </span>
@@ -3495,11 +3495,11 @@ const PublicStore: React.FC = () => {
                               <span
                                 className="text-xs border px-2.5 py-1 rounded-full font-bold"
                                 style={{
-                                  color: "var(--success)",
+                                  color: "var(--color-success)",
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--success) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-success) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--success) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-success) 30%, transparent)",
                                 }}
                               >
                                 ✓ Payment Confirmed
@@ -3509,9 +3509,9 @@ const PublicStore: React.FC = () => {
                                 className="text-xs border px-2.5 py-1 rounded-full font-bold"
                                 style={{
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--error) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-error) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--error) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-error) 30%, transparent)",
                                 }}
                               >
                                 ✕ Failed
@@ -3520,11 +3520,11 @@ const PublicStore: React.FC = () => {
                               <span
                                 className="text-xs border px-2.5 py-1 rounded-full font-bold animate-pulse"
                                 style={{
-                                  color: "var(--warning)",
+                                  color: "var(--color-warning)",
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--warning) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--warning) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-warning) 30%, transparent)",
                                 }}
                               >
                                 ⏳ Awaiting Payment
@@ -3556,23 +3556,23 @@ const PublicStore: React.FC = () => {
                     className="flex justify-between items-center p-3 rounded-xl border"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--warning) 8%, transparent)",
+                        "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                       borderColor:
-                        "color-mix(in srgb, var(--warning) 30%, transparent)",
+                        "color-mix(in srgb, var(--color-warning) 30%, transparent)",
                     }}
                   >
                     <span
                       className="text-sm font-semibold"
-                      style={{ color: "var(--warning)" }}
+                      style={{ color: "var(--color-warning)" }}
                     >
                       Awaiting manual verification
                     </span>
                     <span
                       className="text-xs px-2 py-0.5 rounded-full font-bold"
                       style={{
-                        color: "var(--warning)",
+                        color: "var(--color-warning)",
                         backgroundColor:
-                          "color-mix(in srgb, var(--warning) 15%, transparent)",
+                          "color-mix(in srgb, var(--color-warning) 15%, transparent)",
                       }}
                     >
                       Pending
@@ -3585,27 +3585,27 @@ const PublicStore: React.FC = () => {
                   className="rounded-2xl p-4 border"
                   style={{
                     backgroundColor:
-                      "color-mix(in srgb, var(--color-primary) 8%, transparent)",
+                      "color-mix(in srgb, var(--color-ink) 8%, transparent)",
                     borderColor:
-                      "color-mix(in srgb, var(--color-primary) 20%, transparent)",
+                      "color-mix(in srgb, var(--color-ink) 20%, transparent)",
                   }}
                 >
                   <h4
                     className="text-xs font-black uppercase tracking-wide mb-2.5"
-                    style={{ color: "var(--color-primary)" }}
+                    style={{ color: "var(--color-ink)" }}
                   >
                     What Happens Next
                   </h4>
                   <ol
                     className="text-xs space-y-2"
-                    style={{ color: "var(--color-primary)" }}
+                    style={{ color: "var(--color-ink)" }}
                   >
                     {orderResult.paystack?.authorizationUrl ? (
                       <>
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             1
                           </span>
@@ -3614,7 +3614,7 @@ const PublicStore: React.FC = () => {
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             2
                           </span>
@@ -3624,7 +3624,7 @@ const PublicStore: React.FC = () => {
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             3
                           </span>
@@ -3638,7 +3638,7 @@ const PublicStore: React.FC = () => {
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             1
                           </span>
@@ -3647,7 +3647,7 @@ const PublicStore: React.FC = () => {
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             2
                           </span>
@@ -3656,7 +3656,7 @@ const PublicStore: React.FC = () => {
                         <li className="flex items-start gap-2">
                           <span
                             className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            style={{ color: "var(--color-ink)" }}
                           >
                             3
                           </span>
@@ -3719,8 +3719,8 @@ const PublicStore: React.FC = () => {
       <footer
         className="border-t px-4 py-8"
         style={{
-          backgroundColor: "var(--bg-muted)",
-          borderColor: "var(--border-color)",
+          backgroundColor: "var(--color-ground)",
+          borderColor: "var(--color-border)",
         }}
       >
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -3765,7 +3765,7 @@ const PublicStore: React.FC = () => {
             {hasContact && (
               <div
                 className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {storefront.contactInfo?.phone && (
                   <a
@@ -3773,7 +3773,7 @@ const PublicStore: React.FC = () => {
                     className="flex items-center gap-1.5 transition"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.color =
-                        "var(--text-primary)";
+                        "var(--color-text-primary)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "";
@@ -3807,7 +3807,7 @@ const PublicStore: React.FC = () => {
                     className="flex items-center gap-1.5 transition"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.color =
-                        "var(--text-primary)";
+                        "var(--color-text-primary)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "";
@@ -3826,7 +3826,7 @@ const PublicStore: React.FC = () => {
               </span>
               <span
                 className="font-medium"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {storefront.businessName}
               </span>
@@ -3842,7 +3842,7 @@ const PublicStore: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
-              style={{ color: "var(--color-primary)" }}
+              style={{ color: "var(--color-ink)" }}
             >
               DNA Studios
             </a>
@@ -3859,7 +3859,7 @@ const PublicStore: React.FC = () => {
   return (
     <div
       className="min-h-screen"
-      style={{ backgroundColor: "var(--bg-muted)" }}
+      style={{ backgroundColor: "var(--color-ground)" }}
     >
       <style>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -3883,16 +3883,16 @@ const PublicStore: React.FC = () => {
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center"
                 style={{
-                  color: "var(--warning)",
+                  color: "var(--color-warning)",
                   backgroundColor:
-                    "color-mix(in srgb, var(--warning) 15%, transparent)",
+                    "color-mix(in srgb, var(--color-warning) 15%, transparent)",
                 }}
               >
                 <FaStore className="w-7 h-7" />
               </div>
               <h3
                 className="text-lg sm:text-xl font-semibold"
-                style={{ color: "var(--text-primary)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 Storefronts Are Closed
               </h3>
@@ -3900,12 +3900,12 @@ const PublicStore: React.FC = () => {
           </DialogHeader>
           <DialogBody
             className="space-y-3 text-center text-sm sm:text-base"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--color-text-primary)" }}
           >
             <p>{storefrontsClosedMessage}</p>
             <p
               className="text-xs sm:text-sm"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--color-text-secondary)" }}
             >
               Orders are paused for all storefronts until the admin reopens
               them.

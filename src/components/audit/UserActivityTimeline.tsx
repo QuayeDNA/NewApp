@@ -16,9 +16,9 @@ const DAY_FILTERS: { label: string; value: DayFilter }[] = [
 ];
 
 const severityConfig = {
-  info: { label: "Info", classes: "bg-blue-100 text-blue-700" },
-  warning: { label: "Warning", classes: "bg-amber-100 text-amber-700" },
-  critical: { label: "Critical", classes: "bg-red-100 text-red-700" },
+  info: { label: "Info", classes: "bg-[var(--color-info)]/10 text-[var(--color-info)]" },
+  warning: { label: "Warning", classes: "bg-[var(--color-warning)]/10 text-[var(--color-warning)]" },
+  critical: { label: "Critical", classes: "bg-[var(--color-error)]/10 text-[var(--color-error)]" },
 } as const;
 
 const getInitials = (fullName?: string) => {
@@ -80,14 +80,14 @@ function Pagination({
 
   return (
     <div className="flex flex-col items-center gap-2 pt-2">
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-[var(--color-text-muted)]">
         {total} result{total !== 1 ? "s" : ""} &middot; Page {page} of {pages}
       </p>
       <div className="flex items-center gap-1">
         <button
           onClick={() => onPageChange(page - 1)}
           disabled={page <= 1}
-          className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-40"
+          className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] transition hover:bg-[var(--color-surface-alt)] disabled:pointer-events-none disabled:opacity-40"
         >
           <FaChevronLeft className="h-3 w-3" />
           Prev
@@ -95,17 +95,17 @@ function Pagination({
 
         {getPageNumbers().map((item, i) =>
           item === "..." ? (
-            <span key={`ellipsis-${i}`} className="px-1.5 text-xs text-gray-400">
+            <span key={`ellipsis-${i}`} className="px-1.5 text-xs text-[var(--color-text-muted)]">
               ...
             </span>
           ) : (
             <button
               key={item}
               onClick={() => onPageChange(item)}
-              className={`flex h-7 w-7 items-center justify-center rounded-lg text-xs font-medium transition ${
+              className={`flex h-7 w-7 items-center justify-center text-xs font-medium transition ${
                 item === page
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-[var(--color-info)] text-white shadow-[var(--shadow-sm)]"
+                  : "text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-alt)]"
               }`}
             >
               {item}
@@ -116,7 +116,7 @@ function Pagination({
         <button
           onClick={() => onPageChange(page + 1)}
           disabled={page >= pages}
-          className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-40"
+          className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-[var(--color-text-secondary)] transition hover:bg-[var(--color-surface-alt)] disabled:pointer-events-none disabled:opacity-40"
         >
           Next
           <FaChevronRight className="h-3 w-3" />
@@ -140,20 +140,20 @@ function ActivityCard({
     log.raw.metadata && Object.keys(log.raw.metadata).length > 0;
 
   return (
-    <article className="rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+    <article className="border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-sm)] transition hover:shadow-[var(--shadow-md)]">
       <div className="flex items-start gap-3 p-3 sm:p-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-semibold text-blue-700 sm:h-10 sm:w-10">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-[var(--color-info)]/10 text-xs font-semibold text-[var(--color-info)] sm:h-10 sm:w-10">
           {getInitials(log.user.fullName)}
         </div>
 
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium leading-snug text-gray-900">
+              <p className="text-sm font-medium leading-snug text-[var(--color-text-primary)]">
                 {log.description}
               </p>
-              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-500">
-                <span className="font-medium text-gray-700">
+              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[var(--color-text-muted)]">
+                <span className="font-medium text-[var(--color-text-secondary)]">
                   {log.action}
                 </span>
                 <span aria-hidden="true">&middot;</span>
@@ -163,7 +163,7 @@ function ActivityCard({
 
             <div className="flex shrink-0 items-center gap-1.5">
               <span
-                className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${sev.classes}`}
+                className={`inline-flex items-center px-2 py-0.5 text-[11px] font-medium ${sev.classes}`}
               >
                 {sev.label}
               </span>
@@ -188,12 +188,12 @@ function ActivityCard({
       </div>
 
       {expanded && hasRawData && (
-        <div className="border-t border-gray-100 px-3 pb-3 pt-2 sm:px-4 sm:pb-4">
-          <div className="mb-2 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-gray-400">
+        <div className="border-t border-[var(--color-border)] px-3 pb-3 pt-2 sm:px-4 sm:pb-4">
+          <div className="mb-2 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-[var(--color-text-muted)]">
             <FaInfoCircle className="h-3 w-3" />
             Technical Details
           </div>
-          <div className="space-y-1.5 text-xs text-gray-600">
+          <div className="space-y-1.5 text-xs text-[var(--color-text-secondary)]">
             {Object.entries(log.raw.metadata).map(([key, value]) => {
               const display =
                 typeof value === "object"
@@ -202,21 +202,21 @@ function ActivityCard({
               return (
                 <div
                   key={key}
-                  className="flex gap-2 rounded-lg bg-gray-50 px-2.5 py-1.5"
+                  className="flex gap-2 bg-[var(--color-surface-alt)] px-2.5 py-1.5"
                 >
-                  <span className="shrink-0 font-medium capitalize text-gray-500">
+                  <span className="shrink-0 font-medium capitalize text-[var(--color-text-muted)]">
                     {key.replace(/_/g, " ")}:
                   </span>
-                  <span className="break-all text-gray-700">{display}</span>
+                  <span className="break-all text-[var(--color-text-secondary)]">{display}</span>
                 </div>
               );
             })}
             {log.raw.changes && (
-              <div className="mt-2 rounded-lg bg-gray-50 px-2.5 py-1.5">
-                <span className="font-medium capitalize text-gray-500">
+              <div className="mt-2 bg-[var(--color-surface-alt)] px-2.5 py-1.5">
+                <span className="font-medium capitalize text-[var(--color-text-muted)]">
                   Changes:
                 </span>
-                <pre className="mt-0.5 overflow-x-auto text-[11px] text-gray-600">
+                <pre className="mt-0.5 overflow-x-auto text-[11px] text-[var(--color-text-secondary)]">
                   {JSON.stringify(log.raw.changes, null, 1)}
                 </pre>
               </div>
@@ -264,10 +264,10 @@ export const UserActivityTimeline = ({ userId }: UserActivityTimelineProps) => {
           <button
             key={f.value}
             onClick={() => handleFilterChange(f.value)}
-            className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
+            className={`shrink-0 px-3.5 py-1.5 text-xs font-medium transition-colors ${
               dayFilter === f.value
-                ? "bg-blue-600 text-white shadow-sm"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-[var(--color-info)] text-white shadow-[var(--shadow-sm)]"
+                : "bg-[var(--color-surface-alt)] text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-alt)]"
             }`}
           >
             {f.label}
@@ -280,27 +280,27 @@ export const UserActivityTimeline = ({ userId }: UserActivityTimelineProps) => {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="animate-pulse rounded-xl border border-gray-200 p-4"
+              className="animate-pulse border border-[var(--color-border)] p-4"
             >
               <div className="flex items-start gap-3">
-                <div className="h-10 w-10 rounded-full bg-gray-200" />
+                <div className="h-10 w-10 bg-[var(--color-surface-alt)]" />
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 w-3/4 rounded bg-gray-200" />
-                  <div className="h-3 w-1/3 rounded bg-gray-100" />
+                  <div className="h-4 w-3/4 bg-[var(--color-surface-alt)]" />
+                  <div className="h-3 w-1/3 bg-[var(--color-surface-alt)]" />
                 </div>
               </div>
             </div>
           ))}
         </div>
       ) : groupedLogs.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-500">
+        <div className="border border-dashed border-[var(--color-border-strong)] bg-[var(--color-surface-alt)] p-8 text-center text-sm text-[var(--color-text-muted)]">
           No activity found for this period.
         </div>
       ) : (
         <>
           {groupedLogs.map(([day, logs]) => (
             <div key={day}>
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
                 {day}
               </div>
               <div className="space-y-2">
@@ -331,7 +331,7 @@ export const UserActivityTimeline = ({ userId }: UserActivityTimelineProps) => {
 
       {query.isFetching && !query.isLoading && (
         <div className="flex justify-center py-3">
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+          <div className="h-5 w-5 animate-spin border-2 border-[var(--color-info)] border-t-transparent" />
         </div>
       )}
     </div>

@@ -92,7 +92,7 @@ function MinimalLayout({
   return (
     <header
       className="px-4 py-8 sm:py-10"
-      style={{ backgroundColor: "var(--bg-surface)" }}
+      style={{ backgroundColor: "var(--color-surface)" }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Logo + name row */}
@@ -110,14 +110,14 @@ function MinimalLayout({
           <div>
             <h1
               className="text-2xl sm:text-3xl font-bold leading-tight"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               {displayName}
             </h1>
             {tagline && (
               <p
                 className="text-sm mt-0.5"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {tagline}
               </p>
@@ -196,7 +196,7 @@ function ClassicLayout({
         {/* Store name — bottom-left */}
         <div className="absolute bottom-5 left-5 sm:bottom-6 sm:left-8 right-6 z-10">
           <h1
-            className="text-3xl sm:text-5xl font-black tracking-tight leading-none text-white"
+            className="text-3xl sm:text-5xl font-black tracking-tight leading-none text-[var(--color-text-inverse)]"
             style={{ textShadow: "0 2px 16px rgba(0,0,0,0.35)" }}
           >
             {displayName}
@@ -207,7 +207,7 @@ function ClassicLayout({
       {/* Info strip */}
       <div
         className="px-4 sm:px-8 py-4"
-        style={{ backgroundColor: "var(--bg-surface)", borderBottom: "1px solid var(--border-color)" }}
+        style={{ backgroundColor: "var(--color-surface)", borderBottom: "1px solid var(--color-border)" }}
       >
         <div className="max-w-7xl mx-auto flex items-start gap-3">
           {/* Accent bar */}
@@ -218,14 +218,14 @@ function ClassicLayout({
           <div>
             <p
               className="text-sm sm:text-base font-medium"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               {tagline}
             </p>
             {description && (
               <p
                 className="text-xs mt-1"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "var(--color-text-secondary)" }}
               >
                 {description}
               </p>
@@ -289,7 +289,7 @@ function ModernLayout({
 
           {/* Name */}
           <h1
-            className="text-4xl sm:text-6xl font-black tracking-tight leading-none text-white"
+            className="text-4xl sm:text-6xl font-black tracking-tight leading-none text-[var(--color-text-inverse)]"
             style={{ textShadow: "0 2px 24px rgba(0,0,0,0.25)" }}
           >
             {displayName}
@@ -297,7 +297,7 @@ function ModernLayout({
 
           {/* Tagline */}
           {tagline && (
-            <p className="text-white/70 text-sm sm:text-base max-w-md">
+            <p className="text-[var(--color-text-inverse)]/70 text-sm sm:text-base max-w-md">
               {tagline}
             </p>
           )}
@@ -314,7 +314,7 @@ function ModernLayout({
                 style={{ backgroundColor: "#22c55e" }}
               />
             </span>
-            <span className="text-white/50 text-[10px] tracking-widest uppercase font-medium">
+            <span className="text-[var(--color-text-inverse)]/50 text-[10px] tracking-widest uppercase font-medium">
               Open for orders
             </span>
           </div>

@@ -12,8 +12,8 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
     return (
       <div ref={ref} className={`space-y-2 ${className}`} {...props}>
         {label && (
-          <label className="block text-sm font-medium text-[var(--text-secondary)]">
-            {label} {required && <span className="text-error">*</span>}
+          <label className="block text-sm font-medium text-[var(--color-text-secondary)]">
+            {label} {required && <span className="text-[var(--color-error)]">*</span>}
           </label>
         )}
         {children}

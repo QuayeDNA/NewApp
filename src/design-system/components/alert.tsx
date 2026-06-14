@@ -53,51 +53,51 @@ const InfoIcon = () => (
 
 const statusConfig: Record<AlertStatus, { bg: string; subtleBg: string; textColor: string; subtleTextColor: string; borderColor: string; icon: ReactNode }> = {
   primary: {
-    bg: "bg-[var(--color-primary)]",
-    subtleBg: "bg-[var(--color-accent-soft)]",
-    textColor: "text-[var(--text-inverse)]",
-    subtleTextColor: "text-[var(--color-secondary)]",
-    borderColor: "border-[var(--color-primary)]",
+    bg: "bg-[var(--color-ink)]",
+    subtleBg: "bg-[rgba(245, 158, 11, 0.12)]",
+    textColor: "text-[var(--color-text-inverse)]",
+    subtleTextColor: "text-[var(--color-amber)]",
+    borderColor: "border-[var(--color-ink)]",
     icon: <InfoIcon />,
   },
   success: {
-    bg: "bg-[var(--success)]",
-    subtleBg: "bg-[var(--success)]/10",
+    bg: "bg-[var(--color-success)]",
+    subtleBg: "bg-[var(--color-success)]/10",
     textColor: "text-white",
-    subtleTextColor: "text-[var(--success)]",
-    borderColor: "border-[var(--success)]",
+    subtleTextColor: "text-[var(--color-success)]",
+    borderColor: "border-[var(--color-success)]",
     icon: <SuccessIcon />,
   },
   error: {
-    bg: "bg-[var(--error)]",
-    subtleBg: "bg-[var(--error)]/10",
+    bg: "bg-[var(--color-error)]",
+    subtleBg: "bg-[var(--color-error)]/10",
     textColor: "text-white",
-    subtleTextColor: "text-[var(--error)]",
-    borderColor: "border-[var(--error)]",
+    subtleTextColor: "text-[var(--color-error)]",
+    borderColor: "border-[var(--color-error)]",
     icon: <ErrorIcon />,
   },
   warning: {
-    bg: "bg-[var(--warning)]",
-    subtleBg: "bg-[var(--warning)]/10",
+    bg: "bg-[var(--color-warning)]",
+    subtleBg: "bg-[var(--color-warning)]/10",
     textColor: "text-white",
-    subtleTextColor: "text-[var(--warning)]",
-    borderColor: "border-[var(--warning)]",
+    subtleTextColor: "text-[var(--color-warning)]",
+    borderColor: "border-[var(--color-warning)]",
     icon: <WarningIcon />,
   },
   info: {
-    bg: "bg-[var(--info)]",
-    subtleBg: "bg-[var(--info)]/10",
+    bg: "bg-[var(--color-info)]",
+    subtleBg: "bg-[var(--color-info)]/10",
     textColor: "text-white",
-    subtleTextColor: "text-[var(--info)]",
-    borderColor: "border-[var(--info)]",
+    subtleTextColor: "text-[var(--color-info)]",
+    borderColor: "border-[var(--color-info)]",
     icon: <InfoIcon />,
   },
   neutral: {
-    bg: "bg-gray-600",
-    subtleBg: "bg-gray-100 dark:bg-gray-700",
-    textColor: "text-white",
-    subtleTextColor: "text-gray-800 dark:text-gray-200",
-    borderColor: "border-gray-600",
+    bg: "bg-[var(--color-text-secondary)]",
+    subtleBg: "bg-[var(--color-surface-alt)]",
+    textColor: "text-[var(--color-text-inverse)]",
+    subtleTextColor: "text-[var(--color-text-primary)]",
+    borderColor: "border-[var(--color-text-secondary)]",
     icon: <InfoIcon />,
   },
 };
@@ -127,7 +127,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       "top-accent": `${colors.subtleBg} ${colors.subtleTextColor} border-t-4 ${colors.borderColor}`,
     };
 
-    const alertClasses = ["rounded-md p-4 relative", variantClasses[variant], className].join(" ");
+    const alertClasses = ["p-4 relative", variantClasses[variant], className].join(" ");
 
     return (
       <div ref={ref} role="alert" className={alertClasses} {...props}>
@@ -141,10 +141,10 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
             <div className="ml-3 flex-shrink-0">
               <button
                 type="button"
-                className={`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                className={`inline-flex p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   variant === "solid"
-                    ? "text-white hover:bg-white/10 focus:ring-white"
-                    : "hover:bg-black/5 dark:hover:bg-white/10"
+                    ? "text-[var(--color-text-inverse)] hover:bg-[var(--color-text-inverse)]/10 focus:ring-[var(--color-text-inverse)]"
+                    : "hover:bg-[var(--color-ink)]/5"
                 }`}
                 aria-label="Close"
                 onClick={onClose}

@@ -55,8 +55,8 @@ export const BundleCard = memo(
         {/* Selected indicator */}
         {selected && (
           <div
-            className="absolute top-3 right-3 z-10 w-7 h-7 rounded-full shadow-md flex items-center justify-center"
-            style={{ backgroundColor: "var(--bg-surface)" }}
+            className="absolute top-3 right-3 z-10 w-7 h-7 shadow-[var(--shadow-md)] flex items-center justify-center"
+            style={{ backgroundColor: "var(--color-surface)" }}
           >
             <FaCircleCheck className="w-4 h-4" style={{ color: pc.primary }} />
           </div>
@@ -73,7 +73,7 @@ export const BundleCard = memo(
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <FaBuilding className="w-5 h-5 text-white/85" />
+                  <FaBuilding className="w-5 h-5 text-[var(--color-text-inverse)]/85" />
                 )}
               </div>
               <div className="min-w-0">
@@ -88,7 +88,7 @@ export const BundleCard = memo(
               </div>
             </div>
             {isAfa && bundle.requiresGhanaCard && (
-              <span className="text-[9px] bg-white/20 rounded-full px-1.5 py-0.5 font-semibold flex items-center gap-0.5">
+              <span className="text-[9px] bg-white/20 px-1.5 py-0.5 font-semibold flex items-center gap-0.5">
                 <FaIdCard className="w-2 h-2" /> ID
               </span>
             )}
@@ -118,16 +118,16 @@ export const BundleCard = memo(
           </div>
 
           {/* Validity pill */}
-          <div className="inline-flex items-center gap-1.5 bg-white/20 rounded-full px-2.5 py-1 text-[11px] font-semibold">
+          <div className="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-1 text-[11px] font-semibold">
             <FaWifi className="w-2.5 h-2.5 opacity-80" />
             {fmtValidity(bundle.validity, bundle.validityUnit)}
           </div>
         </div>
 
         {/* Bottom: price + buy CTA — full width, outside padding */}
-        <div className="flex items-center justify-between px-4 py-3 bg-gray-500 border-t border-white/15">
+        <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-surface-alt)] border-t border-white/15">
           <span className="text-xl font-extrabold">{fmt(bundle.price)}</span>
-          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs text-white font-black shadow transition-all group-hover:shadow-lg">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-[var(--color-text-inverse)] font-black transition-all group-hover:shadow-[var(--shadow-lg)]">
             <FaBagShopping className="w-5 h-5" /> Buy
           </div>
         </div>

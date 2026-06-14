@@ -56,11 +56,11 @@ const AgentPackageGrid: React.FC = () => {
         <Card>
           <CardBody>
             <div className="text-center py-8">
-              <FaBox className="mx-auto h-12 w-12 text-[var(--text-muted)]" />
-              <h3 className="mt-3 text-lg font-semibold text-[var(--text-primary)]">
+              <FaBox className="mx-auto h-12 w-12 text-[var(--color-text-muted)]" />
+              <h3 className="mt-3 text-lg font-semibold text-[var(--color-text-primary)]">
                 No packages available
               </h3>
-              <p className="text-sm text-[var(--text-secondary)] mt-1">
+              <p className="text-sm text-[var(--color-text-secondary)] mt-1">
                 Check back later for available data packages.
               </p>
             </div>
@@ -74,10 +74,10 @@ const AgentPackageGrid: React.FC = () => {
     <Container padding="none">
       <div className="space-y-6">
         <div>
-          <h2 className="text-xl font-bold text-[var(--text-primary)]">
+          <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
             Available Packages
           </h2>
-          <p className="text-sm text-[var(--text-secondary)] mt-0.5">
+          <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">
             Select a package to view bundles and place orders
           </p>
         </div>
@@ -90,8 +90,8 @@ const AgentPackageGrid: React.FC = () => {
               onClick={() => navigate(`/agent/dashboard/packages/${pkg._id}`)}
               className="text-left w-full rounded-xl border p-5 transition-all hover:shadow-md group"
               style={{
-                backgroundColor: "var(--bg-surface)",
-                borderColor: "var(--border-color)",
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border)",
               }}
             >
               <div className="flex items-start justify-between gap-3">
@@ -99,25 +99,25 @@ const AgentPackageGrid: React.FC = () => {
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
                     style={{
-                      backgroundColor: `color-mix(in srgb, var(--color-primary) 12%, transparent)`,
-                      color: "var(--color-primary)",
+                      backgroundColor: `color-mix(in srgb, var(--color-ink) 12%, transparent)`,
+                      color: "var(--color-ink)",
                     }}
                   >
                     <FaBuilding className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-semibold text-[var(--text-primary)] truncate">
+                    <h3 className="font-semibold text-[var(--color-text-primary)] truncate">
                       {pkg.name}
                     </h3>
                     {pkg.description && (
-                      <p className="text-xs text-[var(--text-muted)] truncate mt-0.5">
+                      <p className="text-xs text-[var(--color-text-muted)] truncate mt-0.5">
                         {pkg.description}
                       </p>
                     )}
                   </div>
                 </div>
                 <FaArrowRight
-                  className="w-4 h-4 shrink-0 text-[var(--text-muted)] group-hover:text-[var(--color-primary)] transition-colors"
+                  className="w-4 h-4 shrink-0 text-[var(--color-text-muted)] group-hover:text-[var(--color-ink)] transition-colors"
                 />
               </div>
             </button>

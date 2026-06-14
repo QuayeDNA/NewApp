@@ -135,7 +135,7 @@ export const OrderDialog = memo(
             {[1, 2, 3].map((n) => (
               <React.Fragment key={n}>
                 <div
-                  className="flex items-center justify-center w-7 h-7 rounded-full text-xs font-black transition-all duration-300"
+                  className="flex items-center justify-center w-7 h-7  text-xs font-black transition-all duration-300"
                   style={
                     n <= stepNum
                       ? { backgroundColor: theme.primary, color: "#fff" }
@@ -146,7 +146,7 @@ export const OrderDialog = memo(
                 </div>
                 {n < 3 && (
                   <div
-                    className="flex-1 h-1 rounded-full transition-all duration-300"
+                    className="flex-1 h-1  transition-all duration-300"
                     style={{
                       backgroundColor: n < stepNum ? theme.primary : "#E5E7EB",
                     }}
@@ -204,22 +204,22 @@ export const OrderDialog = memo(
                     )}
                     <h3
                       className="font-bold mt-1"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       {bundle.name}
                     </h3>
                     <div className="flex flex-wrap gap-1.5 mt-2">
                       <span
-                        className="text-xs px-2 py-0.5 rounded-full border font-medium shadow-sm"
+                        className="text-xs px-2 py-0.5  border font-medium shadow-[var(--shadow-sm)]"
                         style={{
-                          color: "var(--text-secondary)",
-                          backgroundColor: "var(--bg-surface)",
+                          color: "var(--color-text-secondary)",
+                          backgroundColor: "var(--color-surface)",
                         }}
                       >
                         {fmtValidity(bundle.validity, bundle.validityUnit)}
                       </span>
                       <span
-                        className="text-xs px-2 py-0.5 rounded-full font-bold"
+                        className="text-xs px-2 py-0.5  font-bold"
                         style={{
                           backgroundColor: pc.primary + "20",
                           color: pc.primary,
@@ -262,7 +262,7 @@ export const OrderDialog = memo(
                 <div>
                   <label
                     className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     <FaPhone className="w-3 h-3 opacity-60" />
                     Recipient Number *
@@ -279,7 +279,7 @@ export const OrderDialog = memo(
                   {orderPhone && !phoneOk && (
                     <p
                       className="text-xs mt-1.5 flex items-center gap-1"
-                      style={{ color: "var(--error)" }}
+                      style={{ color: "var(--color-error)" }}
                     >
                       <FaTriangleExclamation className="w-3 h-3" />
                       Enter a valid 10-digit Ghana number (e.g. 0244123456)
@@ -288,7 +288,7 @@ export const OrderDialog = memo(
                   {phoneOk && (
                     <p
                       className="text-xs mt-1.5 flex items-center gap-1"
-                      style={{ color: "var(--success)" }}
+                      style={{ color: "var(--color-success)" }}
                     >
                       <FaCircleCheck className="w-3 h-3" /> Looks good!
                     </p>
@@ -301,7 +301,7 @@ export const OrderDialog = memo(
                     <div>
                       <label
                         className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--color-text-primary)" }}
                       >
                         <FaIdCard className="w-3 h-3 opacity-60" /> Recipient
                         Full Name *
@@ -318,7 +318,7 @@ export const OrderDialog = memo(
                       <div>
                         <label
                           className="flex items-center gap-1.5 text-sm font-semibold mb-2"
-                          style={{ color: "var(--text-primary)" }}
+                          style={{ color: "var(--color-text-primary)" }}
                         >
                           <FaIdCard className="w-3 h-3 opacity-60" /> Ghana Card
                           Number *
@@ -334,7 +334,7 @@ export const OrderDialog = memo(
                           !/^[A-Z]{3}-?\d{9}-?\d$/i.test(orderGhanaCard) && (
                             <p
                               className="text-xs mt-1"
-                              style={{ color: "var(--error)" }}
+                              style={{ color: "var(--color-error)" }}
                             >
                               Format: GHA-000000000-0
                             </p>
@@ -347,7 +347,7 @@ export const OrderDialog = memo(
                 {/* Fee estimate note for Paystack */}
                 {feeEstimate && (
                   <div
-                    className="rounded-xl p-3 text-xs space-y-1"
+                    className=" p-3 text-xs space-y-1"
                     style={{
                       backgroundColor: theme.bg,
                       borderLeft: `3px solid ${theme.primary}`,
@@ -355,20 +355,20 @@ export const OrderDialog = memo(
                   >
                     <p
                       className="font-bold"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{ color: "var(--color-text-primary)" }}
                     >
                       Price Breakdown (Paystack)
                     </p>
                     <div
                       className="flex justify-between"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Bundle price</span>
                       <span>{fmt(bundle.price)}</span>
                     </div>
                     <div
                       className="flex justify-between"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Processing fee (~1.95%)</span>
                       <span>+{fmt(feeEstimate.fee)}</span>
@@ -377,7 +377,7 @@ export const OrderDialog = memo(
                       className="flex justify-between font-black pt-1 border-t"
                       style={{
                         color: theme.primary,
-                        borderColor: "var(--border-color)",
+                        borderColor: "var(--color-border)",
                       }}
                     >
                       <span>You pay</span>
@@ -407,7 +407,7 @@ export const OrderDialog = memo(
                 <button
                   disabled={!step1Valid}
                   onClick={confirmDetails}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-95 disabled:opacity-40 text-white"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5  text-sm font-bold transition-all active:scale-95 disabled:opacity-40 text-[var(--color-text-inverse)]"
                   style={{ backgroundColor: theme.primary }}
                 >
                   Continue to Payment <FaArrowRight className="w-3.5 h-3.5" />
@@ -424,13 +424,13 @@ export const OrderDialog = memo(
               <div className="space-y-1">
                 <h3
                   className="font-black text-lg"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   Complete your details
                 </h3>
                 <p
                   className="text-sm"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   Ordering <strong>{bundle.name}</strong> →{" "}
                   <span className="font-mono">
@@ -446,7 +446,7 @@ export const OrderDialog = memo(
                   <div>
                     <label
                       className="block text-xs font-bold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       Your Full Name *
                     </label>
@@ -464,7 +464,7 @@ export const OrderDialog = memo(
                 <div>
                   <label
                     className="block text-xs font-bold mb-2 uppercase tracking-wide"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     How would you like to pay?
                   </label>
@@ -493,7 +493,7 @@ export const OrderDialog = memo(
                         <button
                           key={pm.type}
                           onClick={() => setPaymentType(pm.type as "paystack" | "mobile_money" | "bank_transfer")}
-                          className="w-full flex items-center gap-3 p-3 rounded-xl border-2 text-left transition-all"
+                          className="w-full flex items-center gap-3 p-3  border-2 text-left transition-all"
                           style={
                             active
                               ? {
@@ -512,7 +512,7 @@ export const OrderDialog = memo(
                           <div className="flex-1 min-w-0">
                             <p
                               className="text-sm font-bold"
-                              style={{ color: "var(--text-primary)" }}
+                              style={{ color: "var(--color-text-primary)" }}
                             >
                               {labels[pm.type] || pm.type}
                             </p>
@@ -524,7 +524,7 @@ export const OrderDialog = memo(
                             </p>
                           </div>
                           <div
-                            className="w-4 h-4 rounded-full border-2 shrink-0 transition-all"
+                            className="w-4 h-4  border-2 shrink-0 transition-all"
                             style={
                               active
                                 ? {
@@ -543,7 +543,7 @@ export const OrderDialog = memo(
                 {/* Manual payment account details */}
                 {selectedPayment && selectedPayment.type !== "paystack" && (
                   <div
-                    className="p-4 rounded-xl border-2 border-dashed space-y-2"
+                    className="p-4  border-2 border-dashed space-y-2"
                     style={{
                       borderColor: theme.primary + "40",
                       backgroundColor: theme.bg,
@@ -563,7 +563,7 @@ export const OrderDialog = memo(
                             {acc.provider && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Provider</span>
                                 <span className="font-semibold">
@@ -574,7 +574,7 @@ export const OrderDialog = memo(
                             {acc.number && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Number</span>
                                 <span className="font-bold text-lg tracking-wider">
@@ -585,7 +585,7 @@ export const OrderDialog = memo(
                             {acc.accountName && (
                               <div
                                 className="flex justify-between"
-                                style={{ color: "var(--text-secondary)" }}
+                                style={{ color: "var(--color-text-secondary)" }}
                               >
                                 <span className="">Account Name</span>
                                 <span className="font-semibold">
@@ -605,7 +605,7 @@ export const OrderDialog = memo(
                               >
                                 <span
                                   className="capitalize"
-                                  style={{ color: "var(--text-secondary)" }}
+                                  style={{ color: "var(--color-text-secondary)" }}
                                 >
                                   {k.replace(/([A-Z])/g, " $1").trim()}
                                 </span>
@@ -628,7 +628,7 @@ export const OrderDialog = memo(
                       </p>
                       <p
                         className="text-xs mt-0.5"
-                        style={{ color: "var(--text-secondary)" }}
+                        style={{ color: "var(--color-text-secondary)" }}
                       >
                         ✅ Send the exact amount — do not round up or down
                       </p>
@@ -641,7 +641,7 @@ export const OrderDialog = memo(
                   <div>
                     <label
                       className="block text-xs font-bold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       MoMo Transaction Reference *
                     </label>
@@ -664,18 +664,18 @@ export const OrderDialog = memo(
 
                 {/* Order summary */}
                 <div
-                  className="rounded-xl p-3 space-y-1.5"
+                  className=" p-3 space-y-1.5"
                   style={{ backgroundColor: theme.bg }}
                 >
                   <p
                     className="text-xs font-bold uppercase tracking-wide mb-2"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     Order Summary
                   </p>
                   <div
                     className="flex justify-between text-sm"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     <span>{bundle.name}</span>
                     <span>{fmt(bundle.price)}</span>
@@ -683,7 +683,7 @@ export const OrderDialog = memo(
                   {feeEstimate && paymentType === "paystack" && (
                     <div
                       className="flex justify-between text-xs"
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       <span>Paystack processing fee (~1.95%)</span>
                       <span>+{fmt(feeEstimate.fee)}</span>
@@ -722,12 +722,12 @@ export const OrderDialog = memo(
                 <button
                   disabled={!canSubmitOrder || submitting}
                   onClick={submitOrder}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-95 disabled:opacity-50 text-white"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5  text-sm font-bold transition-all active:scale-95 disabled:opacity-50 text-[var(--color-text-inverse)]"
                   style={{ backgroundColor: theme.primary }}
                 >
                   {submitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white  animate-spin" />
                       Placing Order…
                     </>
                   ) : (
@@ -750,7 +750,7 @@ export const OrderDialog = memo(
                 <FaCircleCheck className="w-6 h-6" />
                 <h3
                   className="font-black text-lg"
-                  style={{ color: "var(--text-primary)" }}
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   Order Placed! 🎉
                 </h3>
@@ -764,22 +764,22 @@ export const OrderDialog = memo(
                     className="w-20 h-20 rounded-2xl border-2 flex items-center justify-center mb-3"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--success) 8%, transparent)",
+                        "color-mix(in srgb, var(--color-success) 8%, transparent)",
                       borderColor:
-                        "color-mix(in srgb, var(--success) 30%, transparent)",
+                        "color-mix(in srgb, var(--color-success) 30%, transparent)",
                     }}
                   >
                     <FaCircleCheck className="w-10 h-10" />
                   </div>
                   <p
                     className="text-xl font-black"
-                    style={{ color: "var(--text-primary)" }}
+                    style={{ color: "var(--color-text-primary)" }}
                   >
                     Thank you!
                   </p>
                   <p
                     className="text-sm mt-0.5"
-                    style={{ color: "var(--text-secondary)" }}
+                    style={{ color: "var(--color-text-secondary)" }}
                   >
                     Order #{orderResult.orderNumber}
                   </p>
@@ -798,12 +798,12 @@ export const OrderDialog = memo(
                 {/* Order breakdown */}
                 <div
                   className="rounded-2xl p-4 space-y-2 text-sm"
-                  style={{ backgroundColor: "var(--bg-muted)" }}
+                  style={{ backgroundColor: "var(--color-ground)" }}
                 >
                   <div className="flex justify-between">
                     <span
                       className=""
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       Bundle
                     </span>
@@ -812,7 +812,7 @@ export const OrderDialog = memo(
                   <div className="flex justify-between">
                     <span
                       className=""
-                      style={{ color: "var(--text-secondary)" }}
+                      style={{ color: "var(--color-text-secondary)" }}
                     >
                       For number
                     </span>
@@ -827,7 +827,7 @@ export const OrderDialog = memo(
                         <div className="flex justify-between">
                           <span
                             className=""
-                            style={{ color: "var(--text-secondary)" }}
+                            style={{ color: "var(--color-text-secondary)" }}
                           >
                             Bundle price
                           </span>
@@ -836,7 +836,7 @@ export const OrderDialog = memo(
                         <div className="flex justify-between">
                           <span
                             className=""
-                            style={{ color: "var(--text-secondary)" }}
+                            style={{ color: "var(--color-text-secondary)" }}
                           >
                             Processing fee
                           </span>
@@ -851,7 +851,7 @@ export const OrderDialog = memo(
                     )}
                   <div
                     className="flex justify-between font-black text-lg pt-2 border-t"
-                    style={{ borderColor: "var(--border-color)" }}
+                    style={{ borderColor: "var(--color-border)" }}
                   >
                     <span>Total Charged</span>
                     <span style={{ color: theme.primary }}>
@@ -870,44 +870,44 @@ export const OrderDialog = memo(
                           <div className="flex justify-between items-center">
                             <span
                               className="text-sm font-semibold"
-                              style={{ color: "var(--text-secondary)" }}
+                              style={{ color: "var(--color-text-secondary)" }}
                             >
                               Payment Status
                             </span>
                             {paystackStatus === "success" ? (
                               <span
-                                className="text-xs border px-2.5 py-1 rounded-full font-bold"
+                                className="text-xs border px-2.5 py-1  font-bold"
                                 style={{
-                                  color: "var(--success)",
+                                  color: "var(--color-success)",
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--success) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-success) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--success) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-success) 30%, transparent)",
                                 }}
                               >
                                 ✓ Payment Confirmed
                               </span>
                             ) : paystackStatus === "failed" ? (
                               <span
-                                className="text-xs border px-2.5 py-1 rounded-full font-bold"
+                                className="text-xs border px-2.5 py-1  font-bold"
                                 style={{
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--error) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-error) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--error) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-error) 30%, transparent)",
                                 }}
                               >
                                 ✕ Failed
                               </span>
                             ) : (
                               <span
-                                className="text-xs border px-2.5 py-1 rounded-full font-bold animate-pulse"
+                                className="text-xs border px-2.5 py-1  font-bold animate-pulse"
                                 style={{
-                                  color: "var(--warning)",
+                                  color: "var(--color-warning)",
                                   backgroundColor:
-                                    "color-mix(in srgb, var(--warning) 8%, transparent)",
+                                    "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                                   borderColor:
-                                    "color-mix(in srgb, var(--warning) 30%, transparent)",
+                                    "color-mix(in srgb, var(--color-warning) 30%, transparent)",
                                 }}
                               >
                                 ⏳ Awaiting Payment
@@ -924,7 +924,7 @@ export const OrderDialog = memo(
                                     orderResult.paystack?.accessCode || "",
                                   )
                                 }
-                                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-white"
+                                className="flex items-center justify-center gap-2 w-full py-3  font-bold text-[var(--color-text-inverse)]"
                                 style={{ backgroundColor: theme.primary }}
                               >
                                 <FaBolt className="w-4 h-4" /> Continue to
@@ -937,26 +937,26 @@ export const OrderDialog = memo(
                   </div>
                 ) : (
                   <div
-                    className="flex justify-between items-center p-3 rounded-xl border"
+                    className="flex justify-between items-center p-3  border"
                     style={{
                       backgroundColor:
-                        "color-mix(in srgb, var(--warning) 8%, transparent)",
+                        "color-mix(in srgb, var(--color-warning) 8%, transparent)",
                       borderColor:
-                        "color-mix(in srgb, var(--warning) 30%, transparent)",
+                        "color-mix(in srgb, var(--color-warning) 30%, transparent)",
                     }}
                   >
                     <span
                       className="text-sm font-semibold"
-                      style={{ color: "var(--warning)" }}
+                      style={{ color: "var(--color-warning)" }}
                     >
                       Awaiting manual verification
                     </span>
                     <span
-                      className="text-xs px-2 py-0.5 rounded-full font-bold"
+                      className="text-xs px-2 py-0.5  font-bold"
                       style={{
-                        color: "var(--warning)",
+                        color: "var(--color-warning)",
                         backgroundColor:
-                          "color-mix(in srgb, var(--warning) 15%, transparent)",
+                          "color-mix(in srgb, var(--color-warning) 15%, transparent)",
                       }}
                     >
                       Pending
@@ -969,27 +969,27 @@ export const OrderDialog = memo(
                   className="rounded-2xl p-4 border"
                   style={{
                     backgroundColor:
-                      "color-mix(in srgb, var(--color-primary) 8%, transparent)",
+                      "color-mix(in srgb, var(--color-ink) 8%, transparent)",
                     borderColor:
-                      "color-mix(in srgb, var(--color-primary) 20%, transparent)",
+                      "color-mix(in srgb, var(--color-ink) 20%, transparent)",
                   }}
                 >
                   <h4
                     className="text-xs font-black uppercase tracking-wide mb-2.5"
-                    style={{ color: "var(--color-primary)" }}
+                    style={{ color: "var(--color-ink)" }}
                   >
                     What Happens Next
                   </h4>
                   <ol
                     className="text-xs space-y-2"
-                    style={{ color: "var(--color-primary)" }}
+                    style={{ color: "var(--color-ink)" }}
                   >
                     {orderResult.paystack?.authorizationUrl ? (
                       <>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             1
                           </span>
@@ -997,8 +997,8 @@ export const OrderDialog = memo(
                         </li>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             2
                           </span>
@@ -1007,8 +1007,8 @@ export const OrderDialog = memo(
                         </li>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             3
                           </span>
@@ -1021,8 +1021,8 @@ export const OrderDialog = memo(
                       <>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             1
                           </span>
@@ -1030,8 +1030,8 @@ export const OrderDialog = memo(
                         </li>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             2
                           </span>
@@ -1039,8 +1039,8 @@ export const OrderDialog = memo(
                         </li>
                         <li className="flex items-start gap-2">
                           <span
-                            className="w-4 h-4 rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5"
-                            style={{ color: "var(--color-primary)" }}
+                            className="w-4 h-4  flex items-center justify-center font-bold shrink-0 mt-0.5"
+                            style={{ color: "var(--color-ink)" }}
                           >
                             3
                           </span>
@@ -1058,7 +1058,7 @@ export const OrderDialog = memo(
                     href={`https://wa.me/${normalizeWhatsappNumber(storefrontContact.whatsapp)}?text=${encodeURIComponent(`Hi, I just placed order #${orderResult.orderNumber} for ${bundle.name} on ${normalizePhone(orderPhone)}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-2.5 bg-[#25D366] rounded-xl font-bold text-sm hover:bg-[#20BD5C] transition active:scale-95"
+                    className="flex items-center justify-center gap-2 w-full py-2.5 bg-[#25D366]  font-bold text-sm hover:bg-[#20BD5C] transition active:scale-95"
                     style={{ color: "#fff" }}
                   >
                     <FaWhatsapp className="w-4 h-4" /> Message store on WhatsApp
@@ -1069,7 +1069,7 @@ export const OrderDialog = memo(
             <DialogFooter>
               <button
                 onClick={closeOrderDialog}
-                className="w-full py-3 rounded-xl font-bold active:scale-95 transition text-white"
+                className="w-full py-3  font-bold active:scale-95 transition text-[var(--color-text-inverse)]"
                 style={{ backgroundColor: theme.primary }}
               >
                 Done — Browse More Bundles
