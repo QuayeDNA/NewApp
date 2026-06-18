@@ -124,8 +124,8 @@ export const BundleCard = memo(
           </div>
         </div>
 
-        {/* Bottom: price + buy CTA — full width, outside padding */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[var(--color-surface-alt)] border-t border-white/15">
+        {/* Bottom: price + buy CTA */}
+        <div className="flex items-center justify-between px-4 py-3">
           <span className="text-xl font-extrabold">{fmt(bundle.price)}</span>
           <div className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-[var(--color-text-inverse)] font-black transition-all group-hover:shadow-[var(--shadow-lg)]">
             <FaBagShopping className="w-5 h-5" /> Buy
