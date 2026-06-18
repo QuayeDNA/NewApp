@@ -1,34 +1,20 @@
 import type { ThemeConfig } from "./types";
 
 // =============================================================================
-// Theme System — two fixed colors: brand blue or midnight black
+// Ink & Steel — brand theme matching ink-steel-theme.css tokens
 // =============================================================================
 
-const COLORS = {
-  brand: "#2563EB",
-  midnight: "#0B1120",
-} as const;
-
-/** Build a ThemeConfig from the agent's store color choice */
-export function buildBrandTheme(color?: string): ThemeConfig {
-  const isMidnight = color === COLORS.midnight;
-  const primary = isMidnight ? COLORS.midnight : COLORS.brand;
-  return {
-    primary,
-    secondary: primary,
-    accent: primary,
-    bg: "#FFFFFF",
-    text: "#0B1120",
-    gradient: isMidnight
-      ? "linear-gradient(135deg, #001b44 0%, #003b8f 100%);"
-      : "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-    cardBorder: `${primary}22`,
-    heroBg: `${primary}0A`,
-  };
-}
-
-/** Fallback when no brand color is set */
-export const DEFAULT_THEME = buildBrandTheme();
+/** Single brand theme matching the Ink & Steel design system */
+export const DEFAULT_THEME: ThemeConfig = {
+  primary: "#0c0c0f",
+  secondary: "#1a1a1f",
+  accent: "#f59e0b",
+  bg: "#f5f3ef",
+  text: "#0c0c0f",
+  gradient: "#f5f3ef",
+  cardBorder: "#e2dfda",
+  heroBg: "#f0eeea",
+};
 
 // placeholders removed – popularity driven exclusively by backend now.
 
