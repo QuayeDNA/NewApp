@@ -16,6 +16,7 @@ import type {
   Bundle,
   CreatePackageData,
   UpdatePackageData,
+  PopulatedProvider,
 } from "../../types/package";
 import {
   FaBox,
@@ -394,18 +395,22 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
               <tbody className="bg-[var(--color-surface)] divide-y divide-[var(--color-border)]">
                 {(currentItems || []).map((item) => {
                   const providerColors = getProviderColors(
-                    (item.provider || (item as Bundle).providerId) as string
+                    "provider" in item && typeof item.provider === "string"
+                      ? item.provider
+                      : typeof (item as Bundle).providerId === "object" && (item as Bundle).providerId !== null
+                        ? ((item as Bundle).providerId as PopulatedProvider).code
+                        : "Unknown"
                   );
 
                   return (
-                    <tr key={item._id} className="hover:bg-[var(--color-surface-alt)]">
+                    <tr key={item._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-[var(--color-text-primary)]">
+                          <div className="text-sm font-medium text-gray-900">
                             {item.name}
                           </div>
                           {item.description && (
-                            <div className="text-sm text-[var(--color-text-muted)]">
+                            <div className="text-sm text-gray-500">
                               {item.description}
                             </div>
                           )}
@@ -419,7 +424,11 @@ export const PackageManagement: React.FC<PackageManagementProps> = ({
                             color: providerColors.text,
                           }}
                         >
-                          {String(item.provider || "Unknown")}
+                          {"provider" in item && typeof item.provider === "string"
+                            ? item.provider
+                            : typeof (item as Bundle).providerId === "object" && (item as Bundle).providerId !== null
+                              ? ((item as Bundle).providerId as PopulatedProvider).code
+                              : "Unknown"}
                         </span>
                       </td>
                       {viewMode === "bundles" && (

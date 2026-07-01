@@ -135,9 +135,9 @@ export const StoreToolbar = memo(
               <div
                 className="rounded-xl p-3 text-sm"
                 style={{
-                  backgroundColor: "color-mix(in srgb, var(--color-warning) 10%, transparent)",
-                  border: "1px solid color-mix(in srgb, var(--color-warning) 30%, transparent)",
-                  color: "var(--color-text-primary)",
+                  backgroundColor: "color-mix(in srgb, var(--color-warning) 25%, transparent)",
+                  border: "1px solid color-mix(in srgb, var(--color-warning) 45%, transparent)",
+                  color: "#fff",
                 }}
               >
                 <strong
@@ -154,9 +154,9 @@ export const StoreToolbar = memo(
               <div
                 className="rounded-xl p-3 text-sm"
                 style={{
-                  backgroundColor: "color-mix(in srgb, var(--color-warning) 10%, transparent)",
-                  border: "1px solid color-mix(in srgb, var(--color-warning) 30%, transparent)",
-                  color: "var(--color-text-primary)",
+                  backgroundColor: "color-mix(in srgb, var(--color-warning) 25%, transparent)",
+                  border: "1px solid color-mix(in srgb, var(--color-warning) 45%, transparent)",
+                  color: "#fff",
                 }}
               >
                 <strong
@@ -174,7 +174,7 @@ export const StoreToolbar = memo(
               <div className="relative flex-1">
                 <FaMagnifyingGlass
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none"
-                  style={{ color: "var(--color-text-tertiary)" }}
+                  style={{ color: isStuck ? "var(--color-text-tertiary)" : "rgba(255,255,255,0.55)" }}
                 />
                 <input
                   type="search"
@@ -304,17 +304,28 @@ export const StoreToolbar = memo(
 
         <style>{`
           .store-toolbar {
+            background: rgba(0, 0, 0, 0.25);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
             transition: background 350ms ease,
                         border-color 350ms ease,
                         box-shadow 350ms ease;
           }
 
+          .store-toolbar input::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+          }
+
+          .store-toolbar--stuck input::placeholder {
+            color: var(--color-text-tertiary, #94A3B8);
+          }
+
           .store-toolbar--stuck {
-            background: color-mix(in srgb, var(--color-surface, #FFFFFF) 65%, transparent);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border-bottom: 1px solid color-mix(in srgb, var(--color-border, #E2E8F0) 40%, transparent);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            background: var(--color-surface, #FFFFFF);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid var(--color-border, #E2E8F0);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
           }
 
           @media (prefers-reduced-motion: reduce) {
