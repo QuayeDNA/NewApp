@@ -1,19 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Sidebar } from "../components/sidebar";
 import { Header } from "../components/header";
 import { NavigationLoader } from "../components/navigation-loader";
 import { AnnouncementBanner } from "../components/announcements/announcement-banner";
 import { GlobalFab } from "../components/common/GlobalFab";
-import { useAuth } from "../hooks";
+import { WhatsAppChannelModal } from "../components/common/WhatsAppChannelModal";
 
 const MOBILE_BREAKPOINT = 768;
 
 export const DashboardLayout = () => {
-  const { authState, updateFirstTimeFlag } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
-  const location = useLocation();
 
   useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
@@ -26,20 +24,6 @@ export const DashboardLayout = () => {
     mql.addEventListener("change", handleChange);
     return () => mql.removeEventListener("change", handleChange);
   }, []);
-
-  useEffect(() => {
-    if (
-      authState.isAuthenticated &&
-      authState.user?.isFirstTime &&
-      location.pathname.includes("/dashboard")
-    ) {
-      const alreadyHandled = localStorage.getItem("tourCompleted") === "true";
-      if (!alreadyHandled) {
-        localStorage.setItem("tourCompleted", "true");
-        updateFirstTimeFlag();
-      }
-    }
-  }, [authState.isAuthenticated, authState.user, location.pathname, updateFirstTimeFlag]);
 
   const toggleSidebar = useCallback(() => {
     setSidebarOpen((prev) => !prev);
@@ -70,6 +54,7 @@ export const DashboardLayout = () => {
         </main>
       </div>
 
+      <WhatsAppChannelModal />
       <GlobalFab />
       <AnnouncementBanner />
     </div>
