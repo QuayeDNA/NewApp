@@ -100,6 +100,14 @@ export interface BryteLinksSettings {
   inactivityThresholdDays: number;
 }
 
+export interface MtnRestrictionSettings {
+  mtnOrderRestrictionEnabled: boolean;
+}
+
+export interface MtnNumberStats {
+  totalKnownNumbers: number;
+}
+
 // =============================================================================
 // SETTINGS SERVICE
 // =============================================================================
@@ -151,6 +159,59 @@ class SettingsService {
 
   async updateAutoApproveStorefronts(autoApprove: boolean): Promise<{ autoApproveStorefronts: boolean }> {
     const response = await apiClient.put("/api/settings/storefront-auto-approve", { autoApproveStorefronts: autoApprove });
+    this._allSettingsCache = null;
+    return response.data;
+  }
+
+  // ── MTN Order Restriction ─────────────────────────────────────────────────
+
+  async getMtnRestriction(): Promise<MtnRestrictionSettings> {
+    const response = await apiClient.get("/api/settings/mtn-restriction");
+    return response.data.data ?? response.data;
+  }
+
+  async updateMtnRestriction(
+    data: Partial<MtnRestrictionSettings>
+  ): Promise<MtnRestrictionSettings> {
+    const response = await apiClient.put("/api/settings/mtn-restriction", data);
+    this._allSettingsCache = null;
+    return response.data.data ?? response.data;
+  }
+
+  async getMtnNumberStats(): Promise<MtnNumberStats> {
+    const response = await apiClient.get("/api/settings/mtn-numbers/stats");
+    return response.data.data;
+  }
+
+  async listMtnNumbers(
+    page: number = 1,
+    limit: number = 20,
+    search: string = ""
+  ): Promise<{
+    numbers: Array<{ _id: string; phone: string; importedAt: string }>;
+    total: number;
+    page: number;
+    totalPages: number;
+  }> {
+    const params = new URLSearchParams({ page: String(page), limit: String(limit) });
+    if (search) params.set("search", search);
+    const response = await apiClient.get(`/api/settings/mtn-numbers?${params}`);
+    return response.data;
+  }
+
+  async addMtnNumber(phone: string): Promise<{ phone: string }> {
+    const response = await apiClient.post("/api/settings/mtn-numbers", { phone });
+    this._allSettingsCache = null;
+    return response.data.number ?? response.data;
+  }
+
+  async deleteMtnNumber(id: string): Promise<void> {
+    await apiClient.delete(`/api/settings/mtn-numbers/${id}`);
+    this._allSettingsCache = null;
+  }
+
+  async bulkDeleteMtnNumbers(ids: string[]): Promise<{ deletedCount: number }> {
+    const response = await apiClient.post("/api/settings/mtn-numbers/bulk-delete", { ids });
     this._allSettingsCache = null;
     return response.data;
   }
@@ -276,6 +337,7 @@ class SettingsService {
     walletSettings: WalletSettings;
     feeSettings: FeeSettings;
     bryteLinksSettings: BryteLinksSettings;
+    mtnRestriction: MtnRestrictionSettings;
     signupApproval: { requireApprovalForSignup: boolean };
     autoApproveStorefronts: { autoApproveStorefronts: boolean };
     systemInfo: SystemInfo;
@@ -285,18 +347,23 @@ class SettingsService {
       return this._allSettingsCache.data;
     }
 
-    const [siteSettings, apiSettings, walletSettings, feeSettings, bryteLinksSettings, signupApproval, autoApproveStorefronts, systemInfo] = await Promise.all([
-      this.getSiteSettings(),
-      this.getApiSettings(),
-      this.getWalletSettings(),
-      this.getFeeSettings(),
-      this.getBryteLinksSettings(),
-      this.getSignupApprovalSetting(),
-      this.getAutoApproveStorefronts(),
-      this.getSystemInfo(),
+    const fetchOrDefault = async <T>(fn: () => Promise<T>, fallback: T): Promise<T> => {
+      try { return await fn(); } catch { return fallback; }
+    };
+
+    const [siteSettings, apiSettings, walletSettings, feeSettings, bryteLinksSettings, mtnRestriction, signupApproval, autoApproveStorefronts, systemInfo] = await Promise.all([
+      fetchOrDefault(() => this.getSiteSettings(), {} as SiteSettings),
+      fetchOrDefault(() => this.getApiSettings(), {} as ApiSettings),
+      fetchOrDefault(() => this.getWalletSettings(), {} as WalletSettings),
+      fetchOrDefault(() => this.getFeeSettings(), {} as FeeSettings),
+      fetchOrDefault(() => this.getBryteLinksSettings(), {} as BryteLinksSettings),
+      fetchOrDefault(() => this.getMtnRestriction(), { mtnOrderRestrictionEnabled: false }),
+      fetchOrDefault(() => this.getSignupApprovalSetting(), { requireApprovalForSignup: false }),
+      fetchOrDefault(() => this.getAutoApproveStorefronts(), { autoApproveStorefronts: false }),
+      fetchOrDefault(() => this.getSystemInfo(), {} as SystemInfo),
     ]);
 
-    const combined = { siteSettings, apiSettings, walletSettings, feeSettings, bryteLinksSettings, signupApproval, autoApproveStorefronts, systemInfo };
+    const combined = { siteSettings, apiSettings, walletSettings, feeSettings, bryteLinksSettings, mtnRestriction, signupApproval, autoApproveStorefronts, systemInfo };
     this._allSettingsCache = { ts: Date.now(), data: combined };
     return combined;
   }

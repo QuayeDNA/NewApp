@@ -133,6 +133,7 @@ export interface Order {
   total: number;
   status:
     | "draft"
+    | "wip"
     | "pending"
     | "pending_payment"
     | "confirmed"
