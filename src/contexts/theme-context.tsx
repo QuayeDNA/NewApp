@@ -4,10 +4,10 @@ import { ThemeContext, type Theme } from "./theme-context-value";
 const STORAGE_KEY = "brytelinks-theme";
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored === "dark" || stored === "light") return stored;
-  return "light";
+  return "dark";
 }
 
 function applyThemeClass(theme: Theme) {
