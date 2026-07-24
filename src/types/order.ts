@@ -132,7 +132,6 @@ export interface Order {
   discount: number;
   total: number;
   status:
-    | "draft"
     | "wip"
     | "pending"
     | "pending_payment"

@@ -314,7 +314,7 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
   };
 
   const canCancel = (status: string) =>
-    ["pending", "confirmed", "processing", "draft", "wip"].includes(status);
+    ["pending", "confirmed", "processing", "wip"].includes(status);
 
   const canUserCancelOrder = (order: Order) => {
     if (isOrderLocked(order)) return false;
@@ -322,17 +322,6 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
 
     // Admins can cancel any order
     if (isAdmin) return true;
-
-    // Agents can only cancel their own draft orders
-    if (order.status === "draft" && currentUserId) {
-      const createdById =
-        typeof order.createdBy === "string"
-          ? order.createdBy
-          : (order.createdBy as { _id: string })?._id;
-      if (createdById === currentUserId) {
-        return true;
-      }
-    }
 
     return false;
   };
@@ -576,11 +565,7 @@ export const UnifiedOrderTable: React.FC<UnifiedOrderTableProps> = ({
                             size="xs"
                             variant="danger"
                             onClick={() => onCancel(order._id!)}
-                            title={
-                              order.status === "draft"
-                                ? "Delete Draft Order"
-                                : "Cancel Order"
-                            }
+                            title="Cancel Order"
                           >
                             <FaTimes className="w-3 h-3" />
                           </Button>

@@ -87,7 +87,6 @@ export const DuplicateOrderWarningModal: React.FC<DuplicateOrderWarningModalProp
       case 'pending': return 'bg-[var(--color-warning)]/10 text-[var(--color-warning)]';
       case 'processing': return 'bg-[var(--color-info)]/10 text-[var(--color-info)]';
       case 'completed': return 'bg-[var(--color-success)]/10 text-[var(--color-success)]';
-      case 'draft': return 'bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]';
       default: return 'bg-[var(--color-surface-alt)] text-[var(--color-text-primary)]';
     }
   };
